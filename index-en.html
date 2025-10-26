@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Athens Cinemas – Movies, Showtimes, What's Playing Today & Next 3 Hours</title>
+  <meta name="description" content="Find out what's playing today in Athens cinemas! Full guide for movies, showtimes, and theaters. Now showing and next 3 hours.">
+  <meta name="keywords" content="cinema Athens, movies Athens, Athens movie guide, showtimes, what’s on today, theaters, Athens films, movie times">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- ✅ Hreflang cross-links -->
+  <link rel="alternate" hreflang="el" href="https://yourdomain.gr/" />
+  <link rel="alternate" hreflang="en" href="https://yourdomain.gr/en/" />
+  <link rel="alternate" hreflang="x-default" href="https://yourdomain.gr/" />
+
+  <!-- ✅ Preload JSON -->
+  <link rel="preload" href="../movies.json" as="fetch" crossorigin>
+  <link rel="preload" href="../cinemas.json" as="fetch" crossorigin>
+
+  <!-- ✅ Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Athens Cinemas – Movies & Showtimes Today">
+  <meta property="og:description" content="See all movies playing today in Athens cinemas. Movie times and theaters.">
+  <meta property="og:url" content="https://yourdomain.gr/en/">
+  <meta property="og:image" content="https://yourdomain.gr/static/cinema-preview.jpg">
+
+  <!-- ✅ Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Athens Cinemas – Movie Guide">
+  <meta name="twitter:description" content="What’s playing now and today in Athens cinemas.">
+  <meta name="twitter:image" content="https://yourdomain.gr/static/cinema-preview.jpg">
+
+  <link rel="icon" type="image/svg+xml" href="../movie_showtimes_logo(1).svg">
+
+  <style>
+  body {font-family: Arial, sans-serif; background:#fafafa; color:#222; margin:0; padding:1em;}
+  h1 {text-align:center; margin-bottom:1em;}
+  details {margin-bottom:1em; border:1px solid #ccc; border-radius:6px; background:#fff; flex:1; display:flex; flex-direction:column; overflow:hidden;}
+  details[open] .scroll-box {max-height:30vh; overflow-y:auto;}
+  summary {font-weight:bold; padding:0.5em; cursor:pointer; background:#f0f0f0; border-bottom:1px solid #ddd;}
+  .scroll-box {overflow-y:auto; border:none; padding:0.5em; flex:1;}
+  .checkbox-list {list-style:none; padding:0; margin:0;}
+  .checkbox-list li {margin:0.2em 0;}
+  .checkbox-list label {display:flex; align-items:center; cursor:pointer; background:#fff; border-radius:4px; padding:0.2em 0.4em; border:1px solid #eee;}
+  .checkbox-list input {margin-right:6px;}
+  #filters-container {display:flex; gap:1em; flex-wrap:wrap; align-items:stretch;}
+  #filters-container details {flex:1 1 45%; min-width:300px; background:#fff; border:1px solid #ccc; border-radius:6px; display:flex; flex-direction:column; overflow:hidden;}
+  #filters-container details:not([open]) {min-height:4em;}
+  @media (max-width:768px){#filters-container details{max-height:30vh;}}
+  @media (max-width:480px){#filters-container{flex-direction:column;}#filters-container details{max-height:25vh;}}
+  .movie {background:#fff; border-radius:8px; padding:1em; margin:1em 0; box-shadow:0 2px 4px rgba(0,0,0,0.1);}
+  .cinema {margin-left:1.5em; color:#555;}
+  a {color:#0055cc; text-decoration:none;}
+  .filter-buttons {display:flex; justify-content:center; flex-wrap:wrap; gap:0.6em; margin-top:1.5em;}
+  .filter-buttons button {border:none; border-radius:8px; padding:0.7em 1.4em; font-size:1em; cursor:pointer; transition:all 0.2s ease-in-out; font-weight:bold;}
+  .filter-buttons button#todayBtn {background:#0078d7; color:white;}
+  .filter-buttons button#todayBtn:hover {background:#005fa3;}
+  .filter-buttons button#next3Btn {background:#ff9800; color:white;}
+  .filter-buttons button#next3Btn:hover {background:#e68900;}
+  .filter-buttons button#allBtn {background:#ddd;}
+  .filter-buttons button#allBtn:hover {background:#ccc;}
+  footer {text-align:center; margin-top:2em; color:#555; font-size:0.9em;}
+  </style>
+</head>
+<body>
+  <h1>🎬 Athens Cinemas</h1>
+
+  <div id="filters">
+    <div id="filters-container">
+      <details open>
+        <summary>🎬 Select Movies</summary>
+        <div class="scroll-box"><ul id="movieCheckboxes" class="checkbox-list"></ul></div>
+      </details>
+
+      <details open>
+        <summary>🏛 Select Theaters</summary>
+        <div class="scroll-box"><ul id="cinemaCheckboxes" class="checkbox-list"></ul></div>
+      </details>
+    </div>
+
+    <div class="filter-buttons">
+      <button id="allBtn" onclick="showAll()">All Showtimes</button>
+      <button id="todayBtn" onclick="filterToday()">🎟 Today</button>
+      <button id="next3Btn" onclick="filterNext3()">⏰ Next 3 Hours</button>
+    </div>
+  </div>
+
+  <div id="results"></div>
+
+  <footer>
+    <p>Athens Cinemas © 2025 — Movie and showtime guide for Athens theaters.</p>
+  </footer>
+
+  <!-- ✅ Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MovieTheater",
+    "name": "Athens Cinemas",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Athens",
+      "addressCountry": "GR"
+    },
+    "description": "Complete Athens cinema guide with showtimes, movies and theaters.",
+    "url": "https://yourdomain.gr/en/"
+  }
+  </script>
+
+<script>
+let moviesData = [];
+let cinemasData = [];
+
+function updateMeta(title, description) {
+  document.title = title;
+  const descTag = document.querySelector('meta[name="description"]');
+  if (descTag) descTag.setAttribute('content', description);
+}
+
+async function loadData() {
+  const [moviesRes, cinemasRes] = await Promise.all([
+    fetch('../movies.json'),
+    fetch('../cinemas.json')
+  ]);
+  moviesData = await moviesRes.json();
+  cinemasData = await cinemasRes.json();
+
+  populateCheckboxes();
+  renderResults();
+}
+
+function populateCheckboxes() {
+  const movieBox = document.getElementById('movieCheckboxes');
+  movieBox.innerHTML = '';
+  moviesData.forEach((m, i) => {
+    const movie = m[0];
+    const displayTitle = movie.original_title && movie.original_title.trim() !== ""
+      ? `${movie.greek_title} (${movie.original_title})`
+      : movie.greek_title;
+    const li = document.createElement('li');
+    li.innerHTML = `<label><input type="checkbox" value="${i}" onchange="renderResults()"> ${displayTitle}</label>`;
+    movieBox.appendChild(li);
+  });
+
+  const allCinemas = [...new Set(cinemasData.flat(2).map(c => c.cinema))].sort();
+  const cinemaBox = document.getElementById('cinemaCheckboxes');
+  cinemaBox.innerHTML = '';
+  allCinemas.forEach(name => {
+    const li = document.createElement('li');
+    li.innerHTML = `<label><input type="checkbox" value="${name}" onchange="renderResults()"> ${name}</label>`;
+    cinemaBox.appendChild(li);
+  });
+}
+
+function renderResults(filteredList) {
+  const results = document.getElementById('results');
+  results.innerHTML = '';
+  const selectedMovies = Array.from(document.querySelectorAll('#movieCheckboxes input:checked')).map(el => el.value);
+  const selectedCinemas = Array.from(document.querySelectorAll('#cinemaCheckboxes input:checked')).map(el => el.value);
+  const list = filteredList || cinemasData;
+
+  list.forEach((movieCinemas, idx) => {
+    if (selectedMovies.length && !selectedMovies.includes(String(idx))) return;
+    const movie = moviesData[idx]?.[0];
+    if (!movie) return;
+
+    const validCinemas = movieCinemas.filter(c => c.timetable && c.timetable.flat().length > 0);
+    const cinemasToShow = selectedCinemas.length ? validCinemas.filter(c => selectedCinemas.includes(c.cinema)) : validCinemas;
+    if (cinemasToShow.length === 0) return;
+
+    const displayTitle = movie.original_title && movie.original_title.trim() !== ""
+      ? `${movie.greek_title} <span style="font-size:0.9em;color:#777;">(${movie.original_title})</span>`
+      : movie.greek_title;
+
+    const movieDiv = document.createElement('div');
+    movieDiv.className = 'movie';
+    movieDiv.innerHTML = `<h2><a href="${movie.athinorama_link}" target="_blank">${displayTitle}</a></h2>`;
+
+    cinemasToShow.forEach(cinema => {
+      const timesList = cinema.timetable.flat().filter(t => t.trim() !== '');
+      const formattedTimes = timesList.map(t => `<span style="display:inline-block;margin:3px 6px;padding:4px 8px;background:#f5f5f5;border-radius:8px;">${t}</span>`).join(' ');
+      const c = document.createElement('div');
+      c.className = 'cinema';
+      c.innerHTML = `<h3>${cinema.cinema}</h3><p>${cinema.address}</p><div>${formattedTimes || '<em>No showtimes available</em>'}</div>`;
+      movieDiv.appendChild(c);
+    });
+    results.appendChild(movieDiv);
+  });
+}
+
+function filterToday() {
+  const now = new Date();
+  const todayName = now.toLocaleDateString('en-GB', { weekday: 'long' });
+  const nowMins = now.getHours() * 60 + now.getMinutes();
+  const filtered = cinemasData.map(movie =>
+    movie.map(cinema => {
+      const newTimes = cinema.timetable.map(tt => tt.filter(t => {
+        if (!t.includes(todayName)) return false;
+        const match = t.match(/(\d{2}):(\d{2})/);
+        if (!match) return false;
+        const mins = parseInt(match[1]) * 60 + parseInt(match[2]);
+        return mins >= nowMins;
+      }));
+      return { ...cinema, timetable: newTimes };
+    })
+  );
+  renderResults(filtered);
+  highlightButton('todayBtn');
+  updateMeta('Movies Playing Today in Athens Cinemas 🎬', 'See which movies are playing today in Athens with full showtimes and theaters.');
+}
+
+function filterNext3() {
+  const now = new Date();
+  const nowMins = now.getHours() * 60 + now.getMinutes();
+  const next3 = nowMins + 180;
+  const today = new Date().toLocaleDateString('en-GB', { weekday: 'long' });
+  const filtered = cinemasData.map(movie =>
+    movie.map(cinema => {
+      const newTimes = cinema.timetable.map(tt => tt.filter(t => {
+        if (!t.includes(today)) return false;
+        const match = t.match(/(\d{2}):(\d{2})/);
+        if (!match) return false;
+        const mins = parseInt(match[1]) * 60 + parseInt(match[2]);
+        return mins >= nowMins && mins <= next3;
+      }));
+      return { ...cinema, timetable: newTimes };
+    })
+  );
+  renderResults(filtered);
+  highlightButton('next3Btn');
+  updateMeta('Movies Playing in the Next 3 Hours ⏰', 'Find out which films are showing in the next 3 hours in Athens cinemas.');
+}
+
+function showAll() {
+  renderResults();
+  highlightButton('allBtn');
+  updateMeta('Athens Cinemas – All Movies & Showtimes', 'Complete Athens cinema guide with all movies, times, and theaters.');
+}
+
+function highlightButton(id) {
+  document.querySelectorAll('.filter-buttons button').forEach(btn => btn.style.outline = 'none');
+  const btn = document.getElementById(id);
+  if (btn) btn.style.outline = '3px solid #222';
+}
+
+loadData();
+</script>
+</body>
+</html>

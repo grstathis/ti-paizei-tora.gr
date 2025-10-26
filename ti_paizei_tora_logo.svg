@@ -1,0 +1,50 @@
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#16213e;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="filmGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#e94560;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f39c12;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="400" fill="url(#bgGradient)"/>
+  
+  <!-- Film Reel Circle -->
+  <circle cx="200" cy="200" r="80" fill="none" stroke="url(#filmGradient)" stroke-width="8" opacity="0.9"/>
+  
+  <!-- Film Reel Holes -->
+  <circle cx="200" cy="120" r="10" fill="url(#filmGradient)" opacity="0.8"/>
+  <circle cx="256.57" cy="160" r="10" fill="url(#filmGradient)" opacity="0.8"/>
+  <circle cx="256.57" cy="240" r="10" fill="url(#filmGradient)" opacity="0.8"/>
+  <circle cx="200" cy="280" r="10" fill="url(#filmGradient)" opacity="0.8"/>
+  <circle cx="143.43" cy="240" r="10" fill="url(#filmGradient)" opacity="0.8"/>
+  <circle cx="143.43" cy="160" r="10" fill="url(#filmGradient)" opacity="0.8"/>
+  
+  <!-- Play Triangle -->
+  <path d="M 180 180 L 180 220 L 220 200 Z" fill="#ffffff" filter="url(#glow)"/>
+  
+  <!-- Film Strip Accent -->
+  <rect x="50" y="190" width="30" height="20" fill="url(#filmGradient)" opacity="0.6" rx="2"/>
+  <rect x="320" y="190" width="30" height="20" fill="url(#filmGradient)" opacity="0.6" rx="2"/>
+  <circle cx="58" cy="200" r="3" fill="#1a1a2e"/>
+  <circle cx="72" cy="200" r="3" fill="#1a1a2e"/>
+  <circle cx="328" cy="200" r="3" fill="#1a1a2e"/>
+  <circle cx="342" cy="200" r="3" fill="#1a1a2e"/>
+  
+  <!-- Decorative Stars -->
+  <path d="M 80 80 L 83 88 L 91 88 L 85 93 L 87 101 L 80 96 L 73 101 L 75 93 L 69 88 L 77 88 Z" fill="#f39c12" opacity="0.6"/>
+  <path d="M 320 90 L 322 96 L 328 96 L 323 100 L 325 106 L 320 102 L 315 106 L 317 100 L 312 96 L 318 96 Z" fill="#e94560" opacity="0.6"/>
+  <path d="M 100 310 L 102 316 L 108 316 L 103 320 L 105 326 L 100 322 L 95 326 L 97 320 L 92 316 L 98 316 Z" fill="#ffffff" opacity="0.4"/>
+  <path d="M 300 310 L 302 316 L 308 316 L 303 320 L 305 326 L 300 322 L 295 326 L 297 320 L 292 316 L 298 316 Z" fill="#f39c12" opacity="0.5"/>
+</svg>
