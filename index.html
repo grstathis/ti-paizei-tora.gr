@@ -710,23 +710,36 @@
       const nowMins = now.getHours() * 60 + now.getMinutes();
       const next3 = nowMins + 180;
       const today = new Date().toLocaleDateString('el-GR', { weekday: 'long' });
+      const todayDate = now.getDate(); // ✅ Missing declaration
 
       const filtered = cinemasData.map(movie =>
         movie.map(cinema => {
           const newTimes = cinema.timetable.map(tt => tt.filter(t => {
             if (!t.includes(today)) return false;
-            const match = t.match(/(\d{2}):(\d{2})/);
-            if (!match) return false;
-            const mins = parseInt(match[1]) * 60 + parseInt(match[2]);
+
+            // ✅ Separate regex for date extraction
+            const dateMatch = t.match(/(\d{1,2})\s*([Α-Ωα-ωάέίόήύώΆΈΉΊΌΎΏ]*)/);
+            if (dateMatch) {
+              const dayNum = parseInt(dateMatch[1]);
+              if (dayNum !== todayDate) return false;
+            }
+
+            // ✅ Separate regex for time extraction
+            const timeMatch = t.match(/(\d{2}):(\d{2})/);
+            if (!timeMatch) return false;
+            const mins = parseInt(timeMatch[1]) * 60 + parseInt(timeMatch[2]);
             return mins >= nowMins && mins <= next3;
           }));
           return { ...cinema, timetable: newTimes };
         })
       );
+
       renderResults(filtered);
       highlightButton('next3Btn');
       updateMeta('Ταινίες στις Επόμενες 3 Ώρες στα Σινεμά της Αθήνας ⏰', 'Ανακάλυψε ποιες ταινίες παίζονται μέσα στις επόμενες 3 ώρες στα σινεμά της Αθήνας.');
     }
+
+
 
     function showAll() {
       renderResults();
