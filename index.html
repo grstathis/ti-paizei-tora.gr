@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="el">
+
 <head>
   <meta charset="UTF-8">
   <title>Σινεμά Αθήνας – Ταινίες, Ωράρια, Τι παίζει σήμερα & στις επόμενες 3 ώρες</title>
-  <meta name="description" content="Δες τι παίζει σήμερα στα σινεμά της Αθήνας! Οδηγός για όλες τις ταινίες, ώρες προβολών και κινηματογράφους.">
-  <meta name="keywords" content="σινεμά Αθήνα, ταινίες Αθήνα, οδηγός σινεμά, προβολές, τι παίζει σήμερα, κινηματογράφοι, ταινίες σήμερα, τι παίζει τώρα, athens cinema, athens movies, athens movie guide">
+  <meta name="description"
+    content="Δες τι παίζει σήμερα στα σινεμά της Αθήνας! Οδηγός για όλες τις ταινίες, ώρες προβολών και κινηματογράφους.">
+  <meta name="keywords"
+    content="σινεμά Αθήνα, ταινίες Αθήνα, οδηγός σινεμά, προβολές, τι παίζει σήμερα, κινηματογράφοι, ταινίες σήμερα, τι παίζει τώρα, athens cinema, athens movies, athens movie guide">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- ✅ Preload JSON for faster load -->
@@ -14,7 +17,8 @@
   <!-- ✅ Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Σινεμά Αθήνας – Ταινίες, Ώρες, Τι Παίζει Σήμερα">
-  <meta property="og:description" content="Δες όλες τις ταινίες που παίζουν σήμερα στα σινεμά της Αθήνας. Ώρες προβολών και αίθουσες.">
+  <meta property="og:description"
+    content="Δες όλες τις ταινίες που παίζουν σήμερα στα σινεμά της Αθήνας. Ώρες προβολών και αίθουσες.">
   <meta property="og:url" content="https://ti-paizei-tora.gr">
   <meta property="og:image" content="https://ti-paizei-tora.gr/ti_paizei_tora_draw.png">
 
@@ -25,81 +29,345 @@
   <meta name="twitter:image" content="https://ti-paizei-tora.gr/ti_paizei_tora_draw.png">
 
   <style>
-  body {font-family: Arial, sans-serif; background:#fafafa; color:#222; margin:0; padding:1em;}
-  h1 {text-align:center; margin-bottom:1em;}
-  details {margin-bottom:1em; border:1px solid #ccc; border-radius:6px; background:#fff; flex:1; display:flex; flex-direction:column; overflow:hidden;}
-  details[open] .scroll-box {max-height:30vh; overflow-y:auto;}
-  summary {font-weight:bold; padding:0.5em; cursor:pointer; background:#f0f0f0; border-bottom:1px solid #ddd;}
-  .scroll-box {overflow-y:auto; border:none; padding:0.5em; flex:1;}
-  .checkbox-list {list-style:none; padding:0; margin:0;}
-  .checkbox-list li {margin:0.2em 0;}
-  .checkbox-list label {display:flex; align-items:center; cursor:pointer; background:#fff; border-radius:4px; padding:0.2em 0.4em; border:1px solid #eee;}
-  .checkbox-list input {margin-right:6px;}
-  .search-input {
-  width: 100%;
-  padding: 0.4em;
-  margin-bottom: 0.4em;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 0.9em;}
-#filters-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1em;
-  justify-content: space-between;
-  align-items: flex-start;
-}
+    body {
+      font-family: Arial, sans-serif;
+      background: #fafafa;
+      color: #222;
+      margin: 0;
+      padding: 1em;
+    }
 
-/* ✅ Each filter box (movies, cinemas, regions) side by side */
-#filters-container details {
-  flex: 1 1 calc(33.33% - 1em); /* three in a row */
-  min-width: 260px;
-  background: #fff;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
+    h1 {
+      text-align: center;
+      margin-bottom: 1em;
+    }
 
-/* ✅ When closed, keep small height */
-#filters-container details:not([open]) {
-  min-height: 3.5em;
-}
+    details {
+      margin-bottom: 1em;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      background: #fff;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
 
-/* ✅ Responsive: stack vertically on small screens */
-@media (max-width: 900px) {
-  #filters-container details {
-    flex: 1 1 calc(50% - 1em); /* two per row */
-  }
-}
+    details[open] .scroll-box {
+      max-height: 30vh;
+      overflow-y: auto;
+    }
 
-@media (max-width: 600px) {
-  #filters-container details {
-    flex: 1 1 100%; /* one per row on mobile */
-  }
-}
+    summary {
+      font-weight: bold;
+      padding: 0.5em;
+      cursor: pointer;
+      background: #f0f0f0;
+      border-bottom: 1px solid #ddd;
+    }
 
-  .movie {background:#fff; border-radius:8px; padding:1em; margin:1em 0; box-shadow:0 2px 4px rgba(0,0,0,0.1);}
-  .cinema {margin-left:1.5em; color:#555;}
-  a {color:#0055cc; text-decoration:none;}
-  .filter-buttons {display:flex; justify-content:center; flex-wrap:wrap; gap:0.6em; margin-top:1.5em;}
-  .filter-buttons button {border:none; border-radius:8px; padding:0.7em 1.4em; font-size:1em; cursor:pointer; transition:all 0.2s ease-in-out; font-weight:bold;}
-  .filter-buttons button#todayBtn {background:#0078d7; color:white;}
-  .filter-buttons button#todayBtn:hover {background:#005fa3;}
-  .filter-buttons button#next3Btn {background:#ff9800; color:white;}
-  .filter-buttons button#next3Btn:hover {background:#e68900;}
-  .filter-buttons button#allBtn {background:#ddd;}
-  .filter-buttons button#allBtn:hover {background:#ccc;}
-  footer {text-align:center; margin-top:2em; color:#555; font-size:0.9em;}
+    .scroll-box {
+      overflow-y: auto;
+      border: none;
+      padding: 0.5em;
+      flex: 1;
+    }
+
+    .checkbox-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .checkbox-list li {
+      margin: 0.2em 0;
+    }
+
+    .checkbox-list label {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      background: #fff;
+      border-radius: 4px;
+      padding: 0.2em 0.4em;
+      border: 1px solid #eee;
+    }
+
+    .checkbox-list input {
+      margin-right: 6px;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 0.4em;
+      margin-bottom: 0.4em;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 0.9em;
+    }
+
+    #filters-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1em;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    /* ✅ Each filter box (movies, cinemas, regions) side by side */
+    #filters-container details {
+      flex: 1 1 calc(33.33% - 1em);
+      /* three in a row */
+      min-width: 260px;
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* ✅ When closed, keep small height */
+    #filters-container details:not([open]) {
+      min-height: 3.5em;
+    }
+
+    /* ✅ Responsive: stack vertically on small screens */
+    @media (max-width: 900px) {
+      #filters-container details {
+        flex: 1 1 calc(50% - 1em);
+        /* two per row */
+      }
+    }
+
+    @media (max-width: 600px) {
+      #filters-container details {
+        flex: 1 1 100%;
+        /* one per row on mobile */
+      }
+    }
+
+    .movie {
+      background: #fff;
+      border-radius: 8px;
+      padding: 1em;
+      margin: 1em 0;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .movie-header {
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+      margin-bottom: 0.5em;
+      flex-wrap: wrap;
+    }
+
+    .movie-header h2 {
+      margin: 0;
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .external-links {
+      display: flex;
+      gap: 0.5em;
+      align-items: center;
+    }
+
+    .imdb-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: #f5c518;
+      color: #000;
+      text-decoration: none;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 0.8em;
+      font-weight: bold;
+      transition: all 0.2s ease;
+      border: 1px solid #e6b800;
+    }
+
+    .imdb-link:hover {
+      background: #e6b800;
+      transform: translateY(-1px);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .athinorama-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: #0078d7;
+      color: white;
+      text-decoration: none;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 0.8em;
+      font-weight: bold;
+      transition: all 0.2s ease;
+    }
+
+    .athinorama-link:hover {
+      background: #005fa3;
+      transform: translateY(-1px);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    @media (max-width: 600px) {
+      .movie-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .external-links {
+        margin-top: 0.5em;
+      }
+    }
+
+    .cinema {
+      margin-left: 1.5em;
+      color: #555;
+    }
+
+    a {
+      color: #0055cc;
+      text-decoration: none;
+    }
+
+    .filter-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.6em;
+      margin-top: 1.5em;
+    }
+
+    .filter-buttons button {
+      border: none;
+      border-radius: 8px;
+      padding: 0.7em 1.4em;
+      font-size: 1em;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+      font-weight: bold;
+    }
+
+    .filter-buttons button#todayBtn {
+      background: #0078d7;
+      color: white;
+    }
+
+    .filter-buttons button#todayBtn:hover {
+      background: #005fa3;
+    }
+
+    .filter-buttons button#next3Btn {
+      background: #ff9800;
+      color: white;
+    }
+
+    .filter-buttons button#next3Btn:hover {
+      background: #e68900;
+    }
+
+    .filter-buttons button#allBtn {
+      background: #ddd;
+    }
+
+    .filter-buttons button#allBtn:hover {
+      background: #ccc;
+    }
+
+    /* ✅ Quick Actions Styles */
+    .quick-actions {
+      display: flex;
+      justify-content: center;
+      gap: 1em;
+      margin: 1em 0;
+      flex-wrap: wrap;
+    }
+
+    .quick-actions button {
+      border: none;
+      padding: 0.5em 1em;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.2s ease-in-out;
+    }
+
+    .quick-actions .clear-btn {
+      background: #dc3545;
+      color: white;
+    }
+
+    .quick-actions .clear-btn:hover {
+      background: #c82333;
+    }
+
+    /* ✅ Back to Top Button */
+    #backToTop {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #0078d7;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 18px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 120, 215, 0.3);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease-in-out;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #backToTop:hover {
+      background: #005fa3;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0, 120, 215, 0.4);
+    }
+
+    #backToTop.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* ✅ Mobile adjustments for back to top */
+    @media (max-width: 600px) {
+      #backToTop {
+        bottom: 15px;
+        right: 15px;
+        width: 45px;
+        height: 45px;
+        font-size: 16px;
+      }
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 2em;
+      color: #555;
+      font-size: 0.9em;
+    }
   </style>
 </head>
+
 <body>
-<header style="text-align:center; margin-bottom:1em;">
-  <a href="/" title="Σινεμά Αθήνας – Αρχική">
-    <img src="ti_paizei_tora_logo.svg" alt="Σινεμά Αθήνας logo" width="180" loading="eager">
-  </a>
-</header>
+  <header style="text-align:center; margin-bottom:1em;">
+    <a href="/" title="Σινεμά Αθήνας – Αρχική">
+      <img src="ti_paizei_tora_logo.svg" alt="Σινεμά Αθήνας logo" width="180" loading="eager">
+    </a>
+  </header>
 
   <h1>🎬 Σινεμά Αθήνας</h1>
 
@@ -108,22 +376,29 @@
       <!-- ✅ Region Filter (multi-select) -->
       <details open id="regionFilter">
         <summary>📍 Επιλογή Περιοχής</summary>
-	    <input type="text" class="search-input" placeholder="Αναζήτηση περιοχής..." oninput="filterList('regionCheckboxes', this.value)">
+        <input type="text" class="search-input" placeholder="Αναζήτηση περιοχής..."
+          oninput="filterList('regionCheckboxes', this.value)">
         <div class="scroll-box">
           <ul id="regionCheckboxes" class="checkbox-list"></ul>
         </div>
-      </details>	
+      </details>
 
       <details open>
         <summary>🎬 Επιλογή Ταινιών</summary>
-		<input type="text" class="search-input" placeholder="Αναζήτηση ταινίας..." oninput="filterList('movieCheckboxes', this.value)">
-        <div class="scroll-box"><ul id="movieCheckboxes" class="checkbox-list"></ul></div>
+        <input type="text" class="search-input" placeholder="Αναζήτηση ταινίας..."
+          oninput="filterList('movieCheckboxes', this.value)">
+        <div class="scroll-box">
+          <ul id="movieCheckboxes" class="checkbox-list"></ul>
+        </div>
       </details>
 
       <details open>
         <summary>🏛 Επιλογή Κινηματογράφων</summary>
-		<input type="text" class="search-input" placeholder="Αναζήτηση κινηματογράφου..." oninput="filterList('cinemaCheckboxes', this.value)">
-        <div class="scroll-box"><ul id="cinemaCheckboxes" class="checkbox-list"></ul></div>
+        <input type="text" class="search-input" placeholder="Αναζήτηση κινηματογράφου..."
+          oninput="filterList('cinemaCheckboxes', this.value)">
+        <div class="scroll-box">
+          <ul id="cinemaCheckboxes" class="checkbox-list"></ul>
+        </div>
       </details>
 
 
@@ -134,9 +409,22 @@
       <button id="todayBtn" onclick="filterToday()">🎟 Τι Παίζει Σήμερα</button>
       <button id="next3Btn" onclick="filterNext3()">⏰ Επόμενες 3 Ώρες</button>
     </div>
+
+    <!-- ✅ Quick Actions Bar -->
+    <div class="quick-actions">
+      <button class="clear-btn" onclick="clearAllFilters()"
+        title="Καθαρίζει όλα τα φίλτρα και εμφανίζει όλες τις προβολές">
+        🗑️ Καθαρισμός Φίλτρων
+      </button>
+    </div>
   </div>
 
   <div id="results"></div>
+
+  <!-- ✅ Back to Top Button -->
+  <button id="backToTop" onclick="scrollToTop()" title="Επιστροφή στην κορυφή">
+    ↑
+  </button>
 
   <footer>
     <p>Σινεμά Αθήνας © 2025 — Οδηγός κινηματογράφων, προβολών και ταινιών στην Αθήνα.</p>
@@ -160,212 +448,300 @@
   }
   </script>
 
-<script>
-let moviesData = [];
-let cinemasData = [];
+  <script>
+    let moviesData = [];
+    let cinemasData = [];
 
-// ✅ Dynamic title/meta updates
-function updateMeta(title, description) {
-  document.title = title;
-  const descTag = document.querySelector('meta[name="description"]');
-  if (descTag) descTag.setAttribute('content', description);
-}
+    // ✅ Dynamic title/meta updates
+    function updateMeta(title, description) {
+      document.title = title;
+      const descTag = document.querySelector('meta[name="description"]');
+      if (descTag) descTag.setAttribute('content', description);
+    }
 
-// ✅ Search filter function for dropdowns
-function filterList(listId, query) {
-  const list = document.getElementById(listId);
-  const q = query.trim().toLowerCase();
-  list.querySelectorAll('li').forEach(li => {
-    const text = li.textContent.toLowerCase();
-    li.style.display = text.includes(q) ? '' : 'none';
-  });
-}
-
-
-async function loadData() {
-  const [moviesRes, cinemasRes] = await Promise.all([
-    fetch('movies.json'),
-    fetch('cinemas.json')
-  ]);
-  moviesData = await moviesRes.json();
-  cinemasData = await cinemasRes.json();
-
-  populateCheckboxes();
-  populateRegions();
-  renderResults();
-}
-
-// ✅ Populate unique regions (checkbox list)
-function populateRegions() {
-  const allRegions = [...new Set(cinemasData.flat().map(c => c.region).filter(Boolean))].sort();
-  const regionBox = document.getElementById('regionCheckboxes');
-  regionBox.innerHTML = '';
-
-  allRegions.forEach(region => {
-    const li = document.createElement('li');
-    li.innerHTML = `<label><input type="checkbox" value="${region}" onchange="renderResults()"> ${region}</label>`;
-    regionBox.appendChild(li);
-  });
-}
-
-// ✅ Movie + Cinema checkbox population
-function populateCheckboxes() {
-  const movieBox = document.getElementById('movieCheckboxes');
-  movieBox.innerHTML = '';
-  moviesData.forEach((m, i) => {
-    const movie = m[0];
-    const displayTitle = movie.original_title && movie.original_title.trim() !== ""
-      ? `${movie.greek_title} (${movie.original_title})`
-      : movie.greek_title;
-    const li = document.createElement('li');
-    li.innerHTML = `<label><input type="checkbox" value="${i}" onchange="renderResults()"> ${displayTitle}</label>`;
-    movieBox.appendChild(li);
-  });
-
-  const allCinemas = [...new Set(cinemasData.flat(2).map(c => c.cinema))].sort();
-  const cinemaBox = document.getElementById('cinemaCheckboxes');
-  cinemaBox.innerHTML = '';
-  allCinemas.forEach(name => {
-    const li = document.createElement('li');
-    li.innerHTML = `<label><input type="checkbox" value="${name}" onchange="renderResults()"> ${name}</label>`;
-    cinemaBox.appendChild(li);
-  });
-}
-
-// ✅ Main rendering logic
-function renderResults(filteredList) {
-  const results = document.getElementById('results');
-  results.innerHTML = '';
-
-  const selectedMovies = Array.from(document.querySelectorAll('#movieCheckboxes input:checked')).map(el => el.value);
-  const selectedCinemas = Array.from(document.querySelectorAll('#cinemaCheckboxes input:checked')).map(el => el.value);
-  const selectedRegions = Array.from(document.querySelectorAll('#regionCheckboxes input:checked')).map(el => el.value);
-
-  const list = filteredList || cinemasData;
-
-  list.forEach((movieCinemas, idx) => {
-    if (selectedMovies.length && !selectedMovies.includes(String(idx))) return;
-
-    const movie = moviesData[idx]?.[0];
-    if (!movie) return;
-
-    const validCinemas = movieCinemas.filter(c => c.timetable && c.timetable.flat().length > 0);
-    const cinemasToShow = selectedCinemas.length
-      ? validCinemas.filter(c => selectedCinemas.includes(c.cinema))
-      : validCinemas;
-
-    const regionFiltered = selectedRegions.length
-      ? cinemasToShow.filter(c => selectedRegions.includes(c.region))
-      : cinemasToShow;
-
-    if (regionFiltered.length === 0) return;
-
-    const displayTitle = movie.original_title && movie.original_title.trim() !== ""
-      ? `${movie.greek_title} <span style="font-size:0.9em;color:#777;">(${movie.original_title})</span>`
-      : movie.greek_title;
-
-    const movieDiv = document.createElement('div');
-    movieDiv.className = 'movie';
-    movieDiv.innerHTML = `<h2><a href="${movie.athinorama_link}" target="_blank">${displayTitle}</a></h2>`;
-
-    regionFiltered.forEach(cinema => {
-      const timesList = cinema.timetable.flat().filter(t => t.trim() !== '');
-      const sortedTimes = timesList.sort((a, b) => {
-        const ta = (a.match(/(\d{2}):(\d{2})/) || []).slice(1);
-        const tb = (b.match(/(\d{2}):(\d{2})/) || []).slice(1);
-        return (parseInt(ta[0]) * 60 + parseInt(ta[1])) - (parseInt(tb[0]) * 60 + parseInt(tb[1]));
+    // ✅ Search filter function for dropdowns
+    function filterList(listId, query) {
+      const list = document.getElementById(listId);
+      const q = query.trim().toLowerCase();
+      list.querySelectorAll('li').forEach(li => {
+        const text = li.textContent.toLowerCase();
+        li.style.display = text.includes(q) ? '' : 'none';
       });
-      const formattedTimes = sortedTimes.map(t => {
-        const match = t.match(/([Α-Ωα-ωάέίόήύώΆΈΉΊΌΎΏ]+)\s*(\d{1,2}\s*[Α-Ωα-ωάέίόήύώΆΈΉΊΌΎΏ]*)?\s*(\d{2}:\d{2})/);
-        if (match) {
-          const day = match[1]?.trim() || '';
-          const datePart = match[2]?.trim() || '';
-          const time = match[3];
-          const fullDate = [day, datePart].filter(Boolean).join(' ');
-          return `<span style="display:inline-block;margin:3px 6px;padding:4px 8px;background:#f5f5f5;border-radius:8px;">🕒 <strong>${time}</strong> — ${fullDate}</span>`;
+    }
+
+    // ✅ Clear all filters function
+    function clearAllFilters() {
+      // Uncheck all checkboxes
+      document.querySelectorAll('#movieCheckboxes input[type="checkbox"]').forEach(cb => cb.checked = false);
+      document.querySelectorAll('#cinemaCheckboxes input[type="checkbox"]').forEach(cb => cb.checked = false);
+      document.querySelectorAll('#regionCheckboxes input[type="checkbox"]').forEach(cb => cb.checked = false);
+
+      // Clear all search inputs
+      document.querySelectorAll('.search-input').forEach(input => input.value = '');
+
+      // Reset visibility of all filter items
+      document.querySelectorAll('.checkbox-list li').forEach(li => li.style.display = '');
+
+      // Show all results
+      showAll();
+
+      // Optional: Close all filter details
+      document.querySelectorAll('#filters-container details').forEach(details => details.open = true);
+
+      // Show feedback to user
+      const btn = event.target;
+      const originalText = btn.innerHTML;
+      btn.innerHTML = '✅ Καθαρίστηκαν!';
+      btn.style.background = '#28a745';
+      setTimeout(() => {
+        btn.innerHTML = originalText;
+        btn.style.background = '#dc3545';
+      }, 1500);
+    }
+
+    // ✅ Back to Top functionality
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+
+    // ✅ Show/hide back to top button based on scroll
+    function toggleBackToTopButton() {
+      const backToTopBtn = document.getElementById('backToTop');
+      if (window.pageYOffset > 300) {
+        backToTopBtn.classList.add('show');
+      } else {
+        backToTopBtn.classList.remove('show');
+      }
+    }
+
+    // ✅ Add scroll event listener
+    window.addEventListener('scroll', toggleBackToTopButton);
+
+    async function loadData() {
+      const [moviesRes, cinemasRes] = await Promise.all([
+        fetch('movies.json'),
+        fetch('cinemas.json')
+      ]);
+      moviesData = await moviesRes.json();
+      cinemasData = await cinemasRes.json();
+
+      populateCheckboxes();
+      populateRegions();
+      renderResults();
+    }
+
+    // ✅ Populate unique regions (checkbox list)
+    function populateRegions() {
+      const allRegions = [...new Set(cinemasData.flat().map(c => c.region).filter(Boolean))].sort();
+      const regionBox = document.getElementById('regionCheckboxes');
+      regionBox.innerHTML = '';
+
+      allRegions.forEach(region => {
+        const li = document.createElement('li');
+        li.innerHTML = `<label><input type="checkbox" value="${region}" onchange="renderResults()"> ${region}</label>`;
+        regionBox.appendChild(li);
+      });
+    }
+
+    // ✅ Movie + Cinema checkbox population
+    function populateCheckboxes() {
+      const movieBox = document.getElementById('movieCheckboxes');
+      movieBox.innerHTML = '';
+      moviesData.forEach((m, i) => {
+        const movie = m[0];
+        const displayTitle = movie.original_title && movie.original_title.trim() !== ""
+          ? `${movie.greek_title} (${movie.original_title})`
+          : movie.greek_title;
+        const li = document.createElement('li');
+        li.innerHTML = `<label><input type="checkbox" value="${i}" onchange="renderResults()"> ${displayTitle}</label>`;
+        movieBox.appendChild(li);
+      });
+
+      const allCinemas = [...new Set(cinemasData.flat(2).map(c => c.cinema))].sort();
+      const cinemaBox = document.getElementById('cinemaCheckboxes');
+      cinemaBox.innerHTML = '';
+      allCinemas.forEach(name => {
+        const li = document.createElement('li');
+        li.innerHTML = `<label><input type="checkbox" value="${name}" onchange="renderResults()"> ${name}</label>`;
+        cinemaBox.appendChild(li);
+      });
+    }
+
+    // ✅ Main rendering logic
+    function renderResults(filteredList) {
+      const results = document.getElementById('results');
+      results.innerHTML = '';
+
+      const selectedMovies = Array.from(document.querySelectorAll('#movieCheckboxes input:checked')).map(el => el.value);
+      const selectedCinemas = Array.from(document.querySelectorAll('#cinemaCheckboxes input:checked')).map(el => el.value);
+      const selectedRegions = Array.from(document.querySelectorAll('#regionCheckboxes input:checked')).map(el => el.value);
+
+      const list = filteredList || cinemasData;
+
+      list.forEach((movieCinemas, idx) => {
+        if (selectedMovies.length && !selectedMovies.includes(String(idx))) return;
+
+        const movie = moviesData[idx]?.[0];
+        if (!movie) return;
+
+        const validCinemas = movieCinemas.filter(c => c.timetable && c.timetable.flat().length > 0);
+        const cinemasToShow = selectedCinemas.length
+          ? validCinemas.filter(c => selectedCinemas.includes(c.cinema))
+          : validCinemas;
+
+        const regionFiltered = selectedRegions.length
+          ? cinemasToShow.filter(c => selectedRegions.includes(c.region))
+          : cinemasToShow;
+
+        if (regionFiltered.length === 0) return;
+
+        const displayTitle = movie.athinorama_link
+          ? `<a href="${movie.athinorama_link}" target="_blank" style="text-decoration: none;">
+       ${movie.greek_title}${movie.original_title && movie.original_title.trim() !== ""
+            ? ` <span style="font-size:0.9em;color:#777;">(${movie.original_title})</span>`
+            : ''}
+     </a>`
+          : `${movie.greek_title}${movie.original_title && movie.original_title.trim() !== ""
+            ? ` <span style="font-size:0.9em;color:#777;">(${movie.original_title})</span>`
+            : ''}`;
+
+
+        // ✅ Create external links
+        let externalLinks = '';
+
+        // IMDB Link
+        if (movie.imdb_link && movie.imdb_link.trim() !== '') {
+          externalLinks += `<a href="${movie.imdb_link}" target="_blank" class="imdb-link" title="Δες στο IMDB">
+            <span style="font-weight:bold;">IMDb</span> ⭐
+          </a>`;
         }
-        return `<span style="display:inline-block;margin:3px 6px;padding:4px 8px;background:#f5f5f5;border-radius:8px;">${t}</span>`;
-      }).join(' ');
-      const c = document.createElement('div');
-      c.className = 'cinema';
-      c.innerHTML = `
+
+
+
+        const movieDiv = document.createElement('div');
+        movieDiv.className = 'movie';
+        movieDiv.innerHTML = `
+          <div class="movie-header">
+            <h2>${displayTitle}</h2>
+            <div class="external-links">
+              ${externalLinks}
+            </div>
+          </div>
+        `;
+
+        regionFiltered.forEach(cinema => {
+          const timesList = cinema.timetable.flat().filter(t => t.trim() !== '');
+          const sortedTimes = timesList.sort((a, b) => {
+            const ta = (a.match(/(\d{2}):(\d{2})/) || []).slice(1);
+            const tb = (b.match(/(\d{2}):(\d{2})/) || []).slice(1);
+            return (parseInt(ta[0]) * 60 + parseInt(ta[1])) - (parseInt(tb[0]) * 60 + parseInt(tb[1]));
+          });
+          const formattedTimes = sortedTimes.map(t => {
+            const match = t.match(/([Α-Ωα-ωάέίόήύώΆΈΉΊΌΎΏ]+)\s*(\d{1,2}\s*[Α-Ωα-ωάέίόήύώΆΈΉΊΌΎΏ]*)?\s*(\d{2}:\d{2})/);
+            if (match) {
+              const day = match[1]?.trim() || '';
+              const datePart = match[2]?.trim() || '';
+              const time = match[3];
+              const fullDate = [day, datePart].filter(Boolean).join(' ');
+              return `<span style="display:inline-block;margin:3px 6px;padding:4px 8px;background:#f5f5f5;border-radius:8px;">🕒 <strong>${time}</strong> — ${fullDate}</span>`;
+            }
+            return `<span style="display:inline-block;margin:3px 6px;padding:4px 8px;background:#f5f5f5;border-radius:8px;">${t}</span>`;
+          }).join(' ');
+          const c = document.createElement('div');
+          c.className = 'cinema';
+          c.innerHTML = `
         <h3>${cinema.cinema}</h3>
         <p>${cinema.address}</p>
         ${cinema.region ? `<div style="font-size:0.9em;color:#777;">📍 ${cinema.region}</div>` : ''}
         <div>${formattedTimes || '<em>Δεν υπάρχουν προβολές</em>'}</div>
       `;
-      movieDiv.appendChild(c);
-    });
+          movieDiv.appendChild(c);
+        });
 
-    results.appendChild(movieDiv);
-  });
+        results.appendChild(movieDiv);
+      });
 
-  if (!results.hasChildNodes()) {
-    results.innerHTML = '<p style="text-align:center;color:#666;">Δεν υπάρχουν διαθέσιμες προβολές.</p>';
-  }
-}
+      if (!results.hasChildNodes()) {
+        results.innerHTML = '<p style="text-align:center;color:#666;">Δεν υπάρχουν διαθέσιμες προβολές.</p>';
+      }
+    }
 
-// ✅ Filter buttons
-function filterToday() {
-  const now = new Date();
-  const todayName = now.toLocaleDateString('el-GR', { weekday: 'long' });
-  const nowMins = now.getHours() * 60 + now.getMinutes();
+    // ✅ Filter buttons
+    function filterToday() {
+      const now = new Date();
+      const todayName = now.toLocaleDateString('el-GR', { weekday: 'long' });
+      const todayDate = now.getDate(); // Get today's date number
+      const todayMonth = now.getMonth() + 1; // Get today's month (1-12)
+      const nowMins = now.getHours() * 60 + now.getMinutes();
 
-  const filtered = cinemasData.map(movie =>
-    movie.map(cinema => {
-      const newTimes = cinema.timetable.map(tt =>
-        tt.filter(t => {
-          if (!t.includes(todayName)) return false;
-          const match = t.match(/(\d{2}):(\d{2})/);
-          if (!match) return false;
-          const mins = parseInt(match[1]) * 60 + parseInt(match[2]);
-          return mins >= nowMins;
+      const filtered = cinemasData.map(movie =>
+        movie.map(cinema => {
+          const newTimes = cinema.timetable.map(tt =>
+            tt.filter(t => {
+              if (!t.includes(todayName)) return false;
+
+              // ✅ Check if it contains today's date
+              const dateMatch = t.match(/(\d{1,2})\s*([Α-Ωα-ωάέίόήύώΆΈΉΊΌΎΏ]*)/);
+              if (dateMatch) {
+                const dayNum = parseInt(dateMatch[1]);
+                if (dayNum !== todayDate) return false; // Only show today's date
+              }
+
+              const match = t.match(/(\d{2}):(\d{2})/);
+              if (!match) return false;
+              const mins = parseInt(match[1]) * 60 + parseInt(match[2]);
+              return mins >= nowMins;
+            })
+          );
+          return { ...cinema, timetable: newTimes };
         })
       );
-      return { ...cinema, timetable: newTimes };
-    })
-  );
-  renderResults(filtered);
-  highlightButton('todayBtn');
-  updateMeta('Τι Παίζει Σήμερα στα Σινεμά της Αθήνας 🎬','Δες ποιες ταινίες παίζονται σήμερα στα σινεμά της Αθήνας με ώρες προβολών και αίθουσες.');
-}
+      renderResults(filtered);
+      highlightButton('todayBtn');
+      updateMeta('Τι Παίζει Σήμερα στα Σινεμά της Αθήνας 🎬', 'Δες ποιες ταινίες παίζονται σήμερα στα σινεμά της Αθήνας με ώρες προβολών και αίθουσες.');
+    }
 
-function filterNext3() {
-  const now = new Date();
-  const nowMins = now.getHours() * 60 + now.getMinutes();
-  const next3 = nowMins + 180;
-  const today = new Date().toLocaleDateString('el-GR', { weekday: 'long' });
 
-  const filtered = cinemasData.map(movie =>
-    movie.map(cinema => {
-      const newTimes = cinema.timetable.map(tt => tt.filter(t => {
-        if (!t.includes(today)) return false;
-        const match = t.match(/(\d{2}):(\d{2})/);
-        if (!match) return false;
-        const mins = parseInt(match[1]) * 60 + parseInt(match[2]);
-        return mins >= nowMins && mins <= next3;
-      }));
-      return { ...cinema, timetable: newTimes };
-    })
-  );
-  renderResults(filtered);
-  highlightButton('next3Btn');
-  updateMeta('Ταινίες στις Επόμενες 3 Ώρες στα Σινεμά της Αθήνας ⏰','Ανακάλυψε ποιες ταινίες παίζονται μέσα στις επόμενες 3 ώρες στα σινεμά της Αθήνας.');
-}
+    function filterNext3() {
+      const now = new Date();
+      const nowMins = now.getHours() * 60 + now.getMinutes();
+      const next3 = nowMins + 180;
+      const today = new Date().toLocaleDateString('el-GR', { weekday: 'long' });
 
-function showAll() {
-  renderResults();
-  highlightButton('allBtn');
-  updateMeta('Σινεμά Αθήνας – Όλες οι Ταινίες & Προβολές','Ο πλήρης οδηγός σινεμά της Αθήνας. Δες όλες τις ταινίες, ώρες προβολών και κινηματογράφους.');
-}
+      const filtered = cinemasData.map(movie =>
+        movie.map(cinema => {
+          const newTimes = cinema.timetable.map(tt => tt.filter(t => {
+            if (!t.includes(today)) return false;
+            const match = t.match(/(\d{2}):(\d{2})/);
+            if (!match) return false;
+            const mins = parseInt(match[1]) * 60 + parseInt(match[2]);
+            return mins >= nowMins && mins <= next3;
+          }));
+          return { ...cinema, timetable: newTimes };
+        })
+      );
+      renderResults(filtered);
+      highlightButton('next3Btn');
+      updateMeta('Ταινίες στις Επόμενες 3 Ώρες στα Σινεμά της Αθήνας ⏰', 'Ανακάλυψε ποιες ταινίες παίζονται μέσα στις επόμενες 3 ώρες στα σινεμά της Αθήνας.');
+    }
 
-function highlightButton(id) {
-  document.querySelectorAll('.filter-buttons button').forEach(btn => btn.style.outline = 'none');
-  const btn = document.getElementById(id);
-  if (btn) btn.style.outline = '3px solid #222';
-}
+    function showAll() {
+      renderResults();
+      highlightButton('allBtn');
+      updateMeta('Σινεμά Αθήνας – Όλες οι Ταινίες & Προβολές', 'Ο πλήρης οδηγός σινεμά της Αθήνας. Δες όλες τις ταινίες, ώρες προβολών και κινηματογράφους.');
+    }
 
-loadData();
-</script>
+    function highlightButton(id) {
+      document.querySelectorAll('.filter-buttons button').forEach(btn => btn.style.outline = 'none');
+      const btn = document.getElementById(id);
+      if (btn) btn.style.outline = '3px solid #222';
+    }
+
+    loadData();
+  </script>
 </body>
+
 </html>
