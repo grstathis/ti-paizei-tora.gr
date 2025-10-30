@@ -237,49 +237,323 @@
       text-decoration: none;
     }
 
+    /* ✅ Enhanced Filter Buttons Section */
+    .filter-buttons-section {
+      background: #fff;
+      padding: 1.5em;
+      border-radius: 12px;
+      margin: 1.5em 0;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      border: 1px solid #e0e0e0;
+    }
+
+    .filter-buttons-header {
+      text-align: center;
+      margin-bottom: 1em;
+    }
+
+    .filter-buttons-header h3 {
+      margin: 0 0 0.3em 0;
+      font-size: 1.2em;
+      color: #333;
+    }
+
+    .filter-buttons-header p {
+      margin: 0;
+      color: #666;
+      font-size: 0.9em;
+    }
+
     .filter-buttons {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 0.6em;
-      margin-top: 1.5em;
+      gap: 1em;
     }
 
     .filter-buttons button {
       border: none;
-      border-radius: 8px;
-      padding: 0.7em 1.4em;
-      font-size: 1em;
+      border-radius: 12px;
+      padding: 1em 2em;
+      font-size: 1.1em;
       cursor: pointer;
-      transition: all 0.2s ease-in-out;
+      transition: all 0.3s ease;
       font-weight: bold;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      position: relative;
+      overflow: hidden;
+      min-width: 180px;
+    }
+
+    .filter-buttons button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .filter-buttons button:hover::before {
+      opacity: 1;
     }
 
     .filter-buttons button#todayBtn {
-      background: #0078d7;
+      background: linear-gradient(135deg, #0078d7 0%, #005fa3 100%);
       color: white;
     }
 
     .filter-buttons button#todayBtn:hover {
-      background: #005fa3;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 120, 215, 0.4);
     }
 
     .filter-buttons button#next3Btn {
-      background: #ff9800;
+      background: linear-gradient(135deg, #ff9800 0%, #ff6f00 100%);
       color: white;
     }
 
     .filter-buttons button#next3Btn:hover {
-      background: #e68900;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(255, 152, 0, 0.4);
     }
 
     .filter-buttons button#allBtn {
-      background: #ddd;
+      background: linear-gradient(135deg, #4caf50 0%, #388e3c 100%);
+      color: white;
     }
 
     .filter-buttons button#allBtn:hover {
-      background: #ccc;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
     }
+
+    /* ✅ Active/Selected state */
+    .filter-buttons button.active {
+      transform: scale(0.95);
+      box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .filter-buttons button.active::after {
+      content: '✓';
+      position: absolute;
+      top: 5px;
+      right: 10px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    /* ✅ Button icons animation */
+    .filter-buttons button .emoji {
+      display: inline-block;
+      transition: transform 0.3s ease;
+      margin-right: 0.3em;
+    }
+
+    .filter-buttons button:hover .emoji {
+      transform: scale(1.2) rotate(10deg);
+    }
+
+    @media (max-width: 600px) {
+      .filter-buttons-section {
+        padding: 1em;
+      }
+
+      .filter-buttons {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .filter-buttons button {
+        width: 100%;
+        min-width: auto;
+      }
+    }
+
+
+    /* ✅ Enhanced Near Me Section */
+    .near-me-section {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1.5em;
+      border-radius: 12px;
+      margin: 1.5em 0;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .near-me-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        transform: scale(1);
+        opacity: 0.5;
+      }
+
+      50% {
+        transform: scale(1.1);
+        opacity: 0.3;
+      }
+    }
+
+    .near-me-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .near-me-header {
+      text-align: center;
+      margin-bottom: 1em;
+    }
+
+    .near-me-header h2 {
+      margin: 0 0 0.3em 0;
+      font-size: 1.4em;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .near-me-header p {
+      margin: 0;
+      opacity: 0.95;
+      font-size: 0.95em;
+    }
+
+    .near-me-controls {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1em;
+    }
+
+    .radius-selector {
+      display: flex;
+      align-items: center;
+      gap: 0.8em;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 0.8em 1.2em;
+      border-radius: 8px;
+      backdrop-filter: blur(10px);
+    }
+
+    .radius-selector label {
+      font-weight: bold;
+      font-size: 1.1em;
+    }
+
+    #radiusSelect {
+      background: white;
+      color: #333;
+      border: none;
+      padding: 0.4em 0.8em;
+      border-radius: 6px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    #radiusSelect:hover {
+      transform: translateY(-1px);
+    }
+
+    #nearMeBtn {
+      background: white;
+      color: #667eea;
+      border: none;
+      padding: 1em 2em;
+      font-size: 1.2em;
+      font-weight: bold;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+    }
+
+    #nearMeBtn:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    }
+
+    #nearMeBtn:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+
+    #nearMeBtn .icon {
+      font-size: 1.3em;
+      animation: radar 2s ease-in-out infinite;
+    }
+
+    @keyframes radar {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.2);
+      }
+    }
+
+    #nearbySummary {
+      text-align: center;
+      margin-top: 1em;
+      padding: 0.8em;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 8px;
+      backdrop-filter: blur(5px);
+      min-height: 2em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ✅ Mobile Responsive for Near Me */
+    @media (max-width: 600px) {
+      .near-me-section {
+        padding: 1.2em;
+      }
+
+      .near-me-header h2 {
+        font-size: 1.2em;
+      }
+
+      #nearMeBtn {
+        font-size: 1.1em;
+        padding: 0.9em 1.8em;
+      }
+
+      .radius-selector {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
 
     /* ✅ Quick Actions Styles */
     .quick-actions {
@@ -401,13 +675,57 @@
         </div>
       </details>
 
-
     </div>
 
-    <div class="filter-buttons">
-      <button id="allBtn" onclick="showAll()">Όλες οι Προβολές</button>
-      <button id="todayBtn" onclick="filterToday()">🎟 Τι Παίζει Σήμερα</button>
-      <button id="next3Btn" onclick="filterNext3()">⏰ Επόμενες 3 Ώρες</button>
+    <!-- ✅ Enhanced Filter Buttons Section -->
+    <div class="filter-buttons-section">
+      <div class="filter-buttons-header">
+        <h3>🎯 Γρήγορα Φίλτρα</h3>
+        <p>Επίλεξε για να δεις συγκεκριμένες προβολές</p>
+      </div>
+
+      <div class="filter-buttons">
+        <button id="allBtn" onclick="showAll()">
+          <span class="emoji">🎬</span>Όλες οι Προβολές
+        </button>
+        <button id="todayBtn" onclick="filterToday()">
+          <span class="emoji">📅</span>Σήμερα
+        </button>
+        <button id="next3Btn" onclick="filterNext3()">
+          <span class="emoji">⏰</span>Επόμενες 3 Ώρες
+        </button>
+      </div>
+    </div>
+
+    <!-- ✅ Prominent Near Me Section -->
+    <div class="near-me-section">
+      <div class="near-me-content">
+        <div class="near-me-header">
+          <h2>📍 Βρες Σινεμά Κοντά σου</h2>
+          <p>Ανακάλυψε ποια σινεμά είναι κοντά στην τοποθεσία σου</p>
+        </div>
+
+        <div class="near-me-controls">
+          <div class="radius-selector">
+            <label for="radiusSelect">Ακτίνα αναζήτησης:</label>
+            <select id="radiusSelect" aria-label="Ακτίνα αναζήτησης">
+              <option value="1">1 km</option>
+              <option value="2">2 km</option>
+              <option value="3" selected>3 km</option>
+              <option value="5">5 km</option>
+              <option value="10">10 km</option>
+              <option value="15">15 km</option>
+            </select>
+          </div>
+
+          <button id="nearMeBtn" onclick="filterNearMe()" title="Βρες σινεμά κοντά μου">
+            <span class="icon">📡</span>
+            <span>Εντόπισε με</span>
+          </button>
+        </div>
+
+        <div id="nearbySummary"></div>
+      </div>
     </div>
 
     <!-- ✅ Quick Actions Bar -->
@@ -531,7 +849,7 @@
       ]);
       moviesData = await moviesRes.json();
       cinemasData = await cinemasRes.json();
-
+      normalizeCoordinates(); // ← normalize lon -> lng and coerce to numbers
       populateCheckboxes();
       populateRegions();
       renderResults();
@@ -573,6 +891,163 @@
         cinemaBox.appendChild(li);
       });
     }
+
+    // Distance in km using Haversine
+    function distanceKm(lat1, lon1, lat2, lon2) {
+      const toRad = d => d * Math.PI / 180;
+      const R = 6371;
+      const dLat = toRad(lat2 - lat1);
+      const dLon = toRad(lon2 - lon1);
+      const a = Math.sin(dLat / 2) ** 2 + Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLon / 2) ** 2;
+      return R * (2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)));
+    }
+
+    // Build a unique cinema map by name from cinemasData
+    function uniqueCinemasFromData() {
+      const map = new Map();
+      if (!Array.isArray(cinemasData) || !cinemasData.length) return map;
+      cinemasData.flat(2).forEach(c => {
+        if (!c || !c.cinema) return;
+        if (!map.has(c.cinema)) map.set(c.cinema, c);
+      });
+      return map;
+    }
+    // Add this function to handle active button states
+    function highlightButton(id) {
+      document.querySelectorAll('.filter-buttons button').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      const btn = document.getElementById(id);
+      if (btn) {
+        btn.classList.add('active');
+      }
+    }
+
+    // “Near me” main action
+    async function filterNearMe() {
+      const btn = document.getElementById('nearMeBtn');
+      const radiusInput = document.getElementById('radiusSelect');
+      const summary = document.getElementById('nearbySummary');
+      const radiusKm = parseFloat(radiusInput?.value) || 3;
+
+      if (!cinemasData || !cinemasData.length) {
+        summary.textContent = '⏳ Τα δεδομένα φορτώνουν, δοκίμασε ξανά σε λίγο.';
+        return;
+      }
+
+      if (!('geolocation' in navigator)) {
+        summary.textContent = '❌ Ο εντοπισμός τοποθεσίας δεν υποστηρίζεται στον περιηγητή.';
+        return;
+      }
+
+      const originalText = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = '⌛ Εντοπισμός...';
+      summary.textContent = '';
+
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          const { latitude, longitude } = pos.coords;
+          const uniq = uniqueCinemasFromData();
+
+          const nearby = [];
+          let withoutCoords = 0;
+
+          uniq.forEach((c, name) => {
+            if (typeof c.lat === 'number' && typeof c.lng === 'number') {
+              const d = distanceKm(latitude, longitude, c.lat, c.lng);
+              if (isFinite(d) && d <= radiusKm) nearby.push({ name, distance: d });
+            } else {
+              withoutCoords++;
+            }
+          });
+
+          nearby.sort((a, b) => a.distance - b.distance);
+
+          // Auto-check only nearby cinemas
+          const inputs = document.querySelectorAll('#cinemaCheckboxes input[type="checkbox"]');
+          inputs.forEach(cb => cb.checked = false);
+          const nearbyNames = new Set(nearby.map(n => n.name));
+          inputs.forEach(cb => { if (nearbyNames.has(cb.value)) cb.checked = true; });
+
+          renderResults();
+
+          if (nearby.length > 0) {
+            const top3 = nearby.slice(0, 3).map(n => `${n.name} (${n.distance.toFixed(1)}km)`).join(' • ');
+            summary.textContent = `✅ Βρέθηκαν ${nearby.length} σινεμά σε ακτίνα ${radiusKm}km. ${top3 ? 'Κοντινότερα: ' + top3 : ''}`;
+            updateMeta('Σινεμά κοντά μου στην Αθήνα 🎯', `Δες σινεμά γύρω σου σε ακτίνα ${radiusKm}km και τι παίζουν τώρα.`);
+          } else {
+            summary.textContent = `ℹ️ Δεν βρέθηκαν σινεμά σε ακτίνα ${radiusKm}km. ${withoutCoords ? `(Χωρίς συντεταγμένες: ${withoutCoords})` : ''}`;
+          }
+
+          btn.textContent = originalText;
+          btn.disabled = false;
+        },
+        (err) => {
+          let msg = '❌ Αποτυχία εντοπισμού.';
+          if (err.code === err.PERMISSION_DENIED) msg = '❌ Δεν δόθηκε άδεια τοποθεσίας.';
+          else if (err.code === err.POSITION_UNAVAILABLE) msg = '❌ Η τοποθεσία δεν είναι διαθέσιμη.';
+          else if (err.code === err.TIMEOUT) msg = '❌ Λήξη προθεσμίας εντοπισμού.';
+          summary.textContent = `${msg} Μπορείς να επιλέξεις ακτίνα και να δοκιμάσεις ξανά.`;
+          btn.textContent = originalText;
+          btn.disabled = false;
+        },
+        { enableHighAccuracy: true, timeout: 10000, maximumAge: 30000 }
+      );
+    }
+    function toNum(v) {
+      const n = Number(v);
+      return Number.isFinite(n) ? n : undefined;
+    }
+
+    function normalizeCoordinates() {
+      if (!Array.isArray(cinemasData) || !cinemasData.length) return;
+      cinemasData.flat(2).forEach(c => {
+        if (!c) return;
+        const lat = toNum(c.lat);
+        // accept both lng and lon in the source; normalize to lng
+        const lng = toNum(c.lng != null ? c.lng : c.lon);
+
+        if (Number.isFinite(lat)) c.lat = lat; else delete c.lat;
+        if (Number.isFinite(lng)) c.lng = lng; else delete c.lng;
+      });
+    }
+
+    function uniqueCinemasFromData() {
+      const map = new Map();
+      if (!Array.isArray(cinemasData) || !cinemasData.length) return map;
+
+      cinemasData.flat(2).forEach(raw => {
+        if (!raw || !raw.cinema) return;
+        const name = raw.cinema;
+        const lat = toNum(raw.lat);
+        const lng = toNum(raw.lng);
+
+        if (!map.has(name)) {
+          map.set(name, { ...raw, lat, lng });
+          return;
+        }
+
+        const current = map.get(name);
+        const hasCurrent = Number.isFinite(current.lat) && Number.isFinite(current.lng);
+        const hasNew = Number.isFinite(lat) && Number.isFinite(lng);
+        if (!hasCurrent && hasNew) {
+          map.set(name, { ...current, ...raw, lat, lng });
+        }
+      });
+
+      return map;
+    }
+
+    // Clear summary when clearing filters
+    const __origClearAllFilters = clearAllFilters;
+    clearAllFilters = function () {
+      __origClearAllFilters();
+      const summary = document.getElementById('nearbySummary');
+      if (summary) summary.textContent = '';
+      const btn = document.getElementById('nearMeBtn');
+      if (btn) { btn.disabled = false; btn.textContent = '🎯 Κοντά μου'; }
+    };
 
     // ✅ Main rendering logic
     function renderResults(filteredList) {
