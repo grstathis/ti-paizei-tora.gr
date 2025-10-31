@@ -147,6 +147,59 @@
       }
     }
 
+    .address-search {
+      display: flex;
+      gap: 0.8em;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .address-search input[type="text"] {
+      flex: 1 1 320px;
+      min-width: 240px;
+      max-width: 520px;
+      padding: 0.8em 1em;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 1em;
+    }
+
+    .address-search button {
+      background: white;
+      color: #764ba2;
+      border: none;
+      padding: 0.9em 1.4em;
+      font-size: 1.05em;
+      font-weight: bold;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+      white-space: nowrap;
+    }
+
+    .address-search button:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    }
+
+    .address-search button:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+
+    @media (max-width: 600px) {
+      .address-search {
+        flex-direction: column;
+        align-items: stretch;
+      }
+    }
+
     .movie {
       background: #fff;
       border-radius: 8px;
@@ -722,9 +775,21 @@
             <span class="icon">📡</span>
             <span>Εντόπισε με</span>
           </button>
+
+          <!-- inside .near-me-controls, right after the "near me" button -->
+          <div class="address-search">
+            <input id="addressInput" type="text" placeholder="Π.χ. Σύνταγμα, Αθήνα ή ΤΚ 10563"
+              aria-label="Διεύθυνση ή περιοχή" />
+            <button id="addressBtn" onclick="filterByAddress()" title="Αναζήτηση κοντινών σινεμά με διεύθυνση">
+              <span class="icon">🧭</span>
+              <span>Αναζήτηση διεύθυνσης</span>
+            </button>
+          </div>
+
+
         </div>
 
-        <div id="nearbySummary"></div>
+        <div id="nearbySummary" aria-live="polite"></div>
       </div>
     </div>
 
@@ -1038,6 +1103,115 @@
 
       return map;
     }
+
+    // Helper: reuse the logic to find nearby cinemas and apply the checkbox selection
+    function findAndSelectNearbyCinemas(lat, lng, radiusKm) {
+      const uniq = uniqueCinemasFromData();
+      const nearby = [];
+      let withoutCoords = 0;
+
+      uniq.forEach((c, name) => {
+        if (typeof c.lat === 'number' && typeof c.lng === 'number') {
+          const d = distanceKm(lat, lng, c.lat, c.lng);
+          if (isFinite(d) && d <= radiusKm) nearby.push({ name, distance: d });
+        } else {
+          withoutCoords++;
+        }
+      });
+
+      nearby.sort((a, b) => a.distance - b.distance);
+
+      // Auto-check only nearby cinemas
+      const inputs = document.querySelectorAll('#cinemaCheckboxes input[type="checkbox"]');
+      inputs.forEach(cb => cb.checked = false);
+      const nearbyNames = new Set(nearby.map(n => n.name));
+      inputs.forEach(cb => { if (nearbyNames.has(cb.value)) cb.checked = true; });
+
+      renderResults();
+
+      return { nearby, withoutCoords };
+    }
+
+    async function geocodeAddress(query) {
+      const url = 'https://nominatim.openstreetmap.org/search?format=jsonv2&limit=1&q=' + encodeURIComponent(query);
+      const res = await fetch(url, {
+        headers: {
+          'Accept': 'application/json',
+          'Accept-Language': 'el-GR,el;q=0.9,en;q=0.8'
+          // Note: Browsers don't allow setting User-Agent; Referer is set automatically.
+        }
+      });
+      if (!res.ok) throw new Error('Geocoding failed');
+      const json = await res.json();
+      if (!Array.isArray(json) || json.length === 0) return null;
+      const first = json[0];
+      const lat = Number(first.lat);
+      const lng = Number(first.lon);
+      if (!Number.isFinite(lat) || !Number.isFinite(lng)) return null;
+      return { lat, lng, label: first.display_name };
+    }
+
+    async function filterByAddress() {
+      const radiusInput = document.getElementById('radiusSelect');
+      const summary = document.getElementById('nearbySummary');
+      const addrInput = document.getElementById('addressInput');
+      const addrBtn = document.getElementById('addressBtn');
+      const radiusKm = parseFloat(radiusInput?.value) || 3;
+
+      if (!cinemasData || !cinemasData.length) {
+        summary.textContent = '⏳ Τα δεδομένα φορτώνουν, δοκίμασε ξανά σε λίγο.';
+        return;
+      }
+
+      const q = (addrInput?.value || '').trim();
+      if (!q) {
+        summary.textContent = 'ℹ️ Πληκτρολόγησε μια διεύθυνση ή περιοχή (π.χ. Σύνταγμα, Αθήνα).';
+        addrInput?.focus();
+        return;
+      }
+
+      const originalText = addrBtn.textContent;
+      addrBtn.disabled = true;
+      addrBtn.textContent = '⌛ Αναζήτηση...';
+      summary.textContent = '';
+
+      try {
+        const result = await geocodeAddress(q);
+        if (!result) {
+          summary.textContent = '❌ Δεν βρέθηκε η διεύθυνση. Δοκίμασε πιο συγκεκριμένα.';
+          return;
+        }
+
+        const { lat, lng, label } = result;
+        const { nearby, withoutCoords } = findAndSelectNearbyCinemas(lat, lng, radiusKm);
+
+        if (nearby.length > 0) {
+          const top3 = nearby.slice(0, 3).map(n => `${n.name} (${n.distance.toFixed(1)}km)`).join(' • ');
+          summary.textContent = `✅ Βρέθηκαν ${nearby.length} σινεμά σε ακτίνα ${radiusKm}km από: ${label}. ${top3 ? 'Κοντινότερα: ' + top3 : ''}`;
+          updateMeta('Σινεμά κοντά στη διεύθυνσή μου στην Αθήνα 🎯', `Βρες σινεμά γύρω από "${q}" σε ακτίνα ${radiusKm}km και δες τι παίζουν τώρα.`);
+        } else {
+          summary.textContent = `ℹ️ Δεν βρέθηκαν σινεμά σε ακτίνα ${radiusKm}km από: ${label}. ${withoutCoords ? `(Χωρίς συντεταγμένες: ${withoutCoords})` : ''}`;
+        }
+      } catch (e) {
+        summary.textContent = '❌ Σφάλμα κατά την αναζήτηση διεύθυνσης. Προσπάθησε ξανά.';
+      } finally {
+        addrBtn.textContent = originalText;
+        addrBtn.disabled = false;
+      }
+    }
+
+    // Enter key triggers address search
+    window.addEventListener('DOMContentLoaded', () => {
+      const addrInput = document.getElementById('addressInput');
+      if (addrInput) {
+        addrInput.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            filterByAddress();
+          }
+        });
+      }
+    });
 
     // Clear summary when clearing filters
     const __origClearAllFilters = clearAllFilters;
