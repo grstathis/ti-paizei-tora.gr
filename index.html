@@ -14,6 +14,18 @@
   <link rel="preload" href="movies.json" as="fetch" crossorigin>
   <link rel="preload" href="cinemas.json" as="fetch" crossorigin>
   <link rel="icon" type="image/svg+xml" href="ti_paizei_tora_logo.svg">
+  
+  
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-HJMKKTQ85R"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'G-HJMKKTQ85R');
+	</script>
+
 
   <!-- ✅ Open Graph -->
   <meta property="og:type" content="website">
@@ -1314,7 +1326,12 @@
           c.className = 'cinema';
           c.innerHTML = `
         <h3>${cinema.cinema}</h3>
-        <p>${cinema.address}</p>
+        <p>    <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(cinema.cinema + ' ' + cinema.address)}"
+       target="_blank"
+       rel="noopener noreferrer"
+       title="Δες στο Google Maps">
+      📍 ${cinema.address}
+    </a></p>
         ${cinema.region ? `<div style="font-size:0.9em;color:#777;">📍 ${cinema.region}</div>` : ''}
         <div>${formattedTimes || '<em>Δεν υπάρχουν προβολές</em>'}</div>
       `;
