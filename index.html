@@ -13,6 +13,7 @@
   <!-- ✅ Preload JSON for faster load -->
   <link rel="preload" href="movies.json" as="fetch" crossorigin>
   <link rel="preload" href="cinemas.json" as="fetch" crossorigin>
+  <link rel="icon" type="image/svg+xml" href="ti_paizei_tora_logo.svg">
 
   <!-- ✅ Open Graph -->
   <meta property="og:type" content="website">
@@ -27,6 +28,7 @@
   <meta name="twitter:title" content="Σινεμά Αθήνας – Οδηγός Ταινιών">
   <meta name="twitter:description" content="Τι παίζει τώρα και σήμερα στα σινεμά της Αθήνας.">
   <meta name="twitter:image" content="https://ti-paizei-tora.gr/ti_paizei_tora_draw.png">
+  
 
   <style>
     body {
@@ -773,7 +775,7 @@
 
           <button id="nearMeBtn" onclick="filterNearMe()" title="Βρες σινεμά κοντά μου">
             <span class="icon">📡</span>
-            <span>Εντόπισε με</span>
+            <span>Βρες την τοποθεσία μου</span>
           </button>
 
           <!-- inside .near-me-controls, right after the "near me" button -->
@@ -782,7 +784,7 @@
               aria-label="Διεύθυνση ή περιοχή" />
             <button id="addressBtn" onclick="filterByAddress()" title="Αναζήτηση κοντινών σινεμά με διεύθυνση">
               <span class="icon">🧭</span>
-              <span>Αναζήτηση διεύθυνσης</span>
+              <span>Εναλλακτικά: βρες την τοποθεσία με κείμενο</span>
             </button>
           </div>
 
@@ -1213,15 +1215,20 @@
       }
     });
 
-    // Clear summary when clearing filters
-    const __origClearAllFilters = clearAllFilters;
-    clearAllFilters = function () {
-      __origClearAllFilters();
-      const summary = document.getElementById('nearbySummary');
-      if (summary) summary.textContent = '';
-      const btn = document.getElementById('nearMeBtn');
-      if (btn) { btn.disabled = false; btn.textContent = '🎯 Κοντά μου'; }
-    };
+	// Clear summary + address when clearing filters
+	const __origClearAllFilters = clearAllFilters;
+	clearAllFilters = function () {
+	  __origClearAllFilters();
+
+	  const summary = document.getElementById('nearbySummary');
+	  if (summary) summary.textContent = '';
+
+	  const btn = document.getElementById('nearMeBtn');
+	  if (btn) { btn.disabled = false; btn.textContent = '🎯 Κοντά μου'; }
+
+	  const addrInput = document.getElementById('addressInput');
+	  if (addrInput) addrInput.value = ''; // ✅ clear address field
+	};
 
     // ✅ Main rendering logic
     function renderResults(filteredList) {
