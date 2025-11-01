@@ -208,11 +208,24 @@
     }
 
     @media (max-width: 600px) {
-      .address-search {
-        flex-direction: column;
-        align-items: stretch;
-      }
-    }
+  .address-search {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  /* make the input look cleaner on mobile */
+  .address-search input[type="text"] {
+    font-size: 0.9em;
+    padding: 0.6em 0.8em;
+    min-width: auto;
+  }
+
+  .address-search button {
+    font-size: 0.9em;
+    padding: 0.7em 1em;
+  }
+}
+
 
     .movie {
       background: #fff;
@@ -1147,7 +1160,7 @@
     }
 
     async function geocodeAddress(query) {
-      const url = 'https://nominatim.openstreetmap.org/search?format=jsonv2&limit=1&q=' + encodeURIComponent(query);
+      const url = 'https://nominatim.openstreetmap.org/search?format=jsonv2&limit=1&countrycodes=GR&q=' + encodeURIComponent(query);
       const res = await fetch(url, {
         headers: {
           'Accept': 'application/json',

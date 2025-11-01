@@ -1,0 +1,17 @@
+# robots.txt for https://ti-paizei-tora.gr
+
+User-agent: *
+Allow: /
+
+# Block internal or non-public files
+Disallow: /admin/
+Disallow: /tmp/
+Disallow: /scripts/
+Disallow: /private/
+
+# Allow important JSON data files for indexing (movie listings)
+Allow: /movies.json
+Allow: /cinemas.json
+
+# Sitemap location
+Sitemap: https://ti-paizei-tora.gr/sitemap.xml
