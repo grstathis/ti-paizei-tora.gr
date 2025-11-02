@@ -14,17 +14,17 @@
   <link rel="preload" href="movies.json" as="fetch" crossorigin>
   <link rel="preload" href="cinemas.json" as="fetch" crossorigin>
   <link rel="icon" type="image/svg+xml" href="ti_paizei_tora_logo.svg">
-  
-  
-	<!-- Google tag (gtag.js) -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-HJMKKTQ85R"></script>
-	<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments);}
-	  gtag('js', new Date());
 
-	  gtag('config', 'G-HJMKKTQ85R');
-	</script>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HJMKKTQ85R"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-HJMKKTQ85R');
+  </script>
 
 
   <!-- ✅ Open Graph -->
@@ -40,7 +40,7 @@
   <meta name="twitter:title" content="Σινεμά Αθήνας – Οδηγός Ταινιών">
   <meta name="twitter:description" content="Τι παίζει τώρα και σήμερα στα σινεμά της Αθήνας.">
   <meta name="twitter:image" content="https://ti-paizei-tora.gr/ti_paizei_tora_draw.png">
-  
+
 
   <style>
     body {
@@ -207,30 +207,30 @@
       cursor: not-allowed;
     }
 
-  @media (max-width: 600px) {
-  .address-search {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0.6em;
-  }
+    @media (max-width: 600px) {
+      .address-search {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.6em;
+      }
 
-  .address-search input[type="text"] {
-    width: 100%;
-    max-width: 100%;
-    min-width: 0;
-    font-size: 0.9em;
-    padding: 0.5em 0.8em;
-    border-radius: 6px;
-    box-sizing: border-box;
-  }
+      .address-search input[type="text"] {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        font-size: 0.9em;
+        padding: 0.5em 0.8em;
+        border-radius: 6px;
+        box-sizing: border-box;
+      }
 
-  .address-search button {
-    width: 100%;
-    font-size: 0.9em;
-    padding: 0.6em 1em;
-    border-radius: 6px;
-  }
-}
+      .address-search button {
+        width: 100%;
+        font-size: 0.9em;
+        padding: 0.6em 1em;
+        border-radius: 6px;
+      }
+    }
 
 
 
@@ -873,6 +873,9 @@
     let moviesData = [];
     let cinemasData = [];
 
+    let currentTimeFilter = 'all'; // Track current time filter: 'all', 'today', 'next3'
+
+
     // ✅ Dynamic title/meta updates
     function updateMeta(title, description) {
       document.title = title;
@@ -1023,6 +1026,7 @@
     }
 
     // “Near me” main action
+    // Also update the main filterNearMe function to include this logic
     async function filterNearMe() {
       const btn = document.getElementById('nearMeBtn');
       const radiusInput = document.getElementById('radiusSelect');
@@ -1047,33 +1051,13 @@
       navigator.geolocation.getCurrentPosition(
         (pos) => {
           const { latitude, longitude } = pos.coords;
-          const uniq = uniqueCinemasFromData();
 
-          const nearby = [];
-          let withoutCoords = 0;
-
-          uniq.forEach((c, name) => {
-            if (typeof c.lat === 'number' && typeof c.lng === 'number') {
-              const d = distanceKm(latitude, longitude, c.lat, c.lng);
-              if (isFinite(d) && d <= radiusKm) nearby.push({ name, distance: d });
-            } else {
-              withoutCoords++;
-            }
-          });
-
-          nearby.sort((a, b) => a.distance - b.distance);
-
-          // Auto-check only nearby cinemas
-          const inputs = document.querySelectorAll('#cinemaCheckboxes input[type="checkbox"]');
-          inputs.forEach(cb => cb.checked = false);
-          const nearbyNames = new Set(nearby.map(n => n.name));
-          inputs.forEach(cb => { if (nearbyNames.has(cb.value)) cb.checked = true; });
-
-          renderResults();
+          // Use the helper function which now clears region filters
+          const { nearby, withoutCoords } = findAndSelectNearbyCinemas(latitude, longitude, radiusKm);
 
           if (nearby.length > 0) {
             const top3 = nearby.slice(0, 3).map(n => `${n.name} (${n.distance.toFixed(1)}km)`).join(' • ');
-            summary.textContent = `✅ Βρέθηκαν ${nearby.length} σινεμά σε ακτίνα ${radiusKm}km. ${top3 ? 'Κοντινότερα: ' + top3 : ''}`;
+            summary.textContent = `✅ Βρέθηκαν ${nearby.length} σινεμά σε ακτίνα ${radiusKm}km. ${top3 ? 'Κοντινότερα: ' + top3 : ''} (Καθαρίστηκαν τα φίλτρα περιοχής)`;
             updateMeta('Σινεμά κοντά μου στην Αθήνα 🎯', `Δες σινεμά γύρω σου σε ακτίνα ${radiusKm}km και τι παίζουν τώρα.`);
           } else {
             summary.textContent = `ℹ️ Δεν βρέθηκαν σινεμά σε ακτίνα ${radiusKm}km. ${withoutCoords ? `(Χωρίς συντεταγμένες: ${withoutCoords})` : ''}`;
@@ -1094,6 +1078,8 @@
         { enableHighAccuracy: true, timeout: 10000, maximumAge: 30000 }
       );
     }
+
+
     function toNum(v) {
       const n = Number(v);
       return Number.isFinite(n) ? n : undefined;
@@ -1139,6 +1125,7 @@
     }
 
     // Helper: reuse the logic to find nearby cinemas and apply the checkbox selection
+    // Update the findAndSelectNearbyCinemas function to clear region filters
     function findAndSelectNearbyCinemas(lat, lng, radiusKm) {
       const uniq = uniqueCinemasFromData();
       const nearby = [];
@@ -1155,11 +1142,15 @@
 
       nearby.sort((a, b) => a.distance - b.distance);
 
+      // Clear region filters when using location-based filtering
+      const regionInputs = document.querySelectorAll('#regionCheckboxes input[type="checkbox"]');
+      regionInputs.forEach(cb => cb.checked = false);
+
       // Auto-check only nearby cinemas
-      const inputs = document.querySelectorAll('#cinemaCheckboxes input[type="checkbox"]');
-      inputs.forEach(cb => cb.checked = false);
+      const cinemaInputs = document.querySelectorAll('#cinemaCheckboxes input[type="checkbox"]');
+      cinemaInputs.forEach(cb => cb.checked = false);
       const nearbyNames = new Set(nearby.map(n => n.name));
-      inputs.forEach(cb => { if (nearbyNames.has(cb.value)) cb.checked = true; });
+      cinemaInputs.forEach(cb => { if (nearbyNames.has(cb.value)) cb.checked = true; });
 
       renderResults();
 
@@ -1185,6 +1176,7 @@
       return { lat, lng, label: first.display_name };
     }
 
+    // Update the filterByAddress function to show the same message
     async function filterByAddress() {
       const radiusInput = document.getElementById('radiusSelect');
       const summary = document.getElementById('nearbySummary');
@@ -1221,7 +1213,7 @@
 
         if (nearby.length > 0) {
           const top3 = nearby.slice(0, 3).map(n => `${n.name} (${n.distance.toFixed(1)}km)`).join(' • ');
-          summary.textContent = `✅ Βρέθηκαν ${nearby.length} σινεμά σε ακτίνα ${radiusKm}km από: ${label}. ${top3 ? 'Κοντινότερα: ' + top3 : ''}`;
+          summary.textContent = `✅ Βρέθηκαν ${nearby.length} σινεμά σε ακτίνα ${radiusKm}km από: ${label}. ${top3 ? 'Κοντινότερα: ' + top3 : ''} (Καθαρίστηκαν τα φίλτρα περιοχής)`;
           updateMeta('Σινεμά κοντά στη διεύθυνσή μου στην Αθήνα 🎯', `Βρες σινεμά γύρω από "${q}" σε ακτίνα ${radiusKm}km και δες τι παίζουν τώρα.`);
         } else {
           summary.textContent = `ℹ️ Δεν βρέθηκαν σινεμά σε ακτίνα ${radiusKm}km από: ${label}. ${withoutCoords ? `(Χωρίς συντεταγμένες: ${withoutCoords})` : ''}`;
@@ -1233,7 +1225,6 @@
         addrBtn.disabled = false;
       }
     }
-
     // Enter key triggers address search
     window.addEventListener('DOMContentLoaded', () => {
       const addrInput = document.getElementById('addressInput');
@@ -1247,22 +1238,48 @@
       }
     });
 
-	// Clear summary + address when clearing filters
-	const __origClearAllFilters = clearAllFilters;
-	clearAllFilters = function () {
-	  __origClearAllFilters();
+    // Clear summary + address when clearing filters
+    const __origClearAllFilters = clearAllFilters;
+    // Update clearAllFilters to reset time filter state
+    function clearAllFilters() {
+      // Reset time filter state
+      currentTimeFilter = 'all';
 
-	  const summary = document.getElementById('nearbySummary');
-	  if (summary) summary.textContent = '';
+      // Uncheck all checkboxes
+      document.querySelectorAll('#movieCheckboxes input[type="checkbox"]').forEach(cb => cb.checked = false);
+      document.querySelectorAll('#cinemaCheckboxes input[type="checkbox"]').forEach(cb => cb.checked = false);
+      document.querySelectorAll('#regionCheckboxes input[type="checkbox"]').forEach(cb => cb.checked = false);
 
-	  const btn = document.getElementById('nearMeBtn');
-	  if (btn) { btn.disabled = false; btn.textContent = '🎯 Κοντά μου'; }
+      // Clear all search inputs
+      document.querySelectorAll('.search-input').forEach(input => input.value = '');
 
-	  const addrInput = document.getElementById('addressInput');
-	  if (addrInput) addrInput.value = ''; // ✅ clear address field
-	};
+      // Reset visibility of all filter items
+      document.querySelectorAll('.checkbox-list li').forEach(li => li.style.display = '');
 
+      // Show all results
+      showAll();
+
+      // Optional: Close all filter details
+      document.querySelectorAll('#filters-container details').forEach(details => details.open = true);
+
+      // Clear location-based summaries
+      const summary = document.getElementById('nearbySummary');
+      if (summary) summary.textContent = '';
+      const addrInput = document.getElementById('addressInput');
+      if (addrInput) addrInput.value = '';
+
+      // Show feedback to user
+      const btn = event.target;
+      const originalText = btn.innerHTML;
+      btn.innerHTML = '✅ Καθαρίστηκαν!';
+      btn.style.background = '#28a745';
+      setTimeout(() => {
+        btn.innerHTML = originalText;
+        btn.style.background = '#dc3545';
+      }, 1500);
+    }
     // ✅ Main rendering logic
+    // Replace the existing renderResults function with this version that respects time filters
     function renderResults(filteredList) {
       const results = document.getElementById('results');
       results.innerHTML = '';
@@ -1271,7 +1288,13 @@
       const selectedCinemas = Array.from(document.querySelectorAll('#cinemaCheckboxes input:checked')).map(el => el.value);
       const selectedRegions = Array.from(document.querySelectorAll('#regionCheckboxes input:checked')).map(el => el.value);
 
-      const list = filteredList || cinemasData;
+      // Apply time filtering if one is active
+      let list = filteredList || cinemasData;
+      if (currentTimeFilter === 'today') {
+        list = applyTodayFilter(list);
+      } else if (currentTimeFilter === 'next3') {
+        list = applyNext3Filter(list);
+      }
 
       list.forEach((movieCinemas, idx) => {
         if (selectedMovies.length && !selectedMovies.includes(String(idx))) return;
@@ -1300,29 +1323,23 @@
             ? ` <span style="font-size:0.9em;color:#777;">(${movie.original_title})</span>`
             : ''}`;
 
-
-        // ✅ Create external links
         let externalLinks = '';
-
-        // IMDB Link
         if (movie.imdb_link && movie.imdb_link.trim() !== '') {
           externalLinks += `<a href="${movie.imdb_link}" target="_blank" class="imdb-link" title="Δες στο IMDB">
-            <span style="font-weight:bold;">IMDb</span> ⭐
-          </a>`;
+        <span style="font-weight:bold;">IMDb</span> ⭐
+      </a>`;
         }
-
-
 
         const movieDiv = document.createElement('div');
         movieDiv.className = 'movie';
         movieDiv.innerHTML = `
-          <div class="movie-header">
-            <h2>${displayTitle}</h2>
-            <div class="external-links">
-              ${externalLinks}
-            </div>
-          </div>
-        `;
+      <div class="movie-header">
+        <h2>${displayTitle}</h2>
+        <div class="external-links">
+          ${externalLinks}
+        </div>
+      </div>
+    `;
 
         regionFiltered.forEach(cinema => {
           const timesList = cinema.timetable.flat().filter(t => t.trim() !== '');
@@ -1345,16 +1362,16 @@
           const c = document.createElement('div');
           c.className = 'cinema';
           c.innerHTML = `
-        <h3>${cinema.cinema}</h3>
-        <p>    <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(cinema.cinema + ' ' + cinema.address)}"
-       target="_blank"
-       rel="noopener noreferrer"
-       title="Δες στο Google Maps">
-      📍 ${cinema.address}
-    </a></p>
-        ${cinema.region ? `<div style="font-size:0.9em;color:#777;">📍 ${cinema.region}</div>` : ''}
-        <div>${formattedTimes || '<em>Δεν υπάρχουν προβολές</em>'}</div>
-      `;
+    <h3>${cinema.cinema}</h3>
+    <p>    <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(cinema.cinema + ' ' + cinema.address)}"
+   target="_blank"
+   rel="noopener noreferrer"
+   title="Δες στο Google Maps">
+  📍 ${cinema.address}
+</a></p>
+    ${cinema.region ? `<div style="font-size:0.9em;color:#777;">📍 ${cinema.region}</div>` : ''}
+    <div>${formattedTimes || '<em>Δεν υπάρχουν προβολές</em>'}</div>
+  `;
           movieDiv.appendChild(c);
         });
 
@@ -1366,27 +1383,23 @@
       }
     }
 
-    // ✅ Filter buttons
-    function filterToday() {
+    // Add these helper functions for time filtering
+    function applyTodayFilter(list) {
       const now = new Date();
       const todayName = now.toLocaleDateString('el-GR', { weekday: 'long' });
-      const todayDate = now.getDate(); // Get today's date number
-      const todayMonth = now.getMonth() + 1; // Get today's month (1-12)
+      const todayDate = now.getDate();
       const nowMins = now.getHours() * 60 + now.getMinutes();
 
-      const filtered = cinemasData.map(movie =>
+      return list.map(movie =>
         movie.map(cinema => {
           const newTimes = cinema.timetable.map(tt =>
             tt.filter(t => {
               if (!t.includes(todayName)) return false;
-
-              // ✅ Check if it contains today's date
               const dateMatch = t.match(/(\d{1,2})\s*([Α-Ωα-ωάέίόήύώΆΈΉΊΌΎΏ]*)/);
               if (dateMatch) {
                 const dayNum = parseInt(dateMatch[1]);
-                if (dayNum !== todayDate) return false; // Only show today's date
+                if (dayNum !== todayDate) return false;
               }
-
               const match = t.match(/(\d{2}):(\d{2})/);
               if (!match) return false;
               const mins = parseInt(match[1]) * 60 + parseInt(match[2]);
@@ -1396,32 +1409,24 @@
           return { ...cinema, timetable: newTimes };
         })
       );
-      renderResults(filtered);
-      highlightButton('todayBtn');
-      updateMeta('Τι Παίζει Σήμερα στα Σινεμά της Αθήνας 🎬', 'Δες ποιες ταινίες παίζονται σήμερα στα σινεμά της Αθήνας με ώρες προβολών και αίθουσες.');
     }
 
-
-    function filterNext3() {
+    function applyNext3Filter(list) {
       const now = new Date();
       const nowMins = now.getHours() * 60 + now.getMinutes();
       const next3 = nowMins + 180;
       const today = new Date().toLocaleDateString('el-GR', { weekday: 'long' });
-      const todayDate = now.getDate(); // ✅ Missing declaration
+      const todayDate = now.getDate();
 
-      const filtered = cinemasData.map(movie =>
+      return list.map(movie =>
         movie.map(cinema => {
           const newTimes = cinema.timetable.map(tt => tt.filter(t => {
             if (!t.includes(today)) return false;
-
-            // ✅ Separate regex for date extraction
             const dateMatch = t.match(/(\d{1,2})\s*([Α-Ωα-ωάέίόήύώΆΈΉΊΌΎΏ]*)/);
             if (dateMatch) {
               const dayNum = parseInt(dateMatch[1]);
               if (dayNum !== todayDate) return false;
             }
-
-            // ✅ Separate regex for time extraction
             const timeMatch = t.match(/(\d{2}):(\d{2})/);
             if (!timeMatch) return false;
             const mins = parseInt(timeMatch[1]) * 60 + parseInt(timeMatch[2]);
@@ -1430,15 +1435,25 @@
           return { ...cinema, timetable: newTimes };
         })
       );
+    }
 
-      renderResults(filtered);
+    // Update the time filter functions to track state
+    function filterToday() {
+      currentTimeFilter = 'today';
+      renderResults();
+      highlightButton('todayBtn');
+      updateMeta('Τι Παίζει Σήμερα στα Σινεμά της Αθήνας 🎬', 'Δες ποιες ταινίες παίζονται σήμερα στα σινεμά της Αθήνας με ώρες προβολών και αίθουσες.');
+    }
+
+    function filterNext3() {
+      currentTimeFilter = 'next3';
+      renderResults();
       highlightButton('next3Btn');
       updateMeta('Ταινίες στις Επόμενες 3 Ώρες στα Σινεμά της Αθήνας ⏰', 'Ανακάλυψε ποιες ταινίες παίζονται μέσα στις επόμενες 3 ώρες στα σινεμά της Αθήνας.');
     }
 
-
-
     function showAll() {
+      currentTimeFilter = 'all';
       renderResults();
       highlightButton('allBtn');
       updateMeta('Σινεμά Αθήνας – Όλες οι Ταινίες & Προβολές', 'Ο πλήρης οδηγός σινεμά της Αθήνας. Δες όλες τις ταινίες, ώρες προβολών και κινηματογράφους.');
