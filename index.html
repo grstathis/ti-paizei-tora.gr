@@ -15,17 +15,14 @@
   <link rel="preload" href="cinemas.json" as="fetch" crossorigin>
   <link rel="icon" type="image/svg+xml" href="ti_paizei_tora_logo.svg">
 
-
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-HJMKKTQ85R"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-
     gtag('config', 'G-HJMKKTQ85R');
   </script>
-
 
   <!-- ✅ Open Graph -->
   <meta property="og:type" content="website">
@@ -41,50 +38,422 @@
   <meta name="twitter:description" content="Τι παίζει τώρα και σήμερα στα σινεμά της Αθήνας.">
   <meta name="twitter:image" content="https://ti-paizei-tora.gr/ti_paizei_tora_draw.png">
 
-
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #fafafa;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
       color: #222;
       margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
       padding: 1em;
     }
 
-    h1 {
+    /* ✅ Hero Section - Main Actions */
+    .hero-section {
+      background: white;
+      border-radius: 20px;
+      padding: 2.5em;
+      margin: 1.5em 0;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
       text-align: center;
-      margin-bottom: 1em;
-    }
-
-    details {
-      margin-bottom: 1em;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      background: #fff;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
+      position: relative;
       overflow: hidden;
     }
 
-    details[open] .scroll-box {
-      max-height: 30vh;
-      overflow-y: auto;
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(102, 126, 234, 0.05) 0%, transparent 70%);
+      animation: float 6s ease-in-out infinite;
     }
 
-    summary {
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0px) rotate(0deg);
+      }
+
+      33% {
+        transform: translateY(-10px) rotate(1deg);
+      }
+
+      66% {
+        transform: translateY(5px) rotate(-1deg);
+      }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-title {
+      font-size: 2.2em;
+      margin: 0 0 0.5em 0;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-subtitle {
+      font-size: 1.1em;
+      color: #666;
+      margin: 0 0 2em 0;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.5;
+    }
+
+    /* ✅ Main Action Cards */
+    .main-actions {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5em;
+      margin: 2em 0;
+    }
+
+    .action-card {
+      background: white;
+      border-radius: 16px;
+      padding: 2em;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .action-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    }
+
+    .action-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--card-color);
+      border-radius: 16px 16px 0 0;
+    }
+
+    .action-card.today {
+      --card-color: linear-gradient(135deg, #0078d7 0%, #005fa3 100%);
+    }
+
+    .action-card.next3 {
+      --card-color: linear-gradient(135deg, #ff9800 0%, #ff6f00 100%);
+    }
+
+    .action-card.nearby {
+      --card-color: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    .action-icon {
+      font-size: 3em;
+      margin: 0 0 0.5em 0;
+      display: block;
+    }
+
+    .action-title {
+      font-size: 1.4em;
       font-weight: bold;
-      padding: 0.5em;
+      margin: 0 0 0.5em 0;
+      color: #333;
+    }
+
+    .action-description {
+      color: #666;
+      margin: 0 0 1.5em 0;
+      line-height: 1.4;
+    }
+
+    .action-button {
+      width: 100%;
+      border: none;
+      border-radius: 12px;
+      padding: 1em 1.5em;
+      font-size: 1.1em;
+      font-weight: bold;
       cursor: pointer;
-      background: #f0f0f0;
-      border-bottom: 1px solid #ddd;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .action-button.today {
+      background: linear-gradient(135deg, #0078d7 0%, #005fa3 100%);
+      color: white;
+    }
+
+    .action-button.next3 {
+      background: linear-gradient(135deg, #ff9800 0%, #ff6f00 100%);
+      color: white;
+    }
+
+    .action-button.nearby {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+
+    .action-button:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .action-button:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+
+    /* ✅ Location Controls in Nearby Card */
+    .location-controls {
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+      margin: 1em 0;
+    }
+
+    .radius-selector {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5em;
+      font-size: 0.9em;
+    }
+
+    #radiusSelect {
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 0.4em 0.6em;
+      font-size: 0.9em;
+    }
+
+    .address-input-container {
+      margin-top: 1em;
+      padding-top: 1em;
+      border-top: 1px solid #eee;
+    }
+
+    .address-input-container h4 {
+      margin: 0 0 0.5em 0;
+      font-size: 0.9em;
+      color: #666;
+      text-align: center;
+    }
+
+    #addressInput {
+      width: 100%;
+      padding: 0.8em;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 0.9em;
+      margin-bottom: 0.8em;
+      box-sizing: border-box;
+    }
+
+    .address-button {
+      width: 100%;
+      background: white;
+      color: #764ba2;
+      border: 2px solid #764ba2;
+      padding: 0.8em;
+      border-radius: 8px;
+      font-size: 0.9em;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .address-button:hover:not(:disabled) {
+      background: #764ba2;
+      color: white;
+      transform: translateY(-1px);
+    }
+
+    #nearbySummary {
+      margin-top: 1em;
+      padding: 0.8em;
+      background: rgba(102, 126, 234, 0.1);
+      border-radius: 8px;
+      font-size: 0.9em;
+      min-height: 1.5em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    /* ✅ Advanced Filters - Now Secondary */
+    .advanced-filters {
+      background: white;
+      border-radius: 16px;
+      padding: 1.5em;
+      margin: 2em 0;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .advanced-filters-header {
+      text-align: center;
+      margin-bottom: 1.5em;
+      padding-bottom: 1em;
+      border-bottom: 2px solid #f0f0f0;
+    }
+
+    .advanced-filters-title {
+      margin: 0 0 0.3em 0;
+      font-size: 1.3em;
+      color: #333;
+    }
+
+    .advanced-filters-subtitle {
+      margin: 0;
+      color: #666;
+      font-size: 0.95em;
+    }
+
+    .filters-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5em;
+      align-items: start;
+    }
+
+    .filter-expandable {
+      border: 1px solid #e0e0e0;
+      border-radius: 12px;
+      background: white;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+    }
+
+    .filter-expandable:hover {
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .filter-expandable[open] {
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .filter-summary {
+      background: #f8f9fa;
+      padding: 1.2em;
+      font-weight: bold;
+      color: #333;
+      cursor: pointer;
+      border-bottom: 1px solid #e0e0e0;
+      transition: background-color 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      user-select: none;
+    }
+
+    .filter-summary:hover {
+      background: #e9ecef;
+    }
+
+    .filter-summary::after {
+      content: '▼';
+      font-size: 0.8em;
+      transition: transform 0.3s ease;
+      color: #666;
+    }
+
+    .filter-expandable[open] .filter-summary::after {
+      transform: rotate(180deg);
+    }
+
+    .filter-content-expandable {
+      padding: 1.2em;
+      background: #fafafa;
+    }
+
+    /* ✅ Search input in expandable filters */
+    .filter-content-expandable .search-input {
+      width: 100%;
+      padding: 0.8em;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 0.9em;
+      margin-bottom: 0;
+      box-sizing: border-box;
+      background: white;
+    }
+
+    .filter-content-expandable .search-input:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+
+    /* Ensure closed filters maintain their compact size */
+    .filter-expandable:not([open]) {
+      height: auto;
+      /* Explicit height auto */
+      max-height: fit-content;
+      /* Prevent expansion */
+    }
+
+    /* Hide content completely when closed */
+    .filter-expandable:not([open]) .filter-content-expandable {
+      display: none !important;
+      height: 0;
+      overflow: hidden;
     }
 
     .scroll-box {
+      max-height: 250px;
       overflow-y: auto;
-      border: none;
-      padding: 0.5em;
-      flex: 1;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      background: white;
+      padding: 0.8em;
+      margin-top: 0.8em;
+    }
+
+    .scroll-box::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .scroll-box::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 3px;
+    }
+
+    .scroll-box::-webkit-scrollbar-thumb {
+      background: #c1c1c1;
+      border-radius: 3px;
+    }
+
+    .scroll-box::-webkit-scrollbar-thumb:hover {
+      background: #a8a8a8;
+    }
+
+
+    .search-input {
+      width: 100%;
+      padding: 0.6em;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 0.9em;
+      margin-bottom: 0.8em;
+      box-sizing: border-box;
     }
 
     .checkbox-list {
@@ -94,159 +463,75 @@
     }
 
     .checkbox-list li {
-      margin: 0.2em 0;
+      margin: 0.3em 0;
     }
 
     .checkbox-list label {
       display: flex;
       align-items: center;
       cursor: pointer;
-      background: #fff;
-      border-radius: 4px;
-      padding: 0.2em 0.4em;
-      border: 1px solid #eee;
+      padding: 0.4em 0.6em;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+      background: white;
+      border: 1px solid #f0f0f0;
+    }
+
+    .checkbox-list label:hover {
+      background: #f8f9fa;
+      border-color: #e0e0e0;
+      transform: translateX(2px);
     }
 
     .checkbox-list input {
-      margin-right: 6px;
+      margin-right: 8px;
+      accent-color: #667eea;
     }
 
-    .search-input {
-      width: 100%;
-      padding: 0.4em;
-      margin-bottom: 0.4em;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      font-size: 0.9em;
-    }
-
-    #filters-container {
+    /* ✅ Quick Actions */
+    .quick-actions {
       display: flex;
-      flex-wrap: wrap;
-      gap: 1em;
-      justify-content: space-between;
-      align-items: flex-start;
-    }
-
-    /* ✅ Each filter box (movies, cinemas, regions) side by side */
-    #filters-container details {
-      flex: 1 1 calc(33.33% - 1em);
-      /* three in a row */
-      min-width: 260px;
-      background: #fff;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-    }
-
-    /* ✅ When closed, keep small height */
-    #filters-container details:not([open]) {
-      min-height: 3.5em;
-    }
-
-    /* ✅ Responsive: stack vertically on small screens */
-    @media (max-width: 900px) {
-      #filters-container details {
-        flex: 1 1 calc(50% - 1em);
-        /* two per row */
-      }
-    }
-
-    @media (max-width: 600px) {
-      #filters-container details {
-        flex: 1 1 100%;
-        /* one per row on mobile */
-      }
-    }
-
-    .address-search {
-      display: flex;
-      gap: 0.8em;
-      flex-wrap: wrap;
-      align-items: center;
       justify-content: center;
-      width: 100%;
+      gap: 1em;
+      margin: 1.5em 0;
+      flex-wrap: wrap;
     }
 
-    .address-search input[type="text"] {
-      flex: 1 1 320px;
-      min-width: 240px;
-      max-width: 520px;
-      padding: 0.8em 1em;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      font-size: 1em;
-    }
-
-    .address-search button {
-      background: white;
-      color: #764ba2;
+    .clear-btn {
+      background: #dc3545;
+      color: white;
       border: none;
-      padding: 0.9em 1.4em;
-      font-size: 1.05em;
+      padding: 0.8em 1.5em;
+      border-radius: 8px;
       font-weight: bold;
-      border-radius: 50px;
       cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-      display: flex;
-      align-items: center;
-      gap: 0.5em;
-      white-space: nowrap;
+      transition: all 0.2s ease;
     }
 
-    .address-search button:hover:not(:disabled) {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    .clear-btn:hover {
+      background: #c82333;
+      transform: translateY(-1px);
     }
 
-    .address-search button:disabled {
-      opacity: 0.7;
-      cursor: not-allowed;
-    }
-
-    @media (max-width: 600px) {
-      .address-search {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0.6em;
-      }
-
-      .address-search input[type="text"] {
-        width: 100%;
-        max-width: 100%;
-        min-width: 0;
-        font-size: 0.9em;
-        padding: 0.5em 0.8em;
-        border-radius: 6px;
-        box-sizing: border-box;
-      }
-
-      .address-search button {
-        width: 100%;
-        font-size: 0.9em;
-        padding: 0.6em 1em;
-        border-radius: 6px;
-      }
-    }
-
-
-
+    /* ✅ Results */
     .movie {
       background: #fff;
-      border-radius: 8px;
-      padding: 1em;
-      margin: 1em 0;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      padding: 1.5em;
+      margin: 1.5em 0;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      transition: box-shadow 0.3s ease;
+    }
+
+    .movie:hover {
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
     }
 
     .movie-header {
       display: flex;
       align-items: center;
-      gap: 0.5em;
-      margin-bottom: 0.5em;
+      gap: 1em;
+      margin-bottom: 1em;
       flex-wrap: wrap;
     }
 
@@ -254,6 +539,7 @@
       margin: 0;
       flex: 1;
       min-width: 200px;
+      color: #333;
     }
 
     .external-links {
@@ -269,423 +555,65 @@
       background: #f5c518;
       color: #000;
       text-decoration: none;
-      padding: 4px 8px;
-      border-radius: 4px;
-      font-size: 0.8em;
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-size: 0.85em;
       font-weight: bold;
       transition: all 0.2s ease;
-      border: 1px solid #e6b800;
     }
 
     .imdb-link:hover {
       background: #e6b800;
       transform: translateY(-1px);
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-
-    .athinorama-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      background: #0078d7;
-      color: white;
-      text-decoration: none;
-      padding: 4px 8px;
-      border-radius: 4px;
-      font-size: 0.8em;
-      font-weight: bold;
-      transition: all 0.2s ease;
-    }
-
-    .athinorama-link:hover {
-      background: #005fa3;
-      transform: translateY(-1px);
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-
-    @media (max-width: 600px) {
-      .movie-header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .external-links {
-        margin-top: 0.5em;
-      }
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     }
 
     .cinema {
       margin-left: 1.5em;
+      margin-top: 1em;
+      padding: 1em;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border-left: 4px solid #667eea;
+    }
+
+    .cinema h3 {
+      margin: 0 0 0.5em 0;
+      color: #333;
+    }
+
+    .cinema p {
+      margin: 0.3em 0;
       color: #555;
     }
 
-    a {
-      color: #0055cc;
-      text-decoration: none;
-    }
-
-    /* ✅ Enhanced Filter Buttons Section */
-    .filter-buttons-section {
-      background: #fff;
-      padding: 1.5em;
-      border-radius: 12px;
-      margin: 1.5em 0;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      border: 1px solid #e0e0e0;
-    }
-
-    .filter-buttons-header {
-      text-align: center;
-      margin-bottom: 1em;
-    }
-
-    .filter-buttons-header h3 {
-      margin: 0 0 0.3em 0;
-      font-size: 1.2em;
-      color: #333;
-    }
-
-    .filter-buttons-header p {
-      margin: 0;
-      color: #666;
-      font-size: 0.9em;
-    }
-
-    .filter-buttons {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 1em;
-    }
-
-    .filter-buttons button {
-      border: none;
-      border-radius: 12px;
-      padding: 1em 2em;
-      font-size: 1.1em;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-weight: bold;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      position: relative;
-      overflow: hidden;
-      min-width: 180px;
-    }
-
-    .filter-buttons button::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .filter-buttons button:hover::before {
-      opacity: 1;
-    }
-
-    .filter-buttons button#todayBtn {
-      background: linear-gradient(135deg, #0078d7 0%, #005fa3 100%);
-      color: white;
-    }
-
-    .filter-buttons button#todayBtn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(0, 120, 215, 0.4);
-    }
-
-    .filter-buttons button#next3Btn {
-      background: linear-gradient(135deg, #ff9800 0%, #ff6f00 100%);
-      color: white;
-    }
-
-    .filter-buttons button#next3Btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(255, 152, 0, 0.4);
-    }
-
-    .filter-buttons button#allBtn {
-      background: linear-gradient(135deg, #4caf50 0%, #388e3c 100%);
-      color: white;
-    }
-
-    .filter-buttons button#allBtn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
-    }
-
-    /* ✅ Active/Selected state */
-    .filter-buttons button.active {
-      transform: scale(0.95);
-      box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.2);
-    }
-
-    .filter-buttons button.active::after {
-      content: '✓';
-      position: absolute;
-      top: 5px;
-      right: 10px;
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: 50%;
-      width: 24px;
-      height: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-
-    /* ✅ Button icons animation */
-    .filter-buttons button .emoji {
-      display: inline-block;
-      transition: transform 0.3s ease;
-      margin-right: 0.3em;
-    }
-
-    .filter-buttons button:hover .emoji {
-      transform: scale(1.2) rotate(10deg);
-    }
-
-    @media (max-width: 600px) {
-      .filter-buttons-section {
-        padding: 1em;
-      }
-
-      .filter-buttons {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .filter-buttons button {
-        width: 100%;
-        min-width: auto;
-      }
-    }
-
-
-    /* ✅ Enhanced Near Me Section */
-    .near-me-section {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      padding: 1.5em;
-      border-radius: 12px;
-      margin: 1.5em 0;
-      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .near-me-section::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      right: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
-      animation: pulse 3s ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-
-      0%,
-      100% {
-        transform: scale(1);
-        opacity: 0.5;
-      }
-
-      50% {
-        transform: scale(1.1);
-        opacity: 0.3;
-      }
-    }
-
-    .near-me-content {
-      position: relative;
-      z-index: 1;
-    }
-
-    .near-me-header {
-      text-align: center;
-      margin-bottom: 1em;
-    }
-
-    .near-me-header h2 {
-      margin: 0 0 0.3em 0;
-      font-size: 1.4em;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-
-    .near-me-header p {
-      margin: 0;
-      opacity: 0.95;
-      font-size: 0.95em;
-    }
-
-    .near-me-controls {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1em;
-    }
-
-    .radius-selector {
-      display: flex;
-      align-items: center;
-      gap: 0.8em;
-      background: rgba(255, 255, 255, 0.2);
-      padding: 0.8em 1.2em;
-      border-radius: 8px;
-      backdrop-filter: blur(10px);
-    }
-
-    .radius-selector label {
-      font-weight: bold;
-      font-size: 1.1em;
-    }
-
-    #radiusSelect {
-      background: white;
-      color: #333;
-      border: none;
-      padding: 0.4em 0.8em;
-      border-radius: 6px;
-      font-size: 1em;
-      cursor: pointer;
-      transition: transform 0.2s ease;
-    }
-
-    #radiusSelect:hover {
-      transform: translateY(-1px);
-    }
-
-    #nearMeBtn {
-      background: white;
+    .cinema a {
       color: #667eea;
-      border: none;
-      padding: 1em 2em;
-      font-size: 1.2em;
-      font-weight: bold;
-      border-radius: 50px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-      display: flex;
-      align-items: center;
-      gap: 0.5em;
+      text-decoration: none;
+      font-weight: 500;
     }
 
-    #nearMeBtn:hover:not(:disabled) {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    .cinema a:hover {
+      text-decoration: underline;
     }
 
-    #nearMeBtn:disabled {
-      opacity: 0.7;
-      cursor: not-allowed;
-    }
-
-    #nearMeBtn .icon {
-      font-size: 1.3em;
-      animation: radar 2s ease-in-out infinite;
-    }
-
-    @keyframes radar {
-
-      0%,
-      100% {
-        transform: scale(1);
-      }
-
-      50% {
-        transform: scale(1.2);
-      }
-    }
-
-    #nearbySummary {
-      text-align: center;
-      margin-top: 1em;
-      padding: 0.8em;
-      background: rgba(255, 255, 255, 0.15);
-      border-radius: 8px;
-      backdrop-filter: blur(5px);
-      min-height: 2em;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    /* ✅ Mobile Responsive for Near Me */
-    @media (max-width: 600px) {
-      .near-me-section {
-        padding: 1.2em;
-      }
-
-      .near-me-header h2 {
-        font-size: 1.2em;
-      }
-
-      #nearMeBtn {
-        font-size: 1.1em;
-        padding: 0.9em 1.8em;
-      }
-
-      .radius-selector {
-        flex-direction: column;
-        text-align: center;
-      }
-    }
-
-
-    /* ✅ Quick Actions Styles */
-    .quick-actions {
-      display: flex;
-      justify-content: center;
-      gap: 1em;
-      margin: 1em 0;
-      flex-wrap: wrap;
-    }
-
-    .quick-actions button {
-      border: none;
-      padding: 0.5em 1em;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: all 0.2s ease-in-out;
-    }
-
-    .quick-actions .clear-btn {
-      background: #dc3545;
-      color: white;
-    }
-
-    .quick-actions .clear-btn:hover {
-      background: #c82333;
-    }
-
-    /* ✅ Back to Top Button */
+    /* ✅ Back to Top */
     #backToTop {
       position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #0078d7;
+      bottom: 30px;
+      right: 30px;
+      background: #667eea;
       color: white;
       border: none;
       border-radius: 50%;
-      width: 50px;
-      height: 50px;
-      font-size: 18px;
+      width: 55px;
+      height: 55px;
+      font-size: 20px;
       cursor: pointer;
-      box-shadow: 0 4px 12px rgba(0, 120, 215, 0.3);
+      box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
       opacity: 0;
       visibility: hidden;
-      transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease;
       z-index: 1000;
       display: flex;
       align-items: center;
@@ -693,9 +621,9 @@
     }
 
     #backToTop:hover {
-      background: #005fa3;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(0, 120, 215, 0.4);
+      background: #5a6fd8;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
     }
 
     #backToTop.show {
@@ -703,163 +631,216 @@
       visibility: visible;
     }
 
-    /* ✅ Mobile adjustments for back to top */
-    @media (max-width: 600px) {
+    /* ✅ Mobile Optimizations */
+    @media (max-width: 768px) {
+      .container {
+        padding: 0.8em;
+      }
+
+      .filters-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-section {
+        padding: 1.8em;
+        margin: 1em 0;
+      }
+
+      .hero-title {
+        font-size: 1.8em;
+      }
+
+      .main-actions {
+        grid-template-columns: 1fr;
+        gap: 1.2em;
+      }
+
+      .action-card {
+        padding: 1.5em;
+      }
+
       #backToTop {
-        bottom: 15px;
-        right: 15px;
-        width: 45px;
-        height: 45px;
-        font-size: 16px;
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        font-size: 18px;
       }
     }
 
     footer {
       text-align: center;
-      margin-top: 2em;
-      color: #555;
+      margin: 3em 0 2em 0;
+      color: #666;
       font-size: 0.9em;
+      background: white;
+      padding: 2em;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
     }
   </style>
 </head>
 
 <body>
-  <header style="text-align:center; margin-bottom:1em;">
-    <a href="/" title="Σινεμά Αθήνας – Αρχική">
-      <img src="ti_paizei_tora_logo.svg" alt="Σινεμά Αθήνας logo" width="180" loading="eager">
-    </a>
-  </header>
+  <div class="container">
+    <header style="text-align:center; margin-bottom:1em;">
+      <a href="/" title="Σινεμά Αθήνας – Αρχική">
+        <img src="ti_paizei_tora_logo.svg" alt="Σινεμά Αθήνας logo" width="180" loading="eager">
+      </a>
+    </header>
 
-  <h1>🎬 Σινεμά Αθήνας</h1>
+    <!-- ✅ HERO SECTION - Main Value Proposition -->
+    <section class="hero-section">
+      <div class="hero-content">
+        <h1 class="hero-title">🎬 Τι Παίζει Τώρα στην Αθήνα;</h1>
+        <p class="hero-subtitle">
+          Βρες αμέσως ποιες ταινίες παίζουν σήμερα, στις επόμενες ώρες, ή κοντά στην τοποθεσία σου.
+          Ο πιο γρήγορος τρόπος να σχεδιάσεις την κινηματογραφική σου βραδιά!
+        </p>
 
-  <div id="filters">
-    <div id="filters-container">
-      <!-- ✅ Region Filter (multi-select) -->
-      <details open id="regionFilter">
-        <summary>📍 Επιλογή Περιοχής</summary>
-        <input type="text" class="search-input" placeholder="Αναζήτηση περιοχής..."
-          oninput="filterList('regionCheckboxes', this.value)">
-        <div class="scroll-box">
-          <ul id="regionCheckboxes" class="checkbox-list"></ul>
-        </div>
-      </details>
+        <!-- ✅ MAIN ACTION CARDS -->
+        <div class="main-actions">
 
-      <details open>
-        <summary>🎬 Επιλογή Ταινιών</summary>
-        <input type="text" class="search-input" placeholder="Αναζήτηση ταινίας..."
-          oninput="filterList('movieCheckboxes', this.value)">
-        <div class="scroll-box">
-          <ul id="movieCheckboxes" class="checkbox-list"></ul>
-        </div>
-      </details>
-
-      <details open>
-        <summary>🏛 Επιλογή Κινηματογράφων</summary>
-        <input type="text" class="search-input" placeholder="Αναζήτηση κινηματογράφου..."
-          oninput="filterList('cinemaCheckboxes', this.value)">
-        <div class="scroll-box">
-          <ul id="cinemaCheckboxes" class="checkbox-list"></ul>
-        </div>
-      </details>
-
-    </div>
-
-    <!-- ✅ Enhanced Filter Buttons Section -->
-    <div class="filter-buttons-section">
-      <div class="filter-buttons-header">
-        <h3>🎯 Γρήγορα Φίλτρα</h3>
-        <p>Επίλεξε για να δεις συγκεκριμένες προβολές</p>
-      </div>
-
-      <div class="filter-buttons">
-        <button id="allBtn" onclick="showAll()">
-          <span class="emoji">🎬</span>Όλες οι Προβολές
-        </button>
-        <button id="todayBtn" onclick="filterToday()">
-          <span class="emoji">📅</span>Σήμερα
-        </button>
-        <button id="next3Btn" onclick="filterNext3()">
-          <span class="emoji">⏰</span>Επόμενες 3 Ώρες
-        </button>
-      </div>
-    </div>
-
-    <!-- ✅ Prominent Near Me Section -->
-    <div class="near-me-section">
-      <div class="near-me-content">
-        <div class="near-me-header">
-          <h2>📍 Βρες Σινεμά Κοντά σου</h2>
-          <p>Ανακάλυψε ποια σινεμά είναι κοντά στην τοποθεσία σου</p>
-        </div>
-
-        <div class="near-me-controls">
-          <div class="radius-selector">
-            <label for="radiusSelect">Ακτίνα αναζήτησης:</label>
-            <select id="radiusSelect" aria-label="Ακτίνα αναζήτησης">
-              <option value="1">1 km</option>
-              <option value="2">2 km</option>
-              <option value="3" selected>3 km</option>
-              <option value="5">5 km</option>
-              <option value="10">10 km</option>
-              <option value="15">15 km</option>
-            </select>
-          </div>
-
-          <button id="nearMeBtn" onclick="filterNearMe()" title="Βρες σινεμά κοντά μου">
-            <span class="icon">📡</span>
-            <span>Βρες την τοποθεσία μου</span>
-          </button>
-
-          <!-- inside .near-me-controls, right after the "near me" button -->
-          <div class="address-search">
-            <input id="addressInput" type="text" placeholder="Π.χ. Σύνταγμα, Αθήνα ή ΤΚ 10563"
-              aria-label="Διεύθυνση ή περιοχή" />
-            <button id="addressBtn" onclick="filterByAddress()" title="Αναζήτηση κοντινών σινεμά με διεύθυνση">
-              <span class="icon">🧭</span>
-              <span>Εναλλακτικά: βρες την τοποθεσία με κείμενο</span>
+          <!-- Today Card -->
+          <div class="action-card today">
+            <div class="action-icon">📅</div>
+            <h3 class="action-title">Σήμερα</h3>
+            <p class="action-description">Δες όλες τις ταινίες που παίζουν σήμερα στα σινεμά της Αθήνας</p>
+            <button class="action-button today" onclick="filterToday()">
+              Προβολές Σήμερα
             </button>
           </div>
 
+          <!-- Next 3 Hours Card -->
+          <div class="action-card next3">
+            <div class="action-icon">⏰</div>
+            <h3 class="action-title">Επόμενες 3 Ώρες</h3>
+            <p class="action-description">Βρες ταινίες που αρχίζουν μέσα στις επόμενες 3 ώρες</p>
+            <button class="action-button next3" onclick="filterNext3()">
+              Προβολές Επόμενων 3 Ωρών
+            </button>
+          </div>
+
+          <!-- Near Me Card -->
+          <div class="action-card nearby">
+            <div class="action-icon">📍</div>
+            <h3 class="action-title">Κοντά μου</h3>
+            <p class="action-description">Ανακάλυψε σινεμά και προβολές κοντά στην τοποθεσία σου</p>
+
+            <div class="location-controls">
+              <div class="radius-selector">
+                <label for="radiusSelect">Ακτίνα:</label>
+                <select id="radiusSelect">
+                  <option value="1">1 km</option>
+                  <option value="2">2 km</option>
+                  <option value="3" selected>3 km</option>
+                  <option value="5">5 km</option>
+                  <option value="10">10 km</option>
+                  <option value="15">15 km</option>
+                </select>
+              </div>
+
+              <button id="nearMeBtn" class="action-button nearby" onclick="filterNearMe()">
+                📡 Βρες την Τοποθεσία μου
+              </button>
+
+              <div class="address-input-container">
+                <h4>Ή εισήγαγε διεύθυνση:</h4>
+                <input id="addressInput" type="text" placeholder="π.χ. Σύνταγμα, Αθήνα">
+                <button id="addressBtn" class="address-button" onclick="filterByAddress()">
+                  🧭 Αναζήτηση
+                </button>
+              </div>
+            </div>
+
+            <div id="nearbySummary"></div>
+          </div>
 
         </div>
 
-        <div id="nearbySummary" aria-live="polite"></div>
+        <!-- Quick Reset -->
+        <div class="quick-actions">
+          <button class="action-button" style="background: #28a745; color: white;" onclick="showAll()">
+            🎬 Όλες οι Προβολές
+          </button>
+        </div>
       </div>
-    </div>
+    </section>
 
-    <!-- ✅ Quick Actions Bar -->
-    <div class="quick-actions">
-      <button class="clear-btn" onclick="clearAllFilters()"
-        title="Καθαρίζει όλα τα φίλτρα και εμφανίζει όλες τις προβολές">
-        🗑️ Καθαρισμός Φίλτρων
-      </button>
-    </div>
+    <!-- ✅ ADVANCED FILTERS - Now Secondary with Expandable Boxes -->
+    <section class="advanced-filters">
+      <div class="advanced-filters-header">
+        <h2 class="advanced-filters-title">🔍 Προχωρημένα Φίλτρα</h2>
+        <p class="advanced-filters-subtitle">Εξειδίκευσε την αναζήτηση με συγκεκριμένες ταινίες, κινηματογράφους ή
+          περιοχές</p>
+      </div>
+
+      <div class="filters-grid">
+        <!-- Region Filter -->
+        <details class="filter-expandable" closed>
+          <summary class="filter-summary">📍 Επιλογή Περιοχής</summary>
+          <div class="filter-content-expandable">
+            <input type="text" class="search-input" placeholder="Αναζήτηση περιοχής..."
+              oninput="filterList('regionCheckboxes', this.value)">
+            <div class="scroll-box">
+              <ul id="regionCheckboxes" class="checkbox-list"></ul>
+            </div>
+          </div>
+        </details>
+
+        <!-- Movies Filter -->
+        <details class="filter-expandable" closed>
+          <summary class="filter-summary">🎬 Επιλογή Ταινιών</summary>
+          <div class="filter-content-expandable">
+            <input type="text" class="search-input" placeholder="Αναζήτηση ταινίας..."
+              oninput="filterList('movieCheckboxes', this.value)">
+            <div class="scroll-box">
+              <ul id="movieCheckboxes" class="checkbox-list"></ul>
+            </div>
+          </div>
+        </details>
+
+        <!-- Cinemas Filter -->
+        <details class="filter-expandable" closed>
+          <summary class="filter-summary">🏛 Επιλογή Κινηματογράφων</summary>
+          <div class="filter-content-expandable">
+            <input type="text" class="search-input" placeholder="Αναζήτηση κινηματογράφου..."
+              oninput="filterList('cinemaCheckboxes', this.value)">
+            <div class="scroll-box">
+              <ul id="cinemaCheckboxes" class="checkbox-list"></ul>
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="quick-actions">
+        <button class="clear-btn" onclick="clearAllFilters()">
+          🗑️ Καθαρισμός Φίλτρων
+        </button>
+      </div>
+    </section>
+    <!-- Results -->
+    <div id="results"></div>
+
+    <!-- Back to Top -->
+    <button id="backToTop" onclick="scrollToTop()">↑</button>
+
+    <footer>
+      <p>Σινεμά Αθήνας © 2025 — Οδηγός κινηματογράφων, προβολών και ταινιών στην Αθήνα.</p>
+      <p>This site is open-source. <a href="https://github.com/grstathis/ti-paizei-tora.gr/" target="_blank">Check it
+          out on GitHub</a>.</p>
+    </footer>
   </div>
 
-  <div id="results"></div>
-
-  <!-- ✅ Back to Top Button -->
-  <button id="backToTop" onclick="scrollToTop()" title="Επιστροφή στην κορυφή">
-    ↑
-  </button>
-
-  <footer>
-    <p>Σινεμά Αθήνας © 2025 — Οδηγός κινηματογράφων, προβολών και ταινιών στην Αθήνα.</p>
-    <p>
-      This site is open-source.
-      <a href="https://github.com/grstathis/ti-paizei-tora.gr/" target="_blank">Check it out on GitHub</a>.
-    </p>
-  </footer>
-
-  <!-- ✅ Schema.org Structured Data -->
+  <!-- Schema.org Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "MovieTheater",
+    "@type": "MovieTheater", 
     "name": "Σινεμά Αθήνας",
     "address": {
       "@type": "PostalAddress",
-      "addressLocality": "Αθήνα",
+      "addressLocality": "Αθήνα", 
       "addressCountry": "GR"
     },
     "description": "Πλήρης οδηγός σινεμά Αθήνας με ώρες προβολών, ταινίες και κινηματογράφους.",
@@ -868,6 +849,7 @@
     "image": "https://ti-paizei-tora.gr/ti_paizei_tora_draw.png"
   }
   </script>
+
 
   <script>
     let moviesData = [];
@@ -1191,7 +1173,7 @@
 
       const q = (addrInput?.value || '').trim();
       if (!q) {
-        summary.textContent = 'ℹ️ Πληκτρολόγησε μια διεύθυνση ή περιοχή (π.χ. Σύνταγμα, Αθήνα).';
+        summary.textContent = 'ℹ️ Πληκτρολόγησε μια διεύθυνση, περιοχή ή ΤΚ (π.χ. Σύνταγμα, 14343).';
         addrInput?.focus();
         return;
       }
