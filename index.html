@@ -417,6 +417,50 @@
       overflow: hidden;
     }
 
+    /* Add this to your existing styles */
+    .results-info {
+      margin-top: 1em;
+      padding: 0.8em;
+      background: rgba(40, 167, 69, 0.1);
+      border-radius: 8px;
+      text-align: center;
+      animation: slideIn 0.3s ease-out;
+    }
+
+    .results-info.empty {
+      background: rgba(220, 53, 69, 0.1);
+    }
+
+    .view-results-btn {
+      background: #28a745;
+      color: white;
+      border: none;
+      padding: 0.5em 1.2em;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 0.5em;
+      transition: all 0.2s ease;
+    }
+
+    .view-results-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+
     .scroll-box {
       max-height: 250px;
       overflow-y: auto;
@@ -709,6 +753,7 @@
             <button class="action-button today" onclick="filterToday()">
               Προβολές Σήμερα
             </button>
+            <div id="todayResultsInfo" class="results-info" style="display:none;"></div>
           </div>
 
           <!-- Next 3 Hours Card -->
@@ -719,6 +764,7 @@
             <button class="action-button next3" onclick="filterNext3()">
               Προβολές Επόμενων 3 Ωρών
             </button>
+            <div id="next3ResultsInfo" class="results-info" style="display:none;"></div>
           </div>
 
           <!-- Near Me Card -->
@@ -754,6 +800,8 @@
             </div>
 
             <div id="nearbySummary"></div>
+            <!-- Add the results info div for consistency -->
+            <div id="nearbyResultsInfo" class="results-info" style="display:none;"></div>
           </div>
 
         </div>
@@ -826,49 +874,49 @@
     <button id="backToTop" onclick="scrollToTop()">↑</button>
 
     <footer>
-	
-  <section class="seo-text faq">
-  <h2>Συχνές Ερωτήσεις</h2>
-   <section class="seo-text">
-	  <p>
-		Θες να δεις <strong>ποιες ταινίες παίζουν σήμερα στην Αθήνα</strong>; 
-		Στο Ti Paizei Tora θα βρεις όλες τις σημερινές προβολές από όλα τα σινεμά της πόλης, 
-		ταξινομημένες ανά περιοχή και ώρα. Η λίστα ανανεώνεται συνεχώς, ώστε να γνωρίζεις 
-		ακριβώς <strong>τι παίζει τώρα</strong> και ποιες ταινίες ξεκινούν σύντομα.
-	  </p>
-	  <p>
-		Αν δεν ξέρεις τι να δεις, μπορείς εύκολα να εντοπίσεις 
-		<strong>ποιες ταινίες παίζουν σε λίγο στο σινεμά</strong> και να επιλέξεις 
-		την επόμενη προβολή χωρίς καθυστέρηση.
-	  </p>
-	</section>
 
-  <h3>Τι ταινίες παίζουν σήμερα στην Αθήνα;</h3>
-  <p>
-    Στη σελίδα μας θα βρεις όλες τις <strong>ταινίες που παίζουν σήμερα</strong> 
-    σε όλα τα σινεμά της Αθήνας με ώρες προβολής και ζωντανή ενημέρωση.
-  </p>
+      <section class="seo-text faq">
+        <h2>Συχνές Ερωτήσεις</h2>
+        <section class="seo-text">
+          <p>
+            Θες να δεις <strong>ποιες ταινίες παίζουν σήμερα στην Αθήνα</strong>;
+            Στο Ti Paizei Tora θα βρεις όλες τις σημερινές προβολές από όλα τα σινεμά της πόλης,
+            ταξινομημένες ανά περιοχή και ώρα. Η λίστα ανανεώνεται συνεχώς, ώστε να γνωρίζεις
+            ακριβώς <strong>τι παίζει τώρα</strong> και ποιες ταινίες ξεκινούν σύντομα.
+          </p>
+          <p>
+            Αν δεν ξέρεις τι να δεις, μπορείς εύκολα να εντοπίσεις
+            <strong>ποιες ταινίες παίζουν σε λίγο στο σινεμά</strong> και να επιλέξεις
+            την επόμενη προβολή χωρίς καθυστέρηση.
+          </p>
+        </section>
 
-  <h3>Πώς μπορώ να δω τι παίζει τις επόμενες ώρες;</h3>
-  <p>
-    Η ενότητα “Επόμενες 3 Ώρες” εμφανίζει άμεσα 
-    <strong>τι ταινία παίζει την επόμενη ώρα</strong> 
-    και ποιες προβολές ξεκινούν σε λίγο.
-  </p>
+        <h3>Τι ταινίες παίζουν σήμερα στην Αθήνα;</h3>
+        <p>
+          Στη σελίδα μας θα βρεις όλες τις <strong>ταινίες που παίζουν σήμερα</strong>
+          σε όλα τα σινεμά της Αθήνας με ώρες προβολής και ζωντανή ενημέρωση.
+        </p>
 
-  <h3>Πώς βρίσκω προβολές σινεμά κοντά μου;</h3>
-  <p>
-    Με τη λειτουργία γεωεντοπισμού μπορείς να δεις εύκολα 
-    <strong>προβολές σινεμά κοντά μου.</strong> 
-    Επίσης μπορείς να γράψεις τη διεύθυνσή σου ή ΤΚ/Περιοχη στο πεδιο χωρις γεωεντοπισμό.
-  </p>
+        <h3>Πώς μπορώ να δω τι παίζει τις επόμενες ώρες;</h3>
+        <p>
+          Η ενότητα “Επόμενες 3 Ώρες” εμφανίζει άμεσα
+          <strong>τι ταινία παίζει την επόμενη ώρα</strong>
+          και ποιες προβολές ξεκινούν σε λίγο.
+        </p>
 
-  <h3>Μπορώ να δω τις επόμενες προβολές σε όλη την Αθήνα;</h3>
-  <p>
-    Ναι, υπάρχει ειδικό φίλτρο που δείχνει 
-    <strong>τι παίζει σε Σήμερα σινεμά</strong> σε όλες τις περιοχές της Αθήνας.
-  </p>
-</section>
+        <h3>Πώς βρίσκω προβολές σινεμά κοντά μου;</h3>
+        <p>
+          Με τη λειτουργία γεωεντοπισμού μπορείς να δεις εύκολα
+          <strong>προβολές σινεμά κοντά μου.</strong>
+          Επίσης μπορείς να γράψεις τη διεύθυνσή σου ή ΤΚ/Περιοχη στο πεδιο χωρις γεωεντοπισμό.
+        </p>
+
+        <h3>Μπορώ να δω τις επόμενες προβολές σε όλη την Αθήνα;</h3>
+        <p>
+          Ναι, υπάρχει ειδικό φίλτρο που δείχνει
+          <strong>τι παίζει σε Σήμερα σινεμά</strong> σε όλες τις περιοχές της Αθήνας.
+        </p>
+      </section>
 
 
       <p>Σινεμά Αθήνας © 2025 — Οδηγός κινηματογράφων, προβολών και ταινιών στην Αθήνα.</p>
@@ -946,6 +994,49 @@
         btn.innerHTML = originalText;
         btn.style.background = '#dc3545';
       }, 1500);
+    }
+
+    // Add smooth scroll function
+    function smoothScrollToResults() {
+      const results = document.getElementById('results');
+      results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // Add function to show results count
+    function showResultsCount(infoId) {
+      const movieElements = document.querySelectorAll('#results .movie');
+      const movieCount = movieElements.length;
+      const resultsText = document.querySelector('#results').textContent;
+      const hasNoResults = resultsText.includes('Δεν υπάρχουν διαθέσιμες προβολές');
+
+      // Hide all results info first
+      document.querySelectorAll('.results-info').forEach(info => {
+        info.style.display = 'none';
+      });
+
+      // Show the specific results info
+      const infoDiv = document.getElementById(infoId);
+      if (infoDiv) {
+        if (hasNoResults || movieCount === 0) {
+          infoDiv.innerHTML = `
+        <p style="margin: 0.5em 0; color: #dc3545; font-weight: bold;">
+          ❌ Δεν βρέθηκαν προβολές
+        </p>
+      `;
+          infoDiv.classList.add('empty');
+        } else {
+          infoDiv.innerHTML = `
+        <p style="margin: 0.5em 0; color: #28a745; font-weight: bold;">
+          ✅ Βρέθηκαν ${movieCount} ${movieCount === 1 ? 'ταινία' : 'ταινίες'}
+        </p>
+        <button class="view-results-btn" onclick="smoothScrollToResults()">
+          👇 Δες Αποτελέσματα
+        </button>
+      `;
+          infoDiv.classList.remove('empty');
+        }
+        infoDiv.style.display = 'block';
+      }
     }
 
     // ✅ Back to Top functionality
@@ -1058,6 +1149,9 @@
       const summary = document.getElementById('nearbySummary');
       const radiusKm = parseFloat(radiusInput?.value) || 3;
 
+      // Hide results info during search
+      document.getElementById('nearbyResultsInfo').style.display = 'none';
+
       if (!cinemasData || !cinemasData.length) {
         summary.textContent = '⏳ Τα δεδομένα φορτώνουν, δοκίμασε ξανά σε λίγο.';
         return;
@@ -1082,11 +1176,14 @@
 
           if (nearby.length > 0) {
             const top3 = nearby.slice(0, 3).map(n => `${n.name} (${n.distance.toFixed(1)}km)`).join(' • ');
-            summary.textContent = `✅ Βρέθηκαν ${nearby.length} σινεμά σε ακτίνα ${radiusKm}km. ${top3 ? 'Κοντινότερα: ' + top3 : ''} (Καθαρίστηκαν τα φίλτρα περιοχής)`;
+            summary.textContent = `✅ Βρέθηκαν ${nearby.length} σινεμά σε ακτίνα ${radiusKm}km. ${top3 ? 'Κοντινότερα: ' + top3 : ''}`;
             updateMeta('Σινεμά κοντά μου στην Αθήνα 🎯', `Δες σινεμά γύρω σου σε ακτίνα ${radiusKm}km και τι παίζουν τώρα.`);
+            // Show results count after a short delay
+            setTimeout(() => showResultsCount('nearbyResultsInfo'), 100);
           } else {
             summary.textContent = `ℹ️ Δεν βρέθηκαν σινεμά σε ακτίνα ${radiusKm}km. ${withoutCoords ? `(Χωρίς συντεταγμένες: ${withoutCoords})` : ''}`;
           }
+
 
           btn.textContent = originalText;
           btn.disabled = false;
@@ -1171,13 +1268,18 @@
       const regionInputs = document.querySelectorAll('#regionCheckboxes input[type="checkbox"]');
       regionInputs.forEach(cb => cb.checked = false);
 
-      // Auto-check only nearby cinemas
+      // Clear all cinema checkboxes first
       const cinemaInputs = document.querySelectorAll('#cinemaCheckboxes input[type="checkbox"]');
       cinemaInputs.forEach(cb => cb.checked = false);
-      const nearbyNames = new Set(nearby.map(n => n.name));
-      cinemaInputs.forEach(cb => { if (nearbyNames.has(cb.value)) cb.checked = true; });
 
-      renderResults();
+
+      // Only check nearby cinemas if any were found
+      if (nearby.length > 0) {
+        const nearbyNames = new Set(nearby.map(n => n.name));
+        cinemaInputs.forEach(cb => { if (nearbyNames.has(cb.value)) cb.checked = true; });
+      }
+
+      renderResults(null, true);
 
       return { nearby, withoutCoords };
     }
@@ -1208,6 +1310,9 @@
       const addrInput = document.getElementById('addressInput');
       const addrBtn = document.getElementById('addressBtn');
       const radiusKm = parseFloat(radiusInput?.value) || 3;
+      // Hide results info during search
+      document.getElementById('nearbyResultsInfo').style.display = 'none';
+
 
       if (!cinemasData || !cinemasData.length) {
         summary.textContent = '⏳ Τα δεδομένα φορτώνουν, δοκίμασε ξανά σε λίγο.';
@@ -1240,6 +1345,8 @@
           const top3 = nearby.slice(0, 3).map(n => `${n.name} (${n.distance.toFixed(1)}km)`).join(' • ');
           summary.textContent = `✅ Βρέθηκαν ${nearby.length} σινεμά σε ακτίνα ${radiusKm}km από: ${label}. ${top3 ? 'Κοντινότερα: ' + top3 : ''} (Καθαρίστηκαν τα φίλτρα περιοχής)`;
           updateMeta('Σινεμά κοντά στη διεύθυνσή μου στην Αθήνα 🎯', `Βρες σινεμά γύρω από "${q}" σε ακτίνα ${radiusKm}km και δες τι παίζουν τώρα.`);
+          // Show results count after a short delay
+          setTimeout(() => showResultsCount('nearbyResultsInfo'), 100);
         } else {
           summary.textContent = `ℹ️ Δεν βρέθηκαν σινεμά σε ακτίνα ${radiusKm}km από: ${label}. ${withoutCoords ? `(Χωρίς συντεταγμένες: ${withoutCoords})` : ''}`;
         }
@@ -1281,6 +1388,10 @@
       // Reset visibility of all filter items
       document.querySelectorAll('.checkbox-list li').forEach(li => li.style.display = '');
 
+      document.querySelectorAll('.results-info').forEach(info => {
+        info.style.display = 'none';
+      });
+
       // Show all results
       showAll();
 
@@ -1305,13 +1416,19 @@
     }
     // ✅ Main rendering logic
     // Replace the existing renderResults function with this version that respects time filters
-    function renderResults(filteredList) {
+    function renderResults(filteredList, forceEmpty = false) {
       const results = document.getElementById('results');
       results.innerHTML = '';
 
       const selectedMovies = Array.from(document.querySelectorAll('#movieCheckboxes input:checked')).map(el => el.value);
       const selectedCinemas = Array.from(document.querySelectorAll('#cinemaCheckboxes input:checked')).map(el => el.value);
       const selectedRegions = Array.from(document.querySelectorAll('#regionCheckboxes input:checked')).map(el => el.value);
+
+      // If forceEmpty is true and no cinemas are selected, show no results
+      if (forceEmpty && selectedCinemas.length === 0) {
+        results.innerHTML = '<p style="text-align:center;color:#666;">Δεν υπάρχουν διαθέσιμες προβολές.</p>';
+        return;
+      }
 
       // Apply time filtering if one is active
       let list = filteredList || cinemasData;
@@ -1467,6 +1584,7 @@
       currentTimeFilter = 'today';
       renderResults();
       highlightButton('todayBtn');
+      setTimeout(() => showResultsCount('todayResultsInfo'), 100);
       updateMeta('Τι Παίζει Σήμερα στα Σινεμά της Αθήνας 🎬', 'Δες ποιες ταινίες παίζονται σήμερα στα σινεμά της Αθήνας με ώρες προβολών και αίθουσες.');
     }
 
@@ -1474,6 +1592,7 @@
       currentTimeFilter = 'next3';
       renderResults();
       highlightButton('next3Btn');
+      setTimeout(() => showResultsCount('next3ResultsInfo'), 100);
       updateMeta('Ταινίες στις Επόμενες 3 Ώρες στα Σινεμά της Αθήνας ⏰', 'Ανακάλυψε ποιες ταινίες παίζονται μέσα στις επόμενες 3 ώρες στα σινεμά της Αθήνας.');
     }
 
@@ -1481,6 +1600,10 @@
       currentTimeFilter = 'all';
       renderResults();
       highlightButton('allBtn');
+      // Hide all results info when showing all
+      document.querySelectorAll('.results-info').forEach(info => {
+        info.style.display = 'none';
+      });
       updateMeta('Σινεμά Αθήνας – Όλες οι Ταινίες & Προβολές', 'Ο πλήρης οδηγός σινεμά της Αθήνας. Δες όλες τις ταινίες, ώρες προβολών και κινηματογράφους.');
     }
 
