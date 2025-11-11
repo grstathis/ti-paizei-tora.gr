@@ -117,6 +117,38 @@
       line-height: 1.5;
     }
 
+    /* ✅ Filter Chips */
+    #activeFilters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 1em 0;
+      padding: 0.5em 0;
+    }
+
+    .filter-chip {
+      display: inline-flex;
+      align-items: center;
+      background: #e8e8ff;
+      color: #333;
+      border-radius: 20px;
+      padding: 6px 12px;
+      font-size: 0.9em;
+    }
+
+    .filter-chip button {
+      margin-left: 8px;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      font-weight: bold;
+      color: #555;
+    }
+
+    .filter-chip button:hover {
+      color: #000;
+    }
+
     /* ✅ Main Action Cards */
     .main-actions {
       display: grid;
@@ -806,13 +838,17 @@
 
         </div>
 
-        <!-- Quick Reset -->
-        <div class="quick-actions">
-          <button class="action-button" style="background: #28a745; color: white;" onclick="showAll()">
-            🎬 Όλες οι Προβολές
-          </button>
-        </div>
       </div>
+      <!-- ✅ FILTER CHIPS (placed after main buttons) -->
+      <div id="activeFilters"></div>
+
+      <!-- ✅ RESET FILTERS BUTTON (NEW POSITION) -->
+      <div class="quick-actions">
+        <button class="clear-btn" onclick="clearAllFilters()">
+          🗑️ Καθαρισμός Φίλτρων
+        </button>
+      </div>
+
     </section>
 
     <!-- ✅ ADVANCED FILTERS - Now Secondary with Expandable Boxes -->
@@ -861,12 +897,8 @@
         </details>
       </div>
 
-      <div class="quick-actions">
-        <button class="clear-btn" onclick="clearAllFilters()">
-          🗑️ Καθαρισμός Φίλτρων
-        </button>
-      </div>
     </section>
+
     <!-- Results -->
     <div id="results"></div>
 
@@ -1414,6 +1446,49 @@
         btn.style.background = '#dc3545';
       }, 1500);
     }
+
+    // ✅ Update the chips displayed above results
+    function updateFilterChips() {
+      const container = document.getElementById("activeFilters");
+      container.innerHTML = "";
+
+      // Time filters
+      if (currentTimeFilter === "today") addChip("Σήμερα", () => showAll());
+      if (currentTimeFilter === "next3") addChip("Επόμενες 3 ώρες", () => showAll());
+
+      // Movies
+      document.querySelectorAll('#movieCheckboxes input:checked').forEach(cb => {
+        const label = cb.parentElement.textContent.trim();
+        addChip(label, () => { cb.checked = false; renderResults(); updateFilterChips(); });
+      });
+
+      // Cinemas
+      document.querySelectorAll('#cinemaCheckboxes input:checked').forEach(cb => {
+        const label = cb.parentElement.textContent.trim();
+        addChip(label, () => { cb.checked = false; renderResults(); updateFilterChips(); });
+      });
+
+      // Regions
+      document.querySelectorAll('#regionCheckboxes input:checked').forEach(cb => {
+        const label = cb.parentElement.textContent.trim();
+        addChip(label, () => { cb.checked = false; renderResults(); updateFilterChips(); });
+      });
+    }
+
+    function addChip(label, removeFn) {
+      const chip = document.createElement("div");
+      chip.className = "filter-chip";
+      chip.innerHTML = `${label} `;
+
+      const btn = document.createElement("button");
+      btn.textContent = "✕";
+      btn.onclick = removeFn;
+
+      chip.appendChild(btn);
+      document.getElementById("activeFilters").appendChild(chip);
+    }
+
+
     // ✅ Main rendering logic
     // Replace the existing renderResults function with this version that respects time filters
     function renderResults(filteredList, forceEmpty = false) {
@@ -1523,6 +1598,7 @@
       if (!results.hasChildNodes()) {
         results.innerHTML = '<p style="text-align:center;color:#666;">Δεν υπάρχουν διαθέσιμες προβολές.</p>';
       }
+      updateFilterChips();
     }
 
     // Add these helper functions for time filtering
@@ -1583,6 +1659,7 @@
     function filterToday() {
       currentTimeFilter = 'today';
       renderResults();
+      updateFilterChips();
       highlightButton('todayBtn');
       setTimeout(() => showResultsCount('todayResultsInfo'), 100);
       updateMeta('Τι Παίζει Σήμερα στα Σινεμά της Αθήνας 🎬', 'Δες ποιες ταινίες παίζονται σήμερα στα σινεμά της Αθήνας με ώρες προβολών και αίθουσες.');
@@ -1591,6 +1668,7 @@
     function filterNext3() {
       currentTimeFilter = 'next3';
       renderResults();
+      updateFilterChips();
       highlightButton('next3Btn');
       setTimeout(() => showResultsCount('next3ResultsInfo'), 100);
       updateMeta('Ταινίες στις Επόμενες 3 Ώρες στα Σινεμά της Αθήνας ⏰', 'Ανακάλυψε ποιες ταινίες παίζονται μέσα στις επόμενες 3 ώρες στα σινεμά της Αθήνας.');
@@ -1599,6 +1677,7 @@
     function showAll() {
       currentTimeFilter = 'all';
       renderResults();
+      updateFilterChips();
       highlightButton('allBtn');
       // Hide all results info when showing all
       document.querySelectorAll('.results-info').forEach(info => {
