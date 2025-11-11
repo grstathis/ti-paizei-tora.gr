@@ -842,14 +842,14 @@
       <!-- ✅ FILTER CHIPS (placed after main buttons) -->
       <div id="activeFilters"></div>
 
-      <!-- ✅ RESET FILTERS BUTTON (NEW POSITION) -->
-      <div class="quick-actions">
-        <button class="clear-btn" onclick="clearAllFilters()">
-          🗑️ Καθαρισμός Φίλτρων
-        </button>
-      </div>
-
     </section>
+
+    <!-- ✅ RESET FILTERS BUTTON (NEW POSITION) -->
+    <div class="quick-actions">
+      <button type="button" class="clear-btn" onclick="clearAllFilters()">
+        🗑️ Καθαρισμός Φίλτρων
+      </button>
+    </div>
 
     <!-- ✅ ADVANCED FILTERS - Now Secondary with Expandable Boxes -->
     <section class="advanced-filters">
@@ -1000,6 +1000,9 @@
 
     // ✅ Clear all filters function
     function clearAllFilters() {
+
+      // Reset time filter state
+      currentTimeFilter = 'all';
       // Uncheck all checkboxes
       document.querySelectorAll('#movieCheckboxes input[type="checkbox"]').forEach(cb => cb.checked = false);
       document.querySelectorAll('#cinemaCheckboxes input[type="checkbox"]').forEach(cb => cb.checked = false);
@@ -1011,21 +1014,33 @@
       // Reset visibility of all filter items
       document.querySelectorAll('.checkbox-list li').forEach(li => li.style.display = '');
 
+      // Hide all results info
+      document.querySelectorAll('.results-info').forEach(info => {
+        info.style.display = 'none';
+      });
       // Show all results
       showAll();
+
+      // Clear location-based summaries
+      const summary = document.getElementById('nearbySummary');
+      if (summary) summary.textContent = '';
+      const addrInput = document.getElementById('addressInput');
+      if (addrInput) addrInput.value = '';
 
       // Optional: Close all filter details
       document.querySelectorAll('#filters-container details').forEach(details => details.open = true);
 
       // Show feedback to user
-      const btn = event.target;
-      const originalText = btn.innerHTML;
-      btn.innerHTML = '✅ Καθαρίστηκαν!';
-      btn.style.background = '#28a745';
-      setTimeout(() => {
-        btn.innerHTML = originalText;
-        btn.style.background = '#dc3545';
-      }, 1500);
+      const btn = document.querySelector('.clear-btn');
+      if (btn) {
+        const originalText = btn.innerHTML;
+        btn.innerHTML = '✅ Καθαρίστηκαν!';
+        btn.style.background = '#28a745';
+        setTimeout(() => {
+          btn.innerHTML = originalText;
+          btn.style.background = '#dc3545';
+        }, 1500);
+      }
     }
 
     // Add smooth scroll function
@@ -1402,50 +1417,6 @@
       }
     });
 
-    // Clear summary + address when clearing filters
-    const __origClearAllFilters = clearAllFilters;
-    // Update clearAllFilters to reset time filter state
-    function clearAllFilters() {
-      // Reset time filter state
-      currentTimeFilter = 'all';
-
-      // Uncheck all checkboxes
-      document.querySelectorAll('#movieCheckboxes input[type="checkbox"]').forEach(cb => cb.checked = false);
-      document.querySelectorAll('#cinemaCheckboxes input[type="checkbox"]').forEach(cb => cb.checked = false);
-      document.querySelectorAll('#regionCheckboxes input[type="checkbox"]').forEach(cb => cb.checked = false);
-
-      // Clear all search inputs
-      document.querySelectorAll('.search-input').forEach(input => input.value = '');
-
-      // Reset visibility of all filter items
-      document.querySelectorAll('.checkbox-list li').forEach(li => li.style.display = '');
-
-      document.querySelectorAll('.results-info').forEach(info => {
-        info.style.display = 'none';
-      });
-
-      // Show all results
-      showAll();
-
-      // Optional: Close all filter details
-      document.querySelectorAll('#filters-container details').forEach(details => details.open = true);
-
-      // Clear location-based summaries
-      const summary = document.getElementById('nearbySummary');
-      if (summary) summary.textContent = '';
-      const addrInput = document.getElementById('addressInput');
-      if (addrInput) addrInput.value = '';
-
-      // Show feedback to user
-      const btn = event.target;
-      const originalText = btn.innerHTML;
-      btn.innerHTML = '✅ Καθαρίστηκαν!';
-      btn.style.background = '#28a745';
-      setTimeout(() => {
-        btn.innerHTML = originalText;
-        btn.style.background = '#dc3545';
-      }, 1500);
-    }
 
     // ✅ Update the chips displayed above results
     function updateFilterChips() {
