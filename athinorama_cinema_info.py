@@ -245,7 +245,7 @@ def normalize_name(name: str) -> str:
     name = name.strip().replace("\u200b", "").replace("\xa0", " ").lower()
     return name
 
-def load_cinema_database(filename="cinema_database.json"):
+def load_cinema_database(filename="/home/grstathis/ti-paizei-tora.gr/cinema_database.json"):
     """Load existing cinema database from file."""
     if os.path.exists(filename):
         try:
@@ -395,10 +395,10 @@ for url in movie_links:
 # Save updated cinema database
 save_cinema_database(cinema_database)
 
-with open("cinemas.json", "w", encoding="utf-8") as f:
+with open("/home/grstathis/ti-paizei-tora.gr/cinemas.json", "w", encoding="utf-8") as f:
     json.dump(cinemas_l, f, ensure_ascii=False, indent=2)
 
-with open("movies.json", "w", encoding="utf-8") as f:
+with open("/home/grstathis/ti-paizei-tora.gr/movies.json", "w", encoding="utf-8") as f:
     json.dump(movies_l, f, ensure_ascii=False, indent=2)
     
 print('saved cinemas.json, movies.json files')
