@@ -8,7 +8,7 @@ import os
 import unicodedata
 
 # Read the Google API key from the file
-with open('google_api', 'r') as file:
+with open('/home/grstathis/ti-paizei-tora.gr/google_api', 'r') as file:
     GOOGLE_API_KEY = file.read().strip()
 
 
