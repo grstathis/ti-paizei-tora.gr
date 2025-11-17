@@ -1167,27 +1167,6 @@
       return R * (2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)));
     }
 
-    // Build a unique cinema map by name from cinemasData
-    function uniqueCinemasFromData() {
-      const map = new Map();
-      if (!Array.isArray(cinemasData) || !cinemasData.length) return map;
-      cinemasData.flat(2).forEach(c => {
-        if (!c || !c.cinema) return;
-        if (!map.has(c.cinema)) map.set(c.cinema, c);
-      });
-      return map;
-    }
-    // Add this function to handle active button states
-    function highlightButton(id) {
-      document.querySelectorAll('.filter-buttons button').forEach(btn => {
-        btn.classList.remove('active');
-      });
-      const btn = document.getElementById(id);
-      if (btn) {
-        btn.classList.add('active');
-      }
-    }
-
     // “Near me” main action
     // Also update the main filterNearMe function to include this logic
     async function filterNearMe() {
@@ -1482,6 +1461,9 @@
         list = applyTodayFilter(list);
       } else if (currentTimeFilter === 'next3') {
         list = applyNext3Filter(list);
+      } else if (currentTimeFilter === 'all') {
+        // Apply past time filter even when showing "all"
+        list = filterPastTimesFromToday(list);
       }
 
       list.forEach((movieCinemas, idx) => {
@@ -1570,6 +1552,74 @@
         results.innerHTML = '<p style="text-align:center;color:#666;">Δεν υπάρχουν διαθέσιμες προβολές.</p>';
       }
       updateFilterChips();
+    }
+
+    // Add a new helper function to filter past times from today and past dates
+    function filterPastTimesFromToday(list) {
+      const now = new Date();
+      const todayName = now.toLocaleDateString('el-GR', { weekday: 'long' });
+      const todayDate = now.getDate();
+      const todayMonth = now.getMonth(); // 0-indexed
+      const todayYear = now.getFullYear();
+      const nowMins = now.getHours() * 60 + now.getMinutes();
+
+      // Greek month names for parsing
+      const greekMonths = ['Ιαν', 'Φεβ', 'Μαρ', 'Απρ', 'Μαΐ', 'Ιουν', 'Ιουλ', 'Αυγ', 'Σεπ', 'Οκτ', 'Νοε', 'Δεκ'];
+
+      return list.map(movie =>
+        movie.map(cinema => {
+          const newTimes = cinema.timetable.map(tt =>
+            tt.filter(t => {
+              // Try to extract date components
+              const dateMatch = t.match(/(\d{1,2})\s*([Α-Ωα-ωάέίόήύώΆΈΉΊΌΎΏ]+)/);
+              if (dateMatch) {
+                const dayNum = parseInt(dateMatch[1]);
+                const monthStr = dateMatch[2];
+
+                // Try to find month index
+                const monthIndex = greekMonths.findIndex(m => monthStr.includes(m));
+
+                if (monthIndex !== -1) {
+                  // We have a full date - check if it's in the past
+                  const showtimeDate = new Date(todayYear, monthIndex, dayNum);
+
+                  // If the month is before current month but day is high (likely next year)
+                  if (monthIndex < todayMonth && dayNum > 20) {
+                    showtimeDate.setFullYear(todayYear + 1);
+                  }
+
+                  // If date is before today, filter it out
+                  if (showtimeDate < new Date(todayYear, todayMonth, todayDate)) {
+                    return false;
+                  }
+
+                  // If it's today, check the time
+                  if (showtimeDate.getDate() === todayDate &&
+                    showtimeDate.getMonth() === todayMonth &&
+                    showtimeDate.getFullYear() === todayYear) {
+                    const timeMatch = t.match(/(\d{2}):(\d{2})/);
+                    if (timeMatch) {
+                      const mins = parseInt(timeMatch[1]) * 60 + parseInt(timeMatch[2]);
+                      return mins >= nowMins; // Only show future times for today
+                    }
+                  }
+                } else if (t.includes(todayName) && dayNum === todayDate) {
+                  // This is today (matched by weekday name) - check time
+                  const timeMatch = t.match(/(\d{2}):(\d{2})/);
+                  if (timeMatch) {
+                    const mins = parseInt(timeMatch[1]) * 60 + parseInt(timeMatch[2]);
+                    return mins >= nowMins; // Only show future times for today
+                  }
+                }
+              }
+
+              // Keep the showtime if we couldn't parse it properly or it's in the future
+              return true;
+            })
+          );
+          return { ...cinema, timetable: newTimes };
+        })
+      );
     }
 
     // Add these helper functions for time filtering
