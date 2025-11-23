@@ -793,11 +793,6 @@ function highlightButton(id) {
     if (btn) btn.style.outline = '3px solid #222';
 }
 
-// Helper function to extract next showtime
-function getNextShowtime(timeString) {
-    const timeMatch = timeString.match(/(\d{2}):(\d{2})/);
-    return timeMatch ? timeMatch[0] : null;
-}
 
 // Function to toggle showtimes visibility
 function toggleShowtimes(elementId) {
@@ -815,36 +810,92 @@ function toggleShowtimes(elementId) {
 
 // Helper function to create movie summary with next showtime info
 function createMovieSummary(cinemas) {
+    const now = new Date();
+    const todayName = now.toLocaleDateString('el-GR', { weekday: 'long' });
+    const todayDate = now.getDate();
+    const todayMonth = now.getMonth();
+    const todayYear = now.getFullYear();
+    const nowMins = now.getHours() * 60 + now.getMinutes();
+
+    // Greek month names for parsing
+    const greekMonths = ['Ιαν', 'Φεβ', 'Μαρ', 'Απρ', 'Μαΐ', 'Ιουν', 'Ιουλ', 'Αυγ', 'Σεπ', 'Οκτ', 'Νοε', 'Δεκ'];
+
     let earliestTime = null;
-    let earliestTimeMinutes = Infinity;
+    let earliestTimestamp = Infinity;
     const cinemasWithEarliestTime = [];
 
     cinemas.forEach(cinema => {
-        const timesList = cinema.timetable.flat().filter(t => t.trim() !== '');
+        let timesList = cinema.timetable.flat().filter(t => t.trim() !== '');
+
+        // Filter out past times from today
+        timesList = timesList.filter(t => {
+            // Try to extract date components
+            const dateMatch = t.match(/(\d{1,2})\s*([Α-Ωα-ωάέίόήύώΆΈΉΊΌΎΏ]+)/);
+            if (dateMatch) {
+                const dayNum = parseInt(dateMatch[1]);
+                const monthStr = dateMatch[2];
+
+                // Try to find month index
+                const monthIndex = greekMonths.findIndex(m => monthStr.includes(m));
+
+                if (monthIndex !== -1) {
+                    // We have a full date - check if it's in the past
+                    const showtimeDate = new Date(todayYear, monthIndex, dayNum);
+
+                    // Handle year boundary
+                    if (todayMonth === 11 && monthIndex === 0) {
+                        showtimeDate.setFullYear(todayYear + 1);
+                    }
+
+                    // If date is before today, filter it out
+                    if (showtimeDate < new Date(todayYear, todayMonth, todayDate)) {
+                        return false;
+                    }
+
+                    // If it's today, check the time
+                    if (showtimeDate.getDate() === todayDate &&
+                        showtimeDate.getMonth() === todayMonth &&
+                        showtimeDate.getFullYear() === todayYear) {
+                        const timeMatch = t.match(/(\d{2}):(\d{2})/);
+                        if (timeMatch) {
+                            const mins = parseInt(timeMatch[1]) * 60 + parseInt(timeMatch[2]);
+                            return mins >= nowMins; // Only show future times for today
+                        }
+                    }
+                } else if (t.includes(todayName) && dayNum === todayDate) {
+                    // This is today (matched by weekday name) - check time
+                    const timeMatch = t.match(/(\d{2}):(\d{2})/);
+                    if (timeMatch) {
+                        const mins = parseInt(timeMatch[1]) * 60 + parseInt(timeMatch[2]);
+                        return mins >= nowMins; // Only show future times for today
+                    }
+                }
+            }
+
+            // Keep the showtime if we couldn't parse it properly or it's in the future
+            return true;
+        });
+
         if (timesList.length === 0) return;
 
+        // Sort the filtered times using our enhanced sorting
         const sortedTimes = timesList.sort((a, b) => {
             const parsedA = parseShowtimeForSorting(a);
             const parsedB = parseShowtimeForSorting(b);
             return parsedA.sortValue - parsedB.sortValue;
         });
 
+        // Get the earliest future showtime for this cinema
+        const firstShowtimeString = sortedTimes[0];
+        const firstShowtimeParsed = parseShowtimeForSorting(firstShowtimeString);
 
-        const firstShowtime = getNextShowtime(sortedTimes[0]);
-        if (firstShowtime) {
-            const timeMatch = firstShowtime.match(/(\d{2}):(\d{2})/);
-            if (timeMatch) {
-                const minutes = parseInt(timeMatch[1]) * 60 + parseInt(timeMatch[2]);
-
-                if (minutes < earliestTimeMinutes) {
-                    earliestTime = firstShowtime;
-                    earliestTimeMinutes = minutes;
-                    cinemasWithEarliestTime.length = 0; // Clear array
-                    cinemasWithEarliestTime.push(cinema.cinema);
-                } else if (minutes === earliestTimeMinutes) {
-                    cinemasWithEarliestTime.push(cinema.cinema);
-                }
-            }
+        if (firstShowtimeParsed.sortValue < earliestTimestamp) {
+            earliestTime = formatNextShowtime(firstShowtimeString);
+            earliestTimestamp = firstShowtimeParsed.sortValue;
+            cinemasWithEarliestTime.length = 0; // Clear array
+            cinemasWithEarliestTime.push(cinema.cinema);
+        } else if (firstShowtimeParsed.sortValue === earliestTimestamp) {
+            cinemasWithEarliestTime.push(cinema.cinema);
         }
     });
 
@@ -855,6 +906,7 @@ function createMovieSummary(cinemas) {
             : null
     };
 }
+
 
 // Function to toggle movie visibility
 function toggleMovie(elementId) {
@@ -878,10 +930,9 @@ function toggleMovie(elementId) {
 }
 
 
-// Helper function to extract next showtime (keep existing one)
+// Helper function to extract and format next showtime with day info
 function getNextShowtime(timeString) {
-    const timeMatch = timeString.match(/(\d{2}):(\d{2})/);
-    return timeMatch ? timeMatch[0] : null;
+    return formatNextShowtime(timeString);
 }
 
 // Function to toggle showtimes visibility (keep existing one)
@@ -902,13 +953,7 @@ function toggleShowtimes(elementId) {
 function parseShowtimeForSorting(timeString) {
     const now = new Date();
     const currentYear = now.getFullYear();
-    const currentMonth = now.getMonth(); // 0-indexed
-
-    // Greek day names
-    const greekDays = {
-        'Δευτέρα': 1, 'Τρίτη': 2, 'Τετάρτη': 3, 'Πέμπτη': 4,
-        'Παρασκευή': 5, 'Σάββατο': 6, 'Κυριακή': 0
-    };
+    const currentMonth = now.getMonth(); // 0-indexed (December = 11, January = 0)
 
     // Greek month abbreviations
     const greekMonths = ['Ιαν', 'Φεβ', 'Μαρ', 'Απρ', 'Μαΐ', 'Ιουν', 'Ιουλ', 'Αυγ', 'Σεπ', 'Οκτ', 'Νοε', 'Δεκ'];
@@ -919,46 +964,40 @@ function parseShowtimeForSorting(timeString) {
 
     const hours = parseInt(timeMatch[1]);
     const minutes = parseInt(timeMatch[2]);
-    const timeInMinutes = hours * 60 + minutes;
 
     // Try to extract date components
-    const dateMatch = timeString.match(/([Α-Ωα-ωάέίόήύώΆΈΉΊΌΎΏ]+)\s*(\d{1,2})\s*([Α-Ωα-ωάέίόήύώΆΈΉΊΌΎΏ]+)?/);
+    const dateMatch = timeString.match(/([Α-Ωα-ωάέίόήύώΆΈΉΊΌΎΏ]+)\s*(\d{1,2})\s*([Α-Ωα-ωάέίόήύώΆΈΉΊΌΎΏ\.]+)?/);
 
     if (dateMatch) {
         const dayName = dateMatch[1];
         const dayNum = parseInt(dateMatch[2]);
         const monthStr = dateMatch[3];
 
-        // Try to determine the date
-        let targetDate = new Date(currentYear, currentMonth, now.getDate());
+        if (monthStr) {
+            // Clean month string and find index
+            const cleanMonthStr = monthStr.replace('.', '');
+            const monthIndex = greekMonths.findIndex(m => m === cleanMonthStr);
 
-        if (monthStr && greekMonths.some(m => monthStr.includes(m))) {
-            // Full date with month
-            const monthIndex = greekMonths.findIndex(m => monthStr.includes(m));
             if (monthIndex !== -1) {
-                targetDate = new Date(currentYear, monthIndex, dayNum);
+                // Default: use current year
+                let targetYear = currentYear;
 
-                // Handle year boundary (if month is before current but day is high, likely next year)
-                if (monthIndex < currentMonth && dayNum > 20) {
-                    targetDate.setFullYear(currentYear + 1);
+                // Only use next year if we're in December (11) and the showtime is in January (0)
+                if (currentMonth === 11 && monthIndex === 0) {
+                    targetYear = currentYear + 1;
                 }
-                // If the full date is in the past, it might be next year
-                else if (targetDate < now) {
-                    targetDate.setFullYear(currentYear + 1);
-                }
+
+                const targetDate = new Date(targetYear, monthIndex, dayNum, hours, minutes);
+
+                return {
+                    sortValue: targetDate.getTime(),
+                    timeString
+                };
             }
-        } else if (greekDays.hasOwnProperty(dayName)) {
-            // Day name only - find the next occurrence
-            const targetDayOfWeek = greekDays[dayName];
-            const currentDayOfWeek = now.getDay();
-            const daysAhead = (targetDayOfWeek - currentDayOfWeek + 7) % 7;
-
-            targetDate = new Date(now);
-            targetDate.setDate(now.getDate() + (daysAhead === 0 ? 0 : daysAhead));
         }
 
-        // Set the time
-        targetDate.setHours(hours, minutes, 0, 0);
+        // Fallback: assume current month and current year
+        const targetDate = new Date(currentYear, currentMonth, dayNum, hours, minutes);
 
         return {
             sortValue: targetDate.getTime(),
@@ -966,14 +1005,70 @@ function parseShowtimeForSorting(timeString) {
         };
     }
 
-    // Fallback: use today's date with the time
-    const fallbackDate = new Date();
-    fallbackDate.setHours(hours, minutes, 0, 0);
+    // Final fallback: use today's date with the time
+    const fallbackDate = new Date(currentYear, currentMonth, now.getDate(), hours, minutes);
 
     return {
         sortValue: fallbackDate.getTime(),
         timeString
     };
+}
+
+
+// Enhanced function to format showtime with smart date display
+function formatNextShowtime(timeString) {
+    const timeMatch = timeString.match(/(\d{2}):(\d{2})/);
+    if (!timeMatch) return null;
+
+    const time = timeMatch[0]; // e.g., "19:30"
+
+    // Use our parsing function to get the actual date
+    const parsed = parseShowtimeForSorting(timeString);
+    const showtimeDate = new Date(parsed.sortValue);
+
+    const now = new Date();
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    const tomorrow = new Date(today);
+    tomorrow.setDate(tomorrow.getDate() + 1);
+
+    const showtimeDateOnly = new Date(showtimeDate.getFullYear(), showtimeDate.getMonth(), showtimeDate.getDate());
+
+    // Compare dates and format accordingly
+    if (showtimeDateOnly.getTime() === today.getTime()) {
+        // Today - just show time
+        return time;
+    } else if (showtimeDateOnly.getTime() === tomorrow.getTime()) {
+        // Tomorrow
+        return `Αύριο ${time}`;
+    } else {
+        // After tomorrow - show full date info
+        // Try to extract original date info first
+        const dateMatch = timeString.match(/([Α-Ωα-ωάέίόήύώΆΈΉΊΌΎΏ]+)\s*(\d{1,2})\s*([Α-Ωα-ωάέίόήύώΆΈΉΊΌΎΏ\.]+)?/);
+
+        if (dateMatch) {
+            const dayName = dateMatch[1];
+            const dayNum = dateMatch[2];
+            const monthStr = dateMatch[3];
+
+            if (monthStr) {
+                // Full date with month
+                return `${dayName} ${dayNum} ${monthStr.replace('.', '')} ${time}`;
+            } else {
+                // Day name with date but no month - add current month
+                const currentMonthName = showtimeDate.toLocaleDateString('el-GR', { month: 'short' });
+                return `${dayName} ${dayNum} ${currentMonthName} ${time}`;
+            }
+        }
+
+        // Fallback to formatted date
+        const formatted = showtimeDate.toLocaleDateString('el-GR', {
+            weekday: 'long',
+            day: 'numeric',
+            month: 'short'
+        });
+
+        return `${formatted} ${time}`;
+    }
 }
 
 
