@@ -634,66 +634,42 @@ function renderResults(filteredList, forceEmpty = false) {
     updateFilterChips();
 }
 
-// Add a new helper function to filter past times from today and past dates
+// Filter out past times from today and past dates
 function filterPastTimesFromToday(list) {
     const now = new Date();
-    const todayName = now.toLocaleDateString('el-GR', { weekday: 'long' });
     const todayDate = now.getDate();
-    const todayMonth = now.getMonth(); // 0-indexed
+    const todayMonth = now.getMonth();
     const todayYear = now.getFullYear();
     const nowMins = now.getHours() * 60 + now.getMinutes();
-
-    // Greek month names for parsing
-    const greekMonths = ['Ιαν', 'Φεβ', 'Μαρ', 'Απρ', 'Μαΐ', 'Ιουν', 'Ιουλ', 'Αυγ', 'Σεπ', 'Οκτ', 'Νοε', 'Δεκ'];
 
     return list.map(movie =>
         movie.map(cinema => {
             const newTimes = cinema.timetable.map(tt =>
                 tt.filter(t => {
-                    // Try to extract date components
-                    const dateMatch = t.match(/(\d{1,2})\s*([Α-Ωα-ωάέίόήύώΆΈΉΊΌΎΏ]+)/);
-                    if (dateMatch) {
-                        const dayNum = parseInt(dateMatch[1]);
-                        const monthStr = dateMatch[2];
+                    // Parse the showtime to get actual date
+                    const parsed = parseShowtimeForSorting(t);
+                    const showtimeDate = new Date(parsed.sortValue);
 
-                        // Try to find month index
-                        const monthIndex = greekMonths.findIndex(m => monthStr.includes(m));
+                    // If date is before today, filter it out
+                    const showtimeDateOnly = new Date(showtimeDate.getFullYear(), showtimeDate.getMonth(), showtimeDate.getDate());
+                    const todayOnly = new Date(todayYear, todayMonth, todayDate);
 
-                        if (monthIndex !== -1) {
-                            // We have a full date - check if it's in the past
-                            const showtimeDate = new Date(todayYear, monthIndex, dayNum);
+                    if (showtimeDateOnly < todayOnly) {
+                        return false;
+                    }
 
-                            // If the month is before current month but day is high (likely next year)
-                            if (monthIndex < todayMonth && dayNum > 20) {
-                                showtimeDate.setFullYear(todayYear + 1);
-                            }
-
-                            // If date is before today, filter it out
-                            if (showtimeDate < new Date(todayYear, todayMonth, todayDate)) {
-                                return false;
-                            }
-
-                            // If it's today, check the time
-                            if (showtimeDate.getDate() === todayDate &&
-                                showtimeDate.getMonth() === todayMonth &&
-                                showtimeDate.getFullYear() === todayYear) {
-                                const timeMatch = t.match(/(\d{2}):(\d{2})/);
-                                if (timeMatch) {
-                                    const mins = parseInt(timeMatch[1]) * 60 + parseInt(timeMatch[2]);
-                                    return mins >= nowMins; // Only show future times for today
-                                }
-                            }
-                        } else if (t.includes(todayName) && dayNum === todayDate) {
-                            // This is today (matched by weekday name) - check time
-                            const timeMatch = t.match(/(\d{2}):(\d{2})/);
-                            if (timeMatch) {
-                                const mins = parseInt(timeMatch[1]) * 60 + parseInt(timeMatch[2]);
-                                return mins >= nowMins; // Only show future times for today
-                            }
+                    // If it's today, check the time
+                    if (showtimeDate.getDate() === todayDate &&
+                        showtimeDate.getMonth() === todayMonth &&
+                        showtimeDate.getFullYear() === todayYear) {
+                        const timeMatch = t.match(/(\d{2}):(\d{2})/);
+                        if (timeMatch) {
+                            const mins = parseInt(timeMatch[1]) * 60 + parseInt(timeMatch[2]);
+                            return mins >= nowMins; // Only show future times for today
                         }
                     }
 
-                    // Keep the showtime if we couldn't parse it properly or it's in the future
+                    // Keep future dates
                     return true;
                 })
             );
@@ -702,26 +678,38 @@ function filterPastTimesFromToday(list) {
     );
 }
 
+
+
 // Add these helper functions for time filtering
+// Apply today filter - only show today's showtimes
 function applyTodayFilter(list) {
     const now = new Date();
     const todayName = now.toLocaleDateString('el-GR', { weekday: 'long' });
     const todayDate = now.getDate();
+    const todayMonth = now.getMonth();
+    const todayYear = now.getFullYear();
     const nowMins = now.getHours() * 60 + now.getMinutes();
 
     return list.map(movie =>
         movie.map(cinema => {
             const newTimes = cinema.timetable.map(tt =>
                 tt.filter(t => {
-                    if (!t.includes(todayName)) return false;
-                    const dateMatch = t.match(/(\d{1,2})\s*([Α-Ωα-ωάέίόήύώΆΈΉΊΌΎΏ]*)/);
-                    if (dateMatch) {
-                        const dayNum = parseInt(dateMatch[1]);
-                        if (dayNum !== todayDate) return false;
-                    }
-                    const match = t.match(/(\d{2}):(\d{2})/);
-                    if (!match) return false;
-                    const mins = parseInt(match[1]) * 60 + parseInt(match[2]);
+                    // Parse the showtime to get actual date
+                    const parsed = parseShowtimeForSorting(t);
+                    const showtimeDate = new Date(parsed.sortValue);
+
+                    // Check if it's today
+                    const isToday = showtimeDate.getDate() === todayDate &&
+                        showtimeDate.getMonth() === todayMonth &&
+                        showtimeDate.getFullYear() === todayYear;
+
+                    if (!isToday) return false;
+
+                    // If it's today, check if the time hasn't passed
+                    const timeMatch = t.match(/(\d{2}):(\d{2})/);
+                    if (!timeMatch) return false;
+
+                    const mins = parseInt(timeMatch[1]) * 60 + parseInt(timeMatch[2]);
                     return mins >= nowMins;
                 })
             );
@@ -730,31 +718,44 @@ function applyTodayFilter(list) {
     );
 }
 
+
+// Apply next 3 hours filter - only show today's showtimes within next 3 hours
 function applyNext3Filter(list) {
     const now = new Date();
-    const nowMins = now.getHours() * 60 + now.getMinutes();
-    const next3 = nowMins + 180;
-    const today = new Date().toLocaleDateString('el-GR', { weekday: 'long' });
     const todayDate = now.getDate();
+    const todayMonth = now.getMonth();
+    const todayYear = now.getFullYear();
+    const nowMins = now.getHours() * 60 + now.getMinutes();
+    const next3Mins = nowMins + 180;
 
     return list.map(movie =>
         movie.map(cinema => {
-            const newTimes = cinema.timetable.map(tt => tt.filter(t => {
-                if (!t.includes(today)) return false;
-                const dateMatch = t.match(/(\d{1,2})\s*([Α-Ωα-ωάέίόήύώΆΈΉΊΌΎΏ]*)/);
-                if (dateMatch) {
-                    const dayNum = parseInt(dateMatch[1]);
-                    if (dayNum !== todayDate) return false;
-                }
-                const timeMatch = t.match(/(\d{2}):(\d{2})/);
-                if (!timeMatch) return false;
-                const mins = parseInt(timeMatch[1]) * 60 + parseInt(timeMatch[2]);
-                return mins >= nowMins && mins <= next3;
-            }));
+            const newTimes = cinema.timetable.map(tt =>
+                tt.filter(t => {
+                    // Parse the showtime to get actual date
+                    const parsed = parseShowtimeForSorting(t);
+                    const showtimeDate = new Date(parsed.sortValue);
+
+                    // Check if it's today
+                    const isToday = showtimeDate.getDate() === todayDate &&
+                        showtimeDate.getMonth() === todayMonth &&
+                        showtimeDate.getFullYear() === todayYear;
+
+                    if (!isToday) return false;
+
+                    // If it's today, check if it's within the next 3 hours
+                    const timeMatch = t.match(/(\d{2}):(\d{2})/);
+                    if (!timeMatch) return false;
+
+                    const mins = parseInt(timeMatch[1]) * 60 + parseInt(timeMatch[2]);
+                    return mins >= nowMins && mins <= next3Mins;
+                })
+            );
             return { ...cinema, timetable: newTimes };
         })
     );
 }
+
 
 // Update the time filter functions to track state
 function filterToday() {
