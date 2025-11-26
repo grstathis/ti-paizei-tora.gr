@@ -580,17 +580,20 @@ function renderResults(filteredList, forceEmpty = false) {
 
             // Create base cinema info
             let cinemaHTML = `
-      <h3>${cinema.cinema}</h3>
-      <p>
-        <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(cinema.cinema + ' ' + cinema.address)}"
-           target="_blank"
-           rel="noopener noreferrer"
-           title="Δες στο Google Maps">
-          📍 ${cinema.address}
-        </a>
-      </p>
-      ${cinema.region ? `<div style="font-size:0.9em;color:#777;">📍 ${cinema.region}</div>` : ''}
-    `;
+  <h3>${cinema.website && cinema.website !== null
+                    ? `<a href="${cinema.website}" target="_blank" rel="noopener noreferrer" class="cinema-link" title="Επίσκεψη στον ιστότοπο">${cinema.cinema}</a>`
+                    : cinema.cinema}</h3>
+  <p>
+    <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(cinema.cinema + ' ' + cinema.address)}"
+       target="_blank"
+       rel="noopener noreferrer"
+       title="Δες στο Google Maps">
+      📍 ${cinema.address}
+    </a>
+  </p>
+  ${cinema.region ? `<div style="font-size:0.9em;color:#777;">📍 ${cinema.region}</div>` : ''}
+`;
+
 
             if (!formattedTimes) {
                 // No showtimes available

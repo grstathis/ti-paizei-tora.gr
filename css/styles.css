@@ -893,6 +893,37 @@
        animation: slideDown 0.3s ease-out;
    }
 
+   .cinema-link {
+       color: #2c3e50;
+       text-decoration: none;
+       background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+       background-repeat: no-repeat;
+       background-size: 0% 3px;
+       background-position: 0 100%;
+       transition: background-size 0.3s ease, color 0.3s ease;
+       padding-bottom: 3px;
+   }
+
+   .cinema-link:hover {
+       background-size: 100% 3px;
+       color: #667eea;
+   }
+
+   .cinema-link::after {
+       content: '→';
+       margin-left: 8px;
+       opacity: 0;
+       transform: translateX(-10px);
+       display: inline-block;
+       transition: all 0.3s ease;
+   }
+
+   .cinema-link:hover::after {
+       opacity: 1;
+       transform: translateX(0);
+   }
+
+
    /* Update existing cinema styles to work within movie panels */
    .cinema {
        margin-left: 0;
@@ -907,6 +938,7 @@
    .movie:not(:last-child) {
        margin-bottom: 1.5em;
    }
+
 
    /* Mobile optimizations for collapsed view */
    @media (max-width: 768px) {
@@ -943,6 +975,7 @@
            right: 1.2em;
        }
    }
+
 
 
    @keyframes slideDown {
