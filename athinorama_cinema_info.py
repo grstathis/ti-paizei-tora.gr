@@ -91,6 +91,75 @@ def transliterate_greek_to_latin(text):
     return text
 
 
+def get_cinema_website_from_google_places(name: str, address: str = None):
+    """Fetch cinema website URL from Google Places API."""
+    import time
+    
+    # Step 1: Search for the place to get place_id
+    search_query = name if not address else f"{name}, {address}"
+    
+    # First, try to find the place using Places Search API
+    search_url = "https://maps.googleapis.com/maps/api/place/textsearch/json"
+    search_params = {
+        "query": search_query,
+        "key": GOOGLE_API_KEY,
+        "language": "el",
+        "type": "movie_theater"  # Specify we're looking for cinemas
+    }
+    
+    try:
+        search_response = requests.get(search_url, params=search_params)
+        search_response.raise_for_status()
+        search_data = search_response.json()
+        
+        if search_data["status"] != "OK" or not search_data.get("results"):
+            print(f"⚠️ No place found for '{search_query}'")
+            return {"website": None}
+        
+        # Get the first (most relevant) result
+        place = search_data["results"][0]
+        place_id = place.get("place_id")
+        
+        if not place_id:
+            print(f"⚠️ No place_id found for '{search_query}'")
+            return {"website": None}
+        
+        # Step 2: Get detailed information including website
+        details_url = "https://maps.googleapis.com/maps/api/place/details/json"
+        details_params = {
+            "place_id": place_id,
+            "fields": "website",  # Only request website field
+            "key": GOOGLE_API_KEY,
+            "language": "el"
+        }
+        
+        # Add a small delay to respect API rate limits
+        time.sleep(0.1)
+        
+        details_response = requests.get(details_url, params=details_params)
+        details_response.raise_for_status()
+        details_data = details_response.json()
+        
+        if details_data["status"] != "OK":
+            print(f"⚠️ Could not get details for '{search_query}' (place_id: {place_id})")
+            return {"website": None}
+        
+        result = details_data.get("result", {})
+        website = result.get("website")
+        
+        print(f"✅ Found info for '{name}': {website or 'No website'}")
+        
+        return {"website": website}
+        
+    except requests.exceptions.RequestException as e:
+        print(f"❌ Request error for '{search_query}': {e}")
+        return {"website": None}
+    except Exception as e:
+        print(f"❌ Unexpected error for '{search_query}': {e}")
+        return {"website": None}
+
+
+
 def get_cinema_info_from_google(name: str, address: str = None):
     """Fetch cinema info (lat, lon, area, formatted address) from Google Maps API."""
     query = name if not address else f"{name}, {address}"
@@ -264,9 +333,11 @@ def save_cinema_database(cinema_db, filename="cinema_database.json"):
         json.dump(cinema_db, f, ensure_ascii=False, indent=2)
     print(f"✅ Cinema database saved to {filename}")
 
+
 def get_or_create_cinema_info(name, address, cinema_db):
     """
     Get cinema info from database or fetch from Google API if not exists.
+    Now includes website information from Google Places API.
     Returns cinema info dict and updates the database.
     """
     # Create a unique key for the cinema
@@ -276,14 +347,45 @@ def get_or_create_cinema_info(name, address, cinema_db):
     
     # Check if cinema already exists in database
     if cinema_key in cinema_db:
-        print(f"✅ Found cached info for: {name}")
-        return cinema_db[cinema_key]
+        existing_info = cinema_db[cinema_key]
+        
+        # Check if we already have complete info (including website)
+        if "website" in existing_info:
+            print(f"✅ Found cached info (with website) for: {name}")
+            return existing_info
+        else:
+            print(f"🔄 Found cached location info for: {name}, fetching website...")
+            # Get website info and merge with existing
+            website_info = get_cinema_website_from_google_places(name, address)
+            merged_info = {**existing_info, **website_info}
+            cinema_db[cinema_key] = merged_info
+            return merged_info
     
-    # Cinema not found, fetch from Google API
-    print(f"🔍 Fetching new info for: {name}")
-    region_dict = get_cinema_info_from_google(name, address)
+    # Cinema not found, fetch both location and website info
+    print(f"🔍 Fetching new info (location + website) for: {name}")
     
-    # Store in database
+    # Get location info from Google Maps Geocoding API
+    location_dict = get_cinema_info_from_google(name, address)
+    
+    # Get website info from Google Places API
+    website_dict = get_cinema_website_from_google_places(name, address)
+    
+    # Merge the information
+    if location_dict:
+        region_dict = {**location_dict, **website_dict}
+    else:
+        # Fallback if location info fails
+        region_dict = {
+            "lat": None,
+            "lon": None,
+            "area": "Unknown",
+            "suburb": None,
+            "neighbourhood": None,
+            "formatted_address": address,
+            **website_dict
+        }
+    
+    # Store in database (if value)
     if region_dict:
         cinema_db[cinema_key] = region_dict
     
@@ -355,6 +457,7 @@ def get_movie_theater_times(url, cinema_db):
             region_dict['formatted_address'] = address
             region_dict['lat'] = 0
             region_dict['lon'] = 0
+            region_dict['website'] = 'Unknown'
 
         cinemas_data.append({
                 "cinema": name,
@@ -364,12 +467,15 @@ def get_movie_theater_times(url, cinema_db):
                 "region": region_dict['area'],
                 "subregion": region_dict['suburb'],
                 "neighbourhood": region_dict['neighbourhood'],
+                "website": region_dict['website'],
                 "rooms": rooms,
                 "timetable": room_timetable
             })
 
     return movies_data, cinemas_data
 
+
+#### main routine here ####
 movie_links =[]
 
 base_url = "https://www.athinorama.gr"
