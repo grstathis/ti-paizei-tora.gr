@@ -450,21 +450,35 @@ def get_movie_theater_times(url, cinema_db):
         # --- Get cinema info from cache or API ---
         region_dict = get_or_create_cinema_info(name, address, cinema_db)
 
-        if not region_dict:
-            region_dict['area'] = 'Unknown'
-            region_dict['subarea'] = 'Unknown'
-            region_dict['neighbourhood'] = 'Unknown'
-            region_dict['formatted_address'] = address
-            region_dict['lat'] = 0
-            region_dict['lon'] = 0
-            region_dict['website'] = 'Unknown'
+        # Get values with safe .get() method, leveraging the dict guarantee
+        final_area = region_dict.get('area', 'Unknown')
+        suburb = region_dict.get('suburb','Unknown')
+        neighbourhood = region_dict.get('neighbourhood','Unknown')
+
+        # 1. When area is "Αθηνα", list subarea if available, otherwise use "Αθηνα (Κεντρο)"
+        if final_area == "Αθήνα":
+            print(region_dict)
+            # Check if suburb is not empty/None AND not the same as the main area
+            if suburb and normalize_name(suburb) != normalize_name(final_area):
+                final_area = suburb
+            elif not suburb and normalize_name(neighbourhood) != normalize_name(final_area):
+                final_area = neighbourhood
+            else:
+                # This will act as the filter for all Athens cinemas
+                final_area = "Αθήνα (Κέντρο)"
+
+        # 2. Replace 'ampelokipi' with 'Αμπελοκηποι'
+        if final_area == "Ampelokipi":
+            final_area = "Αμπελόκηποι"
+
+
 
         cinemas_data.append({
                 "cinema": name,
                 "address": region_dict['formatted_address'],
                 "lat" :region_dict['lat'],
                 "lon" :region_dict['lon'],
-                "region": region_dict['area'],
+                "region": final_area,
                 "subregion": region_dict['suburb'],
                 "neighbourhood": region_dict['neighbourhood'],
                 "website": region_dict['website'],
