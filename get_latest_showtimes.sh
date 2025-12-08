@@ -27,6 +27,7 @@ FILES=(
     "cinemas.json"
     "movies.json"
     "cinema_database.json"
+    "sitemap.xml"
 )
 
 LOGFILE="/home/grstathis/cinema_update.log"

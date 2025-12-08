@@ -1249,3 +1249,72 @@ def create_cinema_structure():
 
 # Run the function
 stats = create_cinema_structure()
+
+
+from datetime import datetime, timezone
+
+BASE_URL = "https://ti-paizei-tora.gr"
+MOVIE_DIR = "/home/grstathis/ti-paizei-tora.gr/movie"   # relative path to your movie folder
+OUTPUT_FILE = "/home/grstathis/ti-paizei-tora.gr/sitemap.xml"
+
+def generate_sitemap():
+    now = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+
+    urls = []
+
+    # --- Homepage ---
+    urls.append(f"""
+  <url>
+    <loc>{BASE_URL}/</loc>
+    <lastmod>{now}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+""")
+
+    # --- Static JSON resources ---
+    for resource in ["movies.json", "cinemas.json", "ti_paizei_tora_logo.svg"]:
+        urls.append(f"""
+  <url>
+    <loc>{BASE_URL}/{resource}</loc>
+    <lastmod>{now}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+""")
+
+    # --- Movie folders ---
+    for folder in sorted(os.listdir(MOVIE_DIR)):
+        full_path = os.path.join(MOVIE_DIR, folder)
+        index_file = os.path.join(full_path, "index.html")
+
+        # Only include folders that contain index.html
+        if os.path.isdir(full_path) and os.path.isfile(index_file):
+            urls.append(f"""
+  <url>
+    <loc>{BASE_URL}/movie/{folder}/</loc>
+    <lastmod>{now}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+""")
+
+    # --- Write final XML ---
+    sitemap = f"""<?xml version="1.0" encoding="UTF-8"?>
+<urlset 
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+{''.join(urls)}
+</urlset>
+"""
+
+    with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
+        f.write(sitemap)
+
+    print(f"Sitemap generated: {OUTPUT_FILE}")
+
+
+generate_sitemap()
+
+
+
