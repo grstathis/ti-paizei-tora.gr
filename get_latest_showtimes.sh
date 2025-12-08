@@ -57,6 +57,9 @@ $(for f in "${FILES[@]}"; do
 echo "put -O $REMOTE_DIR $LOCAL_DIR/$f;"
 done)
 
+# Upload folders recursively
+mirror -R $LOCAL_DIR/movie $REMOTE_DIR/movie;
+
 bye
 EOF
 

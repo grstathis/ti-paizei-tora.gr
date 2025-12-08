@@ -5,7 +5,7 @@ import unicodedata
 import re
 from unidecode import unidecode
 import os
-
+import shutil
 
 # Read the Google API key from the file
 with open("/home/grstathis/ti-paizei-tora.gr/google_api", "r") as file:

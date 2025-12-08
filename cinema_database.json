@@ -349,5 +349,14 @@
     "neighbourhood": "",
     "formatted_address": "Λυκούργου 3, 234, Χαλάνδρι 152 31, Ελλάδα",
     "website": "https://m.facebook.com/pages/category/Movie-Theater/Cine-%CE%91%CE%B2%CE%AC%CE%BD%CE%B1-1581161802196554/?locale2=el_GR"
+  },
+  "athinaion experience (the)_λεωφ. β. σοφίας 124 (μετρο αμπελόκηποι)": {
+    "lat": 37.9859587,
+    "lon": 23.7612773,
+    "area": "Αθήνα",
+    "suburb": "Αμπελόκηποι",
+    "neighbourhood": "Κουντουριώτικα",
+    "formatted_address": "Βασ. Σοφίας 124, Αθήνα 115 26, Ελλάδα",
+    "website": "http://athinaion.gr/"
   }
 }
