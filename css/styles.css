@@ -976,6 +976,36 @@
        }
    }
 
+   .share-btn {
+       background: #007bff;
+       color: white;
+       border: none;
+       padding: 6px 12px;
+       border-radius: 6px;
+       cursor: pointer;
+       font-size: 0.85em;
+       margin-left: 8px;
+       transition: background 0.2s ease;
+       display: inline-flex;
+       align-items: center;
+       gap: 4px;
+   }
+
+   .share-btn:hover {
+       background: #0056b3;
+   }
+
+   .share-btn:active {
+       transform: scale(0.95);
+   }
+
+   @media (max-width: 768px) {
+       .share-btn {
+           font-size: 0.8em;
+           padding: 5px 10px;
+       }
+   }
+
 
 
    @keyframes slideDown {

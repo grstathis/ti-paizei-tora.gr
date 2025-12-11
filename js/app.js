@@ -526,6 +526,10 @@ function renderResults(filteredList, forceEmpty = false) {
       <span style="font-weight:bold;">IMDb</span> ⭐
     </a>`;
         }
+        // Add share button
+        externalLinks += `<button class="share-btn" onclick="event.stopPropagation(); shareMovie(${idx})" title="Μοιράσου την ταινία">
+      📤 Μοιράσου
+    </button>`;
 
         const movieDiv = document.createElement('div');
         movieDiv.className = 'movie';
@@ -795,6 +799,94 @@ function highlightButton(id) {
     document.querySelectorAll('.filter-buttons button').forEach(btn => btn.style.outline = 'none');
     const btn = document.getElementById(id);
     if (btn) btn.style.outline = '3px solid #222';
+}
+
+// Share movie function with Web Share API support
+async function shareMovie(movieIndex) {
+    const movie = moviesData[movieIndex]?.[0];
+    if (!movie) return;
+
+    // Construct share URL
+    let shareUrl;
+    if (movie.slug && movie.slug.trim() !== '') {
+        shareUrl = `${window.location.origin}/movie/${movie.slug}/index.html`;
+    } else if (movie.athinorama_link && movie.athinorama_link.trim() !== '') {
+        shareUrl = movie.athinorama_link;
+    } else {
+        shareUrl = window.location.href;
+    }
+
+    const shareTitle = movie.greek_title + (movie.original_title ? ` (${movie.original_title})` : '');
+    const shareText = `Δες πού παίζεται η ταινία "${shareTitle}" στα σινεμά της Αθήνας`;
+
+    // Try native Web Share API first (mobile-friendly)
+    if (navigator.share) {
+        try {
+            await navigator.share({
+                title: shareTitle,
+                text: shareText,
+                url: shareUrl
+            });
+        } catch (err) {
+            // User cancelled or error occurred
+            if (err.name !== 'AbortError') {
+                console.error('Share failed:', err);
+                fallbackCopyToClipboard(shareUrl);
+            }
+        }
+    } else {
+        // Fallback: copy to clipboard
+        fallbackCopyToClipboard(shareUrl);
+    }
+}
+
+// Fallback function to copy URL to clipboard
+function fallbackCopyToClipboard(url) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(() => {
+            showShareFeedback('✅ Ο σύνδεσμος αντιγράφηκε!');
+        }).catch(() => {
+            showShareFeedback('❌ Αποτυχία αντιγραφής');
+        });
+    } else {
+        // Older fallback method
+        const textarea = document.createElement('textarea');
+        textarea.value = url;
+        textarea.style.position = 'fixed';
+        textarea.style.opacity = '0';
+        document.body.appendChild(textarea);
+        textarea.select();
+        try {
+            document.execCommand('copy');
+            showShareFeedback('✅ Ο σύνδεσμος αντιγράφηκε!');
+        } catch (err) {
+            showShareFeedback('❌ Αποτυχία αντιγραφής');
+        }
+        document.body.removeChild(textarea);
+    }
+}
+
+// Show temporary feedback message
+function showShareFeedback(message) {
+    const feedback = document.createElement('div');
+    feedback.textContent = message;
+    feedback.style.cssText = `
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #333;
+        color: white;
+        padding: 12px 24px;
+        border-radius: 8px;
+        z-index: 10000;
+        font-size: 14px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    `;
+    document.body.appendChild(feedback);
+    setTimeout(() => {
+        feedback.remove();
+    }, 2500);
 }
 
 
