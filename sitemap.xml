@@ -5,322 +5,343 @@
 
   <url>
     <loc>https://ti-paizei-tora.gr/</loc>
-    <lastmod>2025-12-08</lastmod>
+    <lastmod>2025-12-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movies.json</loc>
-    <lastmod>2025-12-08</lastmod>
+    <lastmod>2025-12-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/cinemas.json</loc>
-    <lastmod>2025-12-08</lastmod>
+    <lastmod>2025-12-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/ti_paizei_tora_logo.svg</loc>
-    <lastmod>2025-12-08</lastmod>
+    <lastmod>2025-12-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/amrum/</loc>
-    <lastmod>2025-12-08</lastmod>
+    <lastmod>2025-12-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/bugonia/</loc>
-    <lastmod>2025-12-08</lastmod>
+    <lastmod>2025-12-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://ti-paizei-tora.gr/movie/cabin-fever/</loc>
+    <lastmod>2025-12-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/children-of-paradise/</loc>
-    <lastmod>2025-12-08</lastmod>
+    <lastmod>2025-12-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/christy/</loc>
-    <lastmod>2025-12-08</lastmod>
+    <lastmod>2025-12-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/coexistence-my-ass/</loc>
-    <lastmod>2025-12-08</lastmod>
+    <lastmod>2025-12-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/day-of-wrath/</loc>
-    <lastmod>2025-12-08</lastmod>
+    <lastmod>2025-12-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/deaf/</loc>
-    <lastmod>2025-12-08</lastmod>
+    <lastmod>2025-12-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/demon-slayer-kimetsu-no-yaiba-the-movie-infinity-castle/</loc>
-    <lastmod>2025-12-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/movie/die-my-love/</loc>
-    <lastmod>2025-12-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/movie/drmmer/</loc>
-    <lastmod>2025-12-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/movie/eternity/</loc>
-    <lastmod>2025-12-08</lastmod>
+    <lastmod>2025-12-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/heidi-die-legende-vom-luchs/</loc>
-    <lastmod>2025-12-08</lastmod>
+    <lastmod>2025-12-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://ti-paizei-tora.gr/movie/if-i-had-legs-i-d-kick-you/</loc>
+    <lastmod>2025-12-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/it-was-just-an-accident/</loc>
-    <lastmod>2025-12-08</lastmod>
+    <lastmod>2025-12-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/jag-heter-stelios/</loc>
-    <lastmod>2025-12-08</lastmod>
+    <lastmod>2025-12-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://ti-paizei-tora.gr/movie/keeper/</loc>
+    <lastmod>2025-12-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/late-shift/</loc>
-    <lastmod>2025-12-08</lastmod>
+    <lastmod>2025-12-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://ti-paizei-tora.gr/movie/misericordia/</loc>
+    <lastmod>2025-12-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/niko-beyond-the-northern-lights/</loc>
-    <lastmod>2025-12-08</lastmod>
+    <lastmod>2025-12-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/no-other-choice/</loc>
-    <lastmod>2025-12-08</lastmod>
+    <lastmod>2025-12-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/nouvelle-vague/</loc>
-    <lastmod>2025-12-08</lastmod>
+    <lastmod>2025-12-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/now-you-see-me-now-you-don-t/</loc>
-    <lastmod>2025-12-08</lastmod>
+    <lastmod>2025-12-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/nuremberg/</loc>
-    <lastmod>2025-12-08</lastmod>
+    <lastmod>2025-12-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/one-battle-after-another/</loc>
-    <lastmod>2025-12-08</lastmod>
+    <lastmod>2025-12-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://ti-paizei-tora.gr/movie/renoir/</loc>
+    <lastmod>2025-12-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/save-the-green-planet/</loc>
-    <lastmod>2025-12-08</lastmod>
+    <lastmod>2025-12-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/sentimental-value/</loc>
-    <lastmod>2025-12-08</lastmod>
+    <lastmod>2025-12-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://ti-paizei-tora.gr/movie/sinners/</loc>
+    <lastmod>2025-12-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/spasmeni-fleva/</loc>
-    <lastmod>2025-12-08</lastmod>
+    <lastmod>2025-12-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/spring-summer-fall-winter-and-spring/</loc>
-    <lastmod>2025-12-08</lastmod>
+    <lastmod>2025-12-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/teorema/</loc>
-    <lastmod>2025-12-08</lastmod>
+    <lastmod>2025-12-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/the-cameraman/</loc>
-    <lastmod>2025-12-08</lastmod>
+    <lastmod>2025-12-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/the-exterminating-angel/</loc>
-    <lastmod>2025-12-08</lastmod>
+    <lastmod>2025-12-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://ti-paizei-tora.gr/movie/the-great-ambition/</loc>
+    <lastmod>2025-12-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/the-great-dictator/</loc>
-    <lastmod>2025-12-08</lastmod>
+    <lastmod>2025-12-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/the-great-escaper/</loc>
-    <lastmod>2025-12-08</lastmod>
+    <lastmod>2025-12-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://ti-paizei-tora.gr/movie/the-love-that-remains/</loc>
-    <lastmod>2025-12-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/movie/the-passion-of-joan-of-arc/</loc>
-    <lastmod>2025-12-08</lastmod>
+    <loc>https://ti-paizei-tora.gr/movie/the-king-of-kings/</loc>
+    <lastmod>2025-12-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/the-rules-of-the-game/</loc>
-    <lastmod>2025-12-08</lastmod>
+    <lastmod>2025-12-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/the-sacrifice/</loc>
-    <lastmod>2025-12-08</lastmod>
+    <lastmod>2025-12-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/the-saragossa-manuscript/</loc>
-    <lastmod>2025-12-08</lastmod>
+    <lastmod>2025-12-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://ti-paizei-tora.gr/movie/the-twilight-saga-breaking-dawn-part-2/</loc>
-    <lastmod>2025-12-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/movie/the-unknown-saint/</loc>
-    <lastmod>2025-12-08</lastmod>
+    <loc>https://ti-paizei-tora.gr/movie/the-tree-we-hurt/</loc>
+    <lastmod>2025-12-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/the-voice-of-hind-rajab/</loc>
-    <lastmod>2025-12-08</lastmod>
+    <lastmod>2025-12-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/three-kilometres-to-the-end-of-the-world/</loc>
-    <lastmod>2025-12-08</lastmod>
+    <lastmod>2025-12-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/urchin/</loc>
-    <lastmod>2025-12-08</lastmod>
+    <lastmod>2025-12-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://ti-paizei-tora.gr/movie/vermiglio/</loc>
+    <lastmod>2025-12-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/wicked-for-good/</loc>
-    <lastmod>2025-12-08</lastmod>
+    <lastmod>2025-12-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/zootopia-2/</loc>
-    <lastmod>2025-12-08</lastmod>
+    <lastmod>2025-12-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>

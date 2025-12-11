@@ -313,7 +313,7 @@ def load_cinema_database(
         return {}
 
 
-def save_cinema_database(cinema_db, filename="cinema_database.json"):
+def save_cinema_database(cinema_db, filename="/home/grstathis/ti-paizei-tora.gr/cinema_database.json"):
     """Save cinema database to file."""
     with open(filename, "w", encoding="utf-8") as f:
         json.dump(cinema_db, f, ensure_ascii=False, indent=2)
@@ -550,7 +550,7 @@ HTML_TEMPLATE = """
 
 
 # --- Load JSON ---
-with open("movies.json", "r", encoding="utf-8") as f:
+with open("/home/grstathis/ti-paizei-tora.gr/movies.json", "r", encoding="utf-8") as f:
     movies_data = json.load(f)
 
 # --- Helper: slugify movie title ---
@@ -1057,10 +1057,10 @@ def create_cinema_structure():
     """Create folder structure: .region/{region}/cinema/{cinema}/movie/{movie}/date/showtime.html"""
     
     # Load JSON files
-    with open('movies.json', 'r', encoding='utf-8') as f:
+    with open('/home/grstathis/ti-paizei-tora.gr/movies.json', 'r', encoding='utf-8') as f:
         movies_data = json.load(f)
     
-    with open('cinemas.json', 'r', encoding='utf-8') as f:
+    with open('/home/grstathis/ti-paizei-tora.gr/cinemas.json', 'r', encoding='utf-8') as f:
         cinemas_data = json.load(f)
     
     base_path = Path('region')
