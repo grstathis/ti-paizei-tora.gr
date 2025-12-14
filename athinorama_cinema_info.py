@@ -549,6 +549,14 @@ HTML_TEMPLATE = """
   <div class="year">{year} • {runtime}</div>
   <div class="plot">{plot}</div>
   <div><small>⭐ IMDb {rating}/10</small></div>
+
+  <div style="margin-top:12px;">
+    <a href="https://ti-paizei-tora.gr" target="_blank"
+       style="color:#0066cc; text-decoration:none; font-size:14px;">
+       🔗 ti-paizei-tora.gr
+    </a>
+  </div>
+
 </div>
 
 </body>
