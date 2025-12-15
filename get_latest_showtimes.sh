@@ -53,13 +53,16 @@ lftp -u "$FTP_USER","$FTP_PASS" -p "$FTP_PORT" "ftp://$FTP_HOST" <<EOF
 set ftp:ssl-auth TLS;
 set ftp:ssl-force true;
 set ssl:check-hostname no;
+set ftp:sync-mode off;
+
 
 $(for f in "${FILES[@]}"; do
 echo "put -O $REMOTE_DIR $LOCAL_DIR/$f;"
 done)
 
 # Upload folders recursively
-mirror -R $LOCAL_DIR/movie $REMOTE_DIR/movie;
+mirror -R -P 5 --only-newer --no-symlinks $LOCAL_DIR/movie $REMOTE_DIR/movie;
+mirror -R -P 5 --only-newer --no-symlinks $LOCAL_DIR/region $REMOTE_DIR/region;
 
 bye
 EOF
