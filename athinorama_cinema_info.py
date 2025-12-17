@@ -1214,11 +1214,15 @@ def create_cinema_structure():
 
         # Clean up trailing slashes and extra spaces
         movie_title = movie_title.rstrip("/ ").strip()
-        movie_slug = slugify(movie_title)
+        movie_slug = movie.get("slug", "").strip()
 
+        # Fallback: if no slug exists, generate one
         if not movie_slug:
-            print(f"⚠️  Skipping movie with no valid title: {movie}")
-            continue
+            movie_title = movie.get("original_title", "").strip()
+            if not movie_title or movie_title == "/":
+                movie_title = movie.get("greek_title", "").strip()
+            movie_title = movie_title.rstrip("/ ").strip()
+            movie_slug = slugify(movie_title)
 
         # ✅ Try to load the existing movie HTML (OPTIONAL)
         movie_html_path = Path("movie") / movie_slug / "index.html"

@@ -3,6 +3,99 @@ let cinemasData = [];
 
 let currentTimeFilter = 'all'; // Track current time filter: 'all', 'today', 'next3'
 
+// Greek to Latin transliteration map (ported from Python)
+const GREEK_TO_LATIN = {
+    // lowercase
+    'α': 'a', 'ά': 'a', 'β': 'v', 'γ': 'g', 'δ': 'd', 'ε': 'e', 'έ': 'e',
+    'ζ': 'z', 'η': 'i', 'ή': 'i', 'θ': 'th', 'ι': 'i', 'ί': 'i', 'ϊ': 'i',
+    'ΐ': 'i', 'κ': 'k', 'λ': 'l', 'μ': 'm', 'ν': 'n', 'ξ': 'x', 'ο': 'o',
+    'ό': 'o', 'π': 'p', 'ρ': 'r', 'σ': 's', 'ς': 's', 'τ': 't', 'υ': 'y',
+    'ύ': 'y', 'ϋ': 'y', 'ΰ': 'y', 'φ': 'f', 'χ': 'x', 'ψ': 'ps', 'ω': 'o',
+    'ώ': 'o',
+    // uppercase
+    'Α': 'a', 'Ά': 'a', 'Β': 'v', 'Γ': 'g', 'Δ': 'd', 'Ε': 'e', 'Έ': 'e',
+    'Ζ': 'z', 'Η': 'i', 'Ή': 'i', 'Θ': 'th', 'Ι': 'i', 'Ί': 'i', 'Ϊ': 'i',
+    'Κ': 'k', 'Λ': 'l', 'Μ': 'm', 'Ν': 'n', 'Ξ': 'x', 'Ο': 'o', 'Ό': 'o',
+    'Π': 'p', 'Ρ': 'r', 'Σ': 's', 'Τ': 't', 'Υ': 'y', 'Ύ': 'y', 'Ϋ': 'y',
+    'Φ': 'f', 'Χ': 'x', 'Ψ': 'ps', 'Ω': 'o', 'Ώ': 'o'
+};
+
+function transliterateGreek(text) {
+    return text.split('').map(ch => GREEK_TO_LATIN[ch] || ch).join('');
+}
+
+function slugify(text) {
+    if (!text) return '';
+    text = transliterateGreek(text);
+    text = text.toLowerCase();
+    text = text.replace(/[^a-z0-9]+/g, '-');
+    text = text.replace(/-+/g, '-');
+    return text.replace(/^-|-$/g, '');
+}
+
+// Parse showtime string to extract date and time for URL generation
+function parseShowtimeForUrl(showtimeStr) {
+    // Greek month abbreviations
+    const greekMonths = {
+        'Ιαν': '01', 'Φεβ': '02', 'Μαρ': '03', 'Απρ': '04',
+        'Μαΐ': '05', 'Ιουν': '06', 'Ιουλ': '07', 'Αυγ': '08',
+        'Σεπ': '09', 'Οκτ': '10', 'Νοε': '11', 'Δεκ': '12'
+    };
+
+    // Extract date and time: "Κυριακή 07 Δεκ. 16:00"
+    const match = showtimeStr.match(/(\d{1,2})\s+([Α-Ωα-ωάέίόήύώΆΈΉΊΌΎΏ\.]+)\s+(\d{2}):(\d{2})/);
+
+    if (!match) return null;
+
+    const day = match[1].padStart(2, '0');
+    const monthStr = match[2].replace('.', '').trim();
+    const hour = match[3];
+    const minute = match[4];
+
+    // Find month number
+    const month = greekMonths[monthStr];
+    if (!month) return null;
+
+    // Determine year (handle December -> January transition)
+    const now = new Date();
+    const currentYear = now.getFullYear();
+    const currentMonth = now.getMonth() + 1; // 1-indexed
+
+    let year = currentYear;
+    // If current month is December (12) and showtime is January (01), use next year
+    if (currentMonth === 12 && month === '01') {
+        year = currentYear + 1;
+    }
+
+    return {
+        date: `${year}-${month}-${day}`,
+        time: `${hour}-${minute}`,
+        fullShowtime: showtimeStr
+    };
+}
+
+// Generate URL for a specific showtime
+function generateShowtimeUrl(movie, cinema, showtimeStr) {
+    // Parse the showtime
+    const parsed = parseShowtimeForUrl(showtimeStr);
+    if (!parsed) return null;
+
+    // Get movie slug (already exists in movie data)
+    const movieSlug = movie.slug;
+    if (!movieSlug) return null;
+
+    // Create slugs for region and cinema
+    const regionSlug = slugify(cinema.region);
+    const cinemaSlug = slugify(cinema.cinema);
+
+    if (!regionSlug || !cinemaSlug) return null;
+
+    // Build URL: region/{region}/cinema/{cinema}/movie/{movie}/date/time.html
+    const url = `region/${regionSlug}/cinema/${cinemaSlug}/movie/${movieSlug}/${parsed.date}/${parsed.time}.html`;
+
+    return url;
+}
+
 
 // ✅ Dynamic title/meta updates
 function updateMeta(title, description) {
@@ -568,15 +661,18 @@ function renderResults(filteredList, forceEmpty = false) {
             });
 
             const formattedTimes = sortedTimes.map(t => {
-                const match = t.match(/([Α-Ωα-ωάέίόήύώΆΈΉΊΌΎΏ]+)\s*(\d{1,2}\s*[Α-Ωα-ωάέίόήύώΆΈΉΊΌΎΏ]*)?\s*(\d{2}:\d{2})/);
-                if (match) {
-                    const day = match[1]?.trim() || '';
-                    const datePart = match[2]?.trim() || '';
-                    const time = match[3];
-                    const fullDate = [day, datePart].filter(Boolean).join(' ');
-                    return `<span style="display:inline-block;margin:3px 6px;padding:4px 8px;background:#f5f5f5;border-radius:8px;">🕒 <strong>${time}</strong> — ${fullDate}</span>`;
+                // Generate URL for this showtime
+                const showtimeUrl = generateShowtimeUrl(movie, cinema, t);
+
+                // If we have a valid URL, make it a link
+                if (showtimeUrl) {
+                    return `<a href="${showtimeUrl}" target="_blank" style="display:inline-block;margin:3px 6px;padding:4px 8px;background:#f5f5f5;border-radius:8px;text-decoration:none;color:inherit;transition:background 0.2s;" onmouseover="this.style.background='#e0e0e0'" onmouseout="this.style.background='#f5f5f5'" title="Δες λεπτομέρειες προβολής">${t}</a>`;
+                } else {
+                    // Fallback to non-link version
+                    return `<span style="display:inline-block;margin:3px 6px;padding:4px 8px;background:#f5f5f5;border-radius:8px;">${t}</span>`;
                 }
-                return `<span style="display:inline-block;margin:3px 6px;padding:4px 8px;background:#f5f5f5;border-radius:8px;">${t}</span>`;
+
+
             }).join(' ');
 
             const c = document.createElement('div');
