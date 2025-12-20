@@ -8,6 +8,7 @@ import os
 import shutil
 from pathlib import Path
 from datetime import datetime
+from datetime import timezone
 
 
 # Read the Google API key from the file
@@ -1368,12 +1369,9 @@ def create_cinema_structure():
 stats = create_cinema_structure()
 
 
-from datetime import datetime, timezone
-
 BASE_URL = "https://ti-paizei-tora.gr"
-MOVIE_DIR = (
-    "/home/grstathis/ti-paizei-tora.gr/movie"  # relative path to your movie folder
-)
+MOVIE_DIR = "/home/grstathis/ti-paizei-tora.gr/movie"
+REGION_DIR = "/home/grstathis/ti-paizei-tora.gr/region"  # Add region directory
 OUTPUT_FILE = "/home/grstathis/ti-paizei-tora.gr/sitemap.xml"
 
 
@@ -1425,6 +1423,34 @@ def generate_sitemap():
 """
             )
 
+    # --- Region folder structure (showtime pages) ---
+    if os.path.exists(REGION_DIR):
+        for root, dirs, files in os.walk(REGION_DIR):
+            for file in files:
+                if file.endswith(".html"):
+                    # Get full file path
+                    full_file_path = os.path.join(root, file)
+
+                    # Create relative path from REGION_DIR
+                    relative_path = os.path.relpath(full_file_path, REGION_DIR)
+
+                    # Convert to URL path (replace backslashes with forward slashes for Windows compatibility)
+                    url_path = relative_path.replace("\\", "/")
+
+                    # Build the full URL
+                    page_url = f"{BASE_URL}/region/{url_path}"
+
+                    urls.append(
+                        f"""
+  <url>
+    <loc>{page_url}</loc>
+    <lastmod>{now}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+"""
+                    )
+
     # --- Write final XML ---
     sitemap = f"""<?xml version="1.0" encoding="UTF-8"?>
 <urlset 
@@ -1438,6 +1464,7 @@ def generate_sitemap():
         f.write(sitemap)
 
     print(f"Sitemap generated: {OUTPUT_FILE}")
+    print(f"Total URLs: {len(urls)}")
 
 
 generate_sitemap()
