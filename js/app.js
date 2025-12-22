@@ -664,16 +664,24 @@ function renderResults(filteredList, forceEmpty = false) {
                 // Generate URL for this showtime
                 const showtimeUrl = generateShowtimeUrl(movie, cinema, t);
 
-                // If we have a valid URL, make it a link
+                // Escape quotes for onclick attributes
+                const escapedTitle = movie.greek_title.replace(/'/g, "\\'");
+                const escapedShowtime = t.replace(/'/g, "\\'");
+
+                // If we have a valid URL, make it a clickable link with share popup
                 if (showtimeUrl) {
-                    return `<a href="${showtimeUrl}" target="_blank" style="display:inline-block;margin:3px 6px;padding:4px 8px;background:#f5f5f5;border-radius:8px;text-decoration:none;color:inherit;transition:background 0.2s;" onmouseover="this.style.background='#e0e0e0'" onmouseout="this.style.background='#f5f5f5'" title="Δες λεπτομέρειες προβολής">${t}</a>`;
+                    return `<a href="${showtimeUrl}" 
+                        onclick="showShowtimeSharePopup(event, '${showtimeUrl}', '${escapedShowtime}', '${escapedTitle}'); return false;"
+                        style="display:inline-block;margin:3px 6px;padding:4px 8px;background:#f5f5f5;border-radius:8px;text-decoration:none;color:inherit;transition:background 0.2s;cursor:pointer;" 
+                        onmouseover="this.style.background='#e0e0e0'" 
+                        onmouseout="this.style.background='#f5f5f5'" 
+                        title="Κλικ για επιλογές">${t}</a>`;
                 } else {
                     // Fallback to non-link version
                     return `<span style="display:inline-block;margin:3px 6px;padding:4px 8px;background:#f5f5f5;border-radius:8px;">${t}</span>`;
                 }
-
-
             }).join(' ');
+
 
             const c = document.createElement('div');
             c.className = 'cinema';
@@ -935,6 +943,71 @@ async function shareMovie(movieIndex) {
         fallbackCopyToClipboard(shareUrl);
     }
 }
+
+// Add this function after the shareMovie function
+
+// Show share popup for specific showtime
+function showShowtimeSharePopup(event, url, showtimeText, movieTitle) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    // Remove any existing popup
+    const existingPopup = document.querySelector('.showtime-share-popup');
+    if (existingPopup) existingPopup.remove();
+
+    // Create popup
+    const popup = document.createElement('div');
+    popup.className = 'showtime-share-popup';
+    popup.innerHTML = `
+        <div class="showtime-share-content">
+            <button class="close-popup" onclick="this.closest('.showtime-share-popup').remove()">✕</button>
+            <h4>📅 ${showtimeText}</h4>
+            <p style="font-size: 0.9em; color: #666; margin: 8px 0;">${movieTitle}</p>
+            <div class="share-actions">
+                <button onclick="shareShowtime('${url}', '${movieTitle}', '${showtimeText}')" class="share-action-btn">
+                    📤 Μοιράσου
+                </button>
+                <button onclick="window.open('${url}', '_blank'); this.closest('.showtime-share-popup').remove();" class="share-action-btn primary">
+                    🎬 Δες Λεπτομέρειες
+                </button>
+            </div>
+        </div>
+    `;
+
+    document.body.appendChild(popup);
+
+    // Close on outside click
+    setTimeout(() => {
+        popup.addEventListener('click', (e) => {
+            if (e.target === popup) popup.remove();
+        });
+    }, 100);
+}
+
+// Share specific showtime
+async function shareShowtime(url, movieTitle, showtimeText) {
+    const fullUrl = url.startsWith('http') ? url : `${window.location.origin}/${url}`;
+    const shareTitle = `${movieTitle} - ${showtimeText}`;
+    const shareText = `Δες την ταινία "${movieTitle}" στις ${showtimeText}`;
+
+    if (navigator.share) {
+        try {
+            await navigator.share({
+                title: shareTitle,
+                text: shareText,
+                url: fullUrl
+            });
+            document.querySelector('.showtime-share-popup')?.remove();
+        } catch (err) {
+            if (err.name !== 'AbortError') {
+                fallbackCopyToClipboard(fullUrl);
+            }
+        }
+    } else {
+        fallbackCopyToClipboard(fullUrl);
+    }
+}
+
 
 // Fallback function to copy URL to clipboard
 function fallbackCopyToClipboard(url) {
