@@ -11,6 +11,12 @@ from datetime import datetime
 from datetime import timezone
 
 
+BASE_URL = "https://ti-paizei-tora.gr"
+MOVIE_DIR = "/home/grstathis/ti-paizei-tora.gr/movie"
+REGION_DIR = "/home/grstathis/ti-paizei-tora.gr/region"  # Add region directory
+OUTPUT_FILE = "/home/grstathis/ti-paizei-tora.gr/sitemap.xml"
+
+
 # Read the Google API key from the file
 with open("/home/grstathis/ti-paizei-tora.gr/google_api", "r") as file:
     GOOGLE_API_KEY = file.read().strip()
@@ -588,7 +594,7 @@ def extract_imdb_id(url: str):
 
 
 # 🗑️ DELETE OLD MOVIE FOLDER BEFORE REBUILDING
-movie_base_path = "movie"
+movie_base_path = Path(MOVIE_DIR)
 if os.path.exists(movie_base_path):
     print(f"🗑️ Deleting existing movie folder: {movie_base_path}")
     shutil.rmtree(movie_base_path)
@@ -1176,7 +1182,7 @@ def create_cinema_structure():
     ) as f:
         cinemas_data = json.load(f)
 
-    base_path = Path("region")
+    base_path = Path(REGION_DIR)
 
     # 🗑️ DELETE OLD STRUCTURE BEFORE REBUILDING
     if base_path.exists():
@@ -1367,12 +1373,6 @@ def create_cinema_structure():
 
 # Run the function
 stats = create_cinema_structure()
-
-
-BASE_URL = "https://ti-paizei-tora.gr"
-MOVIE_DIR = "/home/grstathis/ti-paizei-tora.gr/movie"
-REGION_DIR = "/home/grstathis/ti-paizei-tora.gr/region"  # Add region directory
-OUTPUT_FILE = "/home/grstathis/ti-paizei-tora.gr/sitemap.xml"
 
 
 def generate_sitemap():
