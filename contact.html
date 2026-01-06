@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="el">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Επικοινωνία – Σινεμά Αθήνας</title>
+    <meta name="description"
+        content="Επικοινωνήστε μαζί μας για προτάσεις, αναφορά προβλημάτων ή ερωτήσεις σχετικά με το ti-paizei-tora.gr">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="icon" type="image/svg+xml" href="ti_paizei_tora_logo.svg">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/contact.css">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HJMKKTQ85R"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-HJMKKTQ85R');
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <header style="text-align:center; margin-bottom:1em;">
+            <a href="/" title="Σινεμά Αθήνας – Αρχική">
+                <img src="ti_paizei_tora_logo.svg" alt="Σινεμά Αθήνας logo" width="180" loading="eager">
+            </a>
+        </header>
+
+        <h1 style="text-align: center; margin: 2rem 0 3rem 0; font-size: 2.5rem; color: #333;">
+            📬 Επικοινωνία
+        </h1>
+
+        <!-- Contact Form -->
+        <section class="contact-section">
+            <div class="contact-container">
+
+                <div class="contact-info-cards">
+                    <div class="info-card">
+                        <div class="info-icon">💡</div>
+                        <h3>Προτάσεις</h3>
+                        <p>Έχεις ιδέες για βελτίωση της υπηρεσίας;</p>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-icon">🐛</div>
+                        <h3>Αναφορά Προβλήματος</h3>
+                        <p>Βρήκες κάποιο σφάλμα ή λάθος στοιχείο;</p>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-icon">❓</div>
+                        <h3>Ερωτήσεις</h3>
+                        <p>Χρειάζεσαι βοήθεια ή έχεις απορίες;</p>
+                    </div>
+                </div>
+
+                <div class="form-wrapper">
+                    <form id="contactForm" action="https://formspree.io/f/xkogkvpy" method="POST">
+
+                        <div class="form-group">
+                            <label for="name">Όνομα *</label>
+                            <input type="text" id="name" name="name" required placeholder="Το όνομά σου">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required placeholder="example@email.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Θέμα *</label>
+                            <select id="subject" name="subject" required>
+                                <option value="">Επίλεξε θέμα...</option>
+                                <option value="suggestion">💡 Πρόταση</option>
+                                <option value="bug">🐛 Αναφορά Προβλήματος</option>
+                                <option value="question">❓ Ερώτηση</option>
+                                <option value="other">📝 Άλλο</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Μήνυμα *</label>
+                            <textarea id="message" name="message" rows="6" required
+                                placeholder="Γράψε το μήνυμά σου εδώ..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="submit-button">
+                                📤 Αποστολή Μηνύματος
+                            </button>
+                        </div>
+
+                        <div id="formStatus" class="form-status" style="display:none;"></div>
+                    </form>
+
+                    <div id="successMessage" class="success-message" style="display:none;">
+                        <div class="success-icon">✅</div>
+                        <h3>Ευχαριστούμε!</h3>
+                        <p>Το μήνυμά σου στάλθηκε επιτυχώς. Θα επικοινωνήσουμε μαζί σου σύντομα.</p>
+                        <button onclick="resetForm()" class="back-button">Αποστολή Νέου Μηνύματος</button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Back to Home -->
+        <div class="quick-actions" style="margin-top: 2em;">
+            <a href="/" class="clear-btn" style="text-decoration: none; display: inline-block;">
+                🏠 Επιστροφή στην Αρχική
+            </a>
+        </div>
+
+        <footer>
+            <p>Σινεμά Αθήνας © 2025 — Οδηγός κινηματογράφων, προβολών και ταινιών στην Αθήνα.</p>
+        </footer>
+    </div>
+
+    <script>
+        const form = document.getElementById("contactForm");
+        const formStatus = document.getElementById("formStatus");
+        const successMessage = document.getElementById("successMessage");
+        const formWrapper = form.parentElement;
+
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            // Show loading status
+            formStatus.textContent = "Αποστολή...";
+            formStatus.className = "form-status";
+            formStatus.style.display = "block";
+
+            const data = new FormData(form);
+
+            try {
+                const response = await fetch(form.action, {
+                    method: "POST",
+                    body: data,
+                    headers: { "Accept": "application/json" }
+                });
+
+                if (response.ok) {
+                    // Hide form and show success message
+                    form.style.display = "none";
+                    formStatus.style.display = "none";
+                    successMessage.style.display = "block";
+                } else {
+                    formStatus.textContent = "❌ Σφάλμα αποστολής. Δοκιμάστε ξανά.";
+                    formStatus.classList.add("error");
+                }
+            } catch (error) {
+                formStatus.textContent = "❌ Αδυναμία σύνδεσης. Ελέγξτε τη σύνδεσή σας.";
+                formStatus.classList.add("error");
+            }
+        });
+
+        function resetForm() {
+            form.reset();
+            form.style.display = "block";
+            successMessage.style.display = "none";
+            formStatus.style.display = "none";
+        }
+
+    </script>
+</body>
+
+</html>

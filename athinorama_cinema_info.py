@@ -1392,6 +1392,18 @@ def generate_sitemap():
 """
     )
 
+    # --- Contact page ---
+    urls.append(
+        f"""
+  <url>
+    <loc>{BASE_URL}/contact.html</loc>
+    <lastmod>{now}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+"""
+    )
+
     # --- Static JSON resources ---
     for resource in ["movies.json", "cinemas.json", "ti_paizei_tora_logo.svg"]:
         urls.append(
