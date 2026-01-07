@@ -646,7 +646,7 @@ for entry in movies_data:
     )
 
     # Output folder: movie/<movie-slug>/index.html
-    out_dir = os.path.join("movie", movie_slug)
+    out_dir = os.path.join(MOVIE_DIR, movie_slug)
     os.makedirs(out_dir, exist_ok=True)
 
     output_file = os.path.join(out_dir, "index.html")

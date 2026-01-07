@@ -358,5 +358,23 @@
     "neighbourhood": "Κουντουριώτικα",
     "formatted_address": "Βασ. Σοφίας 124, Αθήνα 115 26, Ελλάδα",
     "website": "http://athinaion.gr/"
+  },
+  "athinaion experience powered by allianz_λεωφ. β. σοφίας 124 (μετρο αμπελόκηποι)": {
+    "lat": 37.9859587,
+    "lon": 23.7612773,
+    "area": "Αθήνα",
+    "suburb": "",
+    "neighbourhood": "",
+    "formatted_address": "Βασ. Σοφίας 124, Αθήνα 115 26, Ελλάδα",
+    "website": "http://athinaion.gr/"
+  },
+  "δημ. κιν. όνειρο ρέντη_μπαλτατζή & χρ. σμύρνης 84 (έναντι factory), αγ. ιωάννης ρέντη": {
+    "lat": 37.9551048,
+    "lon": 23.6692018,
+    "area": "Άγιος Ιωάννης Ρέντης",
+    "suburb": "",
+    "neighbourhood": "",
+    "formatted_address": "Μπαλτατζή, Αγ. Ιωάννης Ρέντης 182 33, Ελλάδα",
+    "website": "http://cineoneiro.gr/"
   }
 }
