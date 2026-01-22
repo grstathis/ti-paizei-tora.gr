@@ -376,5 +376,14 @@
     "neighbourhood": "",
     "formatted_address": "Μπαλτατζή, Αγ. Ιωάννης Ρέντης 182 33, Ελλάδα",
     "website": "http://cineoneiro.gr/"
+  },
+  "άρτεμις (δημ. κιν/φος)_γιαννάκη 2, μαρκόπουλο": {
+    "lat": 37.8886564,
+    "lon": 23.9330715,
+    "area": "Μαρκόπουλο Μεσογαίας",
+    "suburb": null,
+    "neighbourhood": null,
+    "formatted_address": "Χρήστου Γιαννάκη 2, Μαρκόπουλο Μεσογαίας 190 03, Ελλάδα",
+    "website": "https://www.more.com/cinema/festival/kinimatografos-artemis-markopoulo/"
   }
 }

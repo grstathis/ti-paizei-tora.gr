@@ -1,6 +1,15 @@
 [
   [
     {
+      "greek_title": "28 Χρόνια Μετά: Ο Ναός των Οστών",
+      "original_title": "28 Years Later: The Bone Temple",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/28_xronia_meta_o_naos_ton_oston-10088626",
+      "imdb_link": "http://www.imdb.com/title/tt32141377/",
+      "slug": "28-years-later-the-bone-temple"
+    }
+  ],
+  [
+    {
       "greek_title": "Το Ταρανδάκι των Χριστουγέννων",
       "original_title": "Niko ja Myrskyporojen Arvoitus",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/to_tarandaki_ton_xristougennon-10088252",
@@ -28,6 +37,15 @@
   ],
   [
     {
+      "greek_title": "Αν Είχα Πόδια θα σε Κλοτσούσα",
+      "original_title": "If I Had Legs I'd Kick You",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/an_eixa_podia_tha_se_klotsousa-10088422",
+      "imdb_link": "http://www.imdb.com/title/tt18382850/",
+      "slug": "if-i-had-legs-i-d-kick-you"
+    }
+  ],
+  [
+    {
       "greek_title": "Ανακόντα",
       "original_title": "Anaconda",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/anakonta-10088548",
@@ -37,20 +55,11 @@
   ],
   [
     {
-      "greek_title": "Άνοιξη, Καλοκαίρι, Φθινόπωρο, Χειμώνας... και Άνοιξη",
-      "original_title": "Bom Yeoreum Gaeul Gyeoul Geurigo Bom / Spring, Summer, Fall, Winter… and Spring",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/anoiksi_kalokairi_fthinoporo_xeimonas_kai_anoiksi-1007265",
-      "imdb_link": "http://www.imdb.com/title/tt0374546/",
-      "slug": "spring-summer-fall-winter-and-spring"
-    }
-  ],
-  [
-    {
-      "greek_title": "Αποστολή Άγιος Βασίλης",
-      "original_title": "Mission Santa: Yoyo to the Rescue",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/apostoli_agios_basilis-10088615",
-      "imdb_link": "http://www.imdb.com/title/tt35820129/",
-      "slug": "mission-santa-yoyo-to-the-rescue"
+      "greek_title": "Το Αριστερό μου Χέρι",
+      "original_title": "Zuopiezi Nuhai / Left-Handed Girl",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/to_aristero_mou_xeri-10087914",
+      "imdb_link": "http://www.imdb.com/title/tt27722618/",
+      "slug": "left-handed-girl"
     }
   ],
   [
@@ -73,15 +82,6 @@
   ],
   [
     {
-      "greek_title": "Βερμίλιο: Η Νύφη του Βουνού",
-      "original_title": "Vermiglio",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/bermilio_i_nufi_tou_bounou-10086358",
-      "imdb_link": "http://www.imdb.com/title/tt28618488/",
-      "slug": "vermiglio"
-    }
-  ],
-  [
-    {
       "greek_title": "Βουγονία",
       "original_title": "Bugonia",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/bougonia-10087837",
@@ -100,11 +100,20 @@
   ],
   [
     {
-      "greek_title": "Γυναίκες στα Πρόθυρα Νευρικής Κρίσης",
-      "original_title": "Mujeres al Borde de Un Ataque de Nervios",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/gunaikes_sta_prothura_neurikis_krisis-1003707",
-      "imdb_link": "http://www.imdb.com/title/tt0095675/",
-      "slug": "women-on-the-verge-of-a-nervous-breakdown"
+      "greek_title": "Γερτρούδη",
+      "original_title": "Gertrud",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/gertroudi-1000225",
+      "imdb_link": "http://www.imdb.com/title/tt0058138/",
+      "slug": "gertrud"
+    }
+  ],
+  [
+    {
+      "greek_title": "Greenland 2",
+      "original_title": "Greenland 2: Migration",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/greenland_2-10088631",
+      "imdb_link": "http://www.imdb.com/title/tt14850054/",
+      "slug": "greenland-2-migration"
     }
   ],
   [
@@ -136,15 +145,6 @@
   ],
   [
     {
-      "greek_title": "Εξολοθρευτής Άγγελος",
-      "original_title": "El Angel Exterminador",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/eksolothreutis_aggelos-1007248",
-      "imdb_link": "http://www.imdb.com/title/tt0056732/",
-      "slug": "the-exterminating-angel"
-    }
-  ],
-  [
-    {
       "greek_title": "Ο Έρωτας Γράφεται...",
       "original_title": "",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/o_erotas_grafetai-10088542",
@@ -162,38 +162,11 @@
   ],
   [
     {
-      "greek_title": "Θάβουμε τους Νεκρούς",
-      "original_title": "We Bury the Dead",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/thaboume_tous_nekrous-10088546",
-      "imdb_link": "http://www.imdb.com/title/tt29713093/",
-      "slug": "we-bury-the-dead"
-    }
-  ],
-  [
-    {
-      "greek_title": "Το Θεώρημα",
-      "original_title": "Teorema",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/to_theorima-1003497",
-      "imdb_link": "http://www.imdb.com/title/tt0063678  /",
-      "slug": "teorema"
-    }
-  ],
-  [
-    {
-      "greek_title": "Θολός Βυθός",
+      "greek_title": "Eraserhead",
       "original_title": "",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/tholos_buthos-10084910",
-      "imdb_link": "http://www.imdb.com/title/tt34517134/",
-      "slug": "tholos-vythos"
-    }
-  ],
-  [
-    {
-      "greek_title": "Η Θυσία",
-      "original_title": "Offret",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/i_thusia-1002477",
-      "imdb_link": "http://www.imdb.com/title/tt0091670/",
-      "slug": "the-sacrifice"
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/eraserhead-1004897",
+      "imdb_link": "http://www.imdb.com/title/tt0074486/",
+      "slug": "eraserhead"
     }
   ],
   [
@@ -215,36 +188,10 @@
   ],
   [
     {
-      "greek_title": "Ο Κανόνας του Παιχνιδιού",
-      "original_title": "La Regle Du Jeu",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/o_kanonas_tou_paixnidiou-1008957",
-      "imdb_link": "http://www.imdb.com/title/tt0031885/",
-      "slug": "the-rules-of-the-game"
-    }
-  ],
-  [
-    {
       "greek_title": "Καποδίστριας",
       "original_title": "",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/kapodistrias-10088540",
       "imdb_link": "http://www.imdb.com/title/tt38747537/"
-    }
-  ],
-  [
-    {
-      "greek_title": "Το Κάστρο στον Ουρανό",
-      "original_title": "Tenkû no shiro Rapyuta / Castle in the Sky",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/to_kastro_ston_ourano-10083283",
-      "imdb_link": "http://www.imdb.com/title/tt0092067/",
-      "slug": "castle-in-the-sky"
-    }
-  ],
-  [
-    {
-      "greek_title": "Ο Κατεργάρης των Χριστουγέννων",
-      "original_title": "How The Grinch Stole Christmas",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/o_katergaris_ton_xristougennon-1006322",
-      "imdb_link": null
     }
   ],
   [
@@ -258,46 +205,28 @@
   ],
   [
     {
-      "greek_title": "Το Κινούμενο Κάστρο",
-      "original_title": "Howl's Moving Castle / Hauru No Ugoku Shiro",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/to_kinoumeno_kastro-1007721",
-      "imdb_link": "http://www.imdb.com/title/tt0347149/",
-      "slug": "howl-s-moving-castle"
+      "greek_title": "Kontinental ’25",
+      "original_title": "",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/kontinental_’25-10088700",
+      "imdb_link": "http://www.imdb.com/title/tt35492581/",
+      "slug": "kontinental-25"
     }
   ],
   [
     {
-      "greek_title": "Λαβύρινθος",
+      "greek_title": "Mankind's Folly",
       "original_title": "",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/laburinthos-10088545",
-      "imdb_link": "http://www.imdb.com/title/tt11575608/",
-      "slug": "lavyrinthos"
-    }
-  ],
-  [
-    {
-      "greek_title": "The Loner",
-      "original_title": "",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/the_loner-10088544",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/mankinds_folly-10088714",
       "imdb_link": null
     }
   ],
   [
     {
-      "greek_title": "Mauthausen",
+      "greek_title": "Marty Supreme",
       "original_title": "",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/mauthausen_-10081312",
-      "imdb_link": "http://www.imdb.com/title/tt30306038/",
-      "slug": "mauthausen"
-    }
-  ],
-  [
-    {
-      "greek_title": "Ο Μεγάλος Δικτάτωρ",
-      "original_title": "The Great Dictator",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/o_megalos_diktator-1002765",
-      "imdb_link": "http://www.imdb.com/title/tt0032553/",
-      "slug": "the-great-dictator"
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/marty_supreme-10088633",
+      "imdb_link": "http://www.imdb.com/title/tt32916440/",
+      "slug": "marty-supreme"
     }
   ],
   [
@@ -329,10 +258,19 @@
   ],
   [
     {
-      "greek_title": "Μόνος στο Σπίτι",
-      "original_title": "Home Alone",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/monos_sto_spiti-1004151",
+      "greek_title": "Μοιραίο Πάθος",
+      "original_title": "Damage",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/moiraio_pathos-1004580",
       "imdb_link": null
+    }
+  ],
+  [
+    {
+      "greek_title": "Μπλε Βελούδο",
+      "original_title": "Blue Velvet",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/mple_beloudo-1000597",
+      "imdb_link": "http://www.imdb.com/title/tt0090756/",
+      "slug": "blue-velvet"
     }
   ],
   [
@@ -346,15 +284,6 @@
   ],
   [
     {
-      "greek_title": "Η Ναυσικά της Κοιλάδας των Ανέμων",
-      "original_title": "Kaze no tani no Naushika / Nausicaä of the Valley of the Wind",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/i_nausika_tis_koiladas_ton_anemon-10083282",
-      "imdb_link": "http://www.imdb.com/title/tt0087544/",
-      "slug": "nausicaa-of-the-valley-of-the-wind"
-    }
-  ],
-  [
-    {
       "greek_title": "Νυρεμβέργη",
       "original_title": "Nuremberg",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/nurembergi-10088007",
@@ -364,44 +293,9 @@
   ],
   [
     {
-      "greek_title": "Νύχτα Δολοφόνων",
-      "original_title": "Cul-de-sac",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/nuxta_dolofonon-1002671",
-      "imdb_link": "http://www.imdb.com/title/tt0060268/",
-      "slug": "cul-de-sac"
-    }
-  ],
-  [
-    {
-      "greek_title": "Audition",
-      "original_title": "Ôdishon",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/audition-10086282",
-      "imdb_link": "http://www.imdb.com/title/tt0235198/",
-      "slug": "audition"
-    }
-  ],
-  [
-    {
-      "greek_title": "Τα Παιδιά του Παραδείσου",
-      "original_title": "Les Enfants du Paradis",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/ta_paidia_tou_paradeisou-10008792",
-      "imdb_link": "http://www.imdb.com/title/tt0037674/",
-      "slug": "children-of-paradise"
-    }
-  ],
-  [
-    {
-      "greek_title": "Ποιος Παγίδεψε τον Ρότζερ Ράμπιτ",
-      "original_title": "Who Framed Roger Rabbit",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/poios_pagidepse_ton_rotzer_rampit-1003692",
-      "imdb_link": null
-    }
-  ],
-  [
-    {
-      "greek_title": "Πολύ Σκληρός για να Πεθάνει",
-      "original_title": "Die Hard",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/polu_skliros_gia_na_pethanei-1003613",
+      "greek_title": "Ολέθρια Σχέση",
+      "original_title": "Fatal Attraction",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/olethria_sxesi-1002705",
       "imdb_link": null
     }
   ],
@@ -415,19 +309,28 @@
   ],
   [
     {
-      "greek_title": "Πριγκίπισσα Μονονόκε",
-      "original_title": "Mononoke-hime / Princess Mononoke",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/prigkipissa_mononoke-10083373",
-      "imdb_link": "http://www.imdb.com/title/tt0119698/",
-      "slug": "princess-mononoke"
+      "greek_title": "Ρούφους: Ο Θαλάσσιος Δράκος που δεν Ήξερε Κολύμπι",
+      "original_title": "Ruffen - Sjøormen Som Ikke Kunne Svømme",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/roufous_o_thalassios_drakos_pou_den_iksere_kolumpi-10088670",
+      "imdb_link": "http://www.imdb.com/title/tt32267711/",
+      "slug": "rufus"
     }
   ],
   [
     {
-      "greek_title": "Σε Πτώση",
-      "original_title": "On Falling",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/se_ptosi-10088529",
+      "greek_title": "Το Σκάφος του Τρόμου",
+      "original_title": "Event Horizon",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/to_skafos_tou_tromou-1005699",
       "imdb_link": null
+    }
+  ],
+  [
+    {
+      "greek_title": "Ο Σούπερ Τσάρλι",
+      "original_title": "Super-Charlie",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/o_souper_tsarli-10088630",
+      "imdb_link": "http://www.imdb.com/title/tt28639152/",
+      "slug": "super-charlie"
     }
   ],
   [
@@ -437,15 +340,6 @@
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/spasmeni_fleba-10088221",
       "imdb_link": "http://www.imdb.com/title/tt32919616/",
       "slug": "spasmeni-fleva"
-    }
-  ],
-  [
-    {
-      "greek_title": "Στο Νησί του Άμρουμ",
-      "original_title": "Amrum",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/sto_nisi_tou_amroum-10087675",
-      "imdb_link": "http://www.imdb.com/title/tt22507216/",
-      "slug": "amrum"
     }
   ],
   [
@@ -468,20 +362,36 @@
   ],
   [
     {
-      "greek_title": "Ταξίδι στη Χώρα των Θαυμάτων",
-      "original_title": "Spirited Away",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/taksidi_sti_xora_ton_thaumaton-1007084",
-      "imdb_link": "http://www.imdb.com/title/tt0245429/",
-      "slug": "spirited-away"
-    }
-  ],
-  [
-    {
       "greek_title": "Ταξίδι στην Ιταλία",
       "original_title": "Viaggio in Italia",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/taksidi_stin_italia-10048917",
       "imdb_link": "http://www.imdb.com/title/tt0046511/",
       "slug": "journey-to-italy"
+    }
+  ],
+  [
+    {
+      "greek_title": "Τι σου Λέει Αυτή η Φύση",
+      "original_title": "Geu Jayeoni Nege Mworago Hani / What Does That Nature Say to You",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/ti_sou_leei_auti_i_fusi-10088713",
+      "imdb_link": "http://www.imdb.com/title/tt35499025/",
+      "slug": "geu-jayeoni-nege-mworago-hani"
+    }
+  ],
+  [
+    {
+      "greek_title": "Τι Ψυχή θα Παραδώσεις Μωρή; Μέρος Πρώτο",
+      "original_title": "",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/ti_psuxi_tha_paradoseis_mori_meros_proto-10088627",
+      "imdb_link": null
+    }
+  ],
+  [
+    {
+      "greek_title": "Ο Ύποπτος Κόσμος του Τουίν Πικς",
+      "original_title": "Twin Peaks: Fire Walk with Me",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/o_upoptos_kosmos_tou_touin_piks-1004675",
+      "imdb_link": null
     }
   ],
   [
@@ -495,15 +405,6 @@
   ],
   [
     {
-      "greek_title": "Η Φλαμένκο Κιθάρα του Γεράι Κορτές",
-      "original_title": "La Guitarra Flamenca de Yerai Cortés",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/i_flamenko_kithara_tou_gerai_kortes-10088614",
-      "imdb_link": "http://www.imdb.com/title/tt33336813/",
-      "slug": "la-guitarra-flamenca-de-yerai-cortes"
-    }
-  ],
-  [
-    {
       "greek_title": "Η Φωνή της Χιντ Ρατζάμπ",
       "original_title": "Sawt Hind Rajab / The Voice of Hind Rajab",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/i_foni_tis_xint_ratzamp-10088249",
@@ -513,38 +414,10 @@
   ],
   [
     {
-      "greek_title": "Το Χαμίνι",
-      "original_title": "THE KID",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/to_xamini_-1004469",
-      "imdb_link": "http://www.imdb.com/title/tt0012349/",
-      "slug": "the-kid"
-    }
-  ],
-  [
-    {
-      "greek_title": "Το Χειρόγραφο της Σαραγόσα",
-      "original_title": "Recopis Znaleziony w Saragossie / The Saragossa Manuscript",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/to_xeirografo_tis_saragosa-10024852",
-      "imdb_link": "http://www.imdb.com/title/tt0059643/",
-      "slug": "the-saragossa-manuscript"
-    }
-  ],
-  [
-    {
-      "greek_title": "Χριστούγεννα με τον Ποντικούλη",
-      "original_title": "Hvis Ingen Går i Fella / A Mouse Hunt for Christmas",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/xristougenna_me_ton_pontikouli-10088494",
-      "imdb_link": "http://www.imdb.com/title/tt35727399/",
-      "slug": "a-mouse-hunt-for-christmas"
-    }
-  ],
-  [
-    {
-      "greek_title": "Το Χρώμα του Ροδιού",
-      "original_title": "Sayat Nova",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/to_xroma_tou_rodiou-1001949",
-      "imdb_link": "http://www.imdb.com/title/tt0063555/",
-      "slug": "the-color-of-pomegranates"
+      "greek_title": "Χαμένη Λεωφόρος",
+      "original_title": "Lost Highway",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/xameni_leoforos-1005390",
+      "imdb_link": null
     }
   ]
 ]
