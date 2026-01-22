@@ -42,7 +42,7 @@ def extract_movie_links():
         if title_div:
             link = title_div.find("a")
             if link and link.get("href"):
-                movie_links.append(link["href"])
+                movie_links.append(link["href"].replace('\n', ' ').replace('\r', '').replace(' ',''))
 
     return movie_links
 
@@ -393,11 +393,12 @@ def get_or_create_cinema_info(name, address, cinema_db):
 
 
 def get_movie_theater_times(url, cinema_db):
+    cinemas_data = []
+    movies_data = []
     response = requests.get(url)
     response.raise_for_status()
+
     soup = BeautifulSoup(response.text, "html.parser")
-    movies_data = []
-    cinemas_data = []
 
     # --- Movie Titles ---
     title_greek_tag = soup.find("h1")
