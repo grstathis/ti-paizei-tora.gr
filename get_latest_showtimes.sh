@@ -61,8 +61,13 @@ echo "put -O $REMOTE_DIR $LOCAL_DIR/$f;"
 done)
 
 # Upload folders recursively
+mv $REMOTE_DIR/movie $REMOTE_DIR/movie_old;
+mv $REMOTE_DIR/region $REMOTE_DIR/region_old;
 mirror -R -P 5  --no-symlinks $LOCAL_DIR/movie $REMOTE_DIR/movie;
 mirror -R -P 5  --no-symlinks $LOCAL_DIR/region $REMOTE_DIR/region;
+
+rm -rf $REMOTE_DIR/movie_old;
+rm -rf $REMOTE_DIR/region_old;
 
 bye
 EOF
