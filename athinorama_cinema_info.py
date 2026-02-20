@@ -406,14 +406,70 @@ def get_movie_theater_times(url, cinema_db):
         title_greek_tag.get_text(strip=True) if title_greek_tag else "Unknown Title"
     )
 
-    card = soup.find_all("ul", class_="review-details")
-    for c in card:
-        original_tag = c.find("span", class_="original-title")
-        if original_tag:
-            original_title = original_tag.get_text()
-        else:
-            original_title = ""
+    # --- Extract Review Details ---
+    original_title = ""
+    year = ""
+    color = ""
+    duration = ""
+    rating_age = ""
+    rating_stars = None
 
+    review_details = soup.find("ul", class_="review-details")
+    if review_details:
+        # Original title
+        original_tag = review_details.find("span", class_="original-title")
+        if original_tag:
+            original_title = original_tag.get_text(strip=True)
+
+        # Year
+        year_tag = review_details.find("span", class_="year")
+        if year_tag:
+            year = year_tag.get_text(strip=True)
+
+        # Color (black & white or color)
+        color_tag = review_details.find("span", class_="color")
+        if color_tag:
+            color = color_tag.get_text(strip=True)
+
+        # Duration
+        duration_tag = review_details.find("span", class_="duration")
+        if duration_tag:
+            duration = duration_tag.get_text(strip=True)
+
+        # Age rating (Κ-12, etc.)
+        appropriate_tag = review_details.find("span", class_="appropriate")
+        if appropriate_tag:
+            rating_age = appropriate_tag.get_text(strip=True)
+
+        # Star rating
+        rating_div = review_details.find("div", class_="rating-stars")
+        if rating_div:
+            rating_value_tag = rating_div.find("span", class_="rating-value")
+            if rating_value_tag:
+                try:
+                    rating_stars = float(rating_value_tag.get_text(strip=True))
+                except ValueError:
+                    rating_stars = None
+
+    # --- Extract Tags (genres and nationality) ---
+    movie_type = ""
+    movie_country = ""
+    review_tags = soup.find("ul", class_="review-tags")
+    if review_tags:
+        tag_items = review_tags.find_all("li")
+        tags_list = []
+        for tag_item in tag_items:
+            tag_link = tag_item.find("a")
+            if tag_link:
+                tags_list.append(tag_link.get_text(strip=True))
+
+        # First tag is movie type (genre), second is country
+        if len(tags_list) >= 1:
+            movie_type = tags_list[0]
+        if len(tags_list) >= 2:
+            movie_country = tags_list[1]
+
+    # --- IMDb Link ---
     imdb = soup.find("a", class_="imdb")
     imdb = imdb.get("href") if imdb else None
 
@@ -421,6 +477,13 @@ def get_movie_theater_times(url, cinema_db):
         {
             "greek_title": title_greek,
             "original_title": original_title,
+            "year": year,
+            "color": color,
+            "duration": duration,
+            "rating_age": rating_age,
+            "rating_stars": rating_stars,
+            "movie_type": movie_type,
+            "movie_country": movie_country,
             "athinorama_link": url,
             "imdb_link": imdb,
         }

@@ -627,11 +627,25 @@ function renderResults(filteredList, forceEmpty = false) {
         const movieDiv = document.createElement('div');
         movieDiv.className = 'movie';
 
+        // Build movie metadata string (minimal display)
+        const metadataParts = [];
+        if (movie.year) metadataParts.push(movie.year);
+        if (movie.movie_country) metadataParts.push(movie.movie_country);
+        if (movie.movie_type) metadataParts.push(movie.movie_type);
+        if (movie.duration) metadataParts.push(movie.duration);
+
+        const metadataLine = metadataParts.length > 0
+            ? `<div class="movie-metadata">${metadataParts.join(' • ')}</div>`
+            : '';
+
         // Create collapsible movie structure
         movieDiv.innerHTML = `
     <div class="movie-summary" onclick="toggleMovie('${uniqueMovieId}')">
       <div class="movie-summary-header">
-        <h2 class="movie-summary-title">${displayTitle}</h2>
+        <div class="movie-title-section">
+          <h2 class="movie-summary-title">${displayTitle}</h2>
+          ${metadataLine}
+        </div>
         <div class="external-links">
           ${externalLinks}
         </div>

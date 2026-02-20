@@ -817,17 +817,27 @@
 
    .movie-summary-header {
        display: flex;
-       align-items: center;
+       align-items: flex-start;
        gap: 1em;
        margin-bottom: 1em;
        flex-wrap: wrap;
+       justify-content: space-between;
+   }
+
+   .movie-title-section {
+       flex: 1;
+       min-width: 200px;
    }
 
    .movie-summary-title {
-       margin: 0;
-       flex: 1;
-       min-width: 200px;
+       margin: 0 0 0.3em 0;
        color: #333;
+   }
+
+   .movie-metadata {
+       font-size: 0.85em;
+       color: #777;
+       line-height: 1.4;
    }
 
    .movie-summary-info {
