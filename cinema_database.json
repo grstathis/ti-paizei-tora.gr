@@ -385,5 +385,14 @@
     "neighbourhood": null,
     "formatted_address": "Χρήστου Γιαννάκη 2, Μαρκόπουλο Μεσογαίας 190 03, Ελλάδα",
     "website": "https://www.more.com/cinema/festival/kinimatografos-artemis-markopoulo/"
+  },
+  "αβάνα_λεωφ. κηφισίας 234 & λυκούργου 3, χαλάνδρι": {
+    "lat": 38.0151999,
+    "lon": 23.7848277,
+    "area": "Χαλάνδρι",
+    "suburb": "Χαλάνδρι",
+    "neighbourhood": "Τρίγωνο Αγίας Βαρβάρας",
+    "formatted_address": "Λεωφ. Κηφισίας 234, Χαλάνδρι 152 31, Ελλάδα",
+    "website": "https://m.facebook.com/pages/category/Movie-Theater/Cine-%CE%91%CE%B2%CE%AC%CE%BD%CE%B1-1581161802196554/?locale2=el_GR"
   }
 }
