@@ -655,6 +655,52 @@ function renderResults(filteredList, forceEmpty = false) {
             ? `<div class="movie-metadata">${metadataParts.join(' • ')}</div>`
             : '';
 
+        // Build ratings display
+        const ratingsHTML = [];
+
+        // Athinorama rating (scale to 10)
+        if (movie.rating_stars) {
+            const athRating = parseFloat(movie.rating_stars) * 2;
+            if (athRating > 0) {
+                const isHigh = athRating >= 7.5;
+                const displayRating = Number.isInteger(athRating) ? athRating : athRating.toFixed(1);
+                ratingsHTML.push(`<a href="${movie.athinorama_link || '#'}" target="_blank" class="rating-badge athinorama-rating" title="Βαθμολογία Athinorama: ${displayRating}/10" data-rating-high="${isHigh}">
+                    <span class="rating-source">📰 Athinorama</span>
+                    <span class="rating-value">${displayRating}/10</span>
+                </a>`);
+            }
+        }
+
+        // Flix rating
+        if (movie.flix_rating) {
+            const flixRating = parseFloat(movie.flix_rating);
+            if (flixRating > 0) {
+                const isHigh = flixRating >= 7.5;
+                const displayRating = Number.isInteger(flixRating) ? flixRating : flixRating.toFixed(1);
+                ratingsHTML.push(`<a href="${movie.flix_url || '#'}" target="_blank" class="rating-badge flix-rating" title="Βαθμολογία Flix: ${displayRating}/10" data-rating-high="${isHigh}">
+                    <span class="rating-source">🎬 Flix</span>
+                    <span class="rating-value">${displayRating}/10</span>
+                </a>`);
+            }
+        }
+
+        // Lifo rating
+        if (movie.lifo_rating) {
+            const lifoRating = parseFloat(movie.lifo_rating);
+            if (lifoRating > 0) {
+                const isHigh = lifoRating >= 7.5;
+                const displayRating = Number.isInteger(lifoRating) ? lifoRating : lifoRating.toFixed(1);
+                ratingsHTML.push(`<a href="${movie.lifo_url || '#'}" target="_blank" class="rating-badge lifo-rating" title="Βαθμολογία Lifo: ${displayRating}/10" data-rating-high="${isHigh}">
+                    <span class="rating-source">📝 Lifo</span>
+                    <span class="rating-value">${displayRating}/10</span>
+                </a>`);
+            }
+        }
+
+        const ratingsLine = ratingsHTML.length > 0
+            ? `<div class="movie-ratings">${ratingsHTML.join('')}</div>`
+            : '';
+
         // Create collapsible movie structure
         movieDiv.innerHTML = `
     <div class="movie-summary" onclick="toggleMovie('${uniqueMovieId}')">
@@ -663,6 +709,7 @@ function renderResults(filteredList, forceEmpty = false) {
         <div class="movie-title-section">
           <h2 class="movie-summary-title">${displayTitle}</h2>
           ${metadataLine}
+          ${ratingsLine}
         </div>
         <div class="external-links">
           ${externalLinks}

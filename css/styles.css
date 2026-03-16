@@ -1098,3 +1098,143 @@ footer {
         right: 1.2em;
     }
 }
+
+/* ========== Movie Ratings Badges ========== */
+
+.movie-ratings {
+    display: flex;
+    gap: 0.75em;
+    margin-top: 0.8em;
+    padding: 0.8em;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 10px;
+    border-left: 4px solid #667eea;
+    flex-wrap: wrap;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.movie-ratings::before {
+    content: '⭐ Βαθμολογίες:';
+    font-weight: 700;
+    font-size: 0.9em;
+    color: #495057;
+    margin-right: 0.3em;
+}
+
+.rating-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    padding: 0.5em 0.9em;
+    border-radius: 10px;
+    font-size: 0.9em;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+    font-weight: 600;
+    position: relative;
+    overflow: hidden;
+}
+
+.rating-badge::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.3);
+    transition: left 0.4s ease;
+}
+
+.rating-badge:hover::before {
+    left: 100%;
+}
+
+.rating-badge:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+.rating-source {
+    font-weight: 700;
+    font-size: 0.9em;
+    letter-spacing: 0.3px;
+}
+
+.rating-value {
+    font-weight: 800;
+    font-size: 1.1em;
+    letter-spacing: 0.5px;
+}
+
+/* Athinorama rating - vibrant purple theme */
+.athinorama-rating {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: 2px solid rgba(102, 126, 234, 0.3);
+}
+
+.athinorama-rating:hover {
+    background: linear-gradient(135deg, #5568d3 0%, #6a3f8f 100%);
+    border-color: rgba(102, 126, 234, 0.6);
+}
+
+/* Flix rating - vibrant teal theme */
+.flix-rating {
+    background: linear-gradient(135deg, #00BCD4 0%, #0097A7 100%);
+    color: white;
+    border: 2px solid rgba(0, 188, 212, 0.3);
+}
+
+.flix-rating:hover {
+    background: linear-gradient(135deg, #00ACC1 0%, #00838F 100%);
+    border-color: rgba(0, 188, 212, 0.6);
+}
+
+/* Lifo rating - vibrant orange/amber theme */
+.lifo-rating {
+    background: linear-gradient(135deg, #FF9800 0%, #F57C00 100%);
+    color: white;
+    border: 2px solid rgba(255, 152, 0, 0.3);
+}
+
+.lifo-rating:hover {
+    background: linear-gradient(135deg, #FB8C00 0%, #E65100 100%);
+    border-color: rgba(255, 152, 0, 0.6);
+}
+
+/* Add sparkle effect for high ratings */
+.rating-badge[data-rating-high="true"] {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15); }
+    50% { box-shadow: 0 3px 16px rgba(255, 215, 0, 0.4); }
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .movie-ratings {
+        margin-top: 0.6em;
+        padding: 0.6em;
+        gap: 0.5em;
+    }
+
+    .movie-ratings::before {
+        font-size: 0.85em;
+        width: 100%;
+        margin-bottom: 0.3em;
+    }
+
+    .rating-badge {
+        font-size: 0.85em;
+        padding: 0.4em 0.7em;
+    }
+
+    .rating-value {
+        font-size: 1em;
+    }
+}

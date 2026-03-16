@@ -452,7 +452,9 @@ def get_movie_theater_times(url, cinema_db):
             rating_value_tag = rating_div.find("span", class_="rating-value")
             if rating_value_tag:
                 try:
-                    rating_stars = float(rating_value_tag.get_text(strip=True))
+                    # Replace comma with dot for Greek decimal format
+                    rating_text = rating_value_tag.get_text(strip=True).replace(',', '.')
+                    rating_stars = float(rating_text)
                 except ValueError:
                     rating_stars = None
 
