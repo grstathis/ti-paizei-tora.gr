@@ -582,11 +582,12 @@ function renderResults(filteredList, forceEmpty = false) {
         list = filterPastTimesFromToday(list);
     }
 
-    list.forEach((movieCinemas, idx) => {
-        if (selectedMovies.length && !selectedMovies.includes(String(idx))) return;
+    // Create array of movies with their cinema counts for sorting
+    const moviesWithCounts = list.map((movieCinemas, idx) => {
+        if (selectedMovies.length && !selectedMovies.includes(String(idx))) return null;
 
         const movie = moviesData[idx]?.[0];
-        if (!movie) return;
+        if (!movie) return null;
 
         const validCinemas = movieCinemas.filter(c => c.timetable && c.timetable.flat().length > 0);
         const cinemasToShow = selectedCinemas.length
@@ -597,7 +598,23 @@ function renderResults(filteredList, forceEmpty = false) {
             ? cinemasToShow.filter(c => selectedRegions.includes(c.region))
             : cinemasToShow;
 
-        if (regionFiltered.length === 0) return;
+        if (regionFiltered.length === 0) return null;
+
+        return {
+            idx,
+            movie,
+            movieCinemas,
+            regionFiltered,
+            cinemaCount: regionFiltered.length
+        };
+    }).filter(item => item !== null);
+
+    // Sort by cinema count (descending - most cinemas first)
+    moviesWithCounts.sort((a, b) => b.cinemaCount - a.cinemaCount);
+
+    // Now render the sorted movies
+    moviesWithCounts.forEach(({ idx, movie, movieCinemas, regionFiltered }, arrayIndex) => {
+        const isTopResult = arrayIndex === 0; // First movie in sorted list
 
         // Create movie summary data
         const movieSummary = createMovieSummary(regionFiltered);
@@ -625,7 +642,7 @@ function renderResults(filteredList, forceEmpty = false) {
     </button>`;
 
         const movieDiv = document.createElement('div');
-        movieDiv.className = 'movie';
+        movieDiv.className = 'movie' + (isTopResult ? ' popular-movie' : '');
 
         // Build movie metadata string (minimal display)
         const metadataParts = [];
@@ -641,6 +658,7 @@ function renderResults(filteredList, forceEmpty = false) {
         // Create collapsible movie structure
         movieDiv.innerHTML = `
     <div class="movie-summary" onclick="toggleMovie('${uniqueMovieId}')">
+      ${isTopResult ? '<div class="popular-badge">🔥 Δημοφιλής</div>' : ''}
       <div class="movie-summary-header">
         <div class="movie-title-section">
           <h2 class="movie-summary-title">${displayTitle}</h2>
