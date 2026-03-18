@@ -616,6 +616,29 @@ function renderResults(filteredList, forceEmpty = false) {
     moviesWithCounts.forEach(({ idx, movie, movieCinemas, regionFiltered }, arrayIndex) => {
         const isTopResult = arrayIndex === 0; // First movie in sorted list
 
+        // Check for rating disparity (controversial ratings)
+        const ratings = [];
+        if (movie.rating_stars) {
+            const athRating = parseFloat(movie.rating_stars) * 2;
+            if (athRating > 0) ratings.push(athRating);
+        }
+        if (movie.flix_rating) {
+            const flixRating = parseFloat(movie.flix_rating);
+            if (flixRating > 0) ratings.push(flixRating);
+        }
+        if (movie.lifo_rating) {
+            const lifoRating = parseFloat(movie.lifo_rating);
+            if (lifoRating > 0) ratings.push(lifoRating);
+        }
+
+        // Determine if there's a rating disparity (difference of 2.5+ points between highest and lowest)
+        let hasDisparity = false;
+        if (ratings.length >= 2) {
+            const maxRating = Math.max(...ratings);
+            const minRating = Math.min(...ratings);
+            hasDisparity = (maxRating - minRating) >= 2.5;
+        }
+
         // Create movie summary data
         const movieSummary = createMovieSummary(regionFiltered);
         const uniqueMovieId = `movie-${Math.random().toString(36).substr(2, 9)}`;
@@ -642,7 +665,10 @@ function renderResults(filteredList, forceEmpty = false) {
     </button>`;
 
         const movieDiv = document.createElement('div');
-        movieDiv.className = 'movie' + (isTopResult ? ' popular-movie' : '');
+        let movieClasses = 'movie';
+        if (isTopResult) movieClasses += ' popular-movie';
+        if (hasDisparity) movieClasses += ' controversial-movie';
+        movieDiv.className = movieClasses;
 
         // Build movie metadata string (minimal display)
         const metadataParts = [];
@@ -705,6 +731,7 @@ function renderResults(filteredList, forceEmpty = false) {
         movieDiv.innerHTML = `
     <div class="movie-summary" onclick="toggleMovie('${uniqueMovieId}')">
       ${isTopResult ? '<div class="popular-badge">🔥 Δημοφιλής</div>' : ''}
+      ${hasDisparity ? '<div class="controversial-badge">⚡ Οι Απόψεις Διίστανται</div>' : ''}
       <div class="movie-summary-header">
         <div class="movie-title-section">
           <h2 class="movie-summary-title">${displayTitle}</h2>
