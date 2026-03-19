@@ -8,11 +8,82 @@ from bs4 import BeautifulSoup
 import json
 import re
 from unidecode import unidecode
-import os
 import unicodedata
-from typing import Iterable, Tuple, Any, Dict, Set, List
-import shutil
 import time
+
+
+# ----------------------------------------------------------------------------
+# Helper Functions
+# ----------------------------------------------------------------------------
+
+
+def greek_to_latin_slug(text):
+    """
+    Transliterate Greek text to Latin characters matching Athinorama/LIFO style.
+    This provides better matching than unidecode which uses 'y' for 'υ'.
+    """
+    if not text:
+        return ""
+
+    # Greek to Latin transliteration map (Athinorama style)
+    greek_map = {
+        'α': 'a', 'ά': 'a', 'Α': 'a', 'Ά': 'a',
+        'β': 'v', 'Β': 'v',
+        'γ': 'g', 'Γ': 'g',
+        'δ': 'd', 'Δ': 'd',
+        'ε': 'e', 'έ': 'e', 'Ε': 'e', 'Έ': 'e',
+        'ζ': 'z', 'Ζ': 'z',
+        'η': 'i', 'ή': 'i', 'Η': 'i', 'Ή': 'i',
+        'θ': 'th', 'Θ': 'th',
+        'ι': 'i', 'ί': 'i', 'ϊ': 'i', 'ΐ': 'i', 'Ι': 'i', 'Ί': 'i', 'Ϊ': 'i',
+        'κ': 'k', 'Κ': 'k',
+        'λ': 'l', 'Λ': 'l',
+        'μ': 'm', 'Μ': 'm',
+        'ν': 'n', 'Ν': 'n',
+        'ξ': 'x', 'Ξ': 'x',
+        'ο': 'o', 'ό': 'o', 'Ο': 'o', 'Ό': 'o',
+        'π': 'p', 'Π': 'p',
+        'ρ': 'r', 'Ρ': 'r',
+        'σ': 's', 'ς': 's', 'Σ': 's',
+        'τ': 't', 'Τ': 't',
+        'υ': 'u', 'ύ': 'u', 'ϋ': 'u', 'ΰ': 'u', 'Υ': 'u', 'Ύ': 'u', 'Ϋ': 'u',
+        'φ': 'f', 'Φ': 'f',
+        'χ': 'ch', 'Χ': 'ch',
+        'ψ': 'ps', 'Ψ': 'ps',
+        'ω': 'o', 'ώ': 'o', 'Ω': 'o', 'Ώ': 'o',
+    }
+
+    # Apply Greek transliteration
+    result = []
+    for char in text:
+        if char in greek_map:
+            result.append(greek_map[char])
+        else:
+            result.append(char)
+
+    return ''.join(result)
+
+
+def title_to_slug(text):
+    """Convert a movie title to a URL slug similar to how LIFO/Athinorama does it"""
+    if not text:
+        return ""
+
+    # First, transliterate Greek characters to Latin (Athinorama style)
+    text = greek_to_latin_slug(text)
+
+    # Then handle any remaining non-Greek characters with unidecode
+    text = unidecode(text)
+
+    # Convert to lowercase
+    text = text.lower()
+
+    # Remove special characters and replace spaces with hyphens
+    text = re.sub(r"[^\w\s-]", "", text)
+    text = re.sub(r"[\s_]+", "-", text)
+    text = re.sub(r"^-+|-+$", "", text)
+
+    return text
 
 
 # ----------------------------------------------------------------------------
@@ -22,6 +93,25 @@ import time
 print("=" * 80)
 print("PART 1: FETCHING LIFO RATINGS")
 print("=" * 80)
+
+# Load movies.json first to build slug lookup
+print("Loading movies.json to build slug lookup...")
+with open("movies.json", encoding="utf-8") as f:
+    movies_data_initial = json.load(f)
+
+# Build a set of slugs from movies.json
+movie_slugs = set()
+for group in movies_data_initial:
+    for movie in group:
+        # Try both greek and original titles
+        greek_slug = title_to_slug(movie["greek_title"])
+        original_slug = title_to_slug(movie["original_title"])
+        if greek_slug:
+            movie_slugs.add(greek_slug)
+        if original_slug:
+            movie_slugs.add(original_slug)
+
+print(f"Built {len(movie_slugs)} movie slugs from movies.json")
 
 
 def get_sitemap_links(url):
@@ -54,11 +144,10 @@ print(f"Total links found: {len(all_pages)}")
 
 
 def get_cinema_links(all_pages):
-    base_sitemap_url = "https://www.lifo.gr/sitemap.xml?page="
     target_pattern = "/guide/cinema/movies/"
     all_movie_links = []
 
-    print(f"Starting crawl...")
+    print("Starting crawl...")
 
     for url in all_pages:
 
@@ -95,21 +184,25 @@ movies = get_cinema_links(all_pages)
 print("\n--- Extraction Complete ---")
 lifo_movie_links = sorted(set(movies))
 
-# Filter out movies not currently showing
+# Filter links by matching slugs from movies.json (OPTIMIZED - no HTTP requests needed!)
+print("\nFiltering LIFO links by matching with movies.json slugs...")
 clean_lifo_links = []
 for url in lifo_movie_links:
-    response = requests.get(url, timeout=10)
-    response.raise_for_status()
+    # Extract slug from URL: https://www.lifo.gr/guide/cinema/movies/movie-slug
+    url_slug = url.split("/")[-1]
+    # Normalize slug: replace 'y' with 'u' to match Greek transliteration (υ → u)
+    normalized_slug = url_slug.replace('y', 'u')
 
-    pattern = re.compile(r"Η ΤΑΙΝΙΑ ΔΕΝ ΠΡΟΒΑΛΛΕΤΑΙ AYTH ΤΗ ΣΤΙΓΜΗ ΣΕ ΚΑΠΟΙΑ ΑΙΘΟΥΣΑ")
-    matches = pattern.findall(response.text)
-    if matches:
-        print("not used", url)
-    else:
-        print("ok", url)
+    if url_slug in movie_slugs or normalized_slug in movie_slugs:
+        print(f"✓ Match found: {url_slug}")
         clean_lifo_links.append(url)
+    else:
+        print(f"✗ No match: {url_slug}")
 
-print(f"\nClean LIFO links: {len(clean_lifo_links)}")
+print(
+    f"\nFiltered LIFO links: {len(clean_lifo_links)} (from {len(lifo_movie_links)} total)"
+)
+
 
 # Extract ratings from LIFO pages
 results = []
