@@ -18,6 +18,7 @@ fi
 # ---------------------------
 PYTHON="/home/grstathis/bin/python3"
 SCRIPT="/home/grstathis/ti-paizei-tora.gr/athinorama_cinema_info.py"
+SCRIPT2="/home/grstathis/ti-paizei-tora.gr/fetch_and_add_ratings.py"
 LOCAL_DIR="/home/grstathis/ti-paizei-tora.gr"
 REMOTE_DIR="/httpdocs"
 FTP_HOST="ftp.ti-paizei-tora.gr"
@@ -43,6 +44,13 @@ log() {
 log "Running Python generator script..."
 "$PYTHON" "$SCRIPT"
 log "Python script finished."
+
+# ---------------------------
+# FETCH AND ADD RATINGS
+# ---------------------------
+log "Fetching ratings from LIFO and Flix..."
+"$PYTHON" "$SCRIPT2"
+log "Ratings added successfully."
 
 # ---------------------------
 # FTP UPLOAD
