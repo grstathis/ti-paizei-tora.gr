@@ -1,46 +1,16 @@
 [
   [
     {
-      "greek_title": "Η Αλέιδα Γκεβάρα Θυμάται τον Πατέρα της",
-      "original_title": "Aleida Guevara Remembers Her Father",
-      "year": "2006",
-      "color": "Έγχρ.",
-      "duration": "Διάρκεια: 34'",
-      "rating_age": "",
-      "rating_stars": null,
-      "movie_type": "Ντοκιμαντέρ",
-      "movie_country": "",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/i_aleida_gkebara_thumatai_ton_patera_tis-10089303",
-      "imdb_link": null
-    }
-  ],
-  [
-    {
       "greek_title": "Μπιτσκόμπερ",
       "original_title": "Beachcomber",
       "year": "2025",
       "color": "Έγχρ.",
       "duration": "Διάρκεια: 92'",
       "rating_age": "",
-      "rating_stars": null,
+      "rating_stars": 2.5,
       "movie_type": "Δραματική",
       "movie_country": "Ελληνική",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/mpitskomper-10089297",
-      "imdb_link": null
-    }
-  ],
-  [
-    {
-      "greek_title": "Enhypen (Walk the Line Summer Edition) in Cinemas",
-      "original_title": "Enhypen (Walk the Line Summer Edition) in Cinemas",
-      "year": "2026",
-      "color": "Έγχρ.",
-      "duration": "Διάρκεια: 123'",
-      "rating_age": "",
-      "rating_stars": null,
-      "movie_type": "Μουσικό Ντοκιμαντέρ",
-      "movie_country": "Νοτιοκορεάτικη",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/enhypen_walk_the_line_summer_edition_in_cinemas-10089381",
       "imdb_link": null
     }
   ],
@@ -61,18 +31,34 @@
   ],
   [
     {
-      "greek_title": "Αδέσποτα Κορμιά",
-      "original_title": "",
-      "year": "2024",
+      "greek_title": "Άγριες Φράουλες",
+      "original_title": "Smultronstället",
+      "year": "1957",
+      "color": "Α/Μ",
+      "duration": "Διάρκεια: 92'",
+      "rating_age": "Κ-12",
+      "rating_stars": 5.0,
+      "movie_type": "Δραματική",
+      "movie_country": "Σουηδική",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/agries_fraoules-1002370",
+      "imdb_link": "http://www.imdb.com/title/tt0050986/",
+      "slug": "wild-strawberries"
+    }
+  ],
+  [
+    {
+      "greek_title": "Το Αδελφάτο των Ιπποτών της Ελεεινής Τραπέζης",
+      "original_title": "Monty Python and the Holy Grail",
+      "year": "1975",
       "color": "Έγχρ.",
-      "duration": "Διάρκεια: 109'",
-      "rating_age": "",
-      "rating_stars": null,
-      "movie_type": "Ντοκιμαντέρ",
-      "movie_country": "Eλληνική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/adespota_kormia-10081306",
-      "imdb_link": "http://www.imdb.com/title/tt30323675/",
-      "slug": "stray-bodies"
+      "duration": "Διάρκεια: 91'",
+      "rating_age": "Κ-12",
+      "rating_stars": 5.0,
+      "movie_type": "Κωμωδία",
+      "movie_country": "Βρετανική",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/to_adelfato_ton_ippoton_tis_eleeinis_trapezis-1001003",
+      "imdb_link": "http://www.imdb.com/title/tt0071853/",
+      "slug": "monty-python-and-the-holy-grail"
     }
   ],
   [
@@ -115,7 +101,7 @@
       "color": "Έγχρ.",
       "duration": "Διάρκεια: 136'",
       "rating_age": "Κ-15",
-      "rating_stars": null,
+      "rating_stars": 2.5,
       "movie_type": "Δραματική",
       "movie_country": "Αγγλοαμερικανική",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/anemodarmena_upsi-10088996",
@@ -141,63 +127,18 @@
   ],
   [
     {
-      "greek_title": "Αντίπαλοι για Καλό – Η Ένωση",
-      "original_title": "Αντίπαλοι για Καλό – Η Ένωση",
+      "greek_title": "Αποστολή Χαίρε Μαρία",
+      "original_title": "Project Hail Mary",
       "year": "2026",
       "color": "Έγχρ.",
-      "duration": "Διάρκεια: 115'",
+      "duration": "Διάρκεια: 156'",
       "rating_age": "",
-      "rating_stars": null,
-      "movie_type": "Αθλητική",
-      "movie_country": "Ελληνική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/antipaloi_gia_kalo_–_i_enosi-10089304",
-      "imdb_link": null
-    }
-  ],
-  [
-    {
-      "greek_title": "Από την Άκρη της Πόλης",
-      "original_title": "",
-      "year": "1998",
-      "color": "Έγχρ.",
-      "duration": "Διάρκεια: 94'",
-      "rating_age": "",
-      "rating_stars": 3.0,
-      "movie_type": "Κοινωνική",
-      "movie_country": "Ελληνική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/apo_tin_akri_tis_polis-1005858",
-      "imdb_link": null
-    }
-  ],
-  [
-    {
-      "greek_title": "ΑΠΟΚΑΛΥΨΗ ΤΩΡΑ",
-      "original_title": "APOCALYPSE NOW",
-      "year": "1979",
-      "color": "Έγχρ.",
-      "duration": "",
-      "rating_age": "",
-      "rating_stars": 4.0,
-      "movie_type": "Σινεφίλ",
+      "rating_stars": 2.0,
+      "movie_type": "Επιστ. Φαντασίας",
       "movie_country": "Αμερικανική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/apokalupsi_tora-1000467",
-      "imdb_link": null
-    }
-  ],
-  [
-    {
-      "greek_title": "Το Αριστερό μου Χέρι",
-      "original_title": "Zuopiezi Nuhai / Left-Handed Girl",
-      "year": "2025",
-      "color": "Έγχρ.",
-      "duration": "Διάρκεια: 108'",
-      "rating_age": "",
-      "rating_stars": 3.0,
-      "movie_type": "Δραματική",
-      "movie_country": "Ταϊβανογαλλική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/to_aristero_mou_xeri-10087914",
-      "imdb_link": "http://www.imdb.com/title/tt27722618/",
-      "slug": "left-handed-girl"
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/apostoli_xaire_maria-10089460",
+      "imdb_link": "http://www.imdb.com/title/tt12042730/",
+      "slug": "project-hail-mary"
     }
   ],
   [
@@ -208,42 +149,12 @@
       "color": "Έγχρ.",
       "duration": "Διάρκεια: 88'",
       "rating_age": "",
-      "rating_stars": null,
+      "rating_stars": 3.5,
       "movie_type": "Animation",
       "movie_country": "Γαλλοαμερικανική",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/arko-10089172",
       "imdb_link": "http://www.imdb.com/title/tt14883538/",
       "slug": "arco"
-    }
-  ],
-  [
-    {
-      "greek_title": "Άρωμα Γυναίκας",
-      "original_title": "Scent of a Woman",
-      "year": "1992",
-      "color": "Έγχρ.",
-      "duration": "Διάρκεια: 156'",
-      "rating_age": "",
-      "rating_stars": 2.0,
-      "movie_type": "Κοινωνική",
-      "movie_country": "Αμερικανική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/aroma_gunaikas-1004587",
-      "imdb_link": null
-    }
-  ],
-  [
-    {
-      "greek_title": "ΑΥΤΟΧΕΙΡΕΣ ΠΑΡΘΕΝΟΙ",
-      "original_title": "THE VIRGIN SUICIDES",
-      "year": "1999",
-      "color": "Έγχρ.",
-      "duration": "Διάρκεια: 96'",
-      "rating_age": "",
-      "rating_stars": 3.0,
-      "movie_type": "Κοινωνική",
-      "movie_country": "Αμερικανική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/autoxeires_parthenoi-1006337",
-      "imdb_link": null
     }
   ],
   [
@@ -254,7 +165,7 @@
       "color": "Α/Μ",
       "duration": "Διάρκεια: 83'",
       "rating_age": "",
-      "rating_stars": null,
+      "rating_stars": 4.5,
       "movie_type": "Σινεφίλ",
       "movie_country": "Γερμανική",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/bampir-10032849",
@@ -264,18 +175,34 @@
   ],
   [
     {
-      "greek_title": "Βουγονία",
-      "original_title": "Bugonia",
+      "greek_title": "Βγαίνουν Μέσα Απ' τη Μάργκο",
+      "original_title": "",
       "year": "2025",
       "color": "Έγχρ.",
-      "duration": "Διάρκεια: 118'",
-      "rating_age": "Κ-18",
-      "rating_stars": null,
-      "movie_type": "Επιστ. Φαντασίας",
-      "movie_country": "Αγγλο-ιρλανδική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/bougonia-10087837",
-      "imdb_link": "http://www.imdb.com/title/tt12300742/",
-      "slug": "bugonia"
+      "duration": "Διάρκεια: 92'",
+      "rating_age": "",
+      "rating_stars": 2.5,
+      "movie_type": "Σινεφίλ",
+      "movie_country": "Eλληνική",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/bgainoun_mesa_ap_ti_margko-10089538",
+      "imdb_link": "http://www.imdb.com/title/tt37381479/",
+      "slug": "they-come-out-of-margo"
+    }
+  ],
+  [
+    {
+      "greek_title": "Γελοίοι Έρωτες",
+      "original_title": "",
+      "year": "2025",
+      "color": "Α/Μ",
+      "duration": "Διάρκεια: 73'",
+      "rating_age": "",
+      "rating_stars": 1.5,
+      "movie_type": "Δραματική",
+      "movie_country": "Eλληνική",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/geloioi_erotes-10089537",
+      "imdb_link": "http://www.imdb.com/title/tt36932214/",
+      "slug": "geloioi-erotes"
     }
   ],
   [
@@ -296,18 +223,64 @@
   ],
   [
     {
-      "greek_title": "Η Δίκη",
-      "original_title": "Le Procès / The Trial",
-      "year": "1962",
-      "color": "Α/Μ",
-      "duration": "Διάρκεια: 118'",
+      "greek_title": "Winona",
+      "original_title": "",
+      "year": "2019",
+      "color": "Έγχρ.",
+      "duration": "Διάρκεια: 87'",
       "rating_age": "",
-      "rating_stars": 4.0,
-      "movie_type": "Σινεφίλ",
-      "movie_country": "Γαλλοϊταλική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/i_diki-1002424",
-      "imdb_link": "http://www.imdb.com/title/tt0057427/",
-      "slug": "the-trial"
+      "rating_stars": 3.5,
+      "movie_type": "Δραματική",
+      "movie_country": "Ελληνική",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/winona-10067765",
+      "imdb_link": "http://www.imdb.com/title/tt9140598/",
+      "slug": "winona"
+    }
+  ],
+  [
+    {
+      "greek_title": "Γυναίκες Μαχήτριες Μέρος Γ΄1960-1974",
+      "original_title": "",
+      "year": "2025",
+      "color": "Έγχρ.",
+      "duration": "Διάρκεια: 80'",
+      "rating_age": "",
+      "rating_stars": 2.0,
+      "movie_type": "Ντοκιμαντέρ",
+      "movie_country": "Eλληνική",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/gunaikes_maxitries_meros_g΄1960_1974-10089443",
+      "imdb_link": null
+    }
+  ],
+  [
+    {
+      "greek_title": "Δαβίδ: Το Αγόρι που Έγινε Θρύλος",
+      "original_title": "David",
+      "year": "2025",
+      "color": "Έγχρ.",
+      "duration": "Διάρκεια: 109'",
+      "rating_age": "Κ",
+      "rating_stars": null,
+      "movie_type": "Animation",
+      "movie_country": "Aμερικανική",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/dabid_to_agori_pou_egine_thrulos-10089581",
+      "imdb_link": null
+    }
+  ],
+  [
+    {
+      "greek_title": "Οι Δοκιμάστριες",
+      "original_title": "The Tasters",
+      "year": "2025",
+      "color": "Έγχρ.",
+      "duration": "Διάρκεια: 123'",
+      "rating_age": "",
+      "rating_stars": 3.0,
+      "movie_type": "Ιστορική",
+      "movie_country": "Ιταλοβελγική",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/oi_dokimastries-10089435",
+      "imdb_link": "http://www.imdb.com/title/tt27811248/",
+      "slug": "le-assaggiatrici"
     }
   ],
   [
@@ -318,7 +291,7 @@
       "color": "Έγχρ.",
       "duration": "Διάρκεια: 140'",
       "rating_age": "Κ-15",
-      "rating_stars": null,
+      "rating_stars": 2.5,
       "movie_type": "Περιπέτεια",
       "movie_country": "Αγγλοαμερικανική",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/o_dromos_tou_egklimatos-10089073",
@@ -344,53 +317,6 @@
   ],
   [
     {
-      "greek_title": "Δύο Εποχές, Δύο Ξένοι",
-      "original_title": "Tabi to Hibi / Two Seasons, Two Strangers",
-      "year": "2025",
-      "color": "Έγχρ.",
-      "duration": "Διάρκεια: 89'",
-      "rating_age": "Κ",
-      "rating_stars": 3.0,
-      "movie_type": "Δραματική",
-      "movie_country": "Γιαπωνέζικη",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/duo_epoxes_duo_ksenoi-10089085",
-      "imdb_link": "http://www.imdb.com/title/tt37538491/",
-      "slug": "tabi-to-hibi"
-    }
-  ],
-  [
-    {
-      "greek_title": "Οι Δώδεκα Καρέκλες",
-      "original_title": "Las Doce Sillas",
-      "year": "1962",
-      "color": "Έγχρ.",
-      "duration": "Διάρκεια: 97'",
-      "rating_age": "",
-      "rating_stars": 3.0,
-      "movie_type": "Κωμωδία",
-      "movie_country": "Κουβανέζικη",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/oi_dodeka_karekles-10065753",
-      "imdb_link": "http://www.imdb.com/title/tt0055915/",
-      "slug": "the-twelve-chairs"
-    }
-  ],
-  [
-    {
-      "greek_title": "Έγκλημα στα Παρασκήνια",
-      "original_title": "",
-      "year": "1960",
-      "color": "Α/Μ",
-      "duration": "Διάρκεια: 85'",
-      "rating_age": "",
-      "rating_stars": null,
-      "movie_type": "Αστυνομική",
-      "movie_country": "Eλληνική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/egklima_sta_paraskinia-10036137",
-      "imdb_link": null
-    }
-  ],
-  [
-    {
       "greek_title": "Είμαι η Κούβα",
       "original_title": "Soy Cuba",
       "year": "1964",
@@ -407,28 +333,13 @@
   ],
   [
     {
-      "greek_title": "Ελένη Μπούκουρη Αλταμούρα",
-      "original_title": "",
-      "year": "2010",
-      "color": "Έγχρ.",
-      "duration": "Διάρκεια: 56'",
-      "rating_age": "",
-      "rating_stars": null,
-      "movie_type": "Ντοκιμαντέρ",
-      "movie_country": "Ελληνική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/eleni_mpoukouri_altamoura-10005640",
-      "imdb_link": null
-    }
-  ],
-  [
-    {
       "greek_title": "Ένα Απλό Ατύχημα",
       "original_title": "Yek Tasadef Sadeh / It Was Just An Accident",
       "year": "2025",
       "color": "Έγχρ.",
       "duration": "Διάρκεια: 105'",
       "rating_age": "Κ-15",
-      "rating_stars": null,
+      "rating_stars": 3.5,
       "movie_type": "Δραματική",
       "movie_country": "Ιρανική",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/ena_aplo_atuxima-10087413",
@@ -444,28 +355,12 @@
       "color": "Έγχρ.",
       "duration": "Διάρκεια: 93'",
       "rating_age": "Κ-15",
-      "rating_stars": null,
+      "rating_stars": 4.5,
       "movie_type": "Κωμωδία",
       "movie_country": "Αγγλική",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/enas_profitis_ma_ti_profitis-1001096",
       "imdb_link": "http://www.imdb.com/title/tt0079470/",
       "slug": "monty-python-s-life-of-brian"
-    }
-  ],
-  [
-    {
-      "greek_title": "Εξολοθρευτής Άγγελος",
-      "original_title": "El Angel Exterminador",
-      "year": "1962",
-      "color": "Α/Μ",
-      "duration": "Διάρκεια: 95'",
-      "rating_age": "Κ-15",
-      "rating_stars": 5.0,
-      "movie_type": "Σινεφίλ",
-      "movie_country": "Μεξικανική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/eksolothreutis_aggelos-1007248",
-      "imdb_link": "http://www.imdb.com/title/tt0056732/",
-      "slug": "the-exterminating-angel"
     }
   ],
   [
@@ -486,21 +381,6 @@
   ],
   [
     {
-      "greek_title": "Ερόικα",
-      "original_title": "Eroice",
-      "year": "1960",
-      "color": "Α/Μ",
-      "duration": "",
-      "rating_age": "",
-      "rating_stars": null,
-      "movie_type": "Κοινωνική",
-      "movie_country": "Ελληνική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/eroika-1003066",
-      "imdb_link": null
-    }
-  ],
-  [
-    {
       "greek_title": "Ζωούπολη 2",
       "original_title": "Zootopia 2",
       "year": "2025",
@@ -517,49 +397,50 @@
   ],
   [
     {
-      "greek_title": "Ο Ήχος της Πτώσης",
-      "original_title": "In die Sonne Schauen / Sound of Falling",
-      "year": "2025",
+      "greek_title": "Το Θεώρημα",
+      "original_title": "Teorema",
+      "year": "1968",
       "color": "Έγχρ.",
-      "duration": "Διάρκεια: 150'",
-      "rating_age": "",
-      "rating_stars": null,
-      "movie_type": "Δραματική",
-      "movie_country": "Γερμανική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/o_ixos_tis_ptosis-10088954",
-      "imdb_link": "http://www.imdb.com/title/tt28690468/",
-      "slug": "sound-of-falling"
-    }
-  ],
-  [
-    {
-      "greek_title": "Ο Θάνατος Ενός Γραφειοκράτη",
-      "original_title": "La muerte de un burócrata",
-      "year": "1966",
-      "color": "Α/Μ",
-      "duration": "Διάρκεια: 84'",
-      "rating_age": "",
-      "rating_stars": null,
-      "movie_type": "Κοινωνική",
-      "movie_country": "Κουβανέζικη",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/o_thanatos_enos_grafeiokrati-1003536",
-      "imdb_link": "http://www.imdb.com/title/tt0060722/",
-      "slug": "death-of-a-bureaucrat"
-    }
-  ],
-  [
-    {
-      "greek_title": "ΚΑΛΛΙΤΕΧΝΕΣ ΣΤΟΝ ΥΠΝΟ ΤΟΥΣ",
-      "original_title": "LIVING IN OBLIVION",
-      "year": "1995",
-      "color": "Έγχρ.",
-      "duration": "",
-      "rating_age": "",
-      "rating_stars": 2.0,
+      "duration": "Διάρκεια: 105'",
+      "rating_age": "Κ-18",
+      "rating_stars": 5.0,
       "movie_type": "Σινεφίλ",
-      "movie_country": "Αμερικανική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/kallitexnes_ston_upno_tous-1005094",
-      "imdb_link": null
+      "movie_country": "Ιταλική",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/to_theorima-1003497",
+      "imdb_link": "http://www.imdb.com/title/tt0063678  /",
+      "slug": "teorema"
+    }
+  ],
+  [
+    {
+      "greek_title": "Interstellar",
+      "original_title": "",
+      "year": "2014",
+      "color": "Έγχρ.",
+      "duration": "Διάρκεια: 169'",
+      "rating_age": "",
+      "rating_stars": 2.5,
+      "movie_type": "Επιστ. Φαντασίας",
+      "movie_country": "Aμερικανική",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/interstellar-10040927",
+      "imdb_link": "http://www.imdb.com/title/tt0816692/",
+      "slug": "interstellar"
+    }
+  ],
+  [
+    {
+      "greek_title": "Ο Καπετάν Μιχάλης",
+      "original_title": "",
+      "year": "2023",
+      "color": "Έγχρ.",
+      "duration": "Διάρκεια: 152'",
+      "rating_age": "",
+      "rating_stars": 1.5,
+      "movie_type": "Δραματική",
+      "movie_country": "Ελληνική",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/o_kapetan_mixalis-10080309",
+      "imdb_link": "http://www.imdb.com/title/tt29441355/",
+      "slug": "kapetan-mihalis"
     }
   ],
   [
@@ -570,7 +451,7 @@
       "color": "Έγχρ.",
       "duration": "Διάρκεια: 128'",
       "rating_age": "",
-      "rating_stars": null,
+      "rating_stars": 1.5,
       "movie_type": "Δραματική",
       "movie_country": "Eλληνική",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/kapodistrias-10088540",
@@ -580,95 +461,50 @@
   ],
   [
     {
-      "greek_title": "Καρό Νίντζα 3",
-      "original_title": "Ternet Ninja 3 / Checkered Ninja 3",
+      "greek_title": "Couture",
+      "original_title": "Coutures",
       "year": "2025",
       "color": "Έγχρ.",
-      "duration": "Διάρκεια: 88'",
+      "duration": "Διάρκεια: 106'",
       "rating_age": "",
-      "rating_stars": 3.0,
-      "movie_type": "Animation",
-      "movie_country": "Δανέζικη",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/karo_nintza_3-10089185",
-      "imdb_link": "http://www.imdb.com/title/tt32635378/",
-      "slug": "ternet-ninja-3"
+      "rating_stars": 1.5,
+      "movie_type": "Δραματική",
+      "movie_country": "Γαλλοαμερικανική",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/couture-10089541",
+      "imdb_link": "http://www.imdb.com/title/tt34688195/",
+      "slug": "couture"
     }
   ],
   [
     {
-      "greek_title": "Το Καταφύγιο",
-      "original_title": "Shelter",
-      "year": "2026",
+      "greek_title": "Κραυγές και Ψίθυροι",
+      "original_title": "Viskningar Och Rop / Cries and Whispers",
+      "year": "1972",
       "color": "Έγχρ.",
-      "duration": "Διάρκεια: 107'",
-      "rating_age": "",
-      "rating_stars": null,
-      "movie_type": "Περιπέτεια",
-      "movie_country": "Αγγλοαμερικανική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/to_katafugio-10088879",
-      "imdb_link": "http://www.imdb.com/title/tt32357218/",
-      "slug": "shelter"
+      "duration": "Διάρκεια: 90'",
+      "rating_age": "Κ-12",
+      "rating_stars": 3.5,
+      "movie_type": "Σινεφίλ",
+      "movie_country": "Σουηδική",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/krauges_kai_psithuroi-1000291",
+      "imdb_link": "http://www.imdb.com/title/tt0069467/",
+      "slug": "cries-whispers"
     }
   ],
   [
     {
-      "greek_title": "Κραυγές",
-      "original_title": "",
+      "greek_title": "Ο Μάγος του Κρεμλίνου",
+      "original_title": "Le Mage du Kremlin / The Wizard of the Kremlin",
       "year": "2025",
       "color": "Έγχρ.",
-      "duration": "Διάρκεια: 87'",
+      "duration": "Διάρκεια: 152'",
       "rating_age": "",
-      "rating_stars": null,
-      "movie_type": "Δραματική",
-      "movie_country": "Eλληνική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/krauges-10089075",
-      "imdb_link": null
-    }
-  ],
-  [
-    {
-      "greek_title": "Λευκά Όρη",
-      "original_title": "",
-      "year": "2024",
-      "color": "Έγχρ.",
-      "duration": "Διάρκεια: 86'",
-      "rating_age": "",
-      "rating_stars": 2.0,
-      "movie_type": "Ντοκιμαντέρ",
-      "movie_country": "Eλληνική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/leuka_ori-10089168",
-      "imdb_link": null
-    }
-  ],
-  [
-    {
-      "greek_title": "Μαθήματα Χορού",
-      "original_title": "",
-      "year": "2023",
-      "color": "Έγχρ.",
-      "duration": "Διάρκεια: 100'",
-      "rating_age": "",
-      "rating_stars": null,
-      "movie_type": "Ντοκιμαντέρ",
-      "movie_country": "Eλληνική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/mathimata_xorou-10082758",
-      "imdb_link": null
-    }
-  ],
-  [
-    {
-      "greek_title": "Μαμά Γκλόρια",
-      "original_title": "Àma Gloria",
-      "year": "2023",
-      "color": "Έγχρ.",
-      "duration": "Διάρκεια: 83'",
-      "rating_age": "",
-      "rating_stars": 3.0,
-      "movie_type": "Δραματική",
-      "movie_country": "Γαλλική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/mama_gkloria-10081126",
-      "imdb_link": "http://www.imdb.com/title/tt26255358/",
-      "slug": "ama-gloria"
+      "rating_stars": 2.5,
+      "movie_type": "Πολιτικό Θρίλερ",
+      "movie_country": "Γαλλοαμερικανική",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/o_magos_tou_kremlinou-10089397",
+      "imdb_link": "http://www.imdb.com/title/tt32386654/",
+      "slug": "the-wizard-of-the-kremlin"
     }
   ],
   [
@@ -709,12 +545,28 @@
       "color": "Έγχρ. - Α/Μ",
       "duration": "Διάρκεια: 91'",
       "rating_age": "",
-      "rating_stars": null,
+      "rating_stars": 2.5,
       "movie_type": "Ντοκιμαντέρ",
       "movie_country": "Eλληνική",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/mauthausen_-10081312",
       "imdb_link": "http://www.imdb.com/title/tt30306038/",
       "slug": "mauthausen"
+    }
+  ],
+  [
+    {
+      "greek_title": "Μαρσουπιλαμί",
+      "original_title": "Marsupilami",
+      "year": "2026",
+      "color": "Έγχρ.",
+      "duration": "Διάρκεια: 99'",
+      "rating_age": "",
+      "rating_stars": null,
+      "movie_type": "Κωμωδία",
+      "movie_country": "Γαλλική",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/marsoupilami-10089459",
+      "imdb_link": "http://www.imdb.com/title/tt33029380/",
+      "slug": "marsupilami"
     }
   ],
   [
@@ -735,34 +587,34 @@
   ],
   [
     {
-      "greek_title": "Μαχαιροβγάλτης",
-      "original_title": "",
-      "year": "2010",
-      "color": "Α/Μ",
-      "duration": "Διάρκεια: 108'",
-      "rating_age": "",
-      "rating_stars": null,
-      "movie_type": "Δραματική",
-      "movie_country": "Ελληνική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/maxairobgaltis-10001345",
-      "imdb_link": "http://www.imdb.com/title/tt1371631/",
-      "slug": "knifer"
-    }
-  ],
-  [
-    {
       "greek_title": "Το Μεγαλείο",
       "original_title": "La Grazia / Grace",
       "year": "2025",
       "color": "Έγχρ.",
       "duration": "Διάρκεια: 133'",
       "rating_age": "",
-      "rating_stars": null,
+      "rating_stars": 3.5,
       "movie_type": "Δραματική",
       "movie_country": "Ιταλική",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/to_megaleio-10089264",
       "imdb_link": "http://www.imdb.com/title/tt34886821/",
       "slug": "grace"
+    }
+  ],
+  [
+    {
+      "greek_title": "Ο Μεγάλος Δικτάτωρ",
+      "original_title": "The Great Dictator",
+      "year": "1940",
+      "color": "Α/Μ",
+      "duration": "Διάρκεια: 124'",
+      "rating_age": "",
+      "rating_stars": 5.0,
+      "movie_type": "Κωμωδία",
+      "movie_country": "Αμερικανική",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/o_megalos_diktator-1002765",
+      "imdb_link": "http://www.imdb.com/title/tt0032553/",
+      "slug": "the-great-dictator"
     }
   ],
   [
@@ -783,34 +635,79 @@
   ],
   [
     {
-      "greek_title": "Μνήμες Υπανάπτυξης",
-      "original_title": "Memorias del Subdesarrolio",
-      "year": "1968",
-      "color": "Α/Μ",
-      "duration": "Διάρκεια: 104'",
+      "greek_title": "Η Μικρή Αμελί",
+      "original_title": "Amélie et la Métaphysique des Tubes",
+      "year": "2025",
+      "color": "Έγχρ.",
+      "duration": "Διάρκεια: 77'",
       "rating_age": "",
       "rating_stars": 4.0,
-      "movie_type": "Δραματική",
-      "movie_country": "Κουβανική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/mnimes_upanaptuksis-1003828",
-      "imdb_link": "http://www.imdb.com/title/tt0063291/",
-      "slug": "memories-of-underdevelopment"
+      "movie_type": "Animation",
+      "movie_country": "Γαλλική",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/i_mikri_ameli-10089398",
+      "imdb_link": "http://www.imdb.com/title/tt29313285/?/",
+      "slug": "little-amelie-or-the-character-of-rain"
     }
   ],
   [
     {
-      "greek_title": "Μπόμπ Σφουγγαράκης: Η Aναζήτηση του Τετραγωνοπαντελονή",
-      "original_title": "The SpongeBob Movie: Search for SquarePants",
-      "year": "2025",
+      "greek_title": "The Mortuary Assistant",
+      "original_title": "The Mortuary Assistant",
+      "year": "2026",
       "color": "Έγχρ.",
-      "duration": "Διάρκεια: 96'",
-      "rating_age": "Κ",
-      "rating_stars": 3.0,
-      "movie_type": "Animation",
+      "duration": "Διάρκεια: 91'",
+      "rating_age": "",
+      "rating_stars": null,
+      "movie_type": "Τρόμου",
       "movie_country": "Aμερικανική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/mpomp_sfouggarakis_i_anazitisi_tou_tetragonopanteloni-10088541",
-      "imdb_link": "http://www.imdb.com/title/tt23572848/",
-      "slug": "the-spongebob-movie-search-for-squarepants"
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/the_mortuary_assistant-10089436",
+      "imdb_link": null
+    }
+  ],
+  [
+    {
+      "greek_title": "Belladonna of Sadness",
+      "original_title": "Kanashimi no Belladonna",
+      "year": "1973",
+      "color": "Έγχρ.",
+      "duration": "Διάρκεια: 89'",
+      "rating_age": "",
+      "rating_stars": null,
+      "movie_type": "Animation",
+      "movie_country": "Ιαπωνία",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/belladonna_of_sadness-10089134",
+      "imdb_link": null
+    }
+  ],
+  [
+    {
+      "greek_title": "Blow-Up",
+      "original_title": "",
+      "year": "1967",
+      "color": "Έγχρ.",
+      "duration": "Διάρκεια: 111'",
+      "rating_age": "",
+      "rating_stars": 5.0,
+      "movie_type": "Σινεφίλ",
+      "movie_country": "Αγγλο-ιταλική",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/blow_up-1001916",
+      "imdb_link": "http://www.imdb.com/title/tt0060176/",
+      "slug": "blow-up"
+    }
+  ],
+  [
+    {
+      "greek_title": "Η ΜΥΓΑ",
+      "original_title": "THE FLY",
+      "year": "1986",
+      "color": "Έγχρ.",
+      "duration": "",
+      "rating_age": "",
+      "rating_stars": null,
+      "movie_type": "Τρόμου",
+      "movie_country": "Αμερικάνικη",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/i_muga-1000114",
+      "imdb_link": null
     }
   ],
   [
@@ -821,12 +718,27 @@
       "color": "Έγχρ.",
       "duration": "Διάρκεια: 161'",
       "rating_age": "",
-      "rating_stars": null,
+      "rating_stars": 3.5,
       "movie_type": "Πολιτικό Θρίλερ",
       "movie_country": "Βραζιλιανογαλλική",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/o_mustikos_praktoras-10089069",
       "imdb_link": "http://www.imdb.com/title/tt27847051/",
       "slug": "the-secret-agent"
+    }
+  ],
+  [
+    {
+      "greek_title": "O Μυστικός Πράκτορας Μπέρνι: Αποστολή στον Άρη",
+      "original_title": "Bernard: Mission Mars",
+      "year": "2023",
+      "color": "Έγχρ.",
+      "duration": "Διάρκεια: 96'",
+      "rating_age": "",
+      "rating_stars": 2.0,
+      "movie_type": "Animation",
+      "movie_country": "Κινέζικη",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/o_mustikos_praktoras_mperni_apostoli_ston_ari-10089438",
+      "imdb_link": null
     }
   ],
   [
@@ -847,50 +759,18 @@
   ],
   [
     {
-      "greek_title": "Νυρεμβέργη",
-      "original_title": "Nuremberg",
+      "greek_title": "Οδός Μάλαγα",
+      "original_title": "Calle Málaga",
       "year": "2025",
       "color": "Έγχρ.",
-      "duration": "Διάρκεια: 148'",
-      "rating_age": "Κ-15",
-      "rating_stars": 2.0,
-      "movie_type": "Δραματική",
-      "movie_country": "Aμερικανική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/nurembergi-10088007",
-      "imdb_link": "http://www.imdb.com/title/tt29567915/",
-      "slug": "nuremberg"
-    }
-  ],
-  [
-    {
-      "greek_title": "Η Νύφη!",
-      "original_title": "The Bride!",
-      "year": "2026",
-      "color": "Έγχρ.",
-      "duration": "Διάρκεια: 126'",
-      "rating_age": "Κ-18",
-      "rating_stars": 2.0,
-      "movie_type": "Φαντασίας",
-      "movie_country": "Aμερικανική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/i_nufi!_-10089350",
-      "imdb_link": "http://www.imdb.com/title/tt30851137/",
-      "slug": "the-bride"
-    }
-  ],
-  [
-    {
-      "greek_title": "Η Νύχτα των Σαλτιμπάγκων",
-      "original_title": "Gycklarnas Afton / Sawdust and Tinsel",
-      "year": "1952",
-      "color": "Α/Μ",
-      "duration": "Διάρκεια: 90'",
+      "duration": "Διάρκεια: 116'",
       "rating_age": "",
-      "rating_stars": 4.0,
-      "movie_type": "Σινεφίλ",
-      "movie_country": "Σουηδική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/i_nuxta_ton_saltimpagkon-1004833",
-      "imdb_link": "http://www.imdb.com/title/tt0045848/",
-      "slug": "sawdust-and-tinsel"
+      "rating_stars": 3.0,
+      "movie_type": "Δραματική",
+      "movie_country": "Μαροκινή",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/odos_malaga-10089434",
+      "imdb_link": "http://www.imdb.com/title/tt32429174/",
+      "slug": "calle-malaga"
     }
   ],
   [
@@ -901,27 +781,12 @@
       "color": "Έγχρ.",
       "duration": "Διάρκεια: 116'",
       "rating_age": "",
-      "rating_stars": null,
+      "rating_stars": 3.5,
       "movie_type": "Δραματική",
       "movie_country": "Ισπανική",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/oles_oi_kuriakes-10089263",
       "imdb_link": "http://www.imdb.com/title/tt35513027/",
       "slug": "los-domingos"
-    }
-  ],
-  [
-    {
-      "greek_title": "Το Οτιδήποτε",
-      "original_title": "",
-      "year": "2025",
-      "color": "Έγχρ.",
-      "duration": "Διάρκεια: 92'",
-      "rating_age": "",
-      "rating_stars": 2.0,
-      "movie_type": "Σινεφίλ",
-      "movie_country": "Eλληνική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/to_otidipote-10088437",
-      "imdb_link": null
     }
   ],
   [
@@ -942,21 +807,6 @@
   ],
   [
     {
-      "greek_title": "Πες στη Μορφίνη Ακόμα την Ψάχνω",
-      "original_title": "",
-      "year": "2001",
-      "color": "Α/Μ",
-      "duration": "Διάρκεια: 119'",
-      "rating_age": "",
-      "rating_stars": 2.0,
-      "movie_type": "Δραματική",
-      "movie_country": "Ελληνική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/pes_sti_morfini_akoma_tin_psaxno-1006657",
-      "imdb_link": null
-    }
-  ],
-  [
-    {
       "greek_title": "Pillion",
       "original_title": "",
       "year": "2025",
@@ -969,22 +819,6 @@
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/pillion-10089167",
       "imdb_link": "http://www.imdb.com/title/tt32321317/",
       "slug": "pillion"
-    }
-  ],
-  [
-    {
-      "greek_title": "Η ΠΟΛΗ ΤΟΥ ΘΕΟΥ",
-      "original_title": "CIDADE DE DEUS",
-      "year": "2002",
-      "color": "Έγχρ.",
-      "duration": "Διάρκεια: 129'",
-      "rating_age": "",
-      "rating_stars": 3.0,
-      "movie_type": "Κοινωνική",
-      "movie_country": "Βραζιλιάνικη",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/i_poli_tou_theou-1006913",
-      "imdb_link": "http://www.imdb.com/title/tt0317248/",
-      "slug": "city-of-god"
     }
   ],
   [
@@ -1005,17 +839,50 @@
   ],
   [
     {
-      "greek_title": "Ο Σημαδεμένος",
-      "original_title": "Scarface",
-      "year": "1983",
+      "greek_title": "Πολύδροσο",
+      "original_title": "",
+      "year": "2023",
       "color": "Έγχρ.",
-      "duration": "Διάρκεια: 170'",
-      "rating_age": "Κ-18",
-      "rating_stars": null,
-      "movie_type": "Θρίλερ",
-      "movie_country": "Αμερικάνικη",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/o_simademenos-1000636",
-      "imdb_link": null
+      "duration": "Διάρκεια: 84'",
+      "rating_age": "",
+      "rating_stars": 2.5,
+      "movie_type": "Δραματική",
+      "movie_country": "Eλληνική",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/poludroso-10081841",
+      "imdb_link": "http://www.imdb.com/title/tt29685593/",
+      "slug": "polydroso"
+    }
+  ],
+  [
+    {
+      "greek_title": "Regan",
+      "original_title": "",
+      "year": "2025",
+      "color": "Έγχρ.",
+      "duration": "Διάρκεια: 84'",
+      "rating_age": "",
+      "rating_stars": 1.5,
+      "movie_type": "Σινεφίλ",
+      "movie_country": "Eλληνική",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/regan-10089519",
+      "imdb_link": "http://www.imdb.com/title/tt37721761/",
+      "slug": "regan"
+    }
+  ],
+  [
+    {
+      "greek_title": "Σαν Αδέρφια",
+      "original_title": "Homebound",
+      "year": "2025",
+      "color": "Έγχρ.",
+      "duration": "Διάρκεια: 122'",
+      "rating_age": "",
+      "rating_stars": 2.5,
+      "movie_type": "Δραματική",
+      "movie_country": "Ινδική",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/san_aderfia-10089437",
+      "imdb_link": "http://www.imdb.com/title/tt26733325/",
+      "slug": "homebound"
     }
   ],
   [
@@ -1032,37 +899,6 @@
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/sirat-10088877",
       "imdb_link": "http://www.imdb.com/title/tt32298285/",
       "slug": "sirat"
-    }
-  ],
-  [
-    {
-      "greek_title": "Η Σιωπή των Αμνών",
-      "original_title": "The Silence of the Lambs",
-      "year": "1991",
-      "color": "Έγχρ.",
-      "duration": "Διάρκεια: 118'",
-      "rating_age": "",
-      "rating_stars": 4.0,
-      "movie_type": "Θρίλερ",
-      "movie_country": "Αμερικανική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/i_siopi_ton_amnon-1004216",
-      "imdb_link": null
-    }
-  ],
-  [
-    {
-      "greek_title": "Scarlet",
-      "original_title": "",
-      "year": "2025",
-      "color": "Έγχρ.",
-      "duration": "Διάρκεια: 111'",
-      "rating_age": "Κ-12",
-      "rating_stars": 3.0,
-      "movie_type": "Animation",
-      "movie_country": "Ιαπωνική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/scarlet-10089307",
-      "imdb_link": "http://www.imdb.com/title/tt35114460/",
-      "slug": "scarlet"
     }
   ],
   [
@@ -1088,7 +924,7 @@
       "color": "Έγχρ.",
       "duration": "Διάρκεια: 127'",
       "rating_age": "",
-      "rating_stars": null,
+      "rating_stars": 3.5,
       "movie_type": "Δραματική",
       "movie_country": "Eλληνική",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/spasmeni_fleba-10088221",
@@ -1130,65 +966,34 @@
   ],
   [
     {
-      "greek_title": "Το Σφύριγμα του Θανάτου",
-      "original_title": "Whistle",
-      "year": "2025",
-      "color": "Έγχρ.",
-      "duration": "Διάρκεια: 100'",
-      "rating_age": "Κ-18",
-      "rating_stars": null,
-      "movie_type": "Τρόμου",
-      "movie_country": "Καναδέζικη",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/to_sfurigma_tou_thanatou-10089184",
-      "imdb_link": "http://www.imdb.com/title/tt29550683/",
-      "slug": "whistle"
-    }
-  ],
-  [
-    {
-      "greek_title": "Tack",
-      "original_title": "",
-      "year": "2024",
-      "color": "Έγχρ.",
-      "duration": "Διάρκεια: 96'",
-      "rating_age": "",
-      "rating_stars": 3.0,
-      "movie_type": "Ντοκιμαντέρ",
-      "movie_country": "Eλληνική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/tack-10083807",
-      "imdb_link": "http://www.imdb.com/title/tt31248601/",
-      "slug": "tack"
-    }
-  ],
-  [
-    {
-      "greek_title": "Το Τελευταίο Σημείωμα",
-      "original_title": "",
-      "year": "2017",
-      "color": "Έγχρ.",
-      "duration": "Διάρκεια: 117'",
-      "rating_age": "",
-      "rating_stars": null,
-      "movie_type": "Δραματική",
-      "movie_country": "Eλληνική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/to_teleutaio_simeioma-10057978",
-      "imdb_link": "http://www.imdb.com/title/tt7436642/",
-      "slug": "the-last-note"
-    }
-  ],
-  [
-    {
-      "greek_title": "Τι Ψυχή θα Παραδώσεις Μωρή; Μέρος Πρώτο",
+      "greek_title": "Τελευταία Κλήση",
       "original_title": "",
       "year": "2026",
       "color": "Έγχρ.",
-      "duration": "Διάρκεια: 132'",
-      "rating_age": "Κ-15",
-      "rating_stars": 1.0,
-      "movie_type": "Κωμωδία",
+      "duration": "Διάρκεια: 86'",
+      "rating_age": "",
+      "rating_stars": 2.5,
+      "movie_type": "Θρίλερ",
       "movie_country": "Eλληνική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/ti_psuxi_tha_paradoseis_mori_meros_proto-10088627",
-      "imdb_link": null
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/teleutaia_klisi-10089533",
+      "imdb_link": "http://www.imdb.com/title/tt37202764/",
+      "slug": "last-call"
+    }
+  ],
+  [
+    {
+      "greek_title": "Τόμος 7",
+      "original_title": "",
+      "year": "2025",
+      "color": "Α/Μ",
+      "duration": "Διάρκεια: 105'",
+      "rating_age": "",
+      "rating_stars": 2.5,
+      "movie_type": "Επιστ. Φαντασίας",
+      "movie_country": "Eλληνική",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/tomos_7-10089536",
+      "imdb_link": "http://www.imdb.com/title/tt38794758/",
+      "slug": "tomos-7"
     }
   ],
   [
@@ -1199,27 +1004,12 @@
       "color": "Έγχρ.",
       "duration": "Διάρκεια: 105'",
       "rating_age": "",
-      "rating_stars": null,
+      "rating_stars": 2.5,
       "movie_type": "Δραματική",
       "movie_country": "Ιρακινή",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/i_tourta_tou_proedrou-10089351",
       "imdb_link": "http://www.imdb.com/title/tt36580119/",
       "slug": "the-president-s-cake"
-    }
-  ],
-  [
-    {
-      "greek_title": "Το Τραγούδι της Ινδίας",
-      "original_title": "India Song",
-      "year": "1975",
-      "color": "Έγχρ.",
-      "duration": "Διάρκεια: 120'",
-      "rating_age": "",
-      "rating_stars": null,
-      "movie_type": "Δραματική",
-      "movie_country": "Γαλλική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/to_tragoudi_tis_indias-10089390",
-      "imdb_link": null
     }
   ],
   [
@@ -1246,7 +1036,7 @@
       "color": "Έγχρ.",
       "duration": "Διάρκεια: 95'",
       "rating_age": "Κ",
-      "rating_stars": null,
+      "rating_stars": 2.5,
       "movie_type": "Animation",
       "movie_country": "Καναδέζικη",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/tsarli_o_souper_skulos-10089269",
@@ -1256,50 +1046,18 @@
   ],
   [
     {
-      "greek_title": "ΤΟ ΤΣΕΚΟΥΡΙ",
-      "original_title": "LE COUPERET",
-      "year": "2005",
+      "greek_title": "Φθινοπωρινή Σονάτα",
+      "original_title": "Höstsonaten / Autumn Sonata",
+      "year": "1978",
       "color": "Έγχρ.",
-      "duration": "Διάρκεια: 122'",
-      "rating_age": "",
-      "rating_stars": 3.0,
-      "movie_type": "Κοινωνική",
-      "movie_country": "Γαλλική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/to_tsekouri-1007700",
-      "imdb_link": "http://www.imdb.com/title/tt0422015/",
-      "slug": "the-ax"
-    }
-  ],
-  [
-    {
-      "greek_title": "Father Mother Sister Brother",
-      "original_title": "",
-      "year": "2025",
-      "color": "Έγχρ.",
-      "duration": "Διάρκεια: 110'",
+      "duration": "Διάρκεια: 99'",
       "rating_age": "",
       "rating_stars": 4.0,
       "movie_type": "Δραματική",
-      "movie_country": "Aμερικανική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/father_mother_sister_brother-10088539",
-      "imdb_link": "http://www.imdb.com/title/tt31189315/",
-      "slug": "father-mother-sister-brother"
-    }
-  ],
-  [
-    {
-      "greek_title": "Φαρενάιτ 451",
-      "original_title": "Fahrenheit 451",
-      "year": "1966",
-      "color": "Έγχρ.",
-      "duration": "Διάρκεια: 112'",
-      "rating_age": "",
-      "rating_stars": 3.0,
-      "movie_type": "Επιστ. Φαντασίας",
-      "movie_country": "Αγγλική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/farenait_451-1008985",
-      "imdb_link": "http://www.imdb.com/title/tt0060390/",
-      "slug": "fahrenheit-451"
+      "movie_country": "Σουηδο-γερμανο-αγγλική",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/fthinoporini_sonata-1002633",
+      "imdb_link": "http://www.imdb.com/title/tt0077711/",
+      "slug": "autumn-sonata"
     }
   ],
   [
@@ -1310,7 +1068,7 @@
       "color": "Έγχρ.",
       "duration": "Διάρκεια: 100'",
       "rating_age": "",
-      "rating_stars": null,
+      "rating_stars": 1.5,
       "movie_type": "Κωμωδία",
       "movie_country": "Eλληνική",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/filoi_gia_panta-10089352",
@@ -1319,18 +1077,18 @@
   ],
   [
     {
-      "greek_title": "Οι Φύλακες του Χιονιού",
-      "original_title": "North: An Epic Journey of Friendship",
+      "greek_title": "Φραντς Κάφκα",
+      "original_title": "Franz",
       "year": "2025",
       "color": "Έγχρ.",
-      "duration": "Διάρκεια: 85'",
-      "rating_age": "Κ",
-      "rating_stars": null,
-      "movie_type": "Animation",
-      "movie_country": "Νορβηγική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/oi_fulakes_tou_xioniou-10088671",
-      "imdb_link": "http://www.imdb.com/title/tt35485979/",
-      "slug": "north"
+      "duration": "Διάρκεια: 127'",
+      "rating_age": "",
+      "rating_stars": 2.5,
+      "movie_type": "Δραματική",
+      "movie_country": "Τσεχοπολωνική",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/frants_kafka-10089543",
+      "imdb_link": "http://www.imdb.com/title/tt17070412/",
+      "slug": "franz"
     }
   ],
   [
@@ -1341,7 +1099,7 @@
       "color": "Έγχρ.",
       "duration": "Διάρκεια: 89'",
       "rating_age": "Κ-12",
-      "rating_stars": null,
+      "rating_stars": 3.5,
       "movie_type": "Δραματική",
       "movie_country": "Γαλλοτυνησιακή",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/i_foni_tis_xint_ratzamp-10088249",
@@ -1351,34 +1109,18 @@
   ],
   [
     {
-      "greek_title": "Η Χάνα και οι Αδελφές της",
-      "original_title": "Hannah and her Sisters",
-      "year": "1986",
+      "greek_title": "Χόλι, Το Γενναίο Σκαντζοχοιράκι",
+      "original_title": "Spiked",
+      "year": "2025",
       "color": "Έγχρ.",
-      "duration": "Διάρκεια: 106'",
-      "rating_age": "",
-      "rating_stars": 4.0,
-      "movie_type": "Κωμωδία",
-      "movie_country": "Αμερικανική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/i_xana_kai_oi_adelfes_tis-1002214",
-      "imdb_link": "http://www.imdb.com/title/tt0091167/",
-      "slug": "hannah-and-her-sisters"
-    }
-  ],
-  [
-    {
-      "greek_title": "Ο ΧΡΙΣΤΟΣ ΞΑΝΑΣΤΑΥΡΩΝΕΤΑΙ",
-      "original_title": "CELUI QUI DOIT MOURIR",
-      "year": "1957",
-      "color": "Α/Μ",
-      "duration": "Διάρκεια: 122'",
-      "rating_age": "",
-      "rating_stars": 3.0,
-      "movie_type": "Δραματική",
-      "movie_country": "Γαλλική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/o_xristos_ksanastauronetai-1008532",
-      "imdb_link": "http://www.imdb.com/title/tt0050237/",
-      "slug": "he-who-must-die"
+      "duration": "Διάρκεια: 85'",
+      "rating_age": "Κ",
+      "rating_stars": 2.0,
+      "movie_type": "Animation",
+      "movie_country": "Αγγλογαλλική",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/xoli_to_gennaio_skantzoxoiraki-10089542",
+      "imdb_link": "http://www.imdb.com/title/tt6930962/",
+      "slug": "spiked-aka-tally-ho"
     }
   ],
   [
@@ -1399,48 +1141,18 @@
   ],
   [
     {
-      "greek_title": "Το Χρώμα του Χρήματος",
-      "original_title": "The Color of Money",
-      "year": "1986",
+      "greek_title": "Χωρίς Προηγούμενο Ραντεβού",
+      "original_title": "Bedoone Gharare Ghabli / No Prior Appointment",
+      "year": "2022",
       "color": "Έγχρ.",
-      "duration": "Διάρκεια: 119'",
+      "duration": "Διάρκεια: 115'",
       "rating_age": "",
-      "rating_stars": null,
+      "rating_stars": 2.5,
       "movie_type": "Δραματική",
-      "movie_country": "Αμερικάνικη",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/to_xroma_tou_xrimatos-1002652",
-      "imdb_link": null
-    }
-  ],
-  [
-    {
-      "greek_title": "ΨΩΝΙΣΤΗΡΙ",
-      "original_title": "CRUISING",
-      "year": "1980",
-      "color": "Έγχρ.",
-      "duration": "",
-      "rating_age": "",
-      "rating_stars": null,
-      "movie_type": "Θρίλερ",
-      "movie_country": "Αμερικάνικη",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/psonistiri-1000680",
-      "imdb_link": null
-    }
-  ],
-  [
-    {
-      "greek_title": "Η Ώρα του Λύκου",
-      "original_title": "Vargtimmen / Hour of the Wolf",
-      "year": "1968",
-      "color": "Α/Μ",
-      "duration": "Διάρκεια: 88'",
-      "rating_age": "",
-      "rating_stars": 4.0,
-      "movie_type": "Δραματική",
-      "movie_country": "Σουηδική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/i_ora_tou_lukou-10086700",
-      "imdb_link": "http://www.imdb.com/title/tt0063759/",
-      "slug": "hour-of-the-wolf"
+      "movie_country": "Ιρανική",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/xoris_proigoumeno_rantebou-10089540",
+      "imdb_link": "http://www.imdb.com/title/tt14443682/",
+      "slug": "no-prior-appointment"
     }
   ]
 ]

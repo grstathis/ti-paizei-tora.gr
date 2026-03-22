@@ -96,7 +96,7 @@ print("=" * 80)
 
 # Load movies.json first to build slug lookup
 print("Loading movies.json to build slug lookup...")
-with open("movies.json", encoding="utf-8") as f:
+with open("/home/grstathis/ti-paizei-tora.gr/movies.json", encoding="utf-8") as f:
     movies_data_initial = json.load(f)
 
 # Build a set of slugs from movies.json
@@ -151,29 +151,23 @@ def get_cinema_links(all_pages):
 
     for url in all_pages:
 
+        page_links =[]
         print(f"Scanning: {url}")
 
-        try:
-            response = requests.get(url, timeout=10)
-            response.raise_for_status()
+        response = requests.get(url, timeout=10)
+        response.raise_for_status()
+        raw_content = response.text
 
-            # Use 'xml' parser for sitemaps
-            soup = BeautifulSoup(response.content, "xml")
+        # Find all matches
+        all_locs = re.findall(r'<loc>(.*?)</loc>', raw_content)
 
-            # Find all <loc> tags which contain the URLs
-            loc_tags = soup.find_all("loc")
+        # 3. Filter matches
+        if all_locs:
+            page_links = [link for link in all_locs if target_pattern in link]
+        all_movie_links.extend(page_links)
+            
+        print(f" Found {len(page_links)} movie links on page {url}.")
 
-            page_links = [loc.text for loc in loc_tags if target_pattern in loc.text]
-            all_movie_links.extend(page_links)
-
-            print(f" Found {len(page_links)} movie links on page {url}.")
-
-            # Be polite to the server
-            time.sleep(0.1)
-
-        except Exception as e:
-            print(f" Error on page: {e}")
-            break
 
     return all_movie_links
 
@@ -393,13 +387,13 @@ def normalize(text):
 
 # Load all data files
 print("Loading data files...")
-with open("movies.json", encoding="utf-8") as f:
+with open("/home/grstathis/ti-paizei-tora.gr/movies.json", encoding="utf-8") as f:
     movies_data = json.load(f)
 
-with open("flix_ratings.json", encoding="utf-8") as f:
+with open("/home/grstathis/ti-paizei-tora.gr/flix_ratings.json", encoding="utf-8") as f:
     flix_data = json.load(f)
 
-with open("lifo_ratings.json", encoding="utf-8") as f:
+with open("/home/grstathis/ti-paizei-tora.gr/lifo_ratings.json", encoding="utf-8") as f:
     lifo_data = json.load(f)
 
 # Build lookup dictionaries for flix and lifo
