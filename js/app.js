@@ -609,12 +609,14 @@ function renderResults(filteredList, forceEmpty = false) {
         };
     }).filter(item => item !== null);
 
-    // Sort by cinema count (descending - most cinemas first)
+    // Sort by cinema count in filtered results (descending - most cinemas first)
+    // Note: Popular badge uses pre-calculated total cinema count from backend, not filtered count
     moviesWithCounts.sort((a, b) => b.cinemaCount - a.cinemaCount);
 
     // Now render the sorted movies
     moviesWithCounts.forEach(({ idx, movie, movieCinemas, regionFiltered }, arrayIndex) => {
-        const isTopResult = arrayIndex === 0; // First movie in sorted list
+        // Use pre-calculated is_popular field from backend (static, not filtered)
+        const isTopResult = movie.is_popular === true;
 
         // Check for rating disparity (controversial ratings)
         const ratings = [];

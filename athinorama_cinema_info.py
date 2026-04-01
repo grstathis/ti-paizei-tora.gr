@@ -1,33 +1,38 @@
+import json
+import os
+import re
+import shutil
+import unicodedata
+from datetime import datetime, timezone
+from pathlib import Path
+
 import requests
 from bs4 import BeautifulSoup
-import json
-import unicodedata
-import re
 from unidecode import unidecode
-import os
-import shutil
-from pathlib import Path
-from datetime import datetime
-from datetime import timezone
-
 
 BASE_URL = "https://ti-paizei-tora.gr"
-MOVIE_DIR = "/home/grstathis/ti-paizei-tora.gr/movie"
-REGION_DIR = "/home/grstathis/ti-paizei-tora.gr/region"  # Add region directory
-OUTPUT_FILE = "/home/grstathis/ti-paizei-tora.gr/sitemap.xml"
+
+BASE_DIR = "/home/grstathis/ti-paizei-tora.gr"
+MOVIE_DIR = os.path.join(BASE_DIR, "movie")
+REGION_DIR = os.path.join(BASE_DIR, "region")
+OUTPUT_FILE = os.path.join(BASE_DIR, "sitemap.xml")
 
 
 # Read the Google API key from the file
-with open("/home/grstathis/ti-paizei-tora.gr/google_api", "r") as file:
+with open(os.path.join(BASE_DIR, "google_api"), "r") as file:
     GOOGLE_API_KEY = file.read().strip()
-with open("/home/grstathis/ti-paizei-tora.gr/omdb_api", "r") as file:
+with open(os.path.join(BASE_DIR, "omdb_api"), "r") as file:
     OMDB_API_KEY = file.read().strip()
 
 
 def extract_movie_links():
     url = "https://www.athinorama.gr/cinema/guide/"
     headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+        "User-Agent": (
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+            "AppleWebKit/537.36 (KHTML, like Gecko) "
+            "Chrome/91.0.4472.124 Safari/537.36"
+        )
     }
 
     response = requests.get(url, headers=headers)
@@ -42,7 +47,12 @@ def extract_movie_links():
         if title_div:
             link = title_div.find("a")
             if link and link.get("href"):
-                movie_links.append(link["href"].replace('\n', ' ').replace('\r', '').replace(' ',''))
+                movie_links.append(
+                    link["href"]
+                    .replace("\n", " ")
+                    .replace("\r", "")
+                    .replace(" ", "")
+                )
 
     return movie_links
 
@@ -92,7 +102,9 @@ def get_movie_theater(url):
 def is_greek(text):
     """Return True if text contains mostly Greek characters."""
     greek_chars = re.findall(r"[Α-Ωα-ωάέήίόύώΆΈΉΊΌΎΏ]", text)
-    return len(greek_chars) > len(text) * 0.5  # >50% Greek letters = Greek text
+    return (
+        len(greek_chars) > len(text) * 0.5
+    )  # >50% Greek letters = Greek text
 
 
 def transliterate_greek_to_latin(text):
@@ -187,7 +199,12 @@ def get_cinema_info_from_google(name: str, address: str = None):
 
     if data["status"] != "OK" or not data["results"]:
         print(f"⚠️ Google Maps API: No match for '{query}'")
-        return {"lat": None, "lon": None, "area": "Unknown", "formatted_address": None}
+        return {
+            "lat": None,
+            "lon": None,
+            "area": "Unknown",
+            "formatted_address": None,
+        }
 
     result = data["results"][0]
     geometry = result["geometry"]["location"]
@@ -197,7 +214,11 @@ def get_cinema_info_from_google(name: str, address: str = None):
     area = "Unknown"
     # Extract broader area (default: locality)
     area = next(
-        (c["long_name"] for c in address_components if "locality" in c["types"]),
+        (
+            c["long_name"]
+            for c in address_components
+            if "locality" in c["types"]
+        ),
         "Unknown",
     )
 
@@ -216,7 +237,12 @@ def get_cinema_info_from_google(name: str, address: str = None):
 
     # --- Geocoding ---
     url = "https://nominatim.openstreetmap.org/search"
-    params = {"q": f"{first_part}", "format": "json", "addressdetails": 1, "limit": 1}
+    params = {
+        "q": f"{first_part}",
+        "format": "json",
+        "addressdetails": 1,
+        "limit": 1,
+    }
 
     r = requests.get(url, params=params, headers={"User-Agent": "cinema-app"})
     r.raise_for_status()
@@ -239,13 +265,13 @@ def get_cinema_info_from_google(name: str, address: str = None):
 
 
 def geocode_area(address):
-    # 🧹 Step 1: Remove parentheses and contents inside them
+    # Step 1: Remove parentheses and contents inside them
     cleaned = re.sub(r"\([^)]*\)", "", address).strip()
 
-    # 🧹 Step 2: Keep only the first comma-separated part
-    # first_part = cleaned.split(',')[0].strip()
+    # Step 2: Keep only the first comma-separated part
+    first_part = cleaned.split(",")[0].strip()
 
-    # 🧹 Step 3: Remove Greek street words and abbreviations
+    # Step 3: Remove Greek street words and abbreviations
     first_part = re.sub(
         r"\b(Λ\.?|Λεωφόρος|Λεωφ\.?|Οδός|Οδ\.?|Δρόμος|Δρ\.?)\b",
         "",
@@ -253,27 +279,37 @@ def geocode_area(address):
         flags=re.IGNORECASE,
     ).strip()
 
-    # 🧹 Step 4: Keep only up to the first '&' or 'και' or '-' (e.g., "Συγγρού & Φραντζή" → "Συγγρού")
+    # Step 4: Keep only up to the first '&' or 'και' or '-'
+    # (e.g., "Συγγρού & Φραντζή" → "Συγγρού")
     first_part = re.split(r"\s*&\s*|\s*και\s*|\s*-\s*", first_part)[0].strip()
 
-    #     # 🧹 Step 5: Keep only first word and possible number (e.g. "Παπανδρέου 12")
-    #     match = re.match(r'^([\wΆ-ώΑ-Ωά-ώ]+(?:\s*\d{1,3})?)', first_part)
-    #     if match:
-    #         query_base = match.group(1)
-    #     else:
-    #         query_base = first_part
+    # Step 5: Keep only first word and possible number
+    # (e.g. "Παπανδρέου 12")
+    # match = re.match(r'^([\wΆ-ώΑ-Ωά-ώ]+(?:\s*\d{1,3})?)', first_part)
+    # if match:
+    #     query_base = match.group(1)
+    # else:
+    #     query_base = first_part
+    query_base = first_part
 
-    # 🧹 Step 6: Collapse spaces
+    # Step 6: Collapse spaces
     query_base = re.sub(r"\s+", " ", query_base).strip()
 
     # --- Geocoding ---
     url = "https://nominatim.openstreetmap.org/search"
-    params = {"q": f"{query_base}", "format": "json", "addressdetails": 1, "limit": 1}
+    params = {
+        "q": f"{query_base}",
+        "format": "json",
+        "addressdetails": 1,
+        "limit": 1,
+    }
 
     #     print(f"Geocoding query: {params['q']}")
 
     try:
-        r = requests.get(url, params=params, headers={"User-Agent": "cinema-app"})
+        r = requests.get(
+            url, params=params, headers={"User-Agent": "cinema-app"}
+        )
         r.raise_for_status()
         data = r.json()
         if not data:
@@ -310,25 +346,29 @@ def normalize_name(name: str) -> str:
 
 
 def load_cinema_database(
-    filename="/home/grstathis/ti-paizei-tora.gr/cinema_database.json",
+    filename=None,
 ):
     """Load existing cinema database from file."""
+    if filename is None:
+        filename = os.path.join(BASE_DIR, "cinema_database.json")
     if os.path.exists(filename):
         try:
             with open(filename, "r", encoding="utf-8") as f:
                 return json.load(f)
         except (json.JSONDecodeError, FileNotFoundError):
-            print(f"⚠️ Warning: {filename} is empty or corrupted. Starting fresh.")
+            print(
+                f"⚠️ Warning: {filename} is empty or corrupted. Starting fresh."
+            )
             return {}
     else:
         print(f"ℹ️ No existing {filename} found. Starting fresh.")
         return {}
 
 
-def save_cinema_database(
-    cinema_db, filename="/home/grstathis/ti-paizei-tora.gr/cinema_database.json"
-):
+def save_cinema_database(cinema_db, filename=None):
     """Save cinema database to file."""
+    if filename is None:
+        filename = os.path.join(BASE_DIR, "cinema_database.json")
     with open(filename, "w", encoding="utf-8") as f:
         json.dump(cinema_db, f, ensure_ascii=False, indent=2)
     print(f"✅ Cinema database saved to {filename}")
@@ -354,7 +394,9 @@ def get_or_create_cinema_info(name, address, cinema_db):
             print(f"✅ Found cached info (with website) for: {name}")
             return existing_info
         else:
-            print(f"🔄 Found cached location info for: {name}, fetching website...")
+            print(
+                f"🔄 Found cached location info for: {name}, fetching website..."
+            )
             # Get website info and merge with existing
             website_info = get_cinema_website_from_google_places(name, address)
             merged_info = {**existing_info, **website_info}
@@ -396,11 +438,18 @@ def get_movie_theater_times(url, cinema_db):
     cinemas_data = []
     movies_data = []
     headers = {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
-    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
-    "Accept-Language": "el-GR,el;q=0.9,en;q=0.8",
+        "User-Agent": (
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+            "AppleWebKit/537.36 (KHTML, like Gecko) "
+            "Chrome/121.0.0.0 Safari/537.36"
+        ),
+        "Accept": (
+            "text/html, application/xhtml+xml, application/xml;q=0.9,"
+            "image/avif, image/webp, image/apng, */*;q=0.8"
+        ),
+        "Accept-Language": "el-GR, el;q=0.9, en;q=0.8",
     }
-    response = requests.get(url,headers=headers)
+    response = requests.get(url, headers=headers)
     response.raise_for_status()
 
     soup = BeautifulSoup(response.text, "html.parser")
@@ -408,7 +457,9 @@ def get_movie_theater_times(url, cinema_db):
     # --- Movie Titles ---
     title_greek_tag = soup.find("h1")
     title_greek = (
-        title_greek_tag.get_text(strip=True) if title_greek_tag else "Unknown Title"
+        title_greek_tag.get_text(strip=True)
+        if title_greek_tag
+        else "Unknown Title"
     )
 
     # --- Extract Review Details ---
@@ -453,7 +504,9 @@ def get_movie_theater_times(url, cinema_db):
             if rating_value_tag:
                 try:
                     # Replace comma with dot for Greek decimal format
-                    rating_text = rating_value_tag.get_text(strip=True).replace(',', '.')
+                    rating_text = rating_value_tag.get_text(
+                        strip=True
+                    ).replace(",", ".")
                     rating_stars = float(rating_text)
                 except ValueError:
                     rating_stars = None
@@ -508,7 +561,9 @@ def get_movie_theater_times(url, cinema_db):
         for panel in block.find_all("div", class_="grid schedule-grid"):
             room_name_tag = panel.find("span")
             room_name = (
-                room_name_tag.get_text(strip=True) if room_name_tag else "Main Room"
+                room_name_tag.get_text(strip=True)
+                if room_name_tag
+                else "Main Room"
             )
             rooms.append({"room": room_name})
 
@@ -521,7 +576,9 @@ def get_movie_theater_times(url, cinema_db):
             if times:
                 room_timetable.append(times)
 
-        address = details_tag.get_text(" ", strip=True) if details_tag else None
+        address = (
+            details_tag.get_text(" ", strip=True) if details_tag else None
+        )
         # --- Get cinema info from cache or API ---
         region_dict = get_or_create_cinema_info(name, address, cinema_db)
 
@@ -530,15 +587,17 @@ def get_movie_theater_times(url, cinema_db):
         suburb = region_dict.get("suburb", "Unknown")
         neighbourhood = region_dict.get("neighbourhood", "Unknown")
 
-        # 1. When area is "Αθηνα", list subarea if available, otherwise use "Αθηνα (Κεντρο)"
+        # 1. When area is "Αθηνα", list subarea if available,
+        # otherwise use "Αθηνα (Κεντρο)"
         if final_area == "Αθήνα":
             print(region_dict)
-            # Check if suburb is not empty/None AND not the same as the main area
+            # Check if suburb is not empty/None AND not the same as
+            # the main area
             if suburb and normalize_name(suburb) != normalize_name(final_area):
                 final_area = suburb
-            elif not suburb and normalize_name(neighbourhood) != normalize_name(
-                final_area
-            ):
+            elif not suburb and normalize_name(
+                neighbourhood
+            ) != normalize_name(final_area):
                 final_area = neighbourhood
             else:
                 # This will act as the filter for all Athens cinemas
@@ -566,7 +625,7 @@ def get_movie_theater_times(url, cinema_db):
     return movies_data, cinemas_data
 
 
-#### main routine here ####
+# Main routine here
 movie_links = []
 
 base_url = "https://www.athinorama.gr"
@@ -592,15 +651,44 @@ for url in movie_links:
 # Save updated cinema database
 save_cinema_database(cinema_database)
 
-with open("/home/grstathis/ti-paizei-tora.gr/cinemas.json", "w", encoding="utf-8") as f:
+# Calculate total cinema counts for each movie to determine popular movies
+print("Calculating popular movies based on cinema count...")
+movie_cinema_counts = {}
+for movie_idx, cinema_list in enumerate(cinemas_l):
+    # Count cinemas that have valid timetables
+    valid_cinema_count = len(
+        [c for c in cinema_list if c.get("timetable") and any(c["timetable"])]
+    )
+    movie_cinema_counts[movie_idx] = valid_cinema_count
+
+# Find the maximum cinema count
+max_count = max(movie_cinema_counts.values()) if movie_cinema_counts else 0
+print(f"Maximum cinema count: {max_count}")
+
+# Add total_cinema_count and is_popular fields to each movie
+for movie_idx, movie_list in enumerate(movies_l):
+    cinema_count = movie_cinema_counts.get(movie_idx, 0)
+    # movie_list is a list containing one dict, so we add fields to movie_list[0]
+    if movie_list:  # Check if list is not empty
+        movie_list[0]["total_cinema_count"] = cinema_count
+        # Mark as popular if it has the max count and the count is greater than 1
+        movie_list[0]["is_popular"] = (
+            cinema_count == max_count and max_count > 1
+        )
+        if movie_list[0]["is_popular"]:
+            print(
+                f"Popular movie: {movie_list[0]['greek_title']} ({cinema_count} cinemas)"
+            )
+
+with open(os.path.join(BASE_DIR, "cinemas.json"), "w", encoding="utf-8") as f:
     json.dump(cinemas_l, f, ensure_ascii=False, indent=2)
 
-with open("/home/grstathis/ti-paizei-tora.gr/movies.json", "w", encoding="utf-8") as f:
+with open(os.path.join(BASE_DIR, "movies.json"), "w", encoding="utf-8") as f:
     json.dump(movies_l, f, ensure_ascii=False, indent=2)
 
 print("saved cinemas.json, movies.json files")
 
-### create movie html folder ###
+# Create movie html folder
 
 # --- Minimal HTML Template ---
 HTML_TEMPLATE = """
@@ -611,8 +699,8 @@ HTML_TEMPLATE = """
 <title>{title}</title>
 <style>
   body {{ font-family: Arial, sans-serif; background:#f5f5f5; padding:20px; }}
-  .card {{ background:#fff; padding:16px; max-width:420px; margin:auto; border-radius:10px; 
-           box-shadow:0 2px 6px rgba(0,0,0,0.15); }}
+  .card {{ background:#fff; padding:16px; max-width:420px; margin:auto; border-radius:10px;
+           box-shadow:0 2px 6px rgba(0, 0, 0, 0.15); }}
   img {{ width:100%; border-radius:6px; margin-bottom:12px; }}
   .title {{ font-size:22px; font-weight:bold; margin-bottom:6px; }}
   .year {{ color:#777; margin-bottom:12px; }}
@@ -643,7 +731,7 @@ HTML_TEMPLATE = """
 
 
 # --- Load JSON ---
-with open("/home/grstathis/ti-paizei-tora.gr/movies.json", "r", encoding="utf-8") as f:
+with open(os.path.join(BASE_DIR, "movies.json"), "r", encoding="utf-8") as f:
     movies_data = json.load(f)
 
 
@@ -669,7 +757,7 @@ movie_base_path = Path(MOVIE_DIR)
 if os.path.exists(movie_base_path):
     print(f"🗑️ Deleting existing movie folder: {movie_base_path}")
     shutil.rmtree(movie_base_path)
-    print(f"✅ Old movie folder removed")
+    print("✅ Old movie folder removed")
 
 
 # --- Main processing loop ---
@@ -728,12 +816,12 @@ for entry in movies_data:
     print("Created:", output_file)
 
 # 💾 Save updated movies.json with slugs
-with open("/home/grstathis/ti-paizei-tora.gr/movies.json", "w", encoding="utf-8") as f:
+with open(os.path.join(BASE_DIR, "movies.json"), "w", encoding="utf-8") as f:
     json.dump(movies_data, f, ensure_ascii=False, indent=2)
 
 print("\nDone! All movie cards and folders generated.")
 
-#### create html showtime subfolders ####
+# Create html showtime subfolders
 
 # Basic Greek -> Latin transliteration suitable for URL slugs
 GREEK_TO_LATIN = {
@@ -827,7 +915,8 @@ def parse_showtime(showtime_str: str):
     """Parse showtime string like 'Κυριακή 07 Δεκ. 16:00' to extract date and time"""
     # Extract date and time using regex
     match = re.search(
-        r"(\d{1,2})\s+([Α-Ωα-ωάέίόήύώΆΈΉΊΌΎΏ\.]+)\s+(\d{2}):(\d{2})", showtime_str
+        r"(\d{1, 2})\s+([Α-Ωα-ωάέίόήύώΆΈΉΊΌΎΏ\.]+)\s+(\d{2}):(\d{2})",
+        showtime_str,
     )
 
     if match:
@@ -883,7 +972,9 @@ def is_future_showtime(parsed_showtime):
 
     # Create datetime for the showtime
     showtime_date = datetime(
-        parsed_showtime["year"], parsed_showtime["month"], parsed_showtime["day"]
+        parsed_showtime["year"],
+        parsed_showtime["month"],
+        parsed_showtime["day"],
     ).date()
 
     # If date is before today, filter it out
@@ -892,7 +983,9 @@ def is_future_showtime(parsed_showtime):
 
     # If it's today, check if the time has passed
     if showtime_date == today_date:
-        showtime_mins = parsed_showtime["hour"] * 60 + parsed_showtime["minute"]
+        showtime_mins = (
+            parsed_showtime["hour"] * 60 + parsed_showtime["minute"]
+        )
         # Only show future times for today
         if showtime_mins < now_mins:
             return False
@@ -923,11 +1016,15 @@ def create_showtime_html_fallback(movie, cinema, parsed_showtime):
 
     # Prepare movie title display
     movie_title_display = movie.get("greek_title", "")
-    if movie.get("original_title") and movie.get("original_title").strip() not in [
+    if movie.get("original_title") and movie.get(
+        "original_title"
+    ).strip() not in [
         "",
         "/",
     ]:
-        movie_title_display += f" ({movie.get('original_title').rstrip('/ ').strip()})"
+        movie_title_display += (
+            f" ({movie.get('original_title').rstrip('/ ').strip()})"
+        )
 
     # Format showtime
     showtime_formatted = parsed_showtime["time"].replace("-", ":")
@@ -952,10 +1049,14 @@ def create_showtime_html_fallback(movie, cinema, parsed_showtime):
     rooms_info = ""
     if cinema.get("rooms"):
         rooms_list = [
-            room.get("room", "") for room in cinema["rooms"] if room.get("room")
+            room.get("room", "")
+            for room in cinema["rooms"]
+            if room.get("room")
         ]
         if rooms_list:
-            rooms_info = f"<p><strong>Αίθουσα:</strong> {', '.join(rooms_list)}</p>"
+            rooms_info = (
+                f"<p><strong>Αίθουσα:</strong> {', '.join(rooms_list)}</p>"
+            )
 
     html_content = f"""<!DOCTYPE html>
 <html lang="el">
@@ -982,7 +1083,7 @@ def create_showtime_html_fallback(movie, cinema, parsed_showtime):
             margin: 0 auto;
             background: white;
             border-radius: 12px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             overflow: hidden;
         }}
         .header {{
@@ -997,7 +1098,7 @@ def create_showtime_html_fallback(movie, cinema, parsed_showtime):
         }}
         .showtime-badge {{
             display: inline-block;
-            background: rgba(255,255,255,0.2);
+            background: rgba(255, 255, 255, 0.2);
             padding: 8px 20px;
             border-radius: 20px;
             font-size: 1.2em;
@@ -1090,7 +1191,7 @@ def create_showtime_html_fallback(movie, cinema, parsed_showtime):
             <h1>🎬 {movie_title_display}</h1>
             <div class="showtime-badge">🕒 {showtime_formatted}</div>
         </div>
-        
+
         <div class="content">
             <div class="section">
                 <h2>📽️ Πληροφορίες Ταινίας</h2>
@@ -1106,7 +1207,7 @@ def create_showtime_html_fallback(movie, cinema, parsed_showtime):
                 </div>
                 {f'<div class="external-links">{" ".join(external_links)}</div>' if external_links else ''}
             </div>
-            
+
             <div class="section">
                 <h2>🎭 Κινηματογράφος</h2>
                 <div class="info-grid">
@@ -1126,7 +1227,7 @@ def create_showtime_html_fallback(movie, cinema, parsed_showtime):
                 </div>
                 <a href="{maps_link}" target="_blank" class="location-link">Δες στο Google Maps</a>
             </div>
-            
+
             <div class="section">
                 <h2>⏰ Προβολή</h2>
                 <div class="info-grid">
@@ -1164,31 +1265,40 @@ def inject_cinema_showtime_info(movie_html, cinema, parsed_showtime, movie):
     rooms_html = ""
     if cinema.get("rooms"):
         rooms_list = [
-            room.get("room", "") for room in cinema["rooms"] if room.get("room")
+            room.get("room", "")
+            for room in cinema["rooms"]
+            if room.get("room")
         ]
         if rooms_list:
-            rooms_html = f"<div><small>Αίθουσα: {', '.join(rooms_list)}</small></div>"
+            rooms_html = (
+                f"<div><small>Αίθουσα: {', '.join(rooms_list)}</small></div>"
+            )
 
     # Movie title for meta update
     movie_title_display = movie.get("greek_title", "")
-    if movie.get("original_title") and movie.get("original_title").strip() not in [
+    if movie.get("original_title") and movie.get(
+        "original_title"
+    ).strip() not in [
         "",
         "/",
     ]:
-        movie_title_display += f" ({movie.get('original_title').rstrip('/ ').strip()})"
+        movie_title_display += (
+            f" ({movie.get('original_title').rstrip('/ ').strip()})"
+        )
 
     # Create cinema and showtime section HTML
     cinema_showtime_section = f"""
   <!-- Cinema & Showtime Information -->
   <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 24px; border-radius: 10px; margin-bottom: 20px;">
     <h3 style="margin: 0 0 16px 0; font-size: 1.4em;">🎭 Προβολή</h3>
-    <div style="background: rgba(255,255,255,0.1); padding: 16px; border-radius: 8px; margin-bottom: 12px;">
+    <div style="background: rgba(255, 255, 255, 0.1); padding: 16px; "
+         "border-radius: 8px; margin-bottom: 12px;">
       <div style="font-size: 1.8em; font-weight: bold; margin-bottom: 8px;">🕒 {showtime_formatted}</div>
       <div style="font-size: 1.1em; opacity: 0.9;">{date_formatted}</div>
       {rooms_html}
     </div>
-    
-    <div style="background: rgba(255,255,255,0.1); padding: 16px; border-radius: 8px;">
+
+    <div style="background: rgba(255, 255, 255, 0.1); padding: 16px; border-radius: 8px;">
       <h4 style="margin: 0 0 12px 0; font-size: 1.2em;">📍 Κινηματογράφος</h4>
       <div style="font-size: 1.1em; margin-bottom: 8px;">
         <strong>{cinema.get('cinema', 'Μη διαθέσιμο')}</strong>
@@ -1196,15 +1306,13 @@ def inject_cinema_showtime_info(movie_html, cinema, parsed_showtime, movie):
       </div>
       <div style="margin-bottom: 8px;">{cinema.get('address', 'Μη διαθέσιμη')}</div>
       {f'<div style="font-size: 0.95em; opacity: 0.9;">{cinema["region"]}" - {cinema["subregion"]}"'}
-      <a href="{maps_link}" target="_blank" style="display: inline-block; margin-top: 12px; padding: 10px 20px; background: rgba(255,255,255,0.9); color: #667eea; text-decoration: none; border-radius: 6px; font-weight: bold;">📍 Δες στο Google Maps</a>
+      <a href="{maps_link}" target="_blank" style="display: inline-block; margin-top: 12px; padding: 10px 20px; background: rgba(255, 255, 255, 0.9); color: #667eea; text-decoration: none; border-radius: 6px; font-weight: bold;">📍 Δες στο Google Maps</a>
     </div>
   </div>
 """
 
     # Update the title tag
-    new_title = (
-        f"{movie_title_display} - {cinema.get('cinema', '')} - {showtime_formatted}"
-    )
+    new_title = f"{movie_title_display} - {cinema.get('cinema', '')} - {showtime_formatted}"
     movie_html = re.sub(
         r"<title>.*?</title>", f"<title>{new_title}</title>", movie_html
     )
@@ -1227,9 +1335,8 @@ def inject_cinema_showtime_info(movie_html, cinema, parsed_showtime, movie):
     # Inject cinema/showtime section after the opening <body> tag or after the first div.card
     if '<div class="card">' in movie_html:
         # Insert right after opening of .card div
-        movie_html = movie_html.replace(
-            '<div class="card">', f'<div class="card">\n{cinema_showtime_section}', 1
-        )
+        replacement = f'<div class="card">\n{cinema_showtime_section}'
+        movie_html = movie_html.replace('<div class="card">', replacement, 1)
     elif "<body>" in movie_html:
         # Fallback: insert after body tag
         movie_html = movie_html.replace(
@@ -1244,12 +1351,12 @@ def create_cinema_structure():
 
     # Load JSON files
     with open(
-        "/home/grstathis/ti-paizei-tora.gr/movies.json", "r", encoding="utf-8"
+        os.path.join(BASE_DIR, "movies.json"), "r", encoding="utf-8"
     ) as f:
         movies_data = json.load(f)
 
     with open(
-        "/home/grstathis/ti-paizei-tora.gr/cinemas.json", "r", encoding="utf-8"
+        os.path.join(BASE_DIR, "cinemas.json"), "r", encoding="utf-8"
     ) as f:
         cinemas_data = json.load(f)
 
@@ -1259,7 +1366,7 @@ def create_cinema_structure():
     if base_path.exists():
         print(f"🗑️  Deleting existing folder structure: {base_path}")
         shutil.rmtree(base_path)
-        print(f"✅ Old structure removed")
+        print("✅ Old structure removed")
 
     base_path.mkdir(exist_ok=True)
 
@@ -1360,7 +1467,9 @@ def create_cinema_structure():
                 if not showtime_list:  # Skip empty lists
                     continue
                 for showtime in showtime_list:
-                    if not showtime or not showtime.strip():  # Skip empty strings
+                    if (
+                        not showtime or not showtime.strip()
+                    ):  # Skip empty strings
                         continue
 
                     parsed = parse_showtime(showtime)
@@ -1381,7 +1490,12 @@ def create_cinema_structure():
 
             # Create region/cinema/movie folder structure
             movie_path = (
-                base_path / region_slug / "cinema" / cinema_slug / "movie" / movie_slug
+                base_path
+                / region_slug
+                / "cinema"
+                / cinema_slug
+                / "movie"
+                / movie_slug
             )
             movie_path.mkdir(parents=True, exist_ok=True)
 
@@ -1405,7 +1519,9 @@ def create_cinema_structure():
                     stats["used_movie_html"] += 1
                 else:
                     # Generate complete HTML from scratch
-                    showtime_html = create_showtime_html_fallback(movie, cinema, parsed)
+                    showtime_html = create_showtime_html_fallback(
+                        movie, cinema, parsed
+                    )
                     stats["used_fallback_html"] += 1
 
                 if showtime_html:
@@ -1429,7 +1545,7 @@ def create_cinema_structure():
                 f"✅ {movie_title}: {cinemas_for_movie} cinemas, {showtimes_for_movie} showtimes"
             )
 
-    print(f"\n📊 Summary:")
+    print("\n📊 Summary:")
     print(f"   Movies processed: {stats['total_movies']}")
     print(f"   Total cinema entries: {stats['total_cinemas']}")
     print(f"   Total HTML pages created: {stats['total_showtimes']}")
@@ -1536,7 +1652,7 @@ def generate_sitemap():
 
     # --- Write final XML ---
     sitemap = f"""<?xml version="1.0" encoding="UTF-8"?>
-<urlset 
+<urlset
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
 {''.join(urls)}

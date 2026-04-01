@@ -10,6 +10,11 @@ import re
 from unidecode import unidecode
 import unicodedata
 import time
+import os
+
+
+# Base directory configuration
+BASE_DIR = "/home/grstathis/ti-paizei-tora.gr"
 
 
 # ----------------------------------------------------------------------------
@@ -96,7 +101,7 @@ print("=" * 80)
 
 # Load movies.json first to build slug lookup
 print("Loading movies.json to build slug lookup...")
-with open("/home/grstathis/ti-paizei-tora.gr/movies.json", encoding="utf-8") as f:
+with open(os.path.join(BASE_DIR, "movies.json"), encoding="utf-8") as f:
     movies_data_initial = json.load(f)
 
 # Build a set of slugs from movies.json
@@ -233,7 +238,7 @@ for url in clean_lifo_links:
     results.append({"url": url, "title": title, "rating": rating_number})
 
 # save to json
-with open("/home/grstathis/ti-paizei-tora.gr/lifo_ratings.json", "w", encoding="utf-8") as f:
+with open(os.path.join(BASE_DIR, "lifo_ratings.json"), "w", encoding="utf-8") as f:
     json.dump(results, f, indent=4, ensure_ascii=False)
 
 print("Saved to lifo_ratings.json")
@@ -356,7 +361,7 @@ for url in flix_movie_links:
     results.append({"url": url, "title": movie_title, "rating": rating})
 
 # save json
-with open("/home/grstathis/ti-paizei-tora.gr/flix_ratings.json", "w", encoding="utf-8") as f:
+with open(os.path.join(BASE_DIR, "flix_ratings.json"), "w", encoding="utf-8") as f:
     json.dump(results, f, indent=4, ensure_ascii=False)
 
 print("Saved to flix_ratings.json")
@@ -387,13 +392,13 @@ def normalize(text):
 
 # Load all data files
 print("Loading data files...")
-with open("/home/grstathis/ti-paizei-tora.gr/movies.json", encoding="utf-8") as f:
+with open(os.path.join(BASE_DIR, "movies.json"), encoding="utf-8") as f:
     movies_data = json.load(f)
 
-with open("/home/grstathis/ti-paizei-tora.gr/flix_ratings.json", encoding="utf-8") as f:
+with open(os.path.join(BASE_DIR, "flix_ratings.json"), encoding="utf-8") as f:
     flix_data = json.load(f)
 
-with open("/home/grstathis/ti-paizei-tora.gr/lifo_ratings.json", encoding="utf-8") as f:
+with open(os.path.join(BASE_DIR, "lifo_ratings.json"), encoding="utf-8") as f:
     lifo_data = json.load(f)
 
 # Build lookup dictionaries for flix and lifo
@@ -440,7 +445,7 @@ for group in movies_data:
 
 # Save updated movies.json
 print("\nSaving updated movies.json...")
-with open("/home/grstathis/ti-paizei-tora.gr/movies.json", "w", encoding="utf-8") as f:
+with open(os.path.join(BASE_DIR, "movies.json"), "w", encoding="utf-8") as f:
     json.dump(movies_data, f, indent=2, ensure_ascii=False)
 
 print("\n" + "=" * 60)

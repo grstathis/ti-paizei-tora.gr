@@ -1,0 +1,18 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# API keys and secrets
+google_api
+omdb_api
+
+
+# Generated content
+movie/
+region/
+
+# IDE
+.vscode/
+.DS_Store
