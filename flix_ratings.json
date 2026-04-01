@@ -5,13 +5,23 @@
         "rating": 0
     },
     {
-        "url": "https://flix.gr/cinema/arco-review.html",
-        "title": "Αρκο",
+        "url": "https://flix.gr/cinema/all-thats-left-of-you-review.html",
+        "title": "Στη Σκιά της Πορτοκαλιάς",
+        "rating": 5
+    },
+    {
+        "url": "https://flix.gr/cinema/anatomie-d-une-chute-review.html",
+        "title": "Ανατομία Μιας Πτώσης",
         "rating": 8
     },
     {
         "url": "https://flix.gr/cinema/autumn-sonata-review.html",
         "title": "Φθινοπωρινή Σονάτα",
+        "rating": 8
+    },
+    {
+        "url": "https://flix.gr/cinema/avatar-fire-and-ash-review.html",
+        "title": "Avatar: Φωτιά και Στάχτη",
         "rating": 8
     },
     {
@@ -45,33 +55,48 @@
         "rating": 5
     },
     {
-        "url": "https://flix.gr/cinema/checkered-ninja-3-review.html",
-        "title": "Καρό Νίντζα 3",
-        "rating": 5
-    },
-    {
-        "url": "https://flix.gr/cinema/cold-storage-review.html",
-        "title": "Θανάσιμη Απειλή",
-        "rating": 0
-    },
-    {
         "url": "https://flix.gr/cinema/couture-review.html",
         "title": "Couture",
         "rating": 4
     },
     {
-        "url": "https://flix.gr/cinema/cries-and-whispers-review.html",
-        "title": "Κραυγές και Ψίθυροι",
-        "rating": 7
+        "url": "https://flix.gr/cinema/david-review.html",
+        "title": "Δαβίδ: Το Αγόρι που Εγινε Θρύλος",
+        "rating": 3
     },
     {
-        "url": "https://flix.gr/cinema/crime-101-review.html",
-        "title": "Ο Δρόμος του Εγκλήματος",
+        "url": "https://flix.gr/cinema/diplodokus-review.html",
+        "title": "Διπλόδοκος, το Δεινοσαυράκι",
+        "rating": 3
+    },
+    {
+        "url": "https://flix.gr/cinema/dog-of-god-review.html",
+        "title": "Dog of God",
+        "rating": 5
+    },
+    {
+        "url": "https://flix.gr/cinema/edo-milane-gia-latreia-review.html",
+        "title": "Εδώ Μιλάνε για Λατρεία",
+        "rating": 5
+    },
+    {
+        "url": "https://flix.gr/cinema/endless-land-review.html",
+        "title": "Απειρη Γη",
         "rating": 6
     },
     {
         "url": "https://flix.gr/cinema/epic-elvis-presley-in-concert-review.html",
         "title": "EPiC: Ο Elvis Presley σε μια Μοναδική Συναυλία",
+        "rating": 6
+    },
+    {
+        "url": "https://flix.gr/cinema/father-mother-sister-brother-review.html",
+        "title": "Father Mother Sister Brother",
+        "rating": 7
+    },
+    {
+        "url": "https://flix.gr/cinema/female-review.html",
+        "title": "Θηλυκό",
         "rating": 6
     },
     {
@@ -90,14 +115,14 @@
         "rating": 6
     },
     {
-        "url": "https://flix.gr/cinema/good-luck-have-fun-dont-die-review.html",
-        "title": "Good Luck, Have Fun, Don't Die",
-        "rating": 3
-    },
-    {
         "url": "https://flix.gr/cinema/hamnet-review.html",
         "title": "Αμνετ",
         "rating": 7
+    },
+    {
+        "url": "https://flix.gr/cinema/hiroshima-mon-amour-review.html",
+        "title": "Χιροσίμα Αγάπη Μου",
+        "rating": 10
     },
     {
         "url": "https://flix.gr/cinema/homebound-review.html",
@@ -110,14 +135,9 @@
         "rating": 7
     },
     {
-        "url": "https://flix.gr/cinema/interstellar-review.html",
-        "title": "Interstellar",
-        "rating": 8
-    },
-    {
-        "url": "https://flix.gr/cinema/it-was-just-an-accident-review.html",
-        "title": "Ενα Απλό Ατύχημα",
-        "rating": 9
+        "url": "https://flix.gr/cinema/i-swear-review.html",
+        "title": "Δυστυχώς Βρίζω",
+        "rating": 6
     },
     {
         "url": "https://flix.gr/cinema/kapetan-mixalis-review.html",
@@ -130,18 +150,18 @@
         "rating": 2
     },
     {
-        "url": "https://flix.gr/cinema/karla-review.html",
-        "title": "Κάρλα",
-        "rating": 6
+        "url": "https://flix.gr/cinema/l-eclisse-review.html",
+        "title": "Η Εκλειψη",
+        "rating": 9
+    },
+    {
+        "url": "https://flix.gr/cinema/l-inconnu-de-la-grande-arche-review.html",
+        "title": "Ο Αγνωστος της Μεγάλης Αψίδας",
+        "rating": 5
     },
     {
         "url": "https://flix.gr/cinema/la-grazia-review.html",
         "title": "Το Μεγαλείο",
-        "rating": 6
-    },
-    {
-        "url": "https://flix.gr/cinema/le-chant-des-forets-review.html",
-        "title": "Το Τραγούδι του Δάσους",
         "rating": 6
     },
     {
@@ -152,16 +172,6 @@
     {
         "url": "https://flix.gr/cinema/los-domingos-review.html",
         "title": "Ολες οι Κυριακές",
-        "rating": 6
-    },
-    {
-        "url": "https://flix.gr/cinema/madonnas-review.html",
-        "title": "Madonnas",
-        "rating": 5
-    },
-    {
-        "url": "https://flix.gr/cinema/mankinds-folly-review.html",
-        "title": "Mankind's Folly",
         "rating": 6
     },
     {
@@ -190,19 +200,34 @@
         "rating": 4
     },
     {
-        "url": "https://flix.gr/cinema/nouvelle-vague-review.html",
-        "title": "Nouvelle Vague",
-        "rating": 7
+        "url": "https://flix.gr/cinema/now-you-see-me-now-you-dont-review.html",
+        "title": "Η Συμμορία των Μάγων 3",
+        "rating": 6
     },
     {
-        "url": "https://flix.gr/cinema/on-the-waterfront-review.html",
-        "title": "Το Λιμάνι της Αγωνίας",
-        "rating": 9
+        "url": "https://flix.gr/cinema/nuremberg-2025-review.html",
+        "title": "Νυρεμβέργη",
+        "rating": 4
     },
     {
         "url": "https://flix.gr/cinema/one-battle-after-another-review.html",
         "title": "Μια Μάχη Μετά την Αλλη",
         "rating": 10
+    },
+    {
+        "url": "https://flix.gr/cinema/orphan-review.html",
+        "title": "Χωρίς Πατέρα",
+        "rating": 5
+    },
+    {
+        "url": "https://flix.gr/cinema/orwell-2-2-5-review.html",
+        "title": "Οργουελ: 2+2=5",
+        "rating": 6
+    },
+    {
+        "url": "https://flix.gr/cinema/paddington-in-peru-review.html",
+        "title": "Ο Πάντινγκτον στο Περού",
+        "rating": 4
     },
     {
         "url": "https://flix.gr/cinema/patty-is-such-a-girly-name-review.html",
@@ -220,14 +245,19 @@
         "rating": 6
     },
     {
-        "url": "https://flix.gr/cinema/polydroso-review.html",
-        "title": "Πολύδροσο",
-        "rating": 7
+        "url": "https://flix.gr/cinema/professione-reporter-review.html",
+        "title": "Επάγγελμα: Ρεπόρτερ",
+        "rating": 8
     },
     {
         "url": "https://flix.gr/cinema/project-hail-mary-review.html",
         "title": "Αποστολή Χαίρε Μαρία",
         "rating": 7
+    },
+    {
+        "url": "https://flix.gr/cinema/ready-or-not-2-review.html",
+        "title": "Είσαι Ετοιμος; 2",
+        "rating": 5
     },
     {
         "url": "https://flix.gr/cinema/regan-review.html",
@@ -243,6 +273,11 @@
         "url": "https://flix.gr/cinema/ridiculous-loves-review.html",
         "title": "Γελοίοι Ερωτες",
         "rating": 4
+    },
+    {
+        "url": "https://flix.gr/cinema/scenes-from-a-marriage-review.html",
+        "title": "Σκηνές από ένα Γάμο",
+        "rating": 10
     },
     {
         "url": "https://flix.gr/cinema/scream-7-review.html",
@@ -270,14 +305,14 @@
         "rating": 8
     },
     {
-        "url": "https://flix.gr/cinema/soy-cuba-review.html",
-        "title": "Είμαι η Κούβα",
-        "rating": 9
-    },
-    {
         "url": "https://flix.gr/cinema/spiked-review.html",
         "title": "Χόλι, το Γενναίο Σκαντζοχοιράκι",
         "rating": 4
+    },
+    {
+        "url": "https://flix.gr/cinema/super-mario-galaxy-the-movie-review.html",
+        "title": "Super Mario Galaxy: Η Ταινία",
+        "rating": 6
     },
     {
         "url": "https://flix.gr/cinema/teleytaia-klisi-review.html",
@@ -285,9 +320,29 @@
         "rating": 7
     },
     {
+        "url": "https://flix.gr/cinema/the-blue-trail-review.html",
+        "title": "Γαλάζιο Μονοπάτι",
+        "rating": 7
+    },
+    {
+        "url": "https://flix.gr/cinema/the-bride-review.html",
+        "title": "Η Νύφη",
+        "rating": 4
+    },
+    {
         "url": "https://flix.gr/cinema/the-color-of-pomegranates-review.html",
         "title": "Το Χρώμα του Ροδιού",
         "rating": 10
+    },
+    {
+        "url": "https://flix.gr/cinema/the-drama-review.html",
+        "title": "The Drama",
+        "rating": 6
+    },
+    {
+        "url": "https://flix.gr/cinema/the-housemaid-review.html",
+        "title": "Η Αγγελία",
+        "rating": 4
     },
     {
         "url": "https://flix.gr/cinema/the-last-note-review.html",
@@ -315,11 +370,6 @@
         "rating": 5
     },
     {
-        "url": "https://flix.gr/cinema/the-strangers-chapter-3-review.html",
-        "title": "Κλείδωσες; Οι Αγνωστοι 3",
-        "rating": 2
-    },
-    {
         "url": "https://flix.gr/cinema/the-tasters-review.html",
         "title": "Οι Δοκιμάστριες",
         "rating": 6
@@ -335,9 +385,19 @@
         "rating": 6
     },
     {
-        "url": "https://flix.gr/cinema/two-prosecutors-review.html",
-        "title": "Δυο Εισαγγελείς",
+        "url": "https://flix.gr/cinema/they-will-kill-you-review.html",
+        "title": "Θα Σε Σκοτώσουν",
         "rating": 5
+    },
+    {
+        "url": "https://flix.gr/cinema/tini-zabutykh-predkiv-review.html",
+        "title": "Στις Σκιές των Ξεχασμένων Προγόνων",
+        "rating": 8
+    },
+    {
+        "url": "https://flix.gr/cinema/ugetsu-monogatari-review.html",
+        "title": "Ουγκέτσου Μονογκατάρι",
+        "rating": 10
     },
     {
         "url": "https://flix.gr/cinema/vampyr-review.html",
@@ -353,21 +413,6 @@
         "url": "https://flix.gr/cinema/volume-7-review.html",
         "title": "Τόμος 7",
         "rating": 5
-    },
-    {
-        "url": "https://flix.gr/cinema/weapons-review.html",
-        "title": "Weapons",
-        "rating": 8
-    },
-    {
-        "url": "https://flix.gr/cinema/wild-strawberries-review.html",
-        "title": "Αγριες Φράουλες",
-        "rating": 9
-    },
-    {
-        "url": "https://flix.gr/cinema/winona-review.html",
-        "title": "Winona",
-        "rating": 8
     },
     {
         "url": "https://flix.gr/cinema/women-fighters-3rd-part-review.html",

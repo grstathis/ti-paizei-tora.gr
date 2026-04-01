@@ -15,14 +15,24 @@
         "rating": "8"
     },
     {
+        "url": "https://www.lifo.gr/guide/cinema/movies/anatomia-mias-ptosis",
+        "title": "Aνατομία μιας Πτώσης",
+        "rating": "8"
+    },
+    {
         "url": "https://www.lifo.gr/guide/cinema/movies/anemodarmena-upsi",
         "title": "Ανεμοδαρμένα Ύψη",
         "rating": "5"
     },
     {
-        "url": "https://www.lifo.gr/guide/cinema/movies/arco",
-        "title": "Arco",
-        "rating": "7"
+        "url": "https://www.lifo.gr/guide/cinema/movies/apeiri-gi",
+        "title": "Απειρη Γη",
+        "rating": "5"
+    },
+    {
+        "url": "https://www.lifo.gr/guide/cinema/movies/azititoi",
+        "title": "Αζήτητοι",
+        "rating": 0
     },
     {
         "url": "https://www.lifo.gr/guide/cinema/movies/couture",
@@ -30,9 +40,24 @@
         "rating": "4"
     },
     {
-        "url": "https://www.lifo.gr/guide/cinema/movies/dyo-eisaggeleis",
-        "title": "Δυο Εισαγγελείς",
-        "rating": "7"
+        "url": "https://www.lifo.gr/guide/cinema/movies/edo-milane-gia-latreia",
+        "title": "Εδώ μιλάνε για Λατρεία",
+        "rating": 0
+    },
+    {
+        "url": "https://www.lifo.gr/guide/cinema/movies/eisai-etoimos-2",
+        "title": "Είσαι Έτοιμος; 2",
+        "rating": "3"
+    },
+    {
+        "url": "https://www.lifo.gr/guide/cinema/movies/epaggelma-reporter",
+        "title": "Επάγγελμα Ρεπόρτερ",
+        "rating": "10"
+    },
+    {
+        "url": "https://www.lifo.gr/guide/cinema/movies/father-mother-sister-brother",
+        "title": "Father Mother Sister Brother",
+        "rating": "8"
     },
     {
         "url": "https://www.lifo.gr/guide/cinema/movies/filoi-gia-panta",
@@ -50,9 +75,24 @@
         "rating": 0
     },
     {
+        "url": "https://www.lifo.gr/guide/cinema/movies/i-aggelia",
+        "title": "Η Αγγελία",
+        "rating": "5"
+    },
+    {
         "url": "https://www.lifo.gr/guide/cinema/movies/i-mikri-ameli",
         "title": "Η Μικρή Αμελί",
         "rating": "7"
+    },
+    {
+        "url": "https://www.lifo.gr/guide/cinema/movies/i-nyfi",
+        "title": "Η Νύφη!",
+        "rating": "4"
+    },
+    {
+        "url": "https://www.lifo.gr/guide/cinema/movies/i-symmoria-ton-magon-3",
+        "title": "Η Συμμορία των Μάγων 3",
+        "rating": "5"
     },
     {
         "url": "https://www.lifo.gr/guide/cinema/movies/i-toyrta-toy-proedroy",
@@ -63,16 +103,6 @@
         "url": "https://www.lifo.gr/guide/cinema/movies/kapodistrias",
         "title": "Καποδίστριας",
         "rating": "1"
-    },
-    {
-        "url": "https://www.lifo.gr/guide/cinema/movies/krayges-kai-psithyroi",
-        "title": "Κραυγές και Ψίθυροι",
-        "rating": "8"
-    },
-    {
-        "url": "https://www.lifo.gr/guide/cinema/movies/madonnas",
-        "title": "Madonnas",
-        "rating": 0
     },
     {
         "url": "https://www.lifo.gr/guide/cinema/movies/marsoypilami",
@@ -90,9 +120,9 @@
         "rating": 0
     },
     {
-        "url": "https://www.lifo.gr/guide/cinema/movies/o-dromos-toy-egklimatos",
-        "title": "Ο Δρόμος του Εγκλήματος",
-        "rating": 0
+        "url": "https://www.lifo.gr/guide/cinema/movies/o-agnostos-tis-megalis-apsidas",
+        "title": "Ο άγνωστος της μεγάλης αψίδας",
+        "rating": "7"
     },
     {
         "url": "https://www.lifo.gr/guide/cinema/movies/o-magos-toy-kremlinoy",
@@ -120,14 +150,14 @@
         "rating": 0
     },
     {
-        "url": "https://www.lifo.gr/guide/cinema/movies/pillion",
-        "title": "Pillion",
+        "url": "https://www.lifo.gr/guide/cinema/movies/orgoyel-225",
+        "title": "Όργουελ: 2+2=5",
         "rating": "6"
     },
     {
-        "url": "https://www.lifo.gr/guide/cinema/movies/polydroso",
-        "title": "Πολύδροσο",
-        "rating": "5"
+        "url": "https://www.lifo.gr/guide/cinema/movies/pillion",
+        "title": "Pillion",
+        "rating": "6"
     },
     {
         "url": "https://www.lifo.gr/guide/cinema/movies/san-aderfia",
@@ -145,8 +175,18 @@
         "rating": "8"
     },
     {
+        "url": "https://www.lifo.gr/guide/cinema/movies/sti-skia-tis-portokalias",
+        "title": "Στη Σκιά της Πορτοκαλιάς",
+        "rating": "4"
+    },
+    {
         "url": "https://www.lifo.gr/guide/cinema/movies/ston-kosmo-ton-zoon",
         "title": "Στον Κόσμο των Ζώων",
+        "rating": 0
+    },
+    {
+        "url": "https://www.lifo.gr/guide/cinema/movies/super-mario-galaxy-i-tainia",
+        "title": "Super Mario Galaxy: Η Ταινία",
         "rating": 0
     },
     {
@@ -160,6 +200,11 @@
         "rating": "5"
     },
     {
+        "url": "https://www.lifo.gr/guide/cinema/movies/tha-se-skotosoyn",
+        "title": "Θα Σε Σκοτώσουν",
+        "rating": "3"
+    },
+    {
         "url": "https://www.lifo.gr/guide/cinema/movies/tomos-7",
         "title": "Τόμος 7",
         "rating": 0
@@ -168,11 +213,6 @@
         "url": "https://www.lifo.gr/guide/cinema/movies/tsarli-o-soyper-skylos",
         "title": "Τσάρλι ο Σούπερ-Σκύλος",
         "rating": 0
-    },
-    {
-        "url": "https://www.lifo.gr/guide/cinema/movies/winona",
-        "title": "Winona",
-        "rating": "3"
     },
     {
         "url": "https://www.lifo.gr/guide/cinema/movies/zooypoli-2",

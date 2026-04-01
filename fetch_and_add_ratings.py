@@ -233,7 +233,7 @@ for url in clean_lifo_links:
     results.append({"url": url, "title": title, "rating": rating_number})
 
 # save to json
-with open("lifo_ratings.json", "w", encoding="utf-8") as f:
+with open("/home/grstathis/ti-paizei-tora.gr/lifo_ratings.json", "w", encoding="utf-8") as f:
     json.dump(results, f, indent=4, ensure_ascii=False)
 
 print("Saved to lifo_ratings.json")
@@ -356,7 +356,7 @@ for url in flix_movie_links:
     results.append({"url": url, "title": movie_title, "rating": rating})
 
 # save json
-with open("flix_ratings.json", "w", encoding="utf-8") as f:
+with open("/home/grstathis/ti-paizei-tora.gr/flix_ratings.json", "w", encoding="utf-8") as f:
     json.dump(results, f, indent=4, ensure_ascii=False)
 
 print("Saved to flix_ratings.json")
@@ -440,7 +440,7 @@ for group in movies_data:
 
 # Save updated movies.json
 print("\nSaving updated movies.json...")
-with open("movies.json", "w", encoding="utf-8") as f:
+with open("/home/grstathis/ti-paizei-tora.gr/movies.json", "w", encoding="utf-8") as f:
     json.dump(movies_data, f, indent=2, ensure_ascii=False)
 
 print("\n" + "=" * 60)
