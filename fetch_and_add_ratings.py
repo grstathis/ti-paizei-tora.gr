@@ -7,7 +7,6 @@ import requests
 from bs4 import BeautifulSoup
 import json
 import re
-from unidecode import unidecode
 import unicodedata
 import time
 import os
@@ -15,80 +14,6 @@ import os
 
 # Base directory configuration
 BASE_DIR = "/home/grstathis/ti-paizei-tora.gr"
-
-
-# ----------------------------------------------------------------------------
-# Helper Functions
-# ----------------------------------------------------------------------------
-
-
-def greek_to_latin_slug(text):
-    """
-    Transliterate Greek text to Latin characters matching Athinorama/LIFO style.
-    This provides better matching than unidecode which uses 'y' for 'υ'.
-    """
-    if not text:
-        return ""
-
-    # Greek to Latin transliteration map (Athinorama style)
-    greek_map = {
-        'α': 'a', 'ά': 'a', 'Α': 'a', 'Ά': 'a',
-        'β': 'v', 'Β': 'v',
-        'γ': 'g', 'Γ': 'g',
-        'δ': 'd', 'Δ': 'd',
-        'ε': 'e', 'έ': 'e', 'Ε': 'e', 'Έ': 'e',
-        'ζ': 'z', 'Ζ': 'z',
-        'η': 'i', 'ή': 'i', 'Η': 'i', 'Ή': 'i',
-        'θ': 'th', 'Θ': 'th',
-        'ι': 'i', 'ί': 'i', 'ϊ': 'i', 'ΐ': 'i', 'Ι': 'i', 'Ί': 'i', 'Ϊ': 'i',
-        'κ': 'k', 'Κ': 'k',
-        'λ': 'l', 'Λ': 'l',
-        'μ': 'm', 'Μ': 'm',
-        'ν': 'n', 'Ν': 'n',
-        'ξ': 'x', 'Ξ': 'x',
-        'ο': 'o', 'ό': 'o', 'Ο': 'o', 'Ό': 'o',
-        'π': 'p', 'Π': 'p',
-        'ρ': 'r', 'Ρ': 'r',
-        'σ': 's', 'ς': 's', 'Σ': 's',
-        'τ': 't', 'Τ': 't',
-        'υ': 'u', 'ύ': 'u', 'ϋ': 'u', 'ΰ': 'u', 'Υ': 'u', 'Ύ': 'u', 'Ϋ': 'u',
-        'φ': 'f', 'Φ': 'f',
-        'χ': 'ch', 'Χ': 'ch',
-        'ψ': 'ps', 'Ψ': 'ps',
-        'ω': 'o', 'ώ': 'o', 'Ω': 'o', 'Ώ': 'o',
-    }
-
-    # Apply Greek transliteration
-    result = []
-    for char in text:
-        if char in greek_map:
-            result.append(greek_map[char])
-        else:
-            result.append(char)
-
-    return ''.join(result)
-
-
-def title_to_slug(text):
-    """Convert a movie title to a URL slug similar to how LIFO/Athinorama does it"""
-    if not text:
-        return ""
-
-    # First, transliterate Greek characters to Latin (Athinorama style)
-    text = greek_to_latin_slug(text)
-
-    # Then handle any remaining non-Greek characters with unidecode
-    text = unidecode(text)
-
-    # Convert to lowercase
-    text = text.lower()
-
-    # Remove special characters and replace spaces with hyphens
-    text = re.sub(r"[^\w\s-]", "", text)
-    text = re.sub(r"[\s_]+", "-", text)
-    text = re.sub(r"^-+|-+$", "", text)
-
-    return text
 
 
 # ----------------------------------------------------------------------------
