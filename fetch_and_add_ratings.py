@@ -48,7 +48,11 @@ def get_lifo_movie_links():
             soup = BeautifulSoup(response.content, "html.parser")
 
             # Check if we got a "no results" page
-            no_results = soup.find("div", class_="text-center", string=re.compile(r"Δεν βρέθηκαν αποτελέσματα"))
+            no_results = soup.find(
+                "div",
+                class_="text-center",
+                string=re.compile(r"Δεν βρέθηκαν αποτελέσματα"),
+            )
             if no_results:
                 print(f"No more results found on page {page}. Stopping.")
                 break
@@ -116,7 +120,8 @@ for url in clean_lifo_links:
         rating_div = parent.find("div", class_="ratings")
 
         if rating_div:
-            # 2. rating_div['class'] returns a list: ['ratings', 'rating-3', 'mb-lg-3', 'mb-2']
+            # 2. rating_div['class'] returns a list like:
+            # ['ratings', 'rating-3', 'mb-lg-3', 'mb-2']
             # We look for the item that starts with 'rating-'
             rating_class = next(
                 (c for c in rating_div["class"] if c.startswith("rating-")), None
@@ -148,9 +153,14 @@ def get_flix_review_links():
     domain = "https://flix.gr"
 
     session = requests.Session()
+    user_agent = (
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+        "AppleWebKit/537.36 (KHTML, like Gecko) "
+        "Chrome/130.0.0.0 Safari/537.36"
+    )
     session.headers.update(
         {
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+            "User-Agent": user_agent,
             "Referer": domain,
         }
     )
