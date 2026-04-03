@@ -92,115 +92,81 @@ def title_to_slug(text):
 
 
 # ----------------------------------------------------------------------------
-# LIFO - Scrape sitemap and get movie ratings
+# LIFO - Get movie links from "this-week-movies" pages and get ratings
 # ----------------------------------------------------------------------------
 
 print("=" * 80)
 print("PART 1: FETCHING LIFO RATINGS")
 print("=" * 80)
 
-# Load movies.json first to build slug lookup
-print("Loading movies.json to build slug lookup...")
-with open(os.path.join(BASE_DIR, "movies.json"), encoding="utf-8") as f:
-    movies_data_initial = json.load(f)
 
-# Build a set of slugs from movies.json
-movie_slugs = set()
-for group in movies_data_initial:
-    for movie in group:
-        # Try both greek and original titles
-        greek_slug = title_to_slug(movie["greek_title"])
-        original_slug = title_to_slug(movie["original_title"])
-        if greek_slug:
-            movie_slugs.add(greek_slug)
-        if original_slug:
-            movie_slugs.add(original_slug)
+def get_lifo_movie_links():
+    """
+    Fetch movie links from LIFO's paginated "this-week-movies" pages.
+    Loops through pages until we get a "no results" page.
+    """
+    base_url = "https://www.lifo.gr/guide/cinema/this-week-movies"
+    headers = {"User-Agent": "Mozilla/5.0"}
+    all_movie_links = set()
+    page = 0
 
-print(f"Built {len(movie_slugs)} movie slugs from movies.json")
+    print("Fetching movie links from LIFO this-week-movies pages...")
 
+    while True:
+        url = f"{base_url}?_wrapper_format=html&page={page}"
+        print(f"Fetching page {page}: {url}")
 
-def get_sitemap_links(url):
-    try:
-        # 1. Fetch the sitemap content
-        # Adding a User-Agent header helps avoid being blocked by some servers
-        headers = {"User-Agent": "Mozilla/5.0"}
-        response = requests.get(url, headers=headers)
-        response.raise_for_status()
+        try:
+            response = requests.get(url, headers=headers, timeout=10)
+            response.raise_for_status()
 
-        # 2. Parse the XML content
-        # We use 'xml' (or 'lxml-xml') to ensure it handles XML tags correctly
-        soup = BeautifulSoup(response.content, "xml")
-        # 3. Find all <loc> tags (these contain the URLs)
-        # Using .text to get the content inside the tags and .strip() to clean it
-        links = [loc.text.strip() for loc in soup.find_all("loc")]
+            soup = BeautifulSoup(response.content, "html.parser")
 
-        return links
+            # Check if we got a "no results" page
+            no_results = soup.find("div", class_="text-center", string=re.compile(r"Δεν βρέθηκαν αποτελέσματα"))
+            if no_results:
+                print(f"No more results found on page {page}. Stopping.")
+                break
 
-    except Exception as e:
-        print(f"An error occurred: {e}")
-        return []
+            # Find all views-row divs (each contains one movie)
+            views_rows = soup.find_all("div", class_="views-row")
 
+            if not views_rows:
+                print(f"No movie entries found on page {page}. Stopping.")
+                break
 
-# Execute
-target_url = "https://www.lifo.gr/sitemap.xml"
-all_pages = get_sitemap_links(target_url)
+            # Extract movie link from each views-row
+            for row in views_rows:
+                link = row.find("a", href=re.compile(r"/guide/cinema/movies/"))
+                if link:
+                    href = link.get("href", "")
+                    if href.startswith("http"):
+                        full_url = href
+                    elif href.startswith("/"):
+                        full_url = f"https://www.lifo.gr{href}"
+                    else:
+                        continue
 
-print(f"Total links found: {len(all_pages)}")
+                    all_movie_links.add(full_url)
 
+            print(f"  Found {len(views_rows)} movie entries on page {page}")
+            page += 1
 
-def get_cinema_links(all_pages):
-    target_pattern = "/guide/cinema/movies/"
-    all_movie_links = []
+            # Be respectful - small delay between requests
+            time.sleep(0.5)
 
-    print("Starting crawl...")
+        except Exception as e:
+            print(f"Error fetching page {page}: {e}")
+            break
 
-    for url in all_pages:
-
-        page_links =[]
-        print(f"Scanning: {url}")
-
-        response = requests.get(url, timeout=10)
-        response.raise_for_status()
-        raw_content = response.text
-
-        # Find all matches
-        all_locs = re.findall(r'<loc>(.*?)</loc>', raw_content)
-
-        # 3. Filter matches
-        if all_locs:
-            page_links = [link for link in all_locs if target_pattern in link]
-        all_movie_links.extend(page_links)
-            
-        print(f" Found {len(page_links)} movie links on page {url}.")
+    return sorted(list(all_movie_links))
 
 
-    return all_movie_links
-
-
-# Run the script
-movies = get_cinema_links(all_pages)
+# Get all movie links
+clean_lifo_links = get_lifo_movie_links()
 
 print("\n--- Extraction Complete ---")
-lifo_movie_links = sorted(set(movies))
-
-# Filter links by matching slugs from movies.json (OPTIMIZED - no HTTP requests needed!)
-print("\nFiltering LIFO links by matching with movies.json slugs...")
-clean_lifo_links = []
-for url in lifo_movie_links:
-    # Extract slug from URL: https://www.lifo.gr/guide/cinema/movies/movie-slug
-    url_slug = url.split("/")[-1]
-    # Normalize slug: replace 'y' with 'u' to match Greek transliteration (υ → u)
-    normalized_slug = url_slug.replace('y', 'u')
-
-    if url_slug in movie_slugs or normalized_slug in movie_slugs:
-        print(f"✓ Match found: {url_slug}")
-        clean_lifo_links.append(url)
-    else:
-        print(f"✗ No match: {url_slug}")
-
-print(
-    f"\nFiltered LIFO links: {len(clean_lifo_links)} (from {len(lifo_movie_links)} total)"
-)
+print(f"Total unique LIFO movie links: {len(clean_lifo_links)}")
 
 
 # Extract ratings from LIFO pages

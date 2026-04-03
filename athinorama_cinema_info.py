@@ -4,6 +4,7 @@ import re
 import shutil
 import unicodedata
 from datetime import datetime, timezone
+from zoneinfo import ZoneInfo
 from pathlib import Path
 
 import requests
@@ -1563,7 +1564,7 @@ stats = create_cinema_structure()
 
 
 def generate_sitemap():
-    now = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    now = datetime.now(ZoneInfo("Europe/Athens")).strftime("%Y-%m-%d")
 
     urls = []
 
