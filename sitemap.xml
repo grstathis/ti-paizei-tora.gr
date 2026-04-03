@@ -1,4927 +1,566 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset 
+<urlset
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
   <url>
     <loc>https://ti-paizei-tora.gr/</loc>
-    <lastmod>2026-03-31</lastmod>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/contact.html</loc>
-    <lastmod>2026-03-31</lastmod>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movies.json</loc>
-    <lastmod>2026-03-31</lastmod>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/cinemas.json</loc>
-    <lastmod>2026-03-31</lastmod>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/ti_paizei_tora_logo.svg</loc>
-    <lastmod>2026-03-31</lastmod>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://ti-paizei-tora.gr/movie/all-that-s-left-of-you/</loc>
-    <lastmod>2026-03-31</lastmod>
+    <loc>https://ti-paizei-tora.gr/movie/12-monkeys/</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://ti-paizei-tora.gr/movie/anatomy-of-a-fall/</loc>
-    <lastmod>2026-03-31</lastmod>
+    <loc>https://ti-paizei-tora.gr/movie/a-magnificent-life/</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://ti-paizei-tora.gr/movie/a-private-life/</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://ti-paizei-tora.gr/movie/all-that-s-left-of-you/</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/apeiri-gi/</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/movie/arva/</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/movie/autumn-sonata/</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/movie/azititoi/</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/movie/blow-up/</loc>
-    <lastmod>2026-03-31</lastmod>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/calle-malaga/</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/movie/charlie-the-wonderdog/</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/movie/couture/</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/movie/crash/</loc>
-    <lastmod>2026-03-31</lastmod>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/david/</loc>
-    <lastmod>2026-03-31</lastmod>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/dog-of-god-dieva-suns/</loc>
-    <lastmod>2026-03-31</lastmod>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://ti-paizei-tora.gr/movie/edo-milane-gia-latreia/</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/movie/epic-elvis-presley-in-concert/</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/movie/fargo/</loc>
-    <lastmod>2026-03-31</lastmod>
+    <loc>https://ti-paizei-tora.gr/movie/eraserhead/</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/father-mother-sister-brother/</loc>
-    <lastmod>2026-03-31</lastmod>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/franz/</loc>
-    <lastmod>2026-03-31</lastmod>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/geloioi-erotes/</loc>
-    <lastmod>2026-03-31</lastmod>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/goat/</loc>
-    <lastmod>2026-03-31</lastmod>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://ti-paizei-tora.gr/movie/good-fortune/</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://ti-paizei-tora.gr/movie/gorgona/</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/grace/</loc>
-    <lastmod>2026-03-31</lastmod>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/hamnet/</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/movie/homebound/</loc>
-    <lastmod>2026-03-31</lastmod>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/hoppers/</loc>
-    <lastmod>2026-03-31</lastmod>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://ti-paizei-tora.gr/movie/i-am-cuba/</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://ti-paizei-tora.gr/movie/i-hired-a-contract-killer/</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/i-swear/</loc>
-    <lastmod>2026-03-31</lastmod>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://ti-paizei-tora.gr/movie/kapetan-mihalis/</loc>
-    <lastmod>2026-03-31</lastmod>
+    <loc>https://ti-paizei-tora.gr/movie/inglourious-basterds/</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://ti-paizei-tora.gr/movie/it-was-just-an-accident/</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/kapodistrias/</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/movie/l-eclisse/</loc>
-    <lastmod>2026-03-31</lastmod>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/last-call/</loc>
-    <lastmod>2026-03-31</lastmod>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/le-assaggiatrici/</loc>
-    <lastmod>2026-03-31</lastmod>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://ti-paizei-tora.gr/movie/left-handed-girl/</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/little-amelie-or-the-character-of-rain/</loc>
-    <lastmod>2026-03-31</lastmod>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/los-domingos/</loc>
-    <lastmod>2026-03-31</lastmod>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/marsupilami/</loc>
-    <lastmod>2026-03-31</lastmod>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/marty-supreme/</loc>
-    <lastmod>2026-03-31</lastmod>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/mauthausen/</loc>
-    <lastmod>2026-03-31</lastmod>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/no-budget-story/</loc>
-    <lastmod>2026-03-31</lastmod>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/no-prior-appointment/</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/movie/now-you-see-me-now-you-don-t/</loc>
-    <lastmod>2026-03-31</lastmod>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/nuremberg/</loc>
-    <lastmod>2026-03-31</lastmod>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/one-battle-after-another/</loc>
-    <lastmod>2026-03-31</lastmod>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/orwell-2-2-5/</loc>
-    <lastmod>2026-03-31</lastmod>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/patty-is-such-a-girly-name/</loc>
-    <lastmod>2026-03-31</lastmod>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/pillion/</loc>
-    <lastmod>2026-03-31</lastmod>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://ti-paizei-tora.gr/movie/primavera/</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/project-hail-mary/</loc>
-    <lastmod>2026-03-31</lastmod>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/ready-or-not-2-here-i-come/</loc>
-    <lastmod>2026-03-31</lastmod>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://ti-paizei-tora.gr/movie/regan/</loc>
-    <lastmod>2026-03-31</lastmod>
+    <loc>https://ti-paizei-tora.gr/movie/rebel-without-a-cause/</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://ti-paizei-tora.gr/movie/rietland/</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/scenes-from-a-marriage/</loc>
-    <lastmod>2026-03-31</lastmod>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/sentimental-value/</loc>
-    <lastmod>2026-03-31</lastmod>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/shadows-of-forgotten-ancestors/</loc>
-    <lastmod>2026-03-31</lastmod>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://ti-paizei-tora.gr/movie/shelter/</loc>
-    <lastmod>2026-03-31</lastmod>
+    <loc>https://ti-paizei-tora.gr/movie/shame/</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/sinners/</loc>
-    <lastmod>2026-03-31</lastmod>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/sirat/</loc>
-    <lastmod>2026-03-31</lastmod>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://ti-paizei-tora.gr/movie/sound-of-falling/</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/spasmeni-fleva/</loc>
-    <lastmod>2026-03-31</lastmod>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/spiked-aka-tally-ho/</loc>
-    <lastmod>2026-03-31</lastmod>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/spring-summer-fall-winter-and-spring/</loc>
-    <lastmod>2026-03-31</lastmod>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://ti-paizei-tora.gr/movie/the-bride/</loc>
-    <lastmod>2026-03-31</lastmod>
+    <loc>https://ti-paizei-tora.gr/movie/the-bohemian-life/</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/the-color-of-pomegranates/</loc>
-    <lastmod>2026-03-31</lastmod>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://ti-paizei-tora.gr/movie/the-great-arch/</loc>
-    <lastmod>2026-03-31</lastmod>
+    <loc>https://ti-paizei-tora.gr/movie/the-drama/</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/the-housemaid/</loc>
-    <lastmod>2026-03-31</lastmod>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://ti-paizei-tora.gr/movie/the-life-of-chuck/</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://ti-paizei-tora.gr/movie/the-lord-of-the-rings-the-fellowship-of-the-ring/</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://ti-paizei-tora.gr/movie/the-lord-of-the-rings-the-two-towers/</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://ti-paizei-tora.gr/movie/the-man-without-a-past/</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://ti-paizei-tora.gr/movie/the-match-factory-girl/</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/the-president-s-cake/</loc>
-    <lastmod>2026-03-31</lastmod>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/the-secret-agent/</loc>
-    <lastmod>2026-03-31</lastmod>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://ti-paizei-tora.gr/movie/the-snows-of-kilimanjaro/</loc>
-    <lastmod>2026-03-31</lastmod>
+    <loc>https://ti-paizei-tora.gr/movie/the-super-mario-galaxy-movie/</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://ti-paizei-tora.gr/movie/the-undertone/</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/the-voice-of-hind-rajab/</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/movie/the-wizard-of-the-kremlin/</loc>
-    <lastmod>2026-03-31</lastmod>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/they-come-out-of-margo/</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/movie/they-will-kill-you/</loc>
-    <lastmod>2026-03-31</lastmod>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/tomos-7/</loc>
-    <lastmod>2026-03-31</lastmod>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://ti-paizei-tora.gr/movie/ugetsu/</loc>
-    <lastmod>2026-03-31</lastmod>
+    <loc>https://ti-paizei-tora.gr/movie/truants/</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://ti-paizei-tora.gr/movie/two-prosecutors/</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/vampyr/</loc>
-    <lastmod>2026-03-31</lastmod>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/wuthering-heights/</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/movie/zabriskie-point/</loc>
-    <lastmod>2026-03-31</lastmod>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/zootopia-2/</loc>
-    <lastmod>2026-03-31</lastmod>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/markopoylo-mesogaias/cinema/artemis-dim-kin-fos/movie/last-call/2026-03-31/21-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/markopoylo-mesogaias/cinema/artemis-dim-kin-fos/movie/last-call/2026-03-31/19-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/markopoylo-mesogaias/cinema/artemis-dim-kin-fos/movie/last-call/2026-04-01/21-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/markopoylo-mesogaias/cinema/artemis-dim-kin-fos/movie/last-call/2026-04-01/19-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/koykaki/cinema/mikrokosmos/movie/last-call/2026-03-31/22-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/koykaki/cinema/mikrokosmos/movie/all-that-s-left-of-you/2026-03-31/19-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/koykaki/cinema/mikrokosmos/movie/all-that-s-left-of-you/2026-04-01/19-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/koykaki/cinema/mikrokosmos/movie/i-swear/2026-04-01/22-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/koykaki/cinema/mikrokosmos/movie/hamnet/2026-03-31/17-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/koykaki/cinema/mikrokosmos/movie/sirat/2026-04-01/17-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/last-call/2026-03-31/22-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/last-call/2026-03-31/18-20.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/last-call/2026-03-31/19-45.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/last-call/2026-03-31/21-20.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/last-call/2026-03-31/23-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/last-call/2026-03-31/22-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/last-call/2026-03-31/18-50.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/last-call/2026-03-31/20-40.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/last-call/2026-04-01/22-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/last-call/2026-04-01/18-20.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/last-call/2026-04-01/19-45.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/last-call/2026-04-01/21-20.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/last-call/2026-04-01/23-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/last-call/2026-04-01/22-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/last-call/2026-04-01/18-50.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/last-call/2026-04-01/20-40.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/project-hail-mary/2026-03-31/22-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/project-hail-mary/2026-03-31/18-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/project-hail-mary/2026-03-31/21-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/project-hail-mary/2026-03-31/21-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/project-hail-mary/2026-03-31/20-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/project-hail-mary/2026-03-31/17-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/project-hail-mary/2026-03-31/19-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/project-hail-mary/2026-04-01/22-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/project-hail-mary/2026-04-01/21-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/project-hail-mary/2026-04-01/21-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/project-hail-mary/2026-04-01/20-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/project-hail-mary/2026-04-01/19-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/they-will-kill-you/2026-03-31/20-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/they-will-kill-you/2026-03-31/21-40.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/they-will-kill-you/2026-03-31/22-50.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/they-will-kill-you/2026-03-31/18-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/they-will-kill-you/2026-04-01/20-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/they-will-kill-you/2026-04-01/22-50.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/they-will-kill-you/2026-04-01/18-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/couture/2026-03-31/18-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/couture/2026-04-01/18-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/the-drama/2026-04-01/21-40.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/the-drama/2026-04-01/22-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/the-drama/2026-04-01/18-45.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/the-drama/2026-04-01/23-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/the-drama/2026-04-01/19-50.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/wuthering-heights/2026-03-31/18-40.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/wuthering-heights/2026-03-31/20-50.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/wuthering-heights/2026-04-01/20-50.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/filoi-gia-panta/2026-03-31/21-50.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/filoi-gia-panta/2026-03-31/19-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/filoi-gia-panta/2026-04-01/21-50.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/filoi-gia-panta/2026-04-01/19-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/marsupilami/2026-03-31/17-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/marsupilami/2026-04-01/17-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/hoppers/2026-03-31/17-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/ready-or-not-2-here-i-come/2026-03-31/22-40.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/ready-or-not-2-here-i-come/2026-03-31/17-40.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/ready-or-not-2-here-i-come/2026-03-31/20-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/ready-or-not-2-here-i-come/2026-04-01/22-40.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/ready-or-not-2-here-i-come/2026-04-01/17-40.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/ready-or-not-2-here-i-come/2026-04-01/20-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/the-super-mario-galaxy-movie/2026-04-01/19-40.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/the-super-mario-galaxy-movie/2026-04-01/17-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/the-super-mario-galaxy-movie/2026-04-01/19-20.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/the-super-mario-galaxy-movie/2026-04-01/17-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/the-super-mario-galaxy-movie/2026-04-01/18-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/the-mortuary-assistant/2026-03-31/22-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/the-mortuary-assistant/2026-03-31/17-50.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/the-mortuary-assistant/2026-04-01/17-50.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/scream-7/2026-03-31/23-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/scream-7/2026-03-31/19-50.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/david/2026-03-31/17-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/village-15-cinemas-the-mall/movie/david/2026-04-01/17-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/diana/movie/epic-elvis-presley-in-concert/2026-03-31/19-45.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/diana/movie/the-president-s-cake/2026-04-01/19-40.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/diana/movie/i-swear/2026-04-01/21-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/diana/movie/orwell-2-2-5/2026-03-31/17-40.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/diana/movie/orwell-2-2-5/2026-04-01/17-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/maroysi/cinema/diana/movie/calle-malaga/2026-03-31/21-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/dafni-attikis/cinema/nana-cinemax/movie/last-call/2026-03-31/21-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/dafni-attikis/cinema/nana-cinemax/movie/last-call/2026-03-31/22-20.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/dafni-attikis/cinema/nana-cinemax/movie/last-call/2026-03-31/19-20.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/dafni-attikis/cinema/nana-cinemax/movie/last-call/2026-03-31/18-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/dafni-attikis/cinema/nana-cinemax/movie/last-call/2026-03-31/20-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/dafni-attikis/cinema/nana-cinemax/movie/last-call/2026-04-01/21-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/dafni-attikis/cinema/nana-cinemax/movie/last-call/2026-04-01/22-20.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/dafni-attikis/cinema/nana-cinemax/movie/last-call/2026-04-01/19-20.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/dafni-attikis/cinema/nana-cinemax/movie/last-call/2026-04-01/18-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/dafni-attikis/cinema/nana-cinemax/movie/last-call/2026-04-01/20-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/dafni-attikis/cinema/nana-cinemax/movie/all-that-s-left-of-you/2026-03-31/18-20.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/dafni-attikis/cinema/nana-cinemax/movie/all-that-s-left-of-you/2026-04-01/18-20.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/dafni-attikis/cinema/nana-cinemax/movie/they-will-kill-you/2026-03-31/22-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/dafni-attikis/cinema/nana-cinemax/movie/they-will-kill-you/2026-04-01/22-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/dafni-attikis/cinema/nana-cinemax/movie/the-drama/2026-04-01/19-50.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/dafni-attikis/cinema/nana-cinemax/movie/i-swear/2026-03-31/21-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/dafni-attikis/cinema/nana-cinemax/movie/i-swear/2026-04-01/21-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/dafni-attikis/cinema/nana-cinemax/movie/hamnet/2026-03-31/19-40.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/dafni-attikis/cinema/nana-cinemax/movie/calle-malaga/2026-03-31/21-20.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/dafni-attikis/cinema/nana-cinemax/movie/calle-malaga/2026-04-01/21-20.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/dafni-attikis/cinema/nana-cinemax/movie/ready-or-not-2-here-i-come/2026-03-31/22-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/dafni-attikis/cinema/nana-cinemax/movie/ready-or-not-2-here-i-come/2026-04-01/22-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/dafni-attikis/cinema/nana-cinemax/movie/the-great-arch/2026-03-31/19-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/dafni-attikis/cinema/nana-cinemax/movie/the-great-arch/2026-04-01/19-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/dafni-attikis/cinema/nana-cinemax/movie/arva/2026-03-31/19-20.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/dafni-attikis/cinema/nana-cinemax/movie/arva/2026-04-01/19-20.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/dafni-attikis/cinema/nana-cinemax/movie/the-super-mario-galaxy-movie/2026-04-01/17-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/peristeri/cinema/foivos-digital-cinema/movie/last-call/2026-03-31/17-40.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/peristeri/cinema/foivos-digital-cinema/movie/last-call/2026-03-31/21-20.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/peristeri/cinema/foivos-digital-cinema/movie/last-call/2026-03-31/19-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/peristeri/cinema/foivos-digital-cinema/movie/last-call/2026-03-31/22-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/peristeri/cinema/foivos-digital-cinema/movie/last-call/2026-04-01/21-20.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/peristeri/cinema/foivos-digital-cinema/movie/last-call/2026-04-01/19-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/peristeri/cinema/foivos-digital-cinema/movie/last-call/2026-04-01/22-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/peristeri/cinema/foivos-digital-cinema/movie/last-call/2026-04-01/18-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/peristeri/cinema/foivos-digital-cinema/movie/filoi-gia-panta/2026-03-31/18-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/peristeri/cinema/foivos-digital-cinema/movie/filoi-gia-panta/2026-04-01/20-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/peristeri/cinema/foivos-digital-cinema/movie/hamnet/2026-03-31/19-45.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/peristeri/cinema/foivos-digital-cinema/movie/the-super-mario-galaxy-movie/2026-04-01/17-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/peristeri/cinema/westcity-cinemas/movie/last-call/2026-03-31/21-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/peristeri/cinema/westcity-cinemas/movie/last-call/2026-03-31/19-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/peristeri/cinema/westcity-cinemas/movie/last-call/2026-03-31/20-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/peristeri/cinema/westcity-cinemas/movie/last-call/2026-04-01/21-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/peristeri/cinema/westcity-cinemas/movie/last-call/2026-04-01/19-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/peristeri/cinema/westcity-cinemas/movie/last-call/2026-04-01/20-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/peristeri/cinema/westcity-cinemas/movie/project-hail-mary/2026-03-31/20-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/peristeri/cinema/westcity-cinemas/movie/project-hail-mary/2026-04-01/20-45.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/peristeri/cinema/westcity-cinemas/movie/they-will-kill-you/2026-03-31/22-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/peristeri/cinema/westcity-cinemas/movie/they-will-kill-you/2026-04-01/22-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/peristeri/cinema/westcity-cinemas/movie/couture/2026-03-31/18-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/peristeri/cinema/westcity-cinemas/movie/the-drama/2026-04-01/21-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/peristeri/cinema/westcity-cinemas/movie/the-drama/2026-04-01/19-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/peristeri/cinema/westcity-cinemas/movie/filoi-gia-panta/2026-03-31/18-40.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/peristeri/cinema/westcity-cinemas/movie/hamnet/2026-03-31/20-45.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/peristeri/cinema/westcity-cinemas/movie/arva/2026-03-31/18-45.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/peristeri/cinema/westcity-cinemas/movie/arva/2026-04-01/18-45.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/peristeri/cinema/westcity-cinemas/movie/the-super-mario-galaxy-movie/2026-04-01/18-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/peiraias/cinema/zea/movie/los-domingos/2026-04-01/18-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/peiraias/cinema/zea/movie/the-drama/2026-04-01/20-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/peiraias/cinema/zea/movie/the-drama/2026-04-01/22-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/peiraias/cinema/zea/movie/calle-malaga/2026-03-31/17-45.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/peiraias/cinema/zea/movie/the-great-arch/2026-03-31/22-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/peiraias/cinema/zea/movie/arva/2026-03-31/19-45.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/peiraias/cinema/dim-kin-sineak/movie/last-call/2026-03-31/19-50.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/peiraias/cinema/dim-kin-sineak/movie/last-call/2026-04-01/17-45.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/peiraias/cinema/dim-kin-sineak/movie/kapodistrias/2026-04-01/21-55.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/peiraias/cinema/dim-kin-sineak/movie/grace/2026-04-01/19-25.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/peiraias/cinema/dim-kin-sineak/movie/hamnet/2026-03-31/21-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/peiraias/cinema/dim-kin-sineak/movie/the-super-mario-galaxy-movie/2026-04-01/16-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/peiraias/cinema/dim-kin-sineak/movie/one-battle-after-another/2026-03-31/17-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/patisia/cinema/atene/movie/ugetsu/2026-03-31/19-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/patisia/cinema/atene/movie/ugetsu/2026-04-01/19-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/aigaleo/cinema/lampros-konstantaras-rena-vlaxopoyloy/movie/last-call/2026-03-31/21-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/aigaleo/cinema/lampros-konstantaras-rena-vlaxopoyloy/movie/last-call/2026-03-31/19-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/aigaleo/cinema/lampros-konstantaras-rena-vlaxopoyloy/movie/last-call/2026-04-01/21-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/aigaleo/cinema/lampros-konstantaras-rena-vlaxopoyloy/movie/last-call/2026-04-01/19-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/aigaleo/cinema/lampros-konstantaras-rena-vlaxopoyloy/movie/they-will-kill-you/2026-03-31/21-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/aigaleo/cinema/lampros-konstantaras-rena-vlaxopoyloy/movie/they-will-kill-you/2026-04-01/21-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/aigaleo/cinema/lampros-konstantaras-rena-vlaxopoyloy/movie/i-swear/2026-03-31/19-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/aigaleo/cinema/lampros-konstantaras-rena-vlaxopoyloy/movie/i-swear/2026-04-01/19-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/aigaleo/cinema/lampros-konstantaras-rena-vlaxopoyloy/movie/the-super-mario-galaxy-movie/2026-04-01/17-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/dim-kin-oneiro-renti/movie/one-battle-after-another/2026-04-01/21-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/last-call/2026-03-31/19-40.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/last-call/2026-03-31/20-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/last-call/2026-03-31/21-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/last-call/2026-03-31/22-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/last-call/2026-03-31/18-50.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/last-call/2026-03-31/22-50.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/last-call/2026-03-31/23-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/last-call/2026-04-01/19-40.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/last-call/2026-04-01/20-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/last-call/2026-04-01/21-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/last-call/2026-04-01/22-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/last-call/2026-04-01/18-50.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/last-call/2026-04-01/22-50.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/last-call/2026-04-01/23-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/kapodistrias/2026-03-31/22-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/project-hail-mary/2026-03-31/22-20.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/project-hail-mary/2026-03-31/22-50.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/project-hail-mary/2026-03-31/19-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/project-hail-mary/2026-04-01/22-20.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/project-hail-mary/2026-04-01/22-50.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/project-hail-mary/2026-04-01/19-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/they-will-kill-you/2026-03-31/22-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/they-will-kill-you/2026-03-31/23-20.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/they-will-kill-you/2026-03-31/21-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/they-will-kill-you/2026-03-31/17-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/they-will-kill-you/2026-03-31/19-50.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/they-will-kill-you/2026-04-01/22-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/they-will-kill-you/2026-04-01/23-20.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/they-will-kill-you/2026-04-01/21-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/they-will-kill-you/2026-04-01/17-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/they-will-kill-you/2026-04-01/19-50.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/the-drama/2026-04-01/21-40.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/the-drama/2026-04-01/22-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/the-drama/2026-04-01/20-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/the-drama/2026-04-01/19-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/wuthering-heights/2026-03-31/20-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/spiked-aka-tally-ho/2026-03-31/18-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/spiked-aka-tally-ho/2026-04-01/17-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/filoi-gia-panta/2026-03-31/21-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/filoi-gia-panta/2026-03-31/22-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/filoi-gia-panta/2026-03-31/19-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/filoi-gia-panta/2026-03-31/17-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/filoi-gia-panta/2026-04-01/21-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/filoi-gia-panta/2026-04-01/19-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/filoi-gia-panta/2026-04-01/17-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/marsupilami/2026-03-31/20-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/marsupilami/2026-03-31/18-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/marsupilami/2026-04-01/18-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/hoppers/2026-03-31/19-40.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/hoppers/2026-03-31/19-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/hoppers/2026-03-31/17-50.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/hoppers/2026-03-31/17-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/hoppers/2026-03-31/17-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/hoppers/2026-03-31/20-20.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/hoppers/2026-03-31/18-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/hoppers/2026-04-01/17-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/ready-or-not-2-here-i-come/2026-03-31/21-50.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/ready-or-not-2-here-i-come/2026-03-31/23-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/ready-or-not-2-here-i-come/2026-03-31/19-20.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/ready-or-not-2-here-i-come/2026-04-01/21-50.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/ready-or-not-2-here-i-come/2026-04-01/23-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/the-super-mario-galaxy-movie/2026-04-01/18-40.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/the-super-mario-galaxy-movie/2026-04-01/19-40.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/the-super-mario-galaxy-movie/2026-04-01/21-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/the-super-mario-galaxy-movie/2026-04-01/20-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/the-super-mario-galaxy-movie/2026-04-01/18-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/the-super-mario-galaxy-movie/2026-04-01/17-40.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/the-super-mario-galaxy-movie/2026-04-01/19-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/the-super-mario-galaxy-movie/2026-04-01/22-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/the-super-mario-galaxy-movie/2026-04-01/17-20.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/the-super-mario-galaxy-movie/2026-04-01/17-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/the-super-mario-galaxy-movie/2026-04-01/19-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/the-mortuary-assistant/2026-03-31/23-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/the-mortuary-assistant/2026-03-31/20-50.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/the-mortuary-assistant/2026-04-01/23-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/the-mortuary-assistant/2026-04-01/20-50.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/scream-7/2026-03-31/22-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/scream-7/2026-03-31/23-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/david/2026-03-31/18-20.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/david/2026-03-31/17-20.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-ioannis-rentis/cinema/village-shopping-and-more/movie/david/2026-04-01/18-20.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/korydallos/cinema/sine-paradeisos/movie/grace/2026-04-01/20-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/korydallos/cinema/sine-paradeisos/movie/the-super-mario-galaxy-movie/2026-04-01/18-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-dimitrios-attikis/cinema/village-cinemas-athens-metro-mall-ag-dimitrios/movie/last-call/2026-03-31/21-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-dimitrios-attikis/cinema/village-cinemas-athens-metro-mall-ag-dimitrios/movie/last-call/2026-03-31/18-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-dimitrios-attikis/cinema/village-cinemas-athens-metro-mall-ag-dimitrios/movie/last-call/2026-03-31/22-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-dimitrios-attikis/cinema/village-cinemas-athens-metro-mall-ag-dimitrios/movie/last-call/2026-03-31/19-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-dimitrios-attikis/cinema/village-cinemas-athens-metro-mall-ag-dimitrios/movie/last-call/2026-03-31/17-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-dimitrios-attikis/cinema/village-cinemas-athens-metro-mall-ag-dimitrios/movie/last-call/2026-03-31/20-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-dimitrios-attikis/cinema/village-cinemas-athens-metro-mall-ag-dimitrios/movie/last-call/2026-04-01/22-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-dimitrios-attikis/cinema/village-cinemas-athens-metro-mall-ag-dimitrios/movie/last-call/2026-04-01/18-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-dimitrios-attikis/cinema/village-cinemas-athens-metro-mall-ag-dimitrios/movie/last-call/2026-04-01/20-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-dimitrios-attikis/cinema/village-cinemas-athens-metro-mall-ag-dimitrios/movie/project-hail-mary/2026-03-31/21-45.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-dimitrios-attikis/cinema/village-cinemas-athens-metro-mall-ag-dimitrios/movie/project-hail-mary/2026-03-31/18-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-dimitrios-attikis/cinema/village-cinemas-athens-metro-mall-ag-dimitrios/movie/project-hail-mary/2026-04-01/21-45.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-dimitrios-attikis/cinema/village-cinemas-athens-metro-mall-ag-dimitrios/movie/project-hail-mary/2026-04-01/18-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-dimitrios-attikis/cinema/village-cinemas-athens-metro-mall-ag-dimitrios/movie/they-will-kill-you/2026-03-31/23-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-dimitrios-attikis/cinema/village-cinemas-athens-metro-mall-ag-dimitrios/movie/they-will-kill-you/2026-03-31/20-45.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-dimitrios-attikis/cinema/village-cinemas-athens-metro-mall-ag-dimitrios/movie/they-will-kill-you/2026-04-01/23-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-dimitrios-attikis/cinema/village-cinemas-athens-metro-mall-ag-dimitrios/movie/they-will-kill-you/2026-04-01/20-45.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-dimitrios-attikis/cinema/village-cinemas-athens-metro-mall-ag-dimitrios/movie/the-drama/2026-04-01/21-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-dimitrios-attikis/cinema/village-cinemas-athens-metro-mall-ag-dimitrios/movie/the-drama/2026-04-01/19-45.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-dimitrios-attikis/cinema/village-cinemas-athens-metro-mall-ag-dimitrios/movie/filoi-gia-panta/2026-03-31/18-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-dimitrios-attikis/cinema/village-cinemas-athens-metro-mall-ag-dimitrios/movie/ready-or-not-2-here-i-come/2026-03-31/22-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-dimitrios-attikis/cinema/village-cinemas-athens-metro-mall-ag-dimitrios/movie/ready-or-not-2-here-i-come/2026-03-31/19-45.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-dimitrios-attikis/cinema/village-cinemas-athens-metro-mall-ag-dimitrios/movie/ready-or-not-2-here-i-come/2026-04-01/22-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-dimitrios-attikis/cinema/village-cinemas-athens-metro-mall-ag-dimitrios/movie/the-super-mario-galaxy-movie/2026-04-01/18-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-dimitrios-attikis/cinema/village-cinemas-athens-metro-mall-ag-dimitrios/movie/the-super-mario-galaxy-movie/2026-04-01/19-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-dimitrios-attikis/cinema/village-cinemas-athens-metro-mall-ag-dimitrios/movie/the-super-mario-galaxy-movie/2026-04-01/17-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-dimitrios-attikis/cinema/village-cinemas-athens-metro-mall-ag-dimitrios/movie/david/2026-03-31/17-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/agios-dimitrios-attikis/cinema/village-cinemas-athens-metro-mall-ag-dimitrios/movie/david/2026-04-01/17-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xaidari/cinema/anoixi-art-cinema-2-1/movie/last-call/2026-03-31/21-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xaidari/cinema/anoixi-art-cinema-2-1/movie/last-call/2026-04-01/21-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xaidari/cinema/anoixi-art-cinema-2-1/movie/all-that-s-left-of-you/2026-03-31/18-45.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xaidari/cinema/anoixi-art-cinema-2-1/movie/all-that-s-left-of-you/2026-04-01/18-45.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xaidari/cinema/anoixi-art-cinema-2-1/movie/i-swear/2026-03-31/19-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xaidari/cinema/anoixi-art-cinema-2-1/movie/i-swear/2026-04-01/19-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xaidari/cinema/anoixi-art-cinema-2-1/movie/calle-malaga/2026-03-31/21-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xaidari/cinema/anoixi-art-cinema-2-1/movie/calle-malaga/2026-04-01/21-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xaidari/cinema/anoixi-art-cinema-2-1/movie/the-super-mario-galaxy-movie/2026-04-01/17-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xaidari/cinema/anoixi-art-cinema-2-1/movie/david/2026-04-01/17-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/glyfada/cinema/options-cinemas-glyfada/movie/last-call/2026-03-31/22-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/glyfada/cinema/options-cinemas-glyfada/movie/last-call/2026-03-31/18-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/glyfada/cinema/options-cinemas-glyfada/movie/last-call/2026-03-31/20-20.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/glyfada/cinema/options-cinemas-glyfada/movie/last-call/2026-04-01/22-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/glyfada/cinema/options-cinemas-glyfada/movie/last-call/2026-04-01/18-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/glyfada/cinema/options-cinemas-glyfada/movie/last-call/2026-04-01/20-20.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/glyfada/cinema/options-cinemas-glyfada/movie/project-hail-mary/2026-03-31/22-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/glyfada/cinema/options-cinemas-glyfada/movie/project-hail-mary/2026-03-31/18-50.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/glyfada/cinema/options-cinemas-glyfada/movie/project-hail-mary/2026-04-01/22-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/glyfada/cinema/options-cinemas-glyfada/movie/couture/2026-03-31/19-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/glyfada/cinema/options-cinemas-glyfada/movie/couture/2026-04-01/19-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/glyfada/cinema/options-cinemas-glyfada/movie/the-drama/2026-04-01/18-50.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/glyfada/cinema/options-cinemas-glyfada/movie/hamnet/2026-03-31/21-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/glyfada/cinema/options-cinemas-glyfada/movie/hamnet/2026-04-01/21-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/glyfada/cinema/options-cinemas-glyfada/movie/hoppers/2026-03-31/17-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/glyfada/cinema/options-cinemas-glyfada/movie/ready-or-not-2-here-i-come/2026-03-31/19-50.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/glyfada/cinema/options-cinemas-glyfada/movie/ready-or-not-2-here-i-come/2026-04-01/19-50.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/glyfada/cinema/options-cinemas-glyfada/movie/the-super-mario-galaxy-movie/2026-04-01/17-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/pagkrati/cinema/village-cinemas-pagkrati/movie/last-call/2026-03-31/21-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/pagkrati/cinema/village-cinemas-pagkrati/movie/last-call/2026-03-31/18-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/pagkrati/cinema/village-cinemas-pagkrati/movie/last-call/2026-03-31/22-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/pagkrati/cinema/village-cinemas-pagkrati/movie/last-call/2026-03-31/20-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/pagkrati/cinema/village-cinemas-pagkrati/movie/last-call/2026-04-01/18-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/pagkrati/cinema/village-cinemas-pagkrati/movie/last-call/2026-04-01/22-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/pagkrati/cinema/village-cinemas-pagkrati/movie/last-call/2026-04-01/20-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/pagkrati/cinema/village-cinemas-pagkrati/movie/project-hail-mary/2026-03-31/22-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/pagkrati/cinema/village-cinemas-pagkrati/movie/project-hail-mary/2026-03-31/18-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/pagkrati/cinema/village-cinemas-pagkrati/movie/project-hail-mary/2026-03-31/19-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/pagkrati/cinema/village-cinemas-pagkrati/movie/project-hail-mary/2026-04-01/21-45.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/pagkrati/cinema/village-cinemas-pagkrati/movie/project-hail-mary/2026-04-01/18-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/pagkrati/cinema/village-cinemas-pagkrati/movie/they-will-kill-you/2026-03-31/21-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/pagkrati/cinema/village-cinemas-pagkrati/movie/they-will-kill-you/2026-03-31/18-45.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/pagkrati/cinema/village-cinemas-pagkrati/movie/they-will-kill-you/2026-04-01/21-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/pagkrati/cinema/village-cinemas-pagkrati/movie/the-drama/2026-04-01/20-45.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/pagkrati/cinema/village-cinemas-pagkrati/movie/the-drama/2026-04-01/19-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/pagkrati/cinema/village-cinemas-pagkrati/movie/ready-or-not-2-here-i-come/2026-03-31/19-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/pagkrati/cinema/village-cinemas-pagkrati/movie/ready-or-not-2-here-i-come/2026-03-31/22-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/pagkrati/cinema/village-cinemas-pagkrati/movie/ready-or-not-2-here-i-come/2026-04-01/19-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/pagkrati/cinema/village-cinemas-pagkrati/movie/ready-or-not-2-here-i-come/2026-04-01/22-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/pagkrati/cinema/village-cinemas-pagkrati/movie/the-super-mario-galaxy-movie/2026-04-01/18-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xalandri/cinema/avana/movie/the-drama/2026-04-01/21-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xalandri/cinema/avana/movie/the-drama/2026-04-01/19-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xalandri/cinema/avana/movie/sentimental-value/2026-03-31/18-45.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xalandri/cinema/avana/movie/the-secret-agent/2026-03-31/21-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xalandri/cinema/aigli-3d-digital/movie/last-call/2026-03-31/22-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xalandri/cinema/aigli-3d-digital/movie/last-call/2026-03-31/20-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xalandri/cinema/aigli-3d-digital/movie/last-call/2026-03-31/18-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xalandri/cinema/aigli-3d-digital/movie/last-call/2026-04-03/22-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xalandri/cinema/aigli-3d-digital/movie/last-call/2026-04-03/20-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xalandri/cinema/aigli-3d-digital/movie/last-call/2026-04-06/22-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xalandri/cinema/aigli-3d-digital/movie/last-call/2026-04-06/20-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xalandri/cinema/aigli-3d-digital/movie/last-call/2026-04-07/22-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xalandri/cinema/aigli-3d-digital/movie/last-call/2026-04-07/20-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xalandri/cinema/aigli-3d-digital/movie/last-call/2026-04-04/22-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xalandri/cinema/aigli-3d-digital/movie/last-call/2026-04-04/20-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xalandri/cinema/aigli-3d-digital/movie/last-call/2026-04-08/22-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xalandri/cinema/aigli-3d-digital/movie/last-call/2026-04-08/20-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xalandri/cinema/aigli-3d-digital/movie/last-call/2026-04-02/22-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xalandri/cinema/aigli-3d-digital/movie/last-call/2026-04-02/20-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xalandri/cinema/aigli-3d-digital/movie/last-call/2026-04-05/22-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xalandri/cinema/aigli-3d-digital/movie/last-call/2026-04-05/20-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xalandri/cinema/aigli-3d-digital/movie/last-call/2026-04-01/22-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xalandri/cinema/aigli-3d-digital/movie/last-call/2026-04-01/20-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xalandri/cinema/aigli-3d-digital/movie/all-that-s-left-of-you/2026-03-31/18-50.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xalandri/cinema/aigli-3d-digital/movie/all-that-s-left-of-you/2026-04-01/18-50.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xalandri/cinema/aigli-3d-digital/movie/project-hail-mary/2026-03-31/21-40.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xalandri/cinema/aigli-3d-digital/movie/project-hail-mary/2026-04-03/21-40.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xalandri/cinema/aigli-3d-digital/movie/project-hail-mary/2026-04-06/21-40.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xalandri/cinema/aigli-3d-digital/movie/project-hail-mary/2026-04-07/21-40.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xalandri/cinema/aigli-3d-digital/movie/project-hail-mary/2026-04-04/21-40.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xalandri/cinema/aigli-3d-digital/movie/project-hail-mary/2026-04-08/21-40.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xalandri/cinema/aigli-3d-digital/movie/project-hail-mary/2026-04-02/21-40.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xalandri/cinema/aigli-3d-digital/movie/project-hail-mary/2026-04-05/21-40.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xalandri/cinema/aigli-3d-digital/movie/project-hail-mary/2026-04-01/21-40.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xalandri/cinema/aigli-3d-digital/movie/hamnet/2026-03-31/19-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xalandri/cinema/aigli-3d-digital/movie/hamnet/2026-04-03/19-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xalandri/cinema/aigli-3d-digital/movie/hamnet/2026-04-06/19-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xalandri/cinema/aigli-3d-digital/movie/hamnet/2026-04-07/19-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xalandri/cinema/aigli-3d-digital/movie/hamnet/2026-04-04/19-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xalandri/cinema/aigli-3d-digital/movie/hamnet/2026-04-08/19-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xalandri/cinema/aigli-3d-digital/movie/hamnet/2026-04-02/19-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xalandri/cinema/aigli-3d-digital/movie/hamnet/2026-04-05/19-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xalandri/cinema/aigli-3d-digital/movie/hamnet/2026-04-01/19-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xalandri/cinema/aigli-3d-digital/movie/the-super-mario-galaxy-movie/2026-04-03/18-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xalandri/cinema/aigli-3d-digital/movie/the-super-mario-galaxy-movie/2026-04-06/18-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xalandri/cinema/aigli-3d-digital/movie/the-super-mario-galaxy-movie/2026-04-07/18-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xalandri/cinema/aigli-3d-digital/movie/the-super-mario-galaxy-movie/2026-04-04/18-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xalandri/cinema/aigli-3d-digital/movie/the-super-mario-galaxy-movie/2026-04-08/18-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xalandri/cinema/aigli-3d-digital/movie/the-super-mario-galaxy-movie/2026-04-02/18-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xalandri/cinema/aigli-3d-digital/movie/the-super-mario-galaxy-movie/2026-04-05/18-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xalandri/cinema/aigli-3d-digital/movie/the-super-mario-galaxy-movie/2026-04-01/18-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xalandri/cinema/aigli-3d-digital/movie/one-battle-after-another/2026-03-31/21-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xalandri/cinema/aigli-3d-digital/movie/one-battle-after-another/2026-04-03/21-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xalandri/cinema/aigli-3d-digital/movie/one-battle-after-another/2026-04-06/21-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xalandri/cinema/aigli-3d-digital/movie/one-battle-after-another/2026-04-07/21-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xalandri/cinema/aigli-3d-digital/movie/one-battle-after-another/2026-04-04/21-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xalandri/cinema/aigli-3d-digital/movie/one-battle-after-another/2026-04-08/21-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xalandri/cinema/aigli-3d-digital/movie/one-battle-after-another/2026-04-02/21-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xalandri/cinema/aigli-3d-digital/movie/one-battle-after-another/2026-04-05/21-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/xalandri/cinema/aigli-3d-digital/movie/one-battle-after-another/2026-04-01/21-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/irakleio/cinema/tria-asteria-3d-digital/movie/last-call/2026-03-31/22-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/irakleio/cinema/tria-asteria-3d-digital/movie/last-call/2026-03-31/18-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/irakleio/cinema/tria-asteria-3d-digital/movie/last-call/2026-03-31/20-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/irakleio/cinema/tria-asteria-3d-digital/movie/last-call/2026-04-03/22-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/irakleio/cinema/tria-asteria-3d-digital/movie/last-call/2026-04-03/20-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/irakleio/cinema/tria-asteria-3d-digital/movie/last-call/2026-04-06/22-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/irakleio/cinema/tria-asteria-3d-digital/movie/last-call/2026-04-06/20-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/irakleio/cinema/tria-asteria-3d-digital/movie/last-call/2026-04-07/22-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/irakleio/cinema/tria-asteria-3d-digital/movie/last-call/2026-04-07/20-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/irakleio/cinema/tria-asteria-3d-digital/movie/last-call/2026-04-04/22-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/irakleio/cinema/tria-asteria-3d-digital/movie/last-call/2026-04-04/20-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/irakleio/cinema/tria-asteria-3d-digital/movie/last-call/2026-04-08/22-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/irakleio/cinema/tria-asteria-3d-digital/movie/last-call/2026-04-08/20-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/irakleio/cinema/tria-asteria-3d-digital/movie/last-call/2026-04-02/22-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/irakleio/cinema/tria-asteria-3d-digital/movie/last-call/2026-04-02/20-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/irakleio/cinema/tria-asteria-3d-digital/movie/last-call/2026-04-05/22-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/irakleio/cinema/tria-asteria-3d-digital/movie/last-call/2026-04-05/20-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/irakleio/cinema/tria-asteria-3d-digital/movie/last-call/2026-04-01/22-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/irakleio/cinema/tria-asteria-3d-digital/movie/last-call/2026-04-01/18-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/irakleio/cinema/tria-asteria-3d-digital/movie/last-call/2026-04-01/20-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/irakleio/cinema/tria-asteria-3d-digital/movie/couture/2026-03-31/18-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/irakleio/cinema/tria-asteria-3d-digital/movie/i-swear/2026-03-31/22-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/irakleio/cinema/tria-asteria-3d-digital/movie/i-swear/2026-03-31/20-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/irakleio/cinema/tria-asteria-3d-digital/movie/i-swear/2026-04-03/20-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/irakleio/cinema/tria-asteria-3d-digital/movie/i-swear/2026-04-06/20-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/irakleio/cinema/tria-asteria-3d-digital/movie/i-swear/2026-04-07/20-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/irakleio/cinema/tria-asteria-3d-digital/movie/i-swear/2026-04-04/20-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/irakleio/cinema/tria-asteria-3d-digital/movie/i-swear/2026-04-08/20-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/irakleio/cinema/tria-asteria-3d-digital/movie/i-swear/2026-04-02/20-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/irakleio/cinema/tria-asteria-3d-digital/movie/i-swear/2026-04-05/20-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/irakleio/cinema/tria-asteria-3d-digital/movie/i-swear/2026-04-01/22-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/irakleio/cinema/tria-asteria-3d-digital/movie/i-swear/2026-04-01/20-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/irakleio/cinema/tria-asteria-3d-digital/movie/the-super-mario-galaxy-movie/2026-04-01/18-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/nea-smyrni/cinema/sportigk-digital-cinema/movie/last-call/2026-03-31/20-20.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/nea-smyrni/cinema/sportigk-digital-cinema/movie/last-call/2026-04-03/22-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/nea-smyrni/cinema/sportigk-digital-cinema/movie/last-call/2026-04-06/22-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/nea-smyrni/cinema/sportigk-digital-cinema/movie/last-call/2026-04-07/22-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/nea-smyrni/cinema/sportigk-digital-cinema/movie/last-call/2026-04-04/22-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/nea-smyrni/cinema/sportigk-digital-cinema/movie/last-call/2026-04-08/22-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/nea-smyrni/cinema/sportigk-digital-cinema/movie/last-call/2026-04-02/22-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/nea-smyrni/cinema/sportigk-digital-cinema/movie/last-call/2026-04-05/22-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/nea-smyrni/cinema/sportigk-digital-cinema/movie/last-call/2026-04-01/20-20.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/nea-smyrni/cinema/sportigk-digital-cinema/movie/i-swear/2026-03-31/21-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/nea-smyrni/cinema/sportigk-digital-cinema/movie/i-swear/2026-04-03/21-20.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/nea-smyrni/cinema/sportigk-digital-cinema/movie/i-swear/2026-04-06/21-20.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/nea-smyrni/cinema/sportigk-digital-cinema/movie/i-swear/2026-04-07/21-20.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/nea-smyrni/cinema/sportigk-digital-cinema/movie/i-swear/2026-04-04/21-20.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/nea-smyrni/cinema/sportigk-digital-cinema/movie/i-swear/2026-04-08/21-20.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/nea-smyrni/cinema/sportigk-digital-cinema/movie/i-swear/2026-04-02/21-20.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/nea-smyrni/cinema/sportigk-digital-cinema/movie/i-swear/2026-04-05/21-20.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/nea-smyrni/cinema/sportigk-digital-cinema/movie/i-swear/2026-04-01/21-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/nea-smyrni/cinema/sportigk-digital-cinema/movie/calle-malaga/2026-03-31/22-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/nea-smyrni/cinema/sportigk-digital-cinema/movie/calle-malaga/2026-04-01/22-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/nea-smyrni/cinema/sportigk-digital-cinema/movie/the-great-arch/2026-03-31/18-20.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/nea-smyrni/cinema/sportigk-digital-cinema/movie/the-great-arch/2026-04-01/18-20.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/nea-smyrni/cinema/sportigk-digital-cinema/movie/arva/2026-03-31/19-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/nea-smyrni/cinema/sportigk-digital-cinema/movie/arva/2026-04-01/19-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kifisia/cinema/kifisia-cinemax-3/movie/the-great-arch/2026-03-31/19-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kifisia/cinema/kifisia-cinemax-3/movie/the-great-arch/2026-04-01/19-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kifisia/cinema/kifisia-cinemax-3/movie/one-battle-after-another/2026-03-31/21-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kifisia/cinema/kifisia-cinemax-3/movie/one-battle-after-another/2026-04-01/21-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kifisia/cinema/kifisia-cinemax/movie/last-call/2026-03-31/21-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kifisia/cinema/kifisia-cinemax/movie/last-call/2026-04-01/21-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kifisia/cinema/kifisia-cinemax/movie/the-drama/2026-04-01/19-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kifisia/cinema/kifisia-cinemax/movie/sentimental-value/2026-03-31/17-45.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kifisia/cinema/kifisia-cinemax/movie/hamnet/2026-03-31/19-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kifisia/cinema/kifisia-cinemax/movie/arva/2026-03-31/21-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kifisia/cinema/kifisia-cinemax/movie/arva/2026-04-01/21-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kifisia/cinema/kifisia-cinemax/movie/the-super-mario-galaxy-movie/2026-04-01/19-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kypseli/cinema/trianon/movie/all-that-s-left-of-you/2026-03-31/20-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kypseli/cinema/trianon/movie/all-that-s-left-of-you/2026-04-01/20-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kypseli/cinema/trianon/movie/spasmeni-fleva/2026-03-31/22-40.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kypseli/cinema/trianon/movie/patty-is-such-a-girly-name/2026-04-01/22-40.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kypseli/cinema/trianon/movie/gynaikes-maxitries-meros-g-1960-1974/2026-04-01/18-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kypseli/cinema/trianon/movie/the-great-arch/2026-03-31/18-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kypseli/cinema/studio-new-star-art-cinema/movie/no-prior-appointment/2026-03-31/18-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kypseli/cinema/studio-new-star-art-cinema/movie/no-prior-appointment/2026-04-03/17-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kypseli/cinema/studio-new-star-art-cinema/movie/no-prior-appointment/2026-04-04/17-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kypseli/cinema/studio-new-star-art-cinema/movie/no-prior-appointment/2026-04-02/17-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kypseli/cinema/studio-new-star-art-cinema/movie/no-prior-appointment/2026-04-05/17-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kypseli/cinema/studio-new-star-art-cinema/movie/spring-summer-fall-winter-and-spring/2026-03-31/16-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kypseli/cinema/studio-new-star-art-cinema/movie/spring-summer-fall-winter-and-spring/2026-04-06/17-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kypseli/cinema/studio-new-star-art-cinema/movie/spring-summer-fall-winter-and-spring/2026-04-07/17-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kypseli/cinema/studio-new-star-art-cinema/movie/spring-summer-fall-winter-and-spring/2026-04-08/17-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kypseli/cinema/studio-new-star-art-cinema/movie/no-budget-story/2026-04-02/19-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kypseli/cinema/studio-new-star-art-cinema/movie/sirat/2026-03-31/20-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kypseli/cinema/studio-new-star-art-cinema/movie/sirat/2026-04-03/19-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kypseli/cinema/studio-new-star-art-cinema/movie/sirat/2026-04-06/19-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kypseli/cinema/studio-new-star-art-cinema/movie/sirat/2026-04-07/19-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kypseli/cinema/studio-new-star-art-cinema/movie/sirat/2026-04-04/19-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kypseli/cinema/studio-new-star-art-cinema/movie/sirat/2026-04-08/19-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kypseli/cinema/studio-new-star-art-cinema/movie/sirat/2026-04-05/19-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kypseli/cinema/studio-new-star-art-cinema/movie/sirat/2026-04-01/16-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kypseli/cinema/studio-new-star-art-cinema/movie/the-color-of-pomegranates/2026-03-31/14-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kypseli/cinema/studio-new-star-art-cinema/movie/the-color-of-pomegranates/2026-04-04/14-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kypseli/cinema/studio-new-star-art-cinema/movie/the-color-of-pomegranates/2026-04-05/14-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kypseli/cinema/studio-new-star-art-cinema/movie/the-color-of-pomegranates/2026-04-01/14-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kypseli/cinema/studio-new-star-art-cinema/movie/shadows-of-forgotten-ancestors/2026-04-03/15-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kypseli/cinema/studio-new-star-art-cinema/movie/shadows-of-forgotten-ancestors/2026-04-02/15-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kypseli/cinema/studio-new-star-art-cinema/movie/vampyr/2026-03-31/22-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kypseli/cinema/studio-new-star-art-cinema/movie/vampyr/2026-04-04/15-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kypseli/cinema/studio-new-star-art-cinema/movie/vampyr/2026-04-05/15-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kypseli/cinema/studio-new-star-art-cinema/movie/vampyr/2026-04-01/22-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kypseli/cinema/cinobo-patision/movie/shivers/2026-03-31/22-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kypseli/cinema/cinobo-patision/movie/the-president-s-cake/2026-04-01/19-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kypseli/cinema/cinobo-patision/movie/l-eclisse/2026-04-01/21-45.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kypseli/cinema/cinobo-patision/movie/female/2026-03-31/19-45.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kypseli/cinema/cinobo-patision/movie/franz/2026-03-31/17-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kypseli/cinema/cinobo-patision/movie/franz/2026-04-01/17-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kypseli/cinema/aello-cinemax/movie/last-call/2026-03-31/20-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kypseli/cinema/aello-cinemax/movie/last-call/2026-03-31/21-20.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kypseli/cinema/aello-cinemax/movie/last-call/2026-03-31/19-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kypseli/cinema/aello-cinemax/movie/last-call/2026-04-01/20-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kypseli/cinema/aello-cinemax/movie/last-call/2026-04-01/21-20.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kypseli/cinema/aello-cinemax/movie/last-call/2026-04-01/19-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kypseli/cinema/aello-cinemax/movie/they-will-kill-you/2026-03-31/22-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kypseli/cinema/aello-cinemax/movie/they-will-kill-you/2026-04-01/22-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kypseli/cinema/aello-cinemax/movie/grace/2026-03-31/19-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kypseli/cinema/aello-cinemax/movie/grace/2026-04-01/19-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kypseli/cinema/aello-cinemax/movie/the-drama/2026-04-01/19-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kypseli/cinema/aello-cinemax/movie/hamnet/2026-03-31/19-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kypseli/cinema/aello-cinemax/movie/calle-malaga/2026-03-31/18-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kypseli/cinema/aello-cinemax/movie/calle-malaga/2026-04-01/18-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kypseli/cinema/aello-cinemax/movie/ready-or-not-2-here-i-come/2026-03-31/22-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kypseli/cinema/aello-cinemax/movie/ready-or-not-2-here-i-come/2026-04-01/22-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kypseli/cinema/aello-cinemax/movie/arva/2026-03-31/21-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kypseli/cinema/aello-cinemax/movie/arva/2026-04-01/21-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/kypseli/cinema/aello-cinemax/movie/the-super-mario-galaxy-movie/2026-04-01/17-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/vari/cinema/varkiza/movie/all-that-s-left-of-you/2026-03-31/20-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/vari/cinema/varkiza/movie/all-that-s-left-of-you/2026-04-01/20-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/vari/cinema/varkiza/movie/i-swear/2026-03-31/21-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/vari/cinema/varkiza/movie/i-swear/2026-04-01/21-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/vari/cinema/varkiza/movie/calle-malaga/2026-03-31/19-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/vari/cinema/varkiza/movie/calle-malaga/2026-04-01/19-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/vari/cinema/varkiza/movie/the-super-mario-galaxy-movie/2026-04-01/18-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/nea-makri/cinema/sine-aliki-dim-kin-fos/movie/i-swear/2026-03-31/18-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/nea-makri/cinema/sine-aliki-dim-kin-fos/movie/i-swear/2026-04-01/18-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/nea-makri/cinema/sine-aliki-dim-kin-fos/movie/david/2026-04-04/18-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/nea-makri/cinema/sine-aliki-dim-kin-fos/movie/david/2026-04-02/18-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/nea-makri/cinema/sine-aliki-dim-kin-fos/movie/david/2026-04-05/18-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/akadimia/cinema/elli/movie/the-drama/2026-04-01/21-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/akadimia/cinema/elli/movie/the-drama/2026-04-01/19-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/akadimia/cinema/elli/movie/i-swear/2026-03-31/18-50.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/akadimia/cinema/elli/movie/arva/2026-03-31/21-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/akadimia/cinema/cinobo-opera/movie/last-call/2026-03-31/20-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/akadimia/cinema/cinobo-opera/movie/last-call/2026-04-01/20-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/akadimia/cinema/cinobo-opera/movie/all-that-s-left-of-you/2026-03-31/17-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/akadimia/cinema/cinobo-opera/movie/all-that-s-left-of-you/2026-04-01/17-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/akadimia/cinema/cinobo-opera/movie/orwell-2-2-5/2026-03-31/22-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/akadimia/cinema/cinobo-opera/movie/orwell-2-2-5/2026-04-01/22-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/akadimia/cinema/cinobo-opera/movie/calle-malaga/2026-03-31/17-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/akadimia/cinema/cinobo-opera/movie/calle-malaga/2026-04-01/17-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/akadimia/cinema/cinobo-opera/movie/apeiri-gi/2026-03-31/19-45.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/akadimia/cinema/cinobo-opera/movie/apeiri-gi/2026-04-01/19-45.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/akadimia/cinema/cinobo-opera/movie/franz/2026-03-31/21-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/akadimia/cinema/cinobo-opera/movie/franz/2026-04-01/21-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/akadimia/cinema/asty/movie/homebound/2026-03-31/18-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/akadimia/cinema/asty/movie/homebound/2026-04-01/18-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/akadimia/cinema/asty/movie/grace/2026-03-31/20-45.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/akadimia/cinema/asty/movie/grace/2026-04-03/21-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/akadimia/cinema/asty/movie/grace/2026-04-06/21-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/akadimia/cinema/asty/movie/grace/2026-04-07/21-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/akadimia/cinema/asty/movie/grace/2026-04-04/21-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/akadimia/cinema/asty/movie/grace/2026-04-08/21-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/akadimia/cinema/asty/movie/grace/2026-04-02/21-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/akadimia/cinema/asty/movie/grace/2026-04-05/21-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/akadimia/cinema/asty/movie/grace/2026-04-01/20-45.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ilion/cinema/escape-center/movie/last-call/2026-03-31/21-20.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ilion/cinema/escape-center/movie/last-call/2026-03-31/20-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ilion/cinema/escape-center/movie/last-call/2026-03-31/17-50.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ilion/cinema/escape-center/movie/last-call/2026-03-31/22-20.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ilion/cinema/escape-center/movie/last-call/2026-03-31/19-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ilion/cinema/escape-center/movie/last-call/2026-04-01/21-20.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ilion/cinema/escape-center/movie/last-call/2026-04-01/20-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ilion/cinema/escape-center/movie/last-call/2026-04-01/17-50.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ilion/cinema/escape-center/movie/last-call/2026-04-01/22-20.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ilion/cinema/escape-center/movie/last-call/2026-04-01/19-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ilion/cinema/escape-center/movie/project-hail-mary/2026-03-31/21-40.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ilion/cinema/escape-center/movie/project-hail-mary/2026-03-31/19-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ilion/cinema/escape-center/movie/project-hail-mary/2026-04-01/21-40.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ilion/cinema/escape-center/movie/project-hail-mary/2026-04-01/19-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ilion/cinema/escape-center/movie/they-will-kill-you/2026-03-31/23-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ilion/cinema/escape-center/movie/they-will-kill-you/2026-03-31/18-40.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ilion/cinema/escape-center/movie/they-will-kill-you/2026-03-31/21-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ilion/cinema/escape-center/movie/they-will-kill-you/2026-04-01/23-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ilion/cinema/escape-center/movie/they-will-kill-you/2026-04-01/21-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ilion/cinema/escape-center/movie/the-drama/2026-04-01/22-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ilion/cinema/escape-center/movie/the-drama/2026-04-01/20-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ilion/cinema/escape-center/movie/wuthering-heights/2026-03-31/19-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ilion/cinema/escape-center/movie/wuthering-heights/2026-04-01/17-20.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ilion/cinema/escape-center/movie/filoi-gia-panta/2026-03-31/19-40.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ilion/cinema/escape-center/movie/filoi-gia-panta/2026-03-31/17-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ilion/cinema/escape-center/movie/filoi-gia-panta/2026-04-01/19-40.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ilion/cinema/escape-center/movie/hoppers/2026-03-31/17-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ilion/cinema/escape-center/movie/hoppers/2026-04-01/17-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ilion/cinema/escape-center/movie/ready-or-not-2-here-i-come/2026-03-31/20-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ilion/cinema/escape-center/movie/ready-or-not-2-here-i-come/2026-03-31/22-50.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ilion/cinema/escape-center/movie/ready-or-not-2-here-i-come/2026-04-01/20-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ilion/cinema/escape-center/movie/ready-or-not-2-here-i-come/2026-04-01/22-50.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ilion/cinema/escape-center/movie/the-super-mario-galaxy-movie/2026-04-01/18-40.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ilion/cinema/escape-center/movie/the-super-mario-galaxy-movie/2026-04-01/17-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ilion/cinema/escape-center/movie/the-mortuary-assistant/2026-03-31/22-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ilion/cinema/escape-center/movie/the-mortuary-assistant/2026-04-01/22-40.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ilion/cinema/escape-center/movie/goat/2026-03-31/17-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ilion/cinema/escape-center/movie/scream-7/2026-03-31/22-40.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ilion/cinema/escape-center/movie/david/2026-03-31/18-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ilion/cinema/escape-center/movie/david/2026-04-01/18-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ampelokipoi/cinema/nirvana-1-2-cinemax/movie/last-call/2026-03-31/22-20.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ampelokipoi/cinema/nirvana-1-2-cinemax/movie/last-call/2026-03-31/20-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ampelokipoi/cinema/nirvana-1-2-cinemax/movie/last-call/2026-04-01/22-20.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ampelokipoi/cinema/nirvana-1-2-cinemax/movie/last-call/2026-04-01/20-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ampelokipoi/cinema/nirvana-1-2-cinemax/movie/all-that-s-left-of-you/2026-03-31/21-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ampelokipoi/cinema/nirvana-1-2-cinemax/movie/all-that-s-left-of-you/2026-04-01/21-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ampelokipoi/cinema/nirvana-1-2-cinemax/movie/i-swear/2026-03-31/17-45.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ampelokipoi/cinema/nirvana-1-2-cinemax/movie/i-swear/2026-04-01/17-45.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ampelokipoi/cinema/nirvana-1-2-cinemax/movie/hamnet/2026-03-31/19-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ampelokipoi/cinema/nirvana-1-2-cinemax/movie/hamnet/2026-04-01/19-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ampelokipoi/cinema/nirvana-1-2-cinemax/movie/the-super-mario-galaxy-movie/2026-04-01/17-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ampelokipoi/cinema/danaos/movie/orwell-2-2-5/2026-04-01/22-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ampelokipoi/cinema/danaos/movie/calle-malaga/2026-03-31/17-40.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ampelokipoi/cinema/danaos/movie/calle-malaga/2026-03-31/20-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ampelokipoi/cinema/danaos/movie/calle-malaga/2026-04-01/17-40.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ampelokipoi/cinema/danaos/movie/calle-malaga/2026-04-01/20-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ampelokipoi/cinema/danaos/movie/franz/2026-03-31/22-10.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ampelokipoi/cinema/newman-cinema/movie/los-domingos/2026-04-01/18-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ampelokipoi/cinema/newman-cinema/movie/dog-of-god-dieva-suns/2026-04-01/20-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ampelokipoi/cinema/newman-cinema/movie/they-come-out-of-margo/2026-04-01/22-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ampelokipoi/cinema/galaxias-cinema/movie/the-drama/2026-04-01/21-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ampelokipoi/cinema/galaxias-cinema/movie/the-drama/2026-04-01/19-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ampelokipoi/cinema/galaxias-cinema/movie/i-swear/2026-03-31/22-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ampelokipoi/cinema/galaxias-cinema/movie/i-swear/2026-03-31/20-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ampelokipoi/cinema/galaxias-cinema/movie/i-swear/2026-04-01/22-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ampelokipoi/cinema/galaxias-cinema/movie/i-swear/2026-04-01/20-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ampelokipoi/cinema/galaxias-cinema/movie/the-great-arch/2026-03-31/18-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ampelokipoi/cinema/galaxias-cinema/movie/the-great-arch/2026-04-01/18-15.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ampelokipoi/cinema/galaxias-cinema/movie/arva/2026-03-31/21-30.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/region/ampelokipoi/cinema/galaxias-cinema/movie/arva/2026-03-31/19-00.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
   </url>
 
 </urlset>
