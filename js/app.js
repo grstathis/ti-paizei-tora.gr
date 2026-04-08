@@ -2,6 +2,38 @@ let moviesData = [];
 let cinemasData = [];
 
 let currentTimeFilter = 'all'; // Track current time filter: 'all', 'today', 'next3'
+let timeWindowMinutes = 180; // Track selected time window in minutes (default 3 hours)
+
+// ============ GOOGLE MAPS DISTANCE MATRIX CONFIGURATION ============
+const GOOGLE_MAPS_API_KEY = 'AIzaSyCmtiYOOYxmmwczkvXooICM4IwyEnb0jsE'; // TODO: Add your Google Maps API key here
+const MAX_DISTANCE_KM = 5; // Pre-filter cinemas within 5km before calling API
+let userLocation = null; // Store user's location { lat, lng }
+let travelTimesCache = {}; // Cache travel times: { cinemaName: { walking: 15, driving: 8, transit: 12 } }
+let canIMakeItActive = false; // Track if "Can I Make It" filter is active
+let distanceMatrixService = null; // Google Maps DistanceMatrixService instance
+
+// Load Google Maps API dynamically
+function loadGoogleMapsAPI() {
+    return new Promise((resolve, reject) => {
+        if (window.google && window.google.maps) {
+            resolve();
+            return;
+        }
+
+        if (!GOOGLE_MAPS_API_KEY) {
+            reject(new Error('Google Maps API key not configured'));
+            return;
+        }
+
+        const script = document.createElement('script');
+        script.src = `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_MAPS_API_KEY}&libraries=places`;
+        script.async = true;
+        script.defer = true;
+        script.onload = () => resolve();
+        script.onerror = () => reject(new Error('Failed to load Google Maps API'));
+        document.head.appendChild(script);
+    });
+}
 
 // Greek to Latin transliteration map (ported from Python)
 const GREEK_TO_LATIN = {
@@ -234,6 +266,9 @@ async function loadData() {
     populateCheckboxes();
     populateRegions();
     renderResults();
+
+    // Initialize FAB tooltip hint for first-time visitors
+    initializeFABHint();
 }
 
 // ✅ Populate unique regions (checkbox list)
@@ -281,6 +316,273 @@ function distanceKm(lat1, lon1, lat2, lon2) {
     const dLon = toRad(lon2 - lon1);
     const a = Math.sin(dLat / 2) ** 2 + Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLon / 2) ** 2;
     return R * (2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)));
+}
+
+// ============ "CAN I MAKE IT" TRAVEL TIME FUNCTIONS ============
+
+// Get travel times from Google Maps Distance Matrix API using JavaScript SDK
+async function getTravelTimes(userLat, userLng, cinemas) {
+    if (!GOOGLE_MAPS_API_KEY) {
+        console.error('Google Maps API key not configured');
+        return {};
+    }
+
+    // Load Google Maps API if not already loaded
+    try {
+        await loadGoogleMapsAPI();
+    } catch (error) {
+        console.error('Failed to load Google Maps API:', error);
+        return {};
+    }
+
+    // Pre-filter cinemas within 10km radius
+    const nearbyCinemas = cinemas.filter(cinema => {
+        if (typeof cinema.lat !== 'number' || typeof cinema.lon !== 'number') return false;
+        const distance = distanceKm(userLat, userLng, cinema.lat, cinema.lon);
+        return distance <= MAX_DISTANCE_KM;
+    });
+
+    if (nearbyCinemas.length === 0) {
+        return {};
+    }
+
+    // Initialize DistanceMatrixService
+    if (!distanceMatrixService) {
+        distanceMatrixService = new google.maps.DistanceMatrixService();
+    }
+
+    const origin = new google.maps.LatLng(userLat, userLng);
+    const destinations = nearbyCinemas.map(c => new google.maps.LatLng(c.lat, c.lon));
+
+    // Fetch travel times for all 3 modes
+    const modes = [
+        { key: 'walking', mode: google.maps.TravelMode.WALKING },
+        { key: 'driving', mode: google.maps.TravelMode.DRIVING },
+        { key: 'transit', mode: google.maps.TravelMode.TRANSIT }
+    ];
+
+    const results = {};
+
+    try {
+        // Call API for each mode
+        for (const { key, mode } of modes) {
+            const request = {
+                origins: [origin],
+                destinations: destinations,
+                travelMode: mode,
+                unitSystem: google.maps.UnitSystem.METRIC
+            };
+
+            // Add departure time for transit to get real-time schedules
+            if (mode === google.maps.TravelMode.TRANSIT || mode === google.maps.TravelMode.DRIVING) {
+                request.drivingOptions = {
+                    departureTime: new Date(),
+                    trafficModel: google.maps.TrafficModel.BEST_GUESS
+                };
+            }
+
+            // Wrap callback in Promise
+            const response = await new Promise((resolve, reject) => {
+                distanceMatrixService.getDistanceMatrix(request, (response, status) => {
+                    if (status === 'OK') {
+                        resolve(response);
+                    } else {
+                        console.warn(`Distance Matrix API error for mode ${key}:`, status);
+                        resolve(null);
+                    }
+                });
+            });
+
+            if (response && response.rows && response.rows[0]) {
+                const elements = response.rows[0].elements;
+
+                nearbyCinemas.forEach((cinema, idx) => {
+                    if (!results[cinema.cinema]) {
+                        results[cinema.cinema] = {};
+                    }
+
+                    if (elements[idx] && elements[idx].status === 'OK') {
+                        const durationMinutes = Math.ceil(elements[idx].duration.value / 60);
+                        results[cinema.cinema][key] = durationMinutes;
+                    }
+                });
+            }
+        }
+
+        return results;
+    } catch (error) {
+        console.error('Error fetching travel times:', error);
+        return {};
+    }
+}
+
+// Activate "Can I Make It" filter
+async function activateCanIMakeIt() {
+    const btn = document.getElementById('canIMakeItFAB'); // Updated to FAB button
+    const modal = document.getElementById('locationModal');
+
+    // Check if API key is configured
+    if (!GOOGLE_MAPS_API_KEY) {
+        alert('⚠️ Η λειτουργία "Τι προλαβαίνω;" δεν είναι διαθέσιμη. Απαιτείται Google Maps API key.');
+        return;
+    }
+
+    // Check if geolocation is supported
+    if (!navigator.geolocation) {
+        alert('⚠️ Ο browser σου δεν υποστηρίζει geolocation.');
+        return;
+    }
+
+    // Show loading state
+    const originalText = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = '⌛';
+
+    // Request location
+    navigator.geolocation.getCurrentPosition(
+        async (pos) => {
+            const { latitude, longitude } = pos.coords;
+            userLocation = { lat: latitude, lng: longitude };
+
+            // Use existing nearby filter to select cinemas within 10km
+            const { nearby, withoutCoords } = findAndSelectNearbyCinemas(latitude, longitude, MAX_DISTANCE_KM);
+
+            // Get all unique cinemas for travel time calculation
+            const uniqueCinemas = [];
+            const cinemaNames = new Set();
+
+            cinemasData.forEach(movieCinemas => {
+                movieCinemas.forEach(cinema => {
+                    if (!cinemaNames.has(cinema.cinema)) {
+                        cinemaNames.add(cinema.cinema);
+                        uniqueCinemas.push(cinema);
+                    }
+                });
+            });
+
+            // Show fetching state
+            btn.textContent = '🔍';
+
+            // Fetch travel times
+            travelTimesCache = await getTravelTimes(latitude, longitude, uniqueCinemas);
+
+            console.log('✅ Travel times fetched:', Object.keys(travelTimesCache).length, 'cinemas');
+            console.log('Sample:', Object.entries(travelTimesCache).slice(0, 3));
+
+            // Activate the filter
+            canIMakeItActive = true;
+            btn.textContent = '✅';
+            btn.classList.add('active');
+            btn.disabled = false;
+
+            // Automatically apply "next 30 minutes" filter
+            const timeSelect = document.getElementById('timeWindowSelect');
+            if (timeSelect) {
+                timeSelect.value = '30'; // Set to 30 minutes
+            }
+            timeWindowMinutes = 30;
+            currentTimeFilter = 'next3'; // Reuse next3 filter logic
+
+            // Re-render results with travel times and time filter
+            renderResults();
+            updateFilterChips();
+
+            // Show success message in nearby summary area
+            const summary = document.getElementById('nearbySummary');
+            if (summary && nearby.length > 0) {
+                const top3 = nearby.slice(0, 3).map(n => `${n.name} (${n.distance.toFixed(1)}km)`).join(' • ');
+                summary.textContent = `✅ Βρέθηκαν ${nearby.length} σινεμά σε ακτίνα ${MAX_DISTANCE_KM}km. ${top3 ? 'Κοντινότερα: ' + top3 : ''}`;
+                setTimeout(() => showResultsCount('nearbyResultsInfo'), 100);
+            }
+        },
+        (error) => {
+            // Location permission denied or error
+            btn.disabled = false;
+            btn.textContent = originalText;
+
+            // Show modal explaining why we need location
+            if (modal) {
+                modal.style.display = 'flex';
+            } else {
+                let message = '📍 Χρειαζόμαστε την τοποθεσία σου για να υπολογίσουμε τους χρόνους μετακίνησης.\n\n';
+                if (error.code === error.PERMISSION_DENIED) {
+                    message += 'Άρνηση πρόσβασης στην τοποθεσία. Παρακαλώ ενεργοποίησέ την στις ρυθμίσεις του browser σου.';
+                } else if (error.code === error.POSITION_UNAVAILABLE) {
+                    message += 'Δεν μπόρεσε να προσδιοριστεί η τοποθεσία σου.';
+                } else {
+                    message += 'Timeout στον εντοπισμό τοποθεσίας.';
+                }
+                alert(message);
+            }
+        },
+        {
+            enableHighAccuracy: true,
+            timeout: 10000,
+            maximumAge: 0
+        }
+    );
+}
+
+// Deactivate "Can I Make It" filter
+function deactivateCanIMakeIt() {
+    canIMakeItActive = false;
+    travelTimesCache = {};
+    userLocation = null;
+
+    const btn = document.getElementById('canIMakeItFAB'); // Updated to FAB button
+    if (btn) {
+        btn.textContent = '🚶';
+        btn.classList.remove('active');
+    }
+
+    // Clear nearby summary
+    const summary = document.getElementById('nearbySummary');
+    if (summary) {
+        summary.textContent = '';
+    }
+
+    // Clear cinema checkbox selections (revert to showing all cinemas)
+    const cinemaInputs = document.querySelectorAll('#cinemaCheckboxes input[type="checkbox"]');
+    cinemaInputs.forEach(cb => cb.checked = false);
+
+    // Reset time filter to 'all'
+    currentTimeFilter = 'all';
+    timeWindowMinutes = 180; // Reset to default 3 hours
+    const timeSelect = document.getElementById('timeWindowSelect');
+    if (timeSelect) {
+        timeSelect.value = '180';
+    }
+
+    // Re-render without travel times and time filter
+    renderResults();
+    updateFilterChips();
+}
+
+// Toggle "Can I Make It" filter
+function toggleCanIMakeIt() {
+    if (canIMakeItActive) {
+        deactivateCanIMakeIt();
+    } else {
+        activateCanIMakeIt();
+    }
+}
+
+// Close location permission modal
+function closeLocationModal() {
+    const modal = document.getElementById('locationModal');
+    if (modal) {
+        modal.style.display = 'none';
+    }
+}
+
+// Format travel time for display
+function formatTravelTime(minutes) {
+    if (minutes < 60) {
+        return `${minutes}'`;
+    }
+    const hours = Math.floor(minutes / 60);
+    const mins = minutes % 60;
+    return mins > 0 ? `${hours}ω ${mins}'` : `${hours}ω`;
 }
 
 // “Near me” main action
@@ -520,7 +822,11 @@ function updateFilterChips() {
 
     // Time filters
     if (currentTimeFilter === "today") addChip("Σήμερα", () => showAll());
-    if (currentTimeFilter === "next3") addChip("Επόμενες 3 ώρες", () => showAll());
+    if (currentTimeFilter === "next3") {
+        const timeLabel = timeWindowMinutes === 30 ? "Επόμενα 30'" :
+                          timeWindowMinutes === 60 ? "Επόμενη 1ω" : "Επόμενες 3ω";
+        addChip(timeLabel, () => showAll());
+    }
 
     // Movies
     document.querySelectorAll('#movieCheckboxes input:checked').forEach(cb => {
@@ -555,11 +861,249 @@ function addChip(label, removeFn) {
 }
 
 
+// ✅ Special rendering for "Can I Make It" mode
+function renderCanIMakeItResults() {
+    const results = document.getElementById('results');
+    results.innerHTML = '';
+
+    // Show banner
+    const banner = document.createElement('div');
+    banner.style.cssText = 'background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 1em; border-radius: 10px; margin-bottom: 1.5em; text-align: center; font-weight: 600;';
+    banner.innerHTML = `
+        🚶 Τι προλαβαίνω; - Προβολές σε ακτίνα ${MAX_DISTANCE_KM}km τα επόμενα ${timeWindowMinutes} λεπτά
+        <button onclick="deactivateCanIMakeIt()" style="margin-left: 1em; padding: 0.5em 1em; background: rgba(255,255,255,0.2); border: 1px solid white; color: white; border-radius: 5px; cursor: pointer;">
+            ✕ Απενεργοποίηση
+        </button>
+    `;
+    results.appendChild(banner);
+
+    // Get all showtime options with travel times
+    const showtimeOptions = [];
+    const now = new Date();
+    const nowMins = now.getHours() * 60 + now.getMinutes();
+
+    // Apply time filter first
+    let list = cinemasData;
+    if (currentTimeFilter === 'next3') {
+        list = applyNext3Filter(list);
+    }
+
+    // Build showtime options
+    list.forEach((movieCinemas, movieIdx) => {
+        const movieArray = moviesData[movieIdx];
+        if (!movieArray || !movieArray[0]) return;
+        const movie = movieArray[0]; // Extract the movie object from the array
+
+        movieCinemas.forEach(cinema => {
+            // Only include cinemas with travel times (within 5km)
+            if (!travelTimesCache[cinema.cinema]) return;
+
+            const travelTimes = travelTimesCache[cinema.cinema];
+
+            // Get all showtimes for this cinema
+            cinema.timetable.flat().forEach(showtime => {
+                if (!showtime || showtime.trim() === '') return;
+
+                // Parse showtime
+                const timeMatch = showtime.match(/(\d{2}):(\d{2})/);
+                if (!timeMatch) return;
+
+                const showtimeMins = parseInt(timeMatch[1]) * 60 + parseInt(timeMatch[2]);
+
+                // Calculate how much time user has to get there
+                const minutesUntilShowtime = showtimeMins - nowMins;
+                if (minutesUntilShowtime < 0) return; // Skip past showtimes
+
+                // IMPORTANT: Add buffer time for practical considerations
+                // - Parking (if driving): 5-10 min
+                // - Getting tickets: 2-5 min
+                // - Finding the screen: 2-3 min
+                // - Getting settled: 1-2 min
+                const ARRIVAL_BUFFER_NEEDED = 10; // Minimum 10 minutes needed after arrival
+
+                // Determine feasibility based on travel times + buffer
+                let feasibility = 'impossible';
+                let travelMethod = null;
+                let travelMinutes = null;
+                let arrivalBuffer = 0; // How many minutes early they'll arrive after buffer
+
+                // Check walking
+                if (travelTimes.walking) {
+                    const totalTimeNeeded = travelTimes.walking + ARRIVAL_BUFFER_NEEDED;
+                    if (totalTimeNeeded <= minutesUntilShowtime) {
+                        feasibility = 'possible';
+                        travelMethod = 'walking';
+                        travelMinutes = travelTimes.walking;
+                        arrivalBuffer = minutesUntilShowtime - totalTimeNeeded;
+                    }
+                }
+
+                // Check driving (faster than walking, but needs extra parking time)
+                if (travelTimes.driving) {
+                    const parkingBuffer = 5; // Extra time for parking
+                    const totalTimeNeeded = travelTimes.driving + parkingBuffer + ARRIVAL_BUFFER_NEEDED;
+                    if (totalTimeNeeded <= minutesUntilShowtime) {
+                        if (!travelMethod || (travelTimes.driving + parkingBuffer) < travelMinutes) {
+                            feasibility = 'comfortable';
+                            travelMethod = 'driving';
+                            travelMinutes = travelTimes.driving;
+                            arrivalBuffer = minutesUntilShowtime - totalTimeNeeded;
+                        }
+                    }
+                }
+
+                // Check transit
+                if (travelTimes.transit) {
+                    const totalTimeNeeded = travelTimes.transit + ARRIVAL_BUFFER_NEEDED;
+                    if (totalTimeNeeded <= minutesUntilShowtime) {
+                        if (!travelMethod || travelTimes.transit < travelMinutes) {
+                            feasibility = 'comfortable';
+                            travelMethod = 'transit';
+                            travelMinutes = travelTimes.transit;
+                            arrivalBuffer = minutesUntilShowtime - totalTimeNeeded;
+                        }
+                    }
+                }
+
+                // Upgrade to "very comfortable" if they have 10+ minutes extra buffer (beyond the required 10)
+                if (arrivalBuffer >= 10 && feasibility !== 'impossible') {
+                    feasibility = 'very-comfortable';
+                }
+
+                // Skip impossible options
+                if (feasibility === 'impossible') return;
+
+                showtimeOptions.push({
+                    movie: movie,
+                    movieIdx: movieIdx,
+                    cinema: cinema.cinema,
+                    showtime: showtime,
+                    showtimeMins: showtimeMins,
+                    minutesUntilShowtime: minutesUntilShowtime,
+                    travelMethod: travelMethod,
+                    travelMinutes: travelMinutes,
+                    arrivalBuffer: arrivalBuffer,
+                    feasibility: feasibility,
+                    travelTimes: travelTimes
+                });
+            });
+        });
+    });
+
+    // Sort by: feasibility (best first), then by arrival buffer (most buffer first), then by travel time (fastest first)
+    const feasibilityOrder = { 'very-comfortable': 0, 'comfortable': 1, 'possible': 2, 'impossible': 3 };
+    showtimeOptions.sort((a, b) => {
+        // First by feasibility
+        if (feasibilityOrder[a.feasibility] !== feasibilityOrder[b.feasibility]) {
+            return feasibilityOrder[a.feasibility] - feasibilityOrder[b.feasibility];
+        }
+        // Then by arrival buffer (more is better)
+        if (a.arrivalBuffer !== b.arrivalBuffer) {
+            return b.arrivalBuffer - a.arrivalBuffer;
+        }
+        // Then by travel time (less is better)
+        return (a.travelMinutes || 999) - (b.travelMinutes || 999);
+    });
+
+    // Show message if no options
+    if (showtimeOptions.length === 0) {
+        const noResultsDiv = document.createElement('div');
+        noResultsDiv.style.cssText = 'background: #fff3cd; border: 2px solid #ffc107; color: #856404; padding: 2em; border-radius: 10px; text-align: center; font-size: 1.1em; margin: 2em 0;';
+        noResultsDiv.innerHTML = `<strong>😔 Δεν υπάρχουν προβολές μέσα στα επόμενα ${timeWindowMinutes} λεπτά σε ακτίνα ${MAX_DISTANCE_KM}km.</strong><br><br>Δοκίμασε να αυξήσεις το χρονικό παράθυρο ή απενεργοποίησε το φίλτρο.`;
+        results.appendChild(noResultsDiv);
+        return;
+    }
+
+    // Render options
+    showtimeOptions.forEach(option => {
+        const optionDiv = document.createElement('div');
+        optionDiv.className = `showtime-option feasibility-${option.feasibility}`;
+
+        // Feasibility badge
+        let feasibilityBadge = '';
+        let feasibilityIcon = '';
+        let feasibilityText = '';
+
+        if (option.feasibility === 'very-comfortable') {
+            feasibilityIcon = '✅';
+            feasibilityText = 'Άνετα!';
+        } else if (option.feasibility === 'comfortable') {
+            feasibilityIcon = '👍';
+            feasibilityText = 'Προλαβαίνεις';
+        } else if (option.feasibility === 'possible') {
+            feasibilityIcon = '⚡';
+            feasibilityText = 'Τρέξιμο!';
+        } else {
+            feasibilityIcon = '❌';
+            feasibilityText = 'Αδύνατο';
+        }
+
+        feasibilityBadge = `<span class="feasibility-badge feasibility-${option.feasibility}">${feasibilityIcon} ${feasibilityText}</span>`;
+
+        // Travel method icon
+        const travelIcon = option.travelMethod === 'walking' ? '🚶' :
+                          option.travelMethod === 'driving' ? '🚗' :
+                          option.travelMethod === 'transit' ? '🚇' : '';
+
+        // Build travel info
+        const travelInfo = option.travelMinutes
+            ? `${travelIcon} ${formatTravelTime(option.travelMinutes)}`
+            : '-';
+
+        // Arrival buffer text
+        const bufferText = option.arrivalBuffer > 0
+            ? `<span class="arrival-buffer">Φτάνεις ${option.arrivalBuffer}' νωρίτερα</span>`
+            : '';
+
+        // Add share button
+        const shareBtn = `<button class="share-btn share-btn-small" onclick="event.stopPropagation(); shareMovie(${option.movieIdx})" title="Μοιράσου την ταινία">
+            📤
+        </button>`;
+
+        // Add Google Maps link for cinema
+        const mapsLink = `<a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(option.cinema + ', Αθήνα')}"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="cinema-maps-link"
+            onclick="event.stopPropagation()"
+            title="Δες στο Google Maps">
+            📍
+        </a>`;
+
+        optionDiv.innerHTML = `
+            <div class="showtime-option-header">
+                ${feasibilityBadge}
+                <span class="showtime-time">${option.showtime}</span>
+                ${shareBtn}
+            </div>
+            <div class="showtime-option-body">
+                <h3 class="showtime-movie-title">${option.movie.greek_title || option.movie.original_title}</h3>
+                <div class="showtime-cinema">
+                    ${mapsLink} ${option.cinema}
+                </div>
+                <div class="showtime-travel-info">
+                    <span class="travel-method">${travelInfo}</span>
+                    ${bufferText}
+                </div>
+            </div>
+        `;
+
+        results.appendChild(optionDiv);
+    });
+}
+
+
 // ✅ Main rendering logic
 // Replace the existing renderResults function with this version that respects time filters
 function renderResults(filteredList, forceEmpty = false) {
     const results = document.getElementById('results');
     results.innerHTML = '';
+
+    // If "Can I Make It" mode is active, use special rendering
+    if (canIMakeItActive && Object.keys(travelTimesCache).length > 0) {
+        renderCanIMakeItResults();
+        return;
+    }
 
     const selectedMovies = Array.from(document.querySelectorAll('#movieCheckboxes input:checked')).map(el => el.value);
     const selectedCinemas = Array.from(document.querySelectorAll('#cinemaCheckboxes input:checked')).map(el => el.value);
@@ -604,7 +1148,7 @@ function renderResults(filteredList, forceEmpty = false) {
             idx,
             movie,
             movieCinemas,
-            regionFiltered,
+            regionFiltered: regionFiltered,
             cinemaCount: regionFiltered.length
         };
     }).filter(item => item !== null);
@@ -612,6 +1156,57 @@ function renderResults(filteredList, forceEmpty = false) {
     // Sort by cinema count in filtered results (descending - most cinemas first)
     // Note: Popular badge uses pre-calculated total cinema count from backend, not filtered count
     moviesWithCounts.sort((a, b) => b.cinemaCount - a.cinemaCount);
+
+    // Show "Can I Make It" active banner if filter is on
+    if (canIMakeItActive && Object.keys(travelTimesCache).length > 0) {
+        const banner = document.createElement('div');
+        banner.style.cssText = 'background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 1em; border-radius: 10px; margin-bottom: 1.5em; text-align: center; font-weight: 600;';
+        banner.innerHTML = `
+            🚶 Φίλτρο "Τι προλαβαίνω;" Ενεργό - Εμφανίζονται κινηματογράφοι σε ακτίνα ${MAX_DISTANCE_KM}km με χρόνους μετακίνησης
+        `;
+        results.appendChild(banner);
+    }
+
+    // Check if no results and show appropriate message
+    if (moviesWithCounts.length === 0 && canIMakeItActive && currentTimeFilter === 'next3') {
+        // Check if there are any cinemas nearby at all (without time filter)
+        const nearbyCinemasCount = Object.keys(travelTimesCache).length;
+
+        let message = '';
+        if (nearbyCinemasCount === 0) {
+            message = '😔 Δεν βρέθηκαν κινηματογράφοι σε ακτίνα 10km.';
+        } else {
+            // Check if there are any showtimes at all for nearby cinemas (checking original data)
+            const selectedCinemaNames = new Set();
+            document.querySelectorAll('#cinemaCheckboxes input[type="checkbox"]:checked').forEach(cb => {
+                selectedCinemaNames.add(cb.value);
+            });
+
+            let hasAnyShowtimes = false;
+            cinemasData.forEach(movieCinemas => {
+                movieCinemas.forEach(cinema => {
+                    if (selectedCinemaNames.has(cinema.cinema) && cinema.timetable && cinema.timetable.some(tt => tt.length > 0)) {
+                        hasAnyShowtimes = true;
+                    }
+                });
+            });
+
+            const timeLabel = timeWindowMinutes === 30 ? '30 λεπτά' :
+                              timeWindowMinutes === 60 ? '1 ώρα' : '3 ώρες';
+
+            if (hasAnyShowtimes) {
+                message = `😔 Δεν υπάρχουν προβολές μέσα στην επόμενη ${timeLabel}. Δοκίμασε να αυξήσεις το χρονικό παράθυρο.`;
+            } else {
+                message = `😔 Δεν υπάρχουν διαθέσιμες προβολές στους κινηματογράφους της περιοχής.`;
+            }
+        }
+
+        const noResultsDiv = document.createElement('div');
+        noResultsDiv.style.cssText = 'background: #fff3cd; border: 2px solid #ffc107; color: #856404; padding: 2em; border-radius: 10px; text-align: center; font-size: 1.1em; margin: 2em 0;';
+        noResultsDiv.innerHTML = `<strong>${message}</strong>`;
+        results.appendChild(noResultsDiv);
+        return;
+    }
 
     // Now render the sorted movies
     moviesWithCounts.forEach(({ idx, movie, movieCinemas, regionFiltered }, arrayIndex) => {
@@ -729,6 +1324,38 @@ function renderResults(filteredList, forceEmpty = false) {
             ? `<div class="movie-ratings">${ratingsHTML.join('')}</div>`
             : '';
 
+        // Build travel time info for the next showtime cinema(s)
+        let travelTimeHTML = '';
+        if (canIMakeItActive && movieSummary.nextShowtime && movieSummary.cinemaNames) {
+            // Get the first cinema with the next showtime
+            const firstCinema = movieSummary.cinemaNames.split(',')[0].trim();
+            const travelTimes = travelTimesCache[firstCinema];
+
+            if (travelTimes) {
+                const badges = [];
+                if (travelTimes.walking) {
+                    badges.push(`🚶 ${formatTravelTime(travelTimes.walking)}`);
+                }
+                if (travelTimes.driving) {
+                    badges.push(`🚗 ${formatTravelTime(travelTimes.driving)}`);
+                }
+                if (travelTimes.transit) {
+                    badges.push(`🚇 ${formatTravelTime(travelTimes.transit)}`);
+                }
+                if (badges.length > 0) {
+                    travelTimeHTML = `<span class="travel-time-inline">${badges.join(' ')}</span>`;
+                }
+            }
+        }
+
+        // Build cinema count with expand indicator
+        const cinemaCountHTML = regionFiltered.length === 1
+            ? `<span class="cinema-count-single">${regionFiltered.length} κινηματογράφος</span>`
+            : `<span class="cinema-count-multiple">
+                 ${regionFiltered.length} κινηματογράφοι
+                 <span class="expand-hint">➕ Δες όλους</span>
+               </span>`;
+
         // Create collapsible movie structure
         movieDiv.innerHTML = `
     <div class="movie-summary" onclick="toggleMovie('${uniqueMovieId}')">
@@ -746,8 +1373,13 @@ function renderResults(filteredList, forceEmpty = false) {
       </div>
       <div class="movie-summary-info">
         <div class="movie-stats">
-          <span class="cinema-count">${regionFiltered.length} κινηματογράφ${regionFiltered.length === 1 ? 'ος' : 'οι'}</span>
-          ${movieSummary.nextShowtime ? `<span class="next-showing">Επόμενη: ${movieSummary.nextShowtime} - ${movieSummary.cinemaNames}</span>` : ''}
+          ${cinemaCountHTML}
+          ${movieSummary.nextShowtime ? `
+            <span class="next-showing-prominent">
+              <strong>Επόμενη:</strong> ${movieSummary.nextShowtime} - ${movieSummary.cinemaNames}
+              ${travelTimeHTML}
+            </span>
+          ` : ''}
         </div>
         <span class="movie-toggle">▼</span>
       </div>
@@ -794,6 +1426,27 @@ function renderResults(filteredList, forceEmpty = false) {
             const c = document.createElement('div');
             c.className = 'cinema';
 
+            // Check if we have travel times for this cinema
+            let travelTimesHTML = '';
+            if (canIMakeItActive && travelTimesCache[cinema.cinema]) {
+                const times = travelTimesCache[cinema.cinema];
+                const badges = [];
+
+                if (times.walking) {
+                    badges.push(`<span class="travel-badge walking" title="Με τα πόδια">🚶 ${formatTravelTime(times.walking)}</span>`);
+                }
+                if (times.driving) {
+                    badges.push(`<span class="travel-badge driving" title="Με αυτοκίνητο">🚗 ${formatTravelTime(times.driving)}</span>`);
+                }
+                if (times.transit) {
+                    badges.push(`<span class="travel-badge transit" title="Με ΜΜΜ">🚇 ${formatTravelTime(times.transit)}</span>`);
+                }
+
+                if (badges.length > 0) {
+                    travelTimesHTML = `<div class="travel-times">${badges.join('')}</div>`;
+                }
+            }
+
             // Create base cinema info
             let cinemaHTML = `
   <h3>${cinema.website && cinema.website !== null
@@ -808,6 +1461,7 @@ function renderResults(filteredList, forceEmpty = false) {
     </a>
   </p>
   ${cinema.region ? `<div style="font-size:0.9em;color:#777;">📍 ${cinema.region}</div>` : ''}
+  ${travelTimesHTML}
 `;
 
 
@@ -945,7 +1599,7 @@ function applyNext3Filter(list) {
     const todayMonth = now.getMonth();
     const todayYear = now.getFullYear();
     const nowMins = now.getHours() * 60 + now.getMinutes();
-    const next3Mins = nowMins + 180;
+    const targetMins = nowMins + timeWindowMinutes; // Use dynamic time window
 
     return list.map(movie =>
         movie.map(cinema => {
@@ -962,12 +1616,12 @@ function applyNext3Filter(list) {
 
                     if (!isToday) return false;
 
-                    // If it's today, check if it's within the next 3 hours
+                    // If it's today, check if it's within the selected time window
                     const timeMatch = t.match(/(\d{2}):(\d{2})/);
                     if (!timeMatch) return false;
 
                     const mins = parseInt(timeMatch[1]) * 60 + parseInt(timeMatch[2]);
-                    return mins >= nowMins && mins <= next3Mins;
+                    return mins >= nowMins && mins <= targetMins;
                 })
             );
             return { ...cinema, timetable: newTimes };
@@ -987,12 +1641,26 @@ function filterToday() {
 }
 
 function filterNext3() {
+    // Get selected time window from dropdown
+    const select = document.getElementById('timeWindowSelect');
+    timeWindowMinutes = parseInt(select?.value) || 180;
+
     currentTimeFilter = 'next3';
     renderResults();
     updateFilterChips();
     highlightButton('next3Btn');
     setTimeout(() => showResultsCount('next3ResultsInfo'), 100);
-    updateMeta('Ταινίες στις Επόμενες 3 Ώρες στα Σινεμά της Αθήνας ⏰', 'Ανακάλυψε ποιες ταινίες παίζονται μέσα στις επόμενες 3 ώρες στα σινεμά της Αθήνας.');
+
+    // Update meta based on time window
+    const timeLabel = timeWindowMinutes === 30 ? '30 Λεπτά' :
+                      timeWindowMinutes === 60 ? '1 Ώρα' : '3 Ώρες';
+    updateMeta(`Ταινίες στα Επόμενα ${timeLabel} στα Σινεμά της Αθήνας ⏰`,
+               `Ανακάλυψε ποιες ταινίες παίζονται μέσα στα επόμενα ${timeLabel} στα σινεμά της Αθήνας.`);
+}
+
+// New function name for clarity
+function filterNextHours() {
+    filterNext3();
 }
 
 function showAll() {
@@ -1441,6 +2109,104 @@ function formatNextShowtime(timeString) {
         });
 
         return `${formatted} ${time}`;
+    }
+}
+
+// ========== NEW UI FUNCTIONS ==========
+
+// Handle time filter tabs
+function filterByTime(filter) {
+    // Update active tab
+    document.querySelectorAll('.time-tab').forEach(tab => {
+        tab.classList.remove('active');
+        if (tab.dataset.filter === filter) {
+            tab.classList.add('active');
+        }
+    });
+
+    // Apply filter
+    if (filter === 'all') {
+        showAll();
+    } else if (filter === 'today') {
+        filterToday();
+    } else {
+        // Time window filters (30, 60, 180)
+        timeWindowMinutes = parseInt(filter);
+        currentTimeFilter = 'next3';
+        renderResults();
+        updateFilterChips();
+        updateMeta(`Ταινίες στα Επόμενα ${filter === '30' ? '30 Λεπτά' : filter === '60' ? '1 Ώρα' : '3 Ώρες'} ⏰`,
+                   `Ανακάλυψε ποιες ταινίες παίζονται σύντομα στα σινεμά της Αθήνας.`);
+    }
+}
+
+// Handle location option selection
+function selectLocation(option) {
+    // Update active button
+    document.querySelectorAll('.location-option').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.dataset.location === option) {
+            btn.classList.add('active');
+        }
+    });
+
+    // Show/hide controls
+    const nearbyControls = document.getElementById('nearbyControls');
+    const addressControls = document.getElementById('addressControls');
+
+    if (option === 'nearby') {
+        nearbyControls.style.display = 'block';
+        addressControls.style.display = 'none';
+    } else if (option === 'address') {
+        nearbyControls.style.display = 'none';
+        addressControls.style.display = 'block';
+    }
+}
+
+// Clear location filter and return to showing all Athens
+function clearLocationFilter() {
+    // Remove active state from all location buttons
+    document.querySelectorAll('.location-option').forEach(btn => {
+        btn.classList.remove('active');
+    });
+
+    // Hide both control panels
+    const nearbyControls = document.getElementById('nearbyControls');
+    const addressControls = document.getElementById('addressControls');
+    nearbyControls.style.display = 'none';
+    addressControls.style.display = 'none';
+
+    // Clear cinema selections (location-based filters)
+    const cinemaInputs = document.querySelectorAll('#cinemaCheckboxes input[type="checkbox"]');
+    cinemaInputs.forEach(cb => cb.checked = false);
+
+    // Clear summary and address input
+    document.getElementById('nearbySummary').textContent = '';
+    document.getElementById('addressInput').value = '';
+
+    // Re-render to show all Athens
+    renderResults();
+    updateFilterChips();
+}
+
+
+// ============ FAB BUTTON HINT (First Visit Discovery) ============
+function initializeFABHint() {
+    const fabButton = document.getElementById('canIMakeItFAB');
+    if (!fabButton) return;
+
+    // Check if user has seen the FAB before
+    const hasSeenFAB = localStorage.getItem('hasSeenFABHint');
+
+    if (!hasSeenFAB) {
+        // Add first-visit class for tooltip animation
+        fabButton.classList.add('first-visit');
+
+        // Remove class after animation completes (about 10 seconds)
+        setTimeout(() => {
+            fabButton.classList.remove('first-visit');
+            localStorage.setItem('hasSeenFABHint', 'true');
+        }, 10000);
     }
 }
 

@@ -60,68 +60,70 @@
           Ο πιο γρήγορος τρόπος να σχεδιάσεις την κινηματογραφική σου βραδιά!
         </p>
 
-        <!-- ✅ MAIN ACTION CARDS -->
-        <div class="main-actions">
+        <!-- ✅ TIME FILTER TABS (Compact) -->
+        <div class="time-filter-tabs">
+          <button class="time-tab active" data-filter="all" onclick="filterByTime('all')">
+            Όλα
+          </button>
+          <button class="time-tab" data-filter="today" onclick="filterByTime('today')">
+            Σήμερα
+          </button>
+          <button class="time-tab" data-filter="30" onclick="filterByTime('30')">
+            30'
+          </button>
+          <button class="time-tab" data-filter="60" onclick="filterByTime('60')">
+            1ω
+          </button>
+          <button class="time-tab" data-filter="180" onclick="filterByTime('180')">
+            3ω
+          </button>
+        </div>
 
-          <!-- Today Card -->
-          <div class="action-card today">
-            <div class="action-icon">📅</div>
-            <h3 class="action-title">Σήμερα</h3>
-            <p class="action-description">Δες όλες τις ταινίες που παίζουν σήμερα στα σινεμά της Αθήνας</p>
-            <button class="action-button today" onclick="filterToday()">
-              Προβολές Σήμερα
+        <!-- ✅ LOCATION FILTER SECTION -->
+        <div class="location-filter-section">
+          <label class="filter-label">📍 Φιλτράρισμα ανά Τοποθεσία <span style="color:#999; font-size:0.9em;">(προαιρετικό)</span>:</label>
+          <div class="location-options">
+            <button class="location-option" data-location="nearby" onclick="selectLocation('nearby')">
+              📍 Κοντά μου
             </button>
-            <div id="todayResultsInfo" class="results-info" style="display:none;"></div>
+            <button class="location-option" data-location="address" onclick="selectLocation('address')">
+              🧭 Διεύθυνση
+            </button>
           </div>
 
-          <!-- Next 3 Hours Card -->
-          <div class="action-card next3">
-            <div class="action-icon">⏰</div>
-            <h3 class="action-title">Επόμενες 3 Ώρες</h3>
-            <p class="action-description">Βρες ταινίες που αρχίζουν μέσα στις επόμενες 3 ώρες</p>
-            <button class="action-button next3" onclick="filterNext3()">
-              Προβολές Επόμενων 3 Ωρών
-            </button>
-            <div id="next3ResultsInfo" class="results-info" style="display:none;"></div>
-          </div>
-
-          <!-- Near Me Card -->
-          <div class="action-card nearby">
-            <div class="action-icon">📍</div>
-            <h3 class="action-title">Κοντά μου</h3>
-            <p class="action-description">Ανακάλυψε σινεμά και προβολές κοντά στην τοποθεσία σου</p>
-
-            <div class="location-controls">
-              <div class="radius-selector">
-                <label for="radiusSelect">Ακτίνα:</label>
-                <select id="radiusSelect">
-                  <option value="1">1 km</option>
-                  <option value="2">2 km</option>
-                  <option value="3" selected>3 km</option>
-                  <option value="5">5 km</option>
-                  <option value="10">10 km</option>
-                  <option value="15">15 km</option>
-                </select>
-              </div>
-
-              <button id="nearMeBtn" class="action-button nearby" onclick="filterNearMe()">
-                📡 Βρες την Τοποθεσία μου
-              </button>
-
-              <div class="address-input-container">
-                <h4>Ή εισήγαγε διεύθυνση:</h4>
-                <input id="addressInput" type="text" placeholder="π.χ. Σύνταγμα, Αθήνα">
-                <button id="addressBtn" class="address-button" onclick="filterByAddress()">
-                  🧭 Αναζήτηση
-                </button>
-              </div>
+          <!-- Near Me Controls (hidden by default) -->
+          <div id="nearbyControls" class="location-controls" style="display:none;">
+            <div class="radius-selector">
+              <label for="radiusSelect">Ακτίνα:</label>
+              <select id="radiusSelect">
+                <option value="1">1 km</option>
+                <option value="2">2 km</option>
+                <option value="3" selected>3 km</option>
+                <option value="5">5 km</option>
+                <option value="10">10 km</option>
+                <option value="15">15 km</option>
+              </select>
             </div>
-
+            <button id="nearMeBtn" class="action-button nearby" onclick="filterNearMe()">
+              📡 Βρες την Τοποθεσία μου
+            </button>
+            <button class="clear-location-btn" onclick="clearLocationFilter()" style="margin-left:0.5em;">
+              ✕ Καθαρισμός
+            </button>
             <div id="nearbySummary"></div>
-            <!-- Add the results info div for consistency -->
             <div id="nearbyResultsInfo" class="results-info" style="display:none;"></div>
           </div>
 
+          <!-- Address Input Controls (hidden by default) -->
+          <div id="addressControls" class="location-controls" style="display:none;">
+            <input id="addressInput" type="text" placeholder="π.χ. Σύνταγμα, Αθήνα">
+            <button id="addressBtn" class="action-button" onclick="filterByAddress()">
+              🧭 Αναζήτηση
+            </button>
+            <button class="clear-location-btn" onclick="clearLocationFilter()" style="margin-left:0.5em;">
+              ✕ Καθαρισμός
+            </button>
+          </div>
         </div>
 
       </div>
@@ -129,6 +131,38 @@
       <div id="activeFilters"></div>
 
     </section>
+
+    <!-- Sticky FAB Button for "Can I Make It" -->
+    <button id="canIMakeItFAB" class="fab-button" onclick="toggleCanIMakeIt()" title="Τι προλαβαίνω να δω σινεμά;">
+      <span class="fab-text">🚶</span>
+    </button>
+
+    <!-- Location Permission Modal -->
+    <div id="locationModal" class="location-modal" style="display:none;">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>📍 Χρειαζόμαστε την τοποθεσία σου</h2>
+          <button class="modal-close" onclick="closeLocationModal()">✕</button>
+        </div>
+        <div class="modal-body">
+          <p>Για να υπολογίσουμε πόσο χρόνο θα χρειαστείς για να φτάσεις σε κάθε κινηματογράφο, χρειαζόμαστε πρόσβαση στην τοποθεσία σου.</p>
+          <ul>
+            <li>🚶 <strong>Με τα πόδια</strong> - Χρόνος πεζής μετακίνησης</li>
+            <li>🚗 <strong>Με αυτοκίνητο</strong> - Χρόνος οδήγησης με κίνηση</li>
+            <li>🚇 <strong>Με ΜΜΜ</strong> - Χρόνος με μέσα μεταφοράς</li>
+          </ul>
+          <p class="privacy-note">🔒 Η τοποθεσία σου δεν αποθηκεύεται και χρησιμοποιείται μόνο για τον υπολογισμό των χρόνων.</p>
+        </div>
+        <div class="modal-footer">
+          <button class="modal-btn primary" onclick="closeLocationModal(); activateCanIMakeIt();">
+            ✅ Επιτρέπω την πρόσβαση
+          </button>
+          <button class="modal-btn secondary" onclick="closeLocationModal()">
+            Ακύρωση
+          </button>
+        </div>
+      </div>
+    </div>
 
     <!-- ✅ RESET FILTERS BUTTON (NEW POSITION) -->
     <div class="quick-actions">

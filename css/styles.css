@@ -382,6 +382,297 @@ body {
 }
 
 /* ==========================================================================
+   Time Filter Tabs (New Compact UI)
+   ========================================================================== */
+.time-filter-tabs {
+    display: flex;
+    gap: 0.5em;
+    margin: 1.5em 0 1em 0;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.time-tab {
+    padding: 0.6em 1.2em;
+    border: 2px solid #e0e0e0;
+    background: white;
+    border-radius: 20px;
+    font-size: 0.95em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: #555;
+}
+
+.time-tab:hover {
+    border-color: #667eea;
+    background: #f8f9ff;
+}
+
+.time-tab.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-color: #667eea;
+}
+
+/* ==========================================================================
+   Location Filter Section (New Compact UI)
+   ========================================================================== */
+.location-filter-section {
+    background: white;
+    border-radius: 12px;
+    padding: 1.2em;
+    margin-bottom: 1.5em;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.filter-label {
+    display: block;
+    font-weight: 600;
+    font-size: 1em;
+    margin-bottom: 0.8em;
+    color: #333;
+}
+
+.location-options {
+    display: flex;
+    gap: 0.5em;
+    margin-bottom: 1em;
+    flex-wrap: wrap;
+}
+
+.location-option {
+    flex: 1;
+    min-width: 100px;
+    padding: 0.7em 1em;
+    border: 2px solid #e0e0e0;
+    background: white;
+    border-radius: 10px;
+    font-size: 0.9em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: #555;
+    text-align: center;
+}
+
+.location-option:hover {
+    border-color: #667eea;
+    background: #f8f9ff;
+}
+
+.location-option.active {
+    background: #667eea;
+    color: white;
+    border-color: #667eea;
+}
+
+.location-controls {
+    margin-top: 1em;
+    padding-top: 1em;
+    border-top: 1px solid #e0e0e0;
+}
+
+.location-controls .radius-selector {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    margin-bottom: 0.8em;
+}
+
+.location-controls .radius-selector label {
+    font-weight: 600;
+    font-size: 0.9em;
+}
+
+.location-controls .radius-selector select {
+    flex: 1;
+    padding: 0.6em;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 0.9em;
+}
+
+.location-controls .action-button {
+    width: 100%;
+    margin-top: 0.5em;
+}
+
+.clear-location-btn {
+    padding: 0.6em 1em;
+    border: 2px solid #dc3545;
+    background: white;
+    color: #dc3545;
+    border-radius: 8px;
+    font-size: 0.9em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.clear-location-btn:hover {
+    background: #dc3545;
+    color: white;
+    transform: translateY(-1px);
+}
+
+.location-controls input[type="text"] {
+    width: 100%;
+    padding: 0.8em;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 0.95em;
+    margin-bottom: 0.8em;
+    box-sizing: border-box;
+}
+
+.location-controls input[type="text"]:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+#nearbySummary {
+    margin-top: 1em;
+    padding: 0.8em;
+    background: #f0f9f4;
+    border-left: 4px solid #28a745;
+    border-radius: 8px;
+    font-size: 0.9em;
+    color: #155724;
+}
+
+/* ==========================================================================
+   Sticky FAB Button
+   ========================================================================== */
+.fab-button {
+    position: fixed;
+    bottom: 24px;
+    left: 24px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    font-size: 2em;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+    transition: all 0.3s;
+    z-index: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fabPulse 2s ease-in-out infinite;
+}
+
+@keyframes fabPulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.7);
+    }
+}
+
+.fab-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+    animation: none;
+}
+
+.fab-button:active {
+    transform: scale(0.95);
+}
+
+.fab-button.active {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    animation: none;
+}
+
+/* Mobile FAB adjustments */
+@media (max-width: 768px) {
+    .fab-button {
+        width: 56px;
+        height: 56px;
+        bottom: 16px;
+        left: 16px;
+        font-size: 1.1em;
+    }
+}
+
+/* FAB Tooltip */
+.fab-button::after {
+    content: 'Τι προλαβαίνω;';
+    position: absolute;
+    left: 80px;
+    bottom: 50%;
+    transform: translateY(50%);
+    background: rgba(0, 0, 0, 0.85);
+    color: white;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 0.9em;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s, transform 0.3s;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.fab-button::before {
+    content: '';
+    position: absolute;
+    left: 70px;
+    bottom: 50%;
+    transform: translateY(50%);
+    border: 6px solid transparent;
+    border-right-color: rgba(0, 0, 0, 0.85);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+
+.fab-button:hover::after,
+.fab-button:hover::before {
+    opacity: 1;
+}
+
+.fab-button.first-visit::after {
+    animation: tooltipBounce 3s ease-in-out 1s 3;
+}
+
+@keyframes tooltipBounce {
+    0%, 100% {
+        opacity: 0;
+        transform: translateY(50%) translateX(0);
+    }
+    10%, 90% {
+        opacity: 1;
+        transform: translateY(50%) translateX(0);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(50%) translateX(5px);
+    }
+}
+
+@media (max-width: 768px) {
+    .fab-button::after {
+        left: 70px;
+        font-size: 0.8em;
+        padding: 6px 10px;
+    }
+
+    .fab-button::before {
+        left: 60px;
+    }
+}
+
+/* ==========================================================================
    Results Info & Scrollable Lists
    ========================================================================== */
 .results-info {
@@ -670,6 +961,35 @@ body {
     font-weight: bold;
 }
 
+.cinema-count-single {
+    background: #667eea;
+    color: white;
+    padding: 0.4em 0.8em;
+    border-radius: 12px;
+    font-size: 0.85em;
+    font-weight: bold;
+}
+
+.cinema-count-multiple {
+    background: #667eea;
+    color: white;
+    padding: 0.4em 0.8em;
+    border-radius: 12px;
+    font-size: 0.85em;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.expand-hint {
+    font-size: 0.9em;
+    opacity: 0.9;
+    font-weight: 600;
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    padding-left: 0.5em;
+}
+
 .next-showing {
     background: #28a745;
     color: white;
@@ -677,6 +997,33 @@ body {
     border-radius: 8px;
     font-size: 0.9em;
     font-weight: bold;
+}
+
+.next-showing-prominent {
+    background: #28a745;
+    color: white;
+    padding: 0.6em 1em;
+    border-radius: 8px;
+    font-size: 1em;
+    font-weight: normal;
+    display: block;
+    margin-top: 0.5em;
+    width: 100%;
+}
+
+.next-showing-prominent strong {
+    font-weight: bold;
+}
+
+.travel-time-inline {
+    display: inline-block;
+    margin-left: 0.8em;
+    padding: 0.3em 0.6em;
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 6px;
+    font-size: 0.95em;
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .movie-toggle {
@@ -1127,11 +1474,35 @@ footer {
 
     .movie-stats {
         gap: 0.8em;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
     }
 
     .next-showing {
         font-size: 0.85em;
         word-break: break-word;
+    }
+
+    .next-showing-prominent {
+        font-size: 0.9em;
+        padding: 0.5em 0.8em;
+        word-break: break-word;
+    }
+
+    .travel-time-inline {
+        display: block;
+        margin-left: 0;
+        margin-top: 0.4em;
+        font-size: 0.85em;
+    }
+
+    .expand-hint {
+        font-size: 0.85em;
+    }
+
+    .cinema-count-multiple {
+        flex-wrap: wrap;
     }
 
     .movie-toggle {
@@ -1259,6 +1630,30 @@ footer {
 
 /* Mobile responsive */
 @media (max-width: 768px) {
+    .time-filter-tabs {
+        gap: 0.4em;
+        margin: 1em 0;
+    }
+
+    .time-tab {
+        padding: 0.5em 1em;
+        font-size: 0.85em;
+        flex: 1;
+        min-width: 60px;
+    }
+
+    .location-filter-section {
+        padding: 1em;
+    }
+
+    .location-options {
+        flex-direction: column;
+    }
+
+    .location-option {
+        width: 100%;
+    }
+
     .movie-ratings {
         margin-top: 0.6em;
         padding: 0.6em;
@@ -1280,3 +1675,419 @@ footer {
         font-size: 1em;
     }
 }
+
+/* ==========================================================================
+   Can I Make It - Travel Times
+   ========================================================================== */
+
+/* Action card for Can I Make It */
+.action-card.can-i-make-it {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.action-card.can-i-make-it .action-title,
+.action-card.can-i-make-it .action-description {
+    color: white;
+}
+
+.action-button.can-i-make-it {
+    background: rgba(255, 255, 255, 0.9);
+    color: #667eea;
+    font-weight: 600;
+}
+
+.action-button.can-i-make-it:hover {
+    background: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.action-button.can-i-make-it.active {
+    background: #28a745;
+    color: white;
+}
+
+.can-i-make-it-summary {
+    margin-top: 1em;
+    padding: 0.8em;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    color: white;
+    font-size: 0.9em;
+    text-align: center;
+}
+
+/* Travel time badges */
+.travel-times {
+    display: flex;
+    gap: 8px;
+    margin: 0.8em 0;
+    flex-wrap: wrap;
+}
+
+.travel-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85em;
+    font-weight: 600;
+    white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s;
+}
+
+.travel-badge:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.travel-badge.walking {
+    background: linear-gradient(135deg, #4CAF50 0%, #388E3C 100%);
+    color: white;
+}
+
+.travel-badge.driving {
+    background: linear-gradient(135deg, #2196F3 0%, #1565C0 100%);
+    color: white;
+}
+
+.travel-badge.transit {
+    background: linear-gradient(135deg, #FF9800 0%, #F57C00 100%);
+    color: white;
+}
+
+/* Location Permission Modal */
+.location-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 10000;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 16px;
+    max-width: 500px;
+    width: 100%;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-header {
+    padding: 1.5em;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 1.3em;
+}
+
+.modal-close {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    font-size: 1.5em;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.modal-close:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: rotate(90deg);
+}
+
+.modal-body {
+    padding: 1.5em;
+    line-height: 1.6;
+}
+
+.modal-body ul {
+    list-style: none;
+    padding: 0;
+    margin: 1em 0;
+}
+
+.modal-body li {
+    padding: 0.5em 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.privacy-note {
+    background: #f5f7fa;
+    padding: 0.8em;
+    border-radius: 8px;
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 1em;
+}
+
+.modal-footer {
+    padding: 1.5em;
+    background: #f5f7fa;
+    display: flex;
+    gap: 1em;
+    justify-content: flex-end;
+}
+
+/* ========== Can I Make It - Showtime Options ========== */
+
+.showtime-option {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5em;
+    margin-bottom: 1em;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid #667eea;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.showtime-option:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.showtime-option.feasibility-very-comfortable {
+    border-left-color: #28a745;
+    background: linear-gradient(135deg, #ffffff 0%, #f0f9f4 100%);
+}
+
+.showtime-option.feasibility-comfortable {
+    border-left-color: #17a2b8;
+    background: linear-gradient(135deg, #ffffff 0%, #f0f8fa 100%);
+}
+
+.showtime-option.feasibility-possible {
+    border-left-color: #ffc107;
+    background: linear-gradient(135deg, #ffffff 0%, #fffbf0 100%);
+}
+
+.showtime-option.feasibility-impossible {
+    border-left-color: #dc3545;
+    background: linear-gradient(135deg, #ffffff 0%, #fff5f5 100%);
+    opacity: 0.6;
+}
+
+.showtime-option-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1em;
+    padding-bottom: 0.8em;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+    gap: 0.5em;
+}
+
+.share-btn-small {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    flex-shrink: 0;
+}
+
+.share-btn-small:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.cinema-maps-link {
+    text-decoration: none;
+    font-size: 1.1em;
+    transition: transform 0.2s;
+    display: inline-block;
+    margin-right: 0.3em;
+}
+
+.cinema-maps-link:hover {
+    transform: scale(1.2);
+}
+
+.showtime-time {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #333;
+}
+
+.feasibility-badge {
+    padding: 0.5em 1em;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.feasibility-badge.feasibility-very-comfortable {
+    background: #28a745;
+    color: white;
+}
+
+.feasibility-badge.feasibility-comfortable {
+    background: #17a2b8;
+    color: white;
+}
+
+.feasibility-badge.feasibility-possible {
+    background: #ffc107;
+    color: #333;
+}
+
+.feasibility-badge.feasibility-impossible {
+    background: #dc3545;
+    color: white;
+}
+
+.showtime-option-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+.showtime-movie-title {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+}
+
+.showtime-cinema {
+    font-size: 1em;
+    color: #667eea;
+    font-weight: 600;
+}
+
+.showtime-travel-info {
+    display: flex;
+    gap: 1em;
+    align-items: center;
+    margin-top: 0.5em;
+}
+
+.travel-method {
+    background: #667eea;
+    color: white;
+    padding: 0.4em 0.8em;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 0.95em;
+}
+
+.arrival-buffer {
+    background: #e3f2fd;
+    color: #1976d2;
+    padding: 0.4em 0.8em;
+    border-radius: 8px;
+    font-size: 0.85em;
+    font-weight: 600;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .showtime-option {
+        padding: 1.2em;
+    }
+
+    .showtime-time {
+        font-size: 1.5em;
+    }
+
+    .showtime-movie-title {
+        font-size: 1.1em;
+    }
+
+    .showtime-travel-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5em;
+    }
+
+    .feasibility-badge {
+        font-size: 0.85em;
+        padding: 0.4em 0.8em;
+    }
+}
+
+.modal-btn {
+    padding: 0.8em 1.5em;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.modal-btn.primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.modal-btn.primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.modal-btn.secondary {
+    background: #e0e0e0;
+    color: #666;
+}
+
+.modal-btn.secondary:hover {
+    background: #d0d0d0;
+}
+
+/* Mobile responsive for modal */
+@media (max-width: 768px) {
+    .modal-content {
+        margin: 1em;
+    }
+
+    .modal-footer {
+        flex-direction: column;
+    }
+
+    .modal-btn {
+        width: 100%;
+    }
+}
+
