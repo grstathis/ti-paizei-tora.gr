@@ -922,7 +922,7 @@ def parse_showtime(showtime_str: str):
         }
 
         month = greek_months.get(month_str, "01")
-        current_year = datetime.now().year
+        current_year = datetime.now(ZoneInfo("Europe/Athens")).year
 
         return {
             "date": f"{current_year}-{month}-{day}",
@@ -946,7 +946,7 @@ def is_future_showtime(parsed_showtime):
     if not parsed_showtime:
         return False
 
-    now = datetime.now()
+    now = datetime.now(ZoneInfo("Europe/Athens"))
     today_date = now.date()
     now_mins = now.hour * 60 + now.minute
 
