@@ -12,11 +12,9 @@
       "movie_country": "Aμερικανική",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/i_aggelia-10088485",
       "imdb_link": "http://www.imdb.com/title/tt27543632/",
-      "slug": "the-housemaid",
-      "flix_rating": 4,
-      "flix_url": "https://flix.gr/cinema/the-housemaid-review.html",
-      "lifo_rating": "5",
-      "lifo_url": "https://www.lifo.gr/guide/cinema/movies/i-aggelia"
+      "total_cinema_count": 1,
+      "is_popular": false,
+      "slug": "the-housemaid"
     }
   ],
   [
@@ -32,48 +30,26 @@
       "movie_country": "Eλληνική",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/agios_paΐsios-10088885",
       "imdb_link": null,
-      "flix_rating": 0,
-      "flix_url": "https://flix.gr/cinema/agios-paisios-review.html",
-      "lifo_rating": 0,
-      "lifo_url": "https://www.lifo.gr/guide/cinema/movies/agios-paisios"
+      "total_cinema_count": 4,
+      "is_popular": false
     }
   ],
   [
     {
-      "greek_title": "Ο Άγνωστος της Μεγάλης Αψίδας",
-      "original_title": "L’Inconnu de \nla Grande Arche",
-      "year": "2025",
+      "greek_title": "Άδωξοι Μπάσταρδη",
+      "original_title": "Inglourious Basterds",
+      "year": "2009",
       "color": "Έγχρ.",
-      "duration": "Διάρκεια: 104'",
+      "duration": "Διάρκεια: 153'",
       "rating_age": "",
       "rating_stars": 2.5,
-      "movie_type": "Δραματική",
-      "movie_country": "Γαλλική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/o_agnostos_tis_megalis_apsidas-10089665",
-      "imdb_link": "http://www.imdb.com/title/tt32398150/",
-      "slug": "the-great-arch",
-      "flix_rating": 5,
-      "flix_url": "https://flix.gr/cinema/l-inconnu-de-la-grande-arche-review.html",
-      "lifo_rating": "7",
-      "lifo_url": "https://www.lifo.gr/guide/cinema/movies/o-agnostos-tis-megalis-apsidas"
-    }
-  ],
-  [
-    {
-      "greek_title": "Αζήτητοι",
-      "original_title": "",
-      "year": "2024",
-      "color": "Έγχρ.",
-      "duration": "Διάρκεια: 75'",
-      "rating_age": "",
-      "rating_stars": 2.5,
-      "movie_type": "Ντοκιμαντέρ",
-      "movie_country": "Eλληνική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/azititoi-10082856",
-      "imdb_link": "http://www.imdb.com/title/tt31540829/",
-      "slug": "azititoi",
-      "lifo_rating": 0,
-      "lifo_url": "https://www.lifo.gr/guide/cinema/movies/azititoi"
+      "movie_type": "Πολεμική",
+      "movie_country": "Αμερικανική",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/adoksoi_mpastardi-1008952",
+      "imdb_link": "http://www.imdb.com/title/tt0361748/",
+      "total_cinema_count": 1,
+      "is_popular": false,
+      "slug": "inglourious-basterds"
     }
   ],
   [
@@ -89,11 +65,9 @@
       "movie_country": "Aμερικανική",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/amartoloi-10085646",
       "imdb_link": "http://www.imdb.com/title/tt31193180/",
-      "slug": "sinners",
-      "flix_rating": 8,
-      "flix_url": "https://flix.gr/cinema/sinners-review.html",
-      "lifo_rating": "4",
-      "lifo_url": "https://www.lifo.gr/guide/cinema/movies/amartoloi"
+      "total_cinema_count": 1,
+      "is_popular": false,
+      "slug": "sinners"
     }
   ],
   [
@@ -109,44 +83,27 @@
       "movie_country": "Aμερικανική",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/amnet-10088743",
       "imdb_link": "http://www.imdb.com/title/tt14905854/",
-      "slug": "hamnet",
-      "flix_rating": 7,
-      "flix_url": "https://flix.gr/cinema/hamnet-review.html",
-      "lifo_rating": "8",
-      "lifo_url": "https://www.lifo.gr/guide/cinema/movies/amnet"
+      "total_cinema_count": 9,
+      "is_popular": false,
+      "slug": "hamnet"
     }
   ],
   [
     {
-      "greek_title": "Ανατομία Μιας Πτώσης",
-      "original_title": "Anatomie d Une Chute / Anatomy of a Fall",
-      "year": "2023",
+      "greek_title": "Ανάμεσα στις Καλαμιές",
+      "original_title": "Rietland",
+      "year": "2025",
       "color": "Έγχρ.",
-      "duration": "Διάρκεια: 150'",
-      "rating_age": "",
-      "rating_stars": 4.0,
-      "movie_type": "Δικαστικό Θρίλερ",
-      "movie_country": "Γαλλική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/anatomia_mias_ptosis-10078961",
-      "imdb_link": "http://www.imdb.com/title/tt17009710/",
-      "slug": "anatomy-of-a-fall",
-      "flix_rating": 8,
-      "flix_url": "https://flix.gr/cinema/anatomie-d-une-chute-review.html"
-    }
-  ],
-  [
-    {
-      "greek_title": "Ανατριχίλες",
-      "original_title": "Shivers",
-      "year": "1975",
-      "color": "Έγχρ.",
-      "duration": "Διάρκεια: 87'",
-      "rating_age": "",
-      "rating_stars": 4.0,
-      "movie_type": "Τρόμου",
-      "movie_country": "Καναδέζικη",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/anatrixiles-1000045",
-      "imdb_link": null
+      "duration": "Διάρκεια: 113'",
+      "rating_age": "Κ-12",
+      "rating_stars": 3.0,
+      "movie_type": "Δραματική",
+      "movie_country": "Ολλανδική",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/anamesa_stis_kalamies-10089693",
+      "imdb_link": "http://www.imdb.com/title/tt36543850/",
+      "total_cinema_count": 7,
+      "is_popular": false,
+      "slug": "rietland"
     }
   ],
   [
@@ -162,11 +119,27 @@
       "movie_country": "Αγγλοαμερικανική",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/anemodarmena_upsi-10088996",
       "imdb_link": "http://www.imdb.com/title/tt32897959/",
-      "slug": "wuthering-heights",
-      "flix_rating": 4,
-      "flix_url": "https://flix.gr/cinema/wuthering-heights-2026-review.html",
-      "lifo_rating": "5",
-      "lifo_url": "https://www.lifo.gr/guide/cinema/movies/anemodarmena-upsi"
+      "total_cinema_count": 1,
+      "is_popular": false,
+      "slug": "wuthering-heights"
+    }
+  ],
+  [
+    {
+      "greek_title": "Ο Άνθρωπος Χωρίς Παρελθόν",
+      "original_title": "Mies Vailla Menneisyyttä / The Man Without a Past",
+      "year": "2002",
+      "color": "Έγχρ.",
+      "duration": "Διάρκεια: 97'",
+      "rating_age": "",
+      "rating_stars": 4.0,
+      "movie_type": "Δραματική",
+      "movie_country": "Φινλανδική",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/o_anthropos_xoris_parelthon-1006824",
+      "imdb_link": "http://www.imdb.com/title/tt0311519/",
+      "total_cinema_count": 1,
+      "is_popular": false,
+      "slug": "the-man-without-a-past"
     }
   ],
   [
@@ -182,7 +155,27 @@
       "movie_country": "Νοτιοκορεάτικη",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/anoiksi_kalokairi_fthinoporo_xeimonas_kai_anoiksi-1007265",
       "imdb_link": "http://www.imdb.com/title/tt0374546/",
+      "total_cinema_count": 1,
+      "is_popular": false,
       "slug": "spring-summer-fall-winter-and-spring"
+    }
+  ],
+  [
+    {
+      "greek_title": "Undertone",
+      "original_title": "",
+      "year": "2026",
+      "color": "Έγχρ.",
+      "duration": "Διάρκεια: 94'",
+      "rating_age": "Κ-18",
+      "rating_stars": 1.5,
+      "movie_type": "Τρόμου",
+      "movie_country": "Καναδέζικη",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/undertone-10089688",
+      "imdb_link": "http://www.imdb.com/title/tt35892608/",
+      "total_cinema_count": 9,
+      "is_popular": false,
+      "slug": "the-undertone"
     }
   ],
   [
@@ -198,11 +191,44 @@
       "movie_country": "Eλληνική",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/apeiri_gi-10089664",
       "imdb_link": "http://www.imdb.com/title/tt35101414/",
-      "slug": "apeiri-gi",
-      "flix_rating": 6,
-      "flix_url": "https://flix.gr/cinema/endless-land-review.html",
-      "lifo_rating": "5",
-      "lifo_url": "https://www.lifo.gr/guide/cinema/movies/apeiri-gi"
+      "total_cinema_count": 1,
+      "is_popular": false,
+      "slug": "apeiri-gi"
+    }
+  ],
+  [
+    {
+      "greek_title": "Από τι Είμαστε Φτιαγμένοι",
+      "original_title": "",
+      "year": "2025",
+      "color": "Έγχρ.",
+      "duration": "Διάρκεια: 106'",
+      "rating_age": "Κ-12",
+      "rating_stars": 3.0,
+      "movie_type": "Ντοκιμαντέρ",
+      "movie_country": "Eλληνική",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/apo_ti_eimaste_ftiagmenoi-10089072",
+      "imdb_link": null,
+      "total_cinema_count": 1,
+      "is_popular": false
+    }
+  ],
+  [
+    {
+      "greek_title": "Απόντες",
+      "original_title": "",
+      "year": "1996",
+      "color": "Έγχρ.",
+      "duration": "Διάρκεια: 115'",
+      "rating_age": "",
+      "rating_stars": 4.0,
+      "movie_type": "Δραματική",
+      "movie_country": "Ελληνική",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/apontes-1005338",
+      "imdb_link": "http://www.imdb.com/title/tt0162162/",
+      "total_cinema_count": 1,
+      "is_popular": false,
+      "slug": "truants"
     }
   ],
   [
@@ -218,9 +244,63 @@
       "movie_country": "Αμερικανική",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/apostoli_xaire_maria-10089460",
       "imdb_link": "http://www.imdb.com/title/tt12042730/",
-      "slug": "project-hail-mary",
-      "flix_rating": 7,
-      "flix_url": "https://flix.gr/cinema/project-hail-mary-review.html"
+      "total_cinema_count": 11,
+      "is_popular": false,
+      "slug": "project-hail-mary"
+    }
+  ],
+  [
+    {
+      "greek_title": "Το Αριστερό μου Χέρι",
+      "original_title": "Zuopiezi Nuhai / Left-Handed Girl",
+      "year": "2025",
+      "color": "Έγχρ.",
+      "duration": "Διάρκεια: 108'",
+      "rating_age": "",
+      "rating_stars": 3.0,
+      "movie_type": "Δραματική",
+      "movie_country": "Ταϊβανογαλλική",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/to_aristero_mou_xeri-10087914",
+      "imdb_link": "http://www.imdb.com/title/tt27722618/",
+      "total_cinema_count": 1,
+      "is_popular": false,
+      "slug": "left-handed-girl"
+    }
+  ],
+  [
+    {
+      "greek_title": "Ο Άρχοντας των Δαχτυλιδιών: Η Συντροφιά του Δαχτυλιδιού - Extended",
+      "original_title": "The Lord of the Rings: The Fellowship of the Ring",
+      "year": "2001",
+      "color": "Έγχρ.",
+      "duration": "Διάρκεια: 208'",
+      "rating_age": "",
+      "rating_stars": 4.0,
+      "movie_type": "Περιπέτεια",
+      "movie_country": "Aμερικανική",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/o_arxontas_ton_daxtulidion_i_suntrofia_tou_daxtulidiou___extended-10077771",
+      "imdb_link": "http://www.imdb.com/title/tt0120737/",
+      "total_cinema_count": 1,
+      "is_popular": false,
+      "slug": "the-lord-of-the-rings-the-fellowship-of-the-ring"
+    }
+  ],
+  [
+    {
+      "greek_title": "Ο Άρχοντας των Δαχτυλιδιών: Οι Δύο Πύργοι - Extended",
+      "original_title": "The Lord of the Rings: Two Towers - Extended",
+      "year": "2002",
+      "color": "Έγχρ.",
+      "duration": "Διάρκεια: 224'",
+      "rating_age": "",
+      "rating_stars": 4.0,
+      "movie_type": "Περιπέτεια",
+      "movie_country": "Αμερικανο-νεοζηλανδική",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/o_arxontas_ton_daxtulidion_oi_duo_purgoi___extended-10077798",
+      "imdb_link": "http://www.imdb.com/title/tt0167261/",
+      "total_cinema_count": 1,
+      "is_popular": false,
+      "slug": "the-lord-of-the-rings-the-two-towers"
     }
   ],
   [
@@ -236,9 +316,9 @@
       "movie_country": "Γερμανική",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/bampir-10032849",
       "imdb_link": "http://www.imdb.com/title/tt0023649/",
-      "slug": "vampyr",
-      "flix_rating": 10,
-      "flix_url": "https://flix.gr/cinema/vampyr-review.html"
+      "total_cinema_count": 1,
+      "is_popular": false,
+      "slug": "vampyr"
     }
   ],
   [
@@ -254,24 +334,9 @@
       "movie_country": "Eλληνική",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/bgainoun_mesa_ap_ti_margko-10089538",
       "imdb_link": "http://www.imdb.com/title/tt37381479/",
-      "slug": "they-come-out-of-margo",
-      "flix_rating": 6,
-      "flix_url": "https://flix.gr/cinema/they-come-out-of-margo-review.html"
-    }
-  ],
-  [
-    {
-      "greek_title": "Βιντεοδρόμιο",
-      "original_title": "Videodrome",
-      "year": "1983",
-      "color": "Έγχρ.",
-      "duration": "Διάρκεια: 87'",
-      "rating_age": "",
-      "rating_stars": null,
-      "movie_type": "Θρίλερ",
-      "movie_country": "Καναδέζικη",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/binteodromio-10089676",
-      "imdb_link": null
+      "total_cinema_count": 1,
+      "is_popular": false,
+      "slug": "they-come-out-of-margo"
     }
   ],
   [
@@ -287,9 +352,9 @@
       "movie_country": "Eλληνική",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/geloioi_erotes-10089537",
       "imdb_link": "http://www.imdb.com/title/tt36932214/",
-      "slug": "geloioi-erotes",
-      "flix_rating": 4,
-      "flix_url": "https://flix.gr/cinema/ridiculous-loves-review.html"
+      "total_cinema_count": 1,
+      "is_popular": false,
+      "slug": "geloioi-erotes"
     }
   ],
   [
@@ -305,42 +370,45 @@
       "movie_country": "Aμερικανική",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/goat_o_dromos_pros_tin_korufi-10089074",
       "imdb_link": "http://www.imdb.com/title/tt27613895/",
-      "slug": "goat",
-      "flix_rating": 6,
-      "flix_url": "https://flix.gr/cinema/goat-review.html",
-      "lifo_rating": 0,
-      "lifo_url": "https://www.lifo.gr/guide/cinema/movies/goat-o-dromos-pros-tin-koryfi"
+      "total_cinema_count": 6,
+      "is_popular": false,
+      "slug": "goat"
     }
   ],
   [
     {
-      "greek_title": "Γυναίκες Μαχήτριες Μέρος Γ΄1960-1974",
+      "greek_title": "Gorgona",
       "original_title": "",
       "year": "2025",
       "color": "Έγχρ.",
-      "duration": "Διάρκεια: 80'",
-      "rating_age": "",
+      "duration": "Διάρκεια: 95'",
+      "rating_age": "Κ-18",
       "rating_stars": 2.0,
-      "movie_type": "Ντοκιμαντέρ",
-      "movie_country": "Eλληνική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/gunaikes_maxitries_meros_g΄1960_1974-10089443",
-      "imdb_link": null
+      "movie_type": "Σινεφίλ",
+      "movie_country": "Ελληνο-γαλλική",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/gorgona-10089692",
+      "imdb_link": "http://www.imdb.com/title/tt37678610/",
+      "total_cinema_count": 3,
+      "is_popular": false,
+      "slug": "gorgona"
     }
   ],
   [
     {
-      "greek_title": "Crash",
-      "original_title": "",
-      "year": "2005",
+      "greek_title": "Η Γυναίκα με τα Σπίρτα",
+      "original_title": "The Match Factory Girl",
+      "year": "1990",
       "color": "Έγχρ.",
-      "duration": "Διάρκεια: 112'",
+      "duration": "Διάρκεια: 69'",
       "rating_age": "",
-      "rating_stars": 3.0,
+      "rating_stars": null,
       "movie_type": "Δραματική",
-      "movie_country": "Αμερικανική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/crash-1007684",
-      "imdb_link": "http://www.imdb.com/title/tt0375679/",
-      "slug": "crash"
+      "movie_country": "Φιλανδική",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/i_gunaika_me_ta_spirta-1004219",
+      "imdb_link": "http://www.imdb.com/title/tt0098532/",
+      "total_cinema_count": 1,
+      "is_popular": false,
+      "slug": "the-match-factory-girl"
     }
   ],
   [
@@ -356,9 +424,9 @@
       "movie_country": "Aμερικανική",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/dabid_to_agori_pou_egine_thrulos-10089581",
       "imdb_link": "http://www.imdb.com/title/tt15678738/",
-      "slug": "david",
-      "flix_rating": 3,
-      "flix_url": "https://flix.gr/cinema/david-review.html"
+      "total_cinema_count": 7,
+      "is_popular": false,
+      "slug": "david"
     }
   ],
   [
@@ -374,11 +442,27 @@
       "movie_country": "Ιταλοβελγική",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/oi_dokimastries-10089435",
       "imdb_link": "http://www.imdb.com/title/tt27811248/",
-      "slug": "le-assaggiatrici",
-      "flix_rating": 6,
-      "flix_url": "https://flix.gr/cinema/the-tasters-review.html",
-      "lifo_rating": "5",
-      "lifo_url": "https://www.lifo.gr/guide/cinema/movies/oi-dokimastries"
+      "total_cinema_count": 5,
+      "is_popular": false,
+      "slug": "le-assaggiatrici"
+    }
+  ],
+  [
+    {
+      "greek_title": "Δύο Εισαγγελείς",
+      "original_title": "Zwei Staatsanwälte / Two Prosecutors",
+      "year": "2025",
+      "color": "Έγχρ.",
+      "duration": "Διάρκεια: 118'",
+      "rating_age": "",
+      "rating_stars": 3.0,
+      "movie_type": "Δραματική",
+      "movie_country": "Γαλλογερμανική",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/duo_eisaggeleis-10088956",
+      "imdb_link": "http://www.imdb.com/title/tt35521200/",
+      "total_cinema_count": 1,
+      "is_popular": false,
+      "slug": "two-prosecutors"
     }
   ],
   [
@@ -394,29 +478,45 @@
       "movie_country": "Aγγλική",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/dustuxos_brizo-10089663",
       "imdb_link": "http://www.imdb.com/title/tt31514146/",
-      "slug": "i-swear",
-      "flix_rating": 6,
-      "flix_url": "https://flix.gr/cinema/i-swear-review.html"
+      "total_cinema_count": 11,
+      "is_popular": false,
+      "slug": "i-swear"
     }
   ],
   [
     {
-      "greek_title": "Εδώ Μιλάνε για Λατρεία",
-      "original_title": "",
-      "year": "2025",
+      "greek_title": "Οι Δώδεκα Πίθηκοι",
+      "original_title": "12 Monkeys",
+      "year": "1995",
       "color": "Έγχρ.",
-      "duration": "Διάρκεια: 89'",
+      "duration": "Διάρκεια: 129'",
       "rating_age": "",
-      "rating_stars": 2.5,
-      "movie_type": "Μουσικό Ντοκιμαντέρ",
-      "movie_country": "Eλληνική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/edo_milane_gia_latreia-10085379",
-      "imdb_link": "http://www.imdb.com/title/tt36053214/",
-      "slug": "edo-milane-gia-latreia",
-      "flix_rating": 5,
-      "flix_url": "https://flix.gr/cinema/edo-milane-gia-latreia-review.html",
-      "lifo_rating": 0,
-      "lifo_url": "https://www.lifo.gr/guide/cinema/movies/edo-milane-gia-latreia"
+      "rating_stars": 4.5,
+      "movie_type": "Φαντασίας",
+      "movie_country": "Αμερικανική",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/oi_dodeka_pithikoi-1005363",
+      "imdb_link": "http://www.imdb.com/title/tt0114746/",
+      "total_cinema_count": 1,
+      "is_popular": false,
+      "slug": "12-monkeys"
+    }
+  ],
+  [
+    {
+      "greek_title": "Είμαι η Κούβα",
+      "original_title": "Soy Cuba",
+      "year": "1964",
+      "color": "Α/Μ",
+      "duration": "Διάρκεια: 141'",
+      "rating_age": "",
+      "rating_stars": 4.0,
+      "movie_type": "Σινεφίλ",
+      "movie_country": "Σοβιετικοκουβανέζικη",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/eimai_i_kouba-1008690",
+      "imdb_link": "http://www.imdb.com/title/tt0058604/",
+      "total_cinema_count": 1,
+      "is_popular": false,
+      "slug": "i-am-cuba"
     }
   ],
   [
@@ -426,69 +526,87 @@
       "year": "2026",
       "color": "Έγχρ.",
       "duration": "Διάρκεια: 108'",
-      "rating_age": "",
+      "rating_age": "Κ-18",
       "rating_stars": null,
       "movie_type": "Τρόμου",
       "movie_country": "Aμερικανική",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/eisai_etoimos_2-10089669",
       "imdb_link": "http://www.imdb.com/title/tt33978029/",
-      "slug": "ready-or-not-2-here-i-come",
-      "flix_rating": 5,
-      "flix_url": "https://flix.gr/cinema/ready-or-not-2-review.html",
-      "lifo_rating": "3",
-      "lifo_url": "https://www.lifo.gr/guide/cinema/movies/eisai-etoimos-2"
+      "total_cinema_count": 3,
+      "is_popular": false,
+      "slug": "ready-or-not-2-here-i-come"
     }
   ],
   [
     {
-      "greek_title": "Η Έκλειψη",
-      "original_title": "L’Eclisse",
-      "year": "1962",
-      "color": "Α/Μ",
-      "duration": "Διάρκεια: 126'",
-      "rating_age": "",
-      "rating_stars": 5.0,
-      "movie_type": "Σινεφίλ",
-      "movie_country": "Ιταλο-γαλλική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/i_ekleipsi-1005428",
-      "imdb_link": "http://www.imdb.com/title/tt0056736/",
-      "slug": "l-eclisse",
-      "flix_rating": 9,
-      "flix_url": "https://flix.gr/cinema/l-eclisse-review.html"
-    }
-  ],
-  [
-    {
-      "greek_title": "Επάγγελμα Ρεπόρτερ",
-      "original_title": "The Passenger / Professione: Reporter",
-      "year": "1975",
+      "greek_title": "Ένα Απλό Ατύχημα",
+      "original_title": "Yek Tasadef Sadeh / It Was Just An Accident",
+      "year": "2025",
       "color": "Έγχρ.",
-      "duration": "Διάρκεια: 119'",
-      "rating_age": "",
-      "rating_stars": 5.0,
-      "movie_type": "Σινεφίλ",
-      "movie_country": "Ιταλο-γαλλο-ισπανική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/epaggelma_reporter-1001891",
-      "imdb_link": "http://www.imdb.com/title/tt0116282/",
-      "slug": "fargo",
-      "lifo_rating": "10",
-      "lifo_url": "https://www.lifo.gr/guide/cinema/movies/epaggelma-reporter"
+      "duration": "Διάρκεια: 105'",
+      "rating_age": "Κ-15",
+      "rating_stars": 3.5,
+      "movie_type": "Δραματική",
+      "movie_country": "Ιρανική",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/ena_aplo_atuxima-10087413",
+      "imdb_link": "http://www.imdb.com/title/tt36491653/",
+      "total_cinema_count": 1,
+      "is_popular": false,
+      "slug": "it-was-just-an-accident"
     }
   ],
   [
     {
-      "greek_title": "EPiC: Elvis Presley σε Μια Μοναδική Συναυλία",
-      "original_title": "EPiC: Elvis Presley in Concert",
+      "greek_title": "Επαναστάτης Χωρίς Αιτία",
+      "original_title": "Rebel Without a Cause",
+      "year": "1955",
+      "color": "Έγχρ.",
+      "duration": "Διάρκεια: 111'",
+      "rating_age": "",
+      "rating_stars": 3.5,
+      "movie_type": "Δραματική",
+      "movie_country": "Αμερικανική",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/epanastatis_xoris_aitia-1002447",
+      "imdb_link": "http://www.imdb.com/title/tt0048545/",
+      "total_cinema_count": 1,
+      "is_popular": false,
+      "slug": "rebel-without-a-cause"
+    }
+  ],
+  [
+    {
+      "greek_title": "Ζωή Σαν Σινεμά",
+      "original_title": "Marcel et Monsieur Pagnol",
       "year": "2025",
       "color": "Έγχρ.",
       "duration": "Διάρκεια: 90'",
       "rating_age": "",
       "rating_stars": 3.0,
-      "movie_type": "Μουσικό Ντοκιμαντέρ",
-      "movie_country": "Αμερικανοαυστραλέζικη",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/epic_elvis_presley_se_mia_monadiki_sunaulia-10089267",
-      "imdb_link": "http://www.imdb.com/title/tt35003538/",
-      "slug": "epic-elvis-presley-in-concert"
+      "movie_type": "Animation",
+      "movie_country": "Γαλλική",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/zoi_san_sinema-10089689",
+      "imdb_link": "http://www.imdb.com/title/tt13968662/",
+      "total_cinema_count": 5,
+      "is_popular": false,
+      "slug": "a-magnificent-life"
+    }
+  ],
+  [
+    {
+      "greek_title": "Η Ζωή του Τσακ",
+      "original_title": "The Life of Chuck",
+      "year": "2024",
+      "color": "Έγχρ.",
+      "duration": "Διάρκεια: 111'",
+      "rating_age": "",
+      "rating_stars": 2.0,
+      "movie_type": "Δραματική",
+      "movie_country": "Aμερικανική",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/i_zoi_tou_tsak-10086922",
+      "imdb_link": "http://www.imdb.com/title/tt12908150/",
+      "total_cinema_count": 1,
+      "is_popular": false,
+      "slug": "the-life-of-chuck"
     }
   ],
   [
@@ -504,79 +622,45 @@
       "movie_country": "Aμερικανική",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/zooupoli_2-10088225",
       "imdb_link": "http://www.imdb.com/title/tt26443597/",
-      "slug": "zootopia-2",
-      "flix_rating": 7,
-      "flix_url": "https://flix.gr/cinema/zootopia-2-review.html",
-      "lifo_rating": 0,
-      "lifo_url": "https://www.lifo.gr/guide/cinema/movies/zooypoli-2"
+      "total_cinema_count": 1,
+      "is_popular": false,
+      "slug": "zootopia-2"
     }
   ],
   [
     {
-      "greek_title": "Θα σε Σκοτώσουν",
-      "original_title": "They Will Kill You",
-      "year": "2026",
-      "color": "Έγχρ.",
-      "duration": "Διάρκεια: 94'",
-      "rating_age": "",
-      "rating_stars": null,
-      "movie_type": "Τρόμου",
-      "movie_country": "Aμερικανική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/tha_se_skotosoun_-10089667",
-      "imdb_link": "http://www.imdb.com/title/tt31728330/",
-      "slug": "they-will-kill-you",
-      "flix_rating": 5,
-      "flix_url": "https://flix.gr/cinema/they-will-kill-you-review.html",
-      "lifo_rating": "3",
-      "lifo_url": "https://www.lifo.gr/guide/cinema/movies/tha-se-skotosoyn"
-    }
-  ],
-  [
-    {
-      "greek_title": "Θέλμα και Λουίζ",
-      "original_title": "Thelma and Louise",
-      "year": "1991",
-      "color": "Έγχρ.",
-      "duration": "Διάρκεια: 130'",
-      "rating_age": "",
-      "rating_stars": 4.0,
-      "movie_type": "Δραματική",
-      "movie_country": "Αμερικανική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/thelma_kai_louiz-1004333",
-      "imdb_link": null
-    }
-  ],
-  [
-    {
-      "greek_title": "Θηλυκό",
-      "original_title": "Female",
+      "greek_title": "Ο Ήχος της Πτώσης",
+      "original_title": "In die Sonne Schauen / Sound of Falling",
       "year": "2025",
       "color": "Έγχρ.",
-      "duration": "Διάρκεια: 81'",
+      "duration": "Διάρκεια: 150'",
       "rating_age": "",
-      "rating_stars": null,
+      "rating_stars": 3.5,
       "movie_type": "Δραματική",
-      "movie_country": "Ελληνική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/thiluko-10089456",
-      "imdb_link": null,
-      "flix_rating": 6,
-      "flix_url": "https://flix.gr/cinema/female-review.html"
+      "movie_country": "Γερμανική",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/o_ixos_tis_ptosis-10088954",
+      "imdb_link": "http://www.imdb.com/title/tt28690468/",
+      "total_cinema_count": 1,
+      "is_popular": false,
+      "slug": "sound-of-falling"
     }
   ],
   [
     {
-      "greek_title": "Ο Καπετάν Μιχάλης",
+      "greek_title": "Eraserhead",
       "original_title": "",
-      "year": "2023",
-      "color": "Έγχρ.",
-      "duration": "Διάρκεια: 152'",
+      "year": "1977",
+      "color": "Α/Μ",
+      "duration": "Διάρκεια: 90'",
       "rating_age": "",
-      "rating_stars": 1.5,
-      "movie_type": "Δραματική",
-      "movie_country": "Ελληνική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/o_kapetan_mixalis-10080309",
-      "imdb_link": "http://www.imdb.com/title/tt29441355/",
-      "slug": "kapetan-mihalis"
+      "rating_stars": 5.0,
+      "movie_type": "Τρόμου",
+      "movie_country": "Αμερικανική",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/eraserhead-1004897",
+      "imdb_link": "http://www.imdb.com/title/tt0074486/",
+      "total_cinema_count": 1,
+      "is_popular": false,
+      "slug": "eraserhead"
     }
   ],
   [
@@ -592,84 +676,43 @@
       "movie_country": "Eλληνική",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/kapodistrias-10088540",
       "imdb_link": "http://www.imdb.com/title/tt38747537/",
-      "slug": "kapodistrias",
-      "flix_rating": 2,
-      "flix_url": "https://flix.gr/cinema/kapodistrias-review.html",
-      "lifo_rating": "1",
-      "lifo_url": "https://www.lifo.gr/guide/cinema/movies/kapodistrias"
+      "total_cinema_count": 3,
+      "is_popular": false,
+      "slug": "kapodistrias"
     }
   ],
   [
     {
-      "greek_title": "Το Καταφύγιο",
-      "original_title": "Shelter",
+      "greek_title": "The Last Game",
+      "original_title": "Loja e Fundit",
       "year": "2026",
       "color": "Έγχρ.",
-      "duration": "Διάρκεια: 107'",
+      "duration": "Διάρκεια: 86'",
       "rating_age": "",
-      "rating_stars": 1.5,
-      "movie_type": "Περιπέτεια",
-      "movie_country": "Αγγλοαμερικανική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/to_katafugio-10088879",
-      "imdb_link": "http://www.imdb.com/title/tt32357218/",
-      "slug": "shelter",
-      "flix_rating": 4,
-      "flix_url": "https://flix.gr/cinema/shelter-review.html"
+      "rating_stars": null,
+      "movie_type": "Κωμωδία",
+      "movie_country": "Αλβανική",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/the_last_game-10089716",
+      "imdb_link": null,
+      "total_cinema_count": 5,
+      "is_popular": false
     }
   ],
   [
     {
-      "greek_title": "Couture",
-      "original_title": "Coutures",
-      "year": "2025",
-      "color": "Έγχρ.",
-      "duration": "Διάρκεια: 106'",
-      "rating_age": "",
-      "rating_stars": 1.5,
-      "movie_type": "Δραματική",
-      "movie_country": "Γαλλοαμερικανική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/couture-10089541",
-      "imdb_link": "http://www.imdb.com/title/tt34688195/",
-      "slug": "couture",
-      "flix_rating": 4,
-      "flix_url": "https://flix.gr/cinema/couture-review.html",
-      "lifo_rating": "4",
-      "lifo_url": "https://www.lifo.gr/guide/cinema/movies/couture"
-    }
-  ],
-  [
-    {
-      "greek_title": "Ο Μάγος του Κρεμλίνου",
-      "original_title": "Le Mage du Kremlin / The Wizard of the Kremlin",
-      "year": "2025",
-      "color": "Έγχρ.",
-      "duration": "Διάρκεια: 152'",
-      "rating_age": "",
-      "rating_stars": 2.5,
-      "movie_type": "Πολιτικό Θρίλερ",
-      "movie_country": "Γαλλοαμερικανική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/o_magos_tou_kremlinou-10089397",
-      "imdb_link": "http://www.imdb.com/title/tt32386654/",
-      "slug": "the-wizard-of-the-kremlin",
-      "flix_rating": 4,
-      "flix_url": "https://flix.gr/cinema/the-wizard-of-kremlin-review.html",
-      "lifo_rating": "5",
-      "lifo_url": "https://www.lifo.gr/guide/cinema/movies/o-magos-toy-kremlinoy"
-    }
-  ],
-  [
-    {
-      "greek_title": "Mankind's Folly",
+      "greek_title": "Madonnas",
       "original_title": "",
       "year": "2025",
       "color": "Έγχρ.",
-      "duration": "Διάρκεια: 83'",
+      "duration": "Διάρκεια: 72'",
       "rating_age": "",
-      "rating_stars": 3.0,
-      "movie_type": "Ντοκιμαντέρ",
+      "rating_stars": null,
+      "movie_type": "Σινεφίλ",
       "movie_country": "Eλληνική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/mankinds_folly-10088714",
-      "imdb_link": null
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/madonnas-10089370",
+      "imdb_link": null,
+      "total_cinema_count": 1,
+      "is_popular": false
     }
   ],
   [
@@ -685,6 +728,8 @@
       "movie_country": "Eλληνική",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/mauthausen_-10081312",
       "imdb_link": "http://www.imdb.com/title/tt30306038/",
+      "total_cinema_count": 1,
+      "is_popular": false,
       "slug": "mauthausen"
     }
   ],
@@ -701,11 +746,9 @@
       "movie_country": "Γαλλική",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/marsoupilami-10089459",
       "imdb_link": "http://www.imdb.com/title/tt33029380/",
-      "slug": "marsupilami",
-      "flix_rating": 2,
-      "flix_url": "https://flix.gr/cinema/marsupilami-review.html",
-      "lifo_rating": 0,
-      "lifo_url": "https://www.lifo.gr/guide/cinema/movies/marsoypilami"
+      "total_cinema_count": 3,
+      "is_popular": false,
+      "slug": "marsupilami"
     }
   ],
   [
@@ -721,9 +764,9 @@
       "movie_country": "Aμερικανική",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/marty_supreme-10088633",
       "imdb_link": "http://www.imdb.com/title/tt32916440/",
-      "slug": "marty-supreme",
-      "flix_rating": 7,
-      "flix_url": "https://flix.gr/cinema/marty-supreme-review.html"
+      "total_cinema_count": 1,
+      "is_popular": false,
+      "slug": "marty-supreme"
     }
   ],
   [
@@ -739,9 +782,27 @@
       "movie_country": "Ιταλική",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/to_megaleio-10089264",
       "imdb_link": "http://www.imdb.com/title/tt34886821/",
-      "slug": "grace",
-      "flix_rating": 6,
-      "flix_url": "https://flix.gr/cinema/la-grazia-review.html"
+      "total_cinema_count": 4,
+      "is_popular": false,
+      "slug": "grace"
+    }
+  ],
+  [
+    {
+      "greek_title": "Μια Ιδιωτική Ζωή",
+      "original_title": "Vie Privée",
+      "year": "2025",
+      "color": "Έγχρ.",
+      "duration": "Διάρκεια: 103'",
+      "rating_age": "",
+      "rating_stars": 2.0,
+      "movie_type": "Θρίλερ",
+      "movie_country": "Γαλλική",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/mia_idiotiki_zoi-10088547",
+      "imdb_link": "http://www.imdb.com/title/tt33852162/",
+      "total_cinema_count": 1,
+      "is_popular": false,
+      "slug": "a-private-life"
     }
   ],
   [
@@ -757,9 +818,9 @@
       "movie_country": "Aμερικανική",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/mia_maxi_meta_tin_alli-10087181",
       "imdb_link": "http://www.imdb.com/title/tt30144839/",
-      "slug": "one-battle-after-another",
-      "flix_rating": 10,
-      "flix_url": "https://flix.gr/cinema/one-battle-after-another-review.html"
+      "total_cinema_count": 10,
+      "is_popular": false,
+      "slug": "one-battle-after-another"
     }
   ],
   [
@@ -775,11 +836,9 @@
       "movie_country": "Γαλλική",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/i_mikri_ameli-10089398",
       "imdb_link": "http://www.imdb.com/title/tt29313285/?/",
-      "slug": "little-amelie-or-the-character-of-rain",
-      "flix_rating": 8,
-      "flix_url": "https://flix.gr/cinema/little-amelie-review.html",
-      "lifo_rating": "7",
-      "lifo_url": "https://www.lifo.gr/guide/cinema/movies/i-mikri-ameli"
+      "total_cinema_count": 2,
+      "is_popular": false,
+      "slug": "little-amelie-or-the-character-of-rain"
     }
   ],
   [
@@ -795,8 +854,25 @@
       "movie_country": "Aμερικανική",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/the_mortuary_assistant-10089436",
       "imdb_link": null,
-      "flix_rating": 2,
-      "flix_url": "https://flix.gr/cinema/the-mortuary-assistant-review.html"
+      "total_cinema_count": 2,
+      "is_popular": false
+    }
+  ],
+  [
+    {
+      "greek_title": "Μπεν Χουρ",
+      "original_title": "Ben Hur",
+      "year": "1959",
+      "color": "Έγχρ.",
+      "duration": "Διάρκεια: 203'",
+      "rating_age": "",
+      "rating_stars": 4.0,
+      "movie_type": "Ιστορική",
+      "movie_country": "Αμερικανική",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/mpen_xour-1001708",
+      "imdb_link": null,
+      "total_cinema_count": 1,
+      "is_popular": false
     }
   ],
   [
@@ -812,28 +888,43 @@
       "movie_country": "Ελληνική",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/mpitskomper-10089297",
       "imdb_link": null,
-      "flix_rating": 6,
-      "flix_url": "https://flix.gr/cinema/beachcomber-review.html",
-      "lifo_rating": 0,
-      "lifo_url": "https://www.lifo.gr/guide/cinema/movies/mpitskomper"
+      "total_cinema_count": 1,
+      "is_popular": false
     }
   ],
   [
     {
-      "greek_title": "Blow-Up",
-      "original_title": "",
-      "year": "1967",
-      "color": "Έγχρ.",
-      "duration": "Διάρκεια: 111'",
+      "greek_title": "Μποέμικη Ζωή",
+      "original_title": "La Vie de Bohème",
+      "year": "1992",
+      "color": "Α/Μ",
+      "duration": "Διάρκεια: 103'",
       "rating_age": "",
-      "rating_stars": 5.0,
-      "movie_type": "Σινεφίλ",
-      "movie_country": "Αγγλο-ιταλική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/blow_up-1001916",
-      "imdb_link": "http://www.imdb.com/title/tt0060176/",
-      "slug": "blow-up",
-      "flix_rating": 10,
-      "flix_url": "https://flix.gr/cinema/blow-up-review.html"
+      "rating_stars": null,
+      "movie_type": "Δραματική",
+      "movie_country": "Γαλλο-φιλανδική",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/mpoemiki_zoi-1004789",
+      "imdb_link": "http://www.imdb.com/title/tt0105750/",
+      "total_cinema_count": 0,
+      "is_popular": false,
+      "slug": "the-bohemian-life"
+    }
+  ],
+  [
+    {
+      "greek_title": "Το Μυστικό του Δάσους",
+      "original_title": "",
+      "year": "2026",
+      "color": "Έγχρ.",
+      "duration": "Διάρκεια: 97'",
+      "rating_age": "",
+      "rating_stars": 1.5,
+      "movie_type": "Θρίλερ",
+      "movie_country": "Eλληνική",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/to_mustiko_tou_dasous-10089690",
+      "imdb_link": null,
+      "total_cinema_count": 10,
+      "is_popular": false
     }
   ],
   [
@@ -849,11 +940,9 @@
       "movie_country": "Βραζιλιανογαλλική",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/o_mustikos_praktoras-10089069",
       "imdb_link": "http://www.imdb.com/title/tt27847051/",
-      "slug": "the-secret-agent",
-      "flix_rating": 6,
-      "flix_url": "https://flix.gr/cinema/the-secret-agent-review.html",
-      "lifo_rating": "8",
-      "lifo_url": "https://www.lifo.gr/guide/cinema/movies/o-mystikos-praktoras"
+      "total_cinema_count": 1,
+      "is_popular": false,
+      "slug": "the-secret-agent"
     }
   ],
   [
@@ -869,9 +958,9 @@
       "movie_country": "Ελληνική",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/no_budget_story-1005667",
       "imdb_link": "http://www.imdb.com/title/tt0190583/",
-      "slug": "no-budget-story",
-      "flix_rating": 6,
-      "flix_url": "https://flix.gr/cinema/no-budget-story-review.html"
+      "total_cinema_count": 0,
+      "is_popular": false,
+      "slug": "no-budget-story"
     }
   ],
   [
@@ -887,9 +976,9 @@
       "movie_country": "Λετονική",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/dog_of_god-10089539",
       "imdb_link": "http://www.imdb.com/title/tt33738802/",
-      "slug": "dog-of-god-dieva-suns",
-      "flix_rating": 5,
-      "flix_url": "https://flix.gr/cinema/dog-of-god-review.html"
+      "total_cinema_count": 1,
+      "is_popular": false,
+      "slug": "dog-of-god-dieva-suns"
     }
   ],
   [
@@ -900,13 +989,32 @@
       "color": "Έγχρ.",
       "duration": "Διάρκεια: 106'",
       "rating_age": "",
-      "rating_stars": null,
+      "rating_stars": 2.5,
       "movie_type": "Ρομαντική κωμωδία",
       "movie_country": "Aμερικανική",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/the_drama-10089672",
-      "imdb_link": null,
-      "flix_rating": 6,
-      "flix_url": "https://flix.gr/cinema/the-drama-review.html"
+      "imdb_link": "http://www.imdb.com/title/tt33071426/",
+      "total_cinema_count": 22,
+      "is_popular": false,
+      "slug": "the-drama"
+    }
+  ],
+  [
+    {
+      "greek_title": "Η Ντροπή",
+      "original_title": "Skammen / Shame",
+      "year": "1968",
+      "color": "Α/Μ",
+      "duration": "Διάρκεια: 103'",
+      "rating_age": "",
+      "rating_stars": 3.5,
+      "movie_type": "Δραματική",
+      "movie_country": "Σουηδική",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/i_ntropi-10086280",
+      "imdb_link": "http://www.imdb.com/title/tt0063611/",
+      "total_cinema_count": 1,
+      "is_popular": false,
+      "slug": "shame"
     }
   ],
   [
@@ -922,27 +1030,9 @@
       "movie_country": "Aμερικανική",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/nurembergi-10088007",
       "imdb_link": "http://www.imdb.com/title/tt29567915/",
-      "slug": "nuremberg",
-      "flix_rating": 4,
-      "flix_url": "https://flix.gr/cinema/nuremberg-2025-review.html"
-    }
-  ],
-  [
-    {
-      "greek_title": "Η Νύφη!",
-      "original_title": "The Bride!",
-      "year": "2026",
-      "color": "Έγχρ.",
-      "duration": "Διάρκεια: 126'",
-      "rating_age": "Κ-18",
-      "rating_stars": 2.0,
-      "movie_type": "Φαντασίας",
-      "movie_country": "Aμερικανική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/i_nufi!_-10089350",
-      "imdb_link": "http://www.imdb.com/title/tt30851137/",
-      "slug": "the-bride",
-      "lifo_rating": "4",
-      "lifo_url": "https://www.lifo.gr/guide/cinema/movies/i-nyfi"
+      "total_cinema_count": 1,
+      "is_popular": false,
+      "slug": "nuremberg"
     }
   ],
   [
@@ -958,11 +1048,9 @@
       "movie_country": "Μαροκινή",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/odos_malaga-10089434",
       "imdb_link": "http://www.imdb.com/title/tt32429174/",
-      "slug": "calle-malaga",
-      "flix_rating": 5,
-      "flix_url": "https://flix.gr/cinema/calle-malaga-review.html",
-      "lifo_rating": 0,
-      "lifo_url": "https://www.lifo.gr/guide/cinema/movies/odos-malaga"
+      "total_cinema_count": 10,
+      "is_popular": false,
+      "slug": "calle-malaga"
     }
   ],
   [
@@ -978,11 +1066,9 @@
       "movie_country": "Ισπανική",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/oles_oi_kuriakes-10089263",
       "imdb_link": "http://www.imdb.com/title/tt35513027/",
-      "slug": "los-domingos",
-      "flix_rating": 6,
-      "flix_url": "https://flix.gr/cinema/los-domingos-review.html",
-      "lifo_rating": 0,
-      "lifo_url": "https://www.lifo.gr/guide/cinema/movies/oles-oi-kyriakes"
+      "total_cinema_count": 1,
+      "is_popular": false,
+      "slug": "los-domingos"
     }
   ],
   [
@@ -998,29 +1084,26 @@
       "movie_country": "Γαλλοαμερικανική",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/orgouel_2kai2_ison_5-10089666",
       "imdb_link": "http://www.imdb.com/title/tt27052428/",
-      "slug": "orwell-2-2-5",
-      "flix_rating": 6,
-      "flix_url": "https://flix.gr/cinema/orwell-2-2-5-review.html",
-      "lifo_rating": "6",
-      "lifo_url": "https://www.lifo.gr/guide/cinema/movies/orgoyel-225"
+      "total_cinema_count": 3,
+      "is_popular": false,
+      "slug": "orwell-2-2-5"
     }
   ],
   [
     {
-      "greek_title": "Ουγκέτσου Μονογκατάρι",
-      "original_title": "Ugetsu Monogatari",
-      "year": "1953",
-      "color": "Α/Μ",
-      "duration": "Διάρκεια: 96'",
+      "greek_title": "Το Οτιδήποτε",
+      "original_title": "",
+      "year": "2025",
+      "color": "Έγχρ.",
+      "duration": "Διάρκεια: 92'",
       "rating_age": "",
-      "rating_stars": 5.0,
-      "movie_type": "Δραματική",
-      "movie_country": "Ιαπωνική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/ougketsou_monogkatari-1002565",
-      "imdb_link": "http://www.imdb.com/title/tt0046478/",
-      "slug": "ugetsu",
-      "flix_rating": 10,
-      "flix_url": "https://flix.gr/cinema/ugetsu-monogatari-review.html"
+      "rating_stars": 2.0,
+      "movie_type": "Σινεφίλ",
+      "movie_country": "Eλληνική",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/to_otidipote-10088437",
+      "imdb_link": null,
+      "total_cinema_count": 1,
+      "is_popular": false
     }
   ],
   [
@@ -1036,11 +1119,9 @@
       "movie_country": "Aγγλική",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/pillion-10089167",
       "imdb_link": "http://www.imdb.com/title/tt32321317/",
-      "slug": "pillion",
-      "flix_rating": 6,
-      "flix_url": "https://flix.gr/cinema/pillion-review.html",
-      "lifo_rating": "6",
-      "lifo_url": "https://www.lifo.gr/guide/cinema/movies/pillion"
+      "total_cinema_count": 1,
+      "is_popular": false,
+      "slug": "pillion"
     }
   ],
   [
@@ -1056,47 +1137,62 @@
       "movie_country": "Eλληνική",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/polu_koritsistiko_onoma_to_pattu-10089270",
       "imdb_link": "http://www.imdb.com/title/tt37530747/",
-      "slug": "patty-is-such-a-girly-name",
-      "flix_rating": 7,
-      "flix_url": "https://flix.gr/cinema/patty-is-such-a-girly-name-review.html"
+      "total_cinema_count": 2,
+      "is_popular": false,
+      "slug": "patty-is-such-a-girly-name"
     }
   ],
   [
     {
-      "greek_title": "Regan",
+      "greek_title": "Primavera",
       "original_title": "",
       "year": "2025",
       "color": "Έγχρ.",
-      "duration": "Διάρκεια: 84'",
-      "rating_age": "",
-      "rating_stars": 1.5,
-      "movie_type": "Σινεφίλ",
-      "movie_country": "Eλληνική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/regan-10089519",
-      "imdb_link": "http://www.imdb.com/title/tt37721761/",
-      "slug": "regan",
-      "flix_rating": 5,
-      "flix_url": "https://flix.gr/cinema/regan-review.html"
+      "duration": "Διάρκεια: 110'",
+      "rating_age": "Κ-12",
+      "rating_stars": 2.0,
+      "movie_type": "Δραματική",
+      "movie_country": "Ιταλογαλλική",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/primavera-10089691",
+      "imdb_link": "http://www.imdb.com/title/tt33586629/",
+      "total_cinema_count": 10,
+      "is_popular": false,
+      "slug": "primavera"
     }
   ],
   [
     {
-      "greek_title": "Σαν Αδέρφια",
-      "original_title": "Homebound",
-      "year": "2025",
+      "greek_title": "Προσέλαβα Έναν Επαγγελματία Δολοφόνο",
+      "original_title": "I Hired A Contract Killer",
+      "year": "1990",
+      "color": "Έγχρ.",
+      "duration": "Διάρκεια: 79'",
+      "rating_age": "",
+      "rating_stars": null,
+      "movie_type": "Δραματική",
+      "movie_country": "Φιλανδική",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/proselaba_enan_epaggelmatia_dolofono-1004362",
+      "imdb_link": "http://www.imdb.com/title/tt0099818/",
+      "total_cinema_count": 1,
+      "is_popular": false,
+      "slug": "i-hired-a-contract-killer"
+    }
+  ],
+  [
+    {
+      "greek_title": "Seven",
+      "original_title": "",
+      "year": "1995",
       "color": "Έγχρ.",
       "duration": "Διάρκεια: 122'",
       "rating_age": "",
-      "rating_stars": 2.5,
-      "movie_type": "Δραματική",
-      "movie_country": "Ινδική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/san_aderfia-10089437",
-      "imdb_link": "http://www.imdb.com/title/tt26733325/",
-      "slug": "homebound",
-      "flix_rating": 5,
-      "flix_url": "https://flix.gr/cinema/homebound-review.html",
-      "lifo_rating": "5",
-      "lifo_url": "https://www.lifo.gr/guide/cinema/movies/san-aderfia"
+      "rating_stars": 4.5,
+      "movie_type": "Θρίλερ",
+      "movie_country": "Αμερικανική",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/seven-1005156",
+      "imdb_link": null,
+      "total_cinema_count": 1,
+      "is_popular": false
     }
   ],
   [
@@ -1112,11 +1208,9 @@
       "movie_country": "Ισπανογαλλική",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/sirat-10088877",
       "imdb_link": "http://www.imdb.com/title/tt32298285/",
-      "slug": "sirat",
-      "flix_rating": 8,
-      "flix_url": "https://flix.gr/cinema/sirat-review.html",
-      "lifo_rating": "8",
-      "lifo_url": "https://www.lifo.gr/guide/cinema/movies/sirat"
+      "total_cinema_count": 4,
+      "is_popular": false,
+      "slug": "sirat"
     }
   ],
   [
@@ -1132,9 +1226,9 @@
       "movie_country": "Σουηδική",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/skines_apo_ena_gamo-1003264",
       "imdb_link": "http://www.imdb.com/title/tt0070644/",
-      "slug": "scenes-from-a-marriage",
-      "flix_rating": 10,
-      "flix_url": "https://flix.gr/cinema/scenes-from-a-marriage-review.html"
+      "total_cinema_count": 1,
+      "is_popular": false,
+      "slug": "scenes-from-a-marriage"
     }
   ],
   [
@@ -1150,10 +1244,8 @@
       "movie_country": "Aμερικανική",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/scream_7-10089271",
       "imdb_link": null,
-      "flix_rating": 4,
-      "flix_url": "https://flix.gr/cinema/scream-7-review.html",
-      "lifo_rating": 0,
-      "lifo_url": "https://www.lifo.gr/guide/cinema/movies/scream-7"
+      "total_cinema_count": 1,
+      "is_popular": false
     }
   ],
   [
@@ -1168,11 +1260,10 @@
       "movie_type": "Animation",
       "movie_country": "Αμερικανο-γιαπωνέζικη",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/super_mario_galaxy_i_tainia-10089671",
-      "imdb_link": null,
-      "flix_rating": 6,
-      "flix_url": "https://flix.gr/cinema/super-mario-galaxy-the-movie-review.html",
-      "lifo_rating": 0,
-      "lifo_url": "https://www.lifo.gr/guide/cinema/movies/super-mario-galaxy-i-tainia"
+      "imdb_link": "http://www.imdb.com/title/tt28650488/",
+      "total_cinema_count": 23,
+      "is_popular": true,
+      "slug": "the-super-mario-galaxy-movie"
     }
   ],
   [
@@ -1188,9 +1279,26 @@
       "movie_country": "Eλληνική",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/spasmeni_fleba-10088221",
       "imdb_link": "http://www.imdb.com/title/tt32919616/",
-      "slug": "spasmeni-fleva",
-      "flix_rating": 6,
-      "flix_url": "https://flix.gr/cinema/broken-vein-review.html"
+      "total_cinema_count": 1,
+      "is_popular": false,
+      "slug": "spasmeni-fleva"
+    }
+  ],
+  [
+    {
+      "greek_title": "Speed",
+      "original_title": "",
+      "year": "1994",
+      "color": "Έγχρ.",
+      "duration": "Διάρκεια: 116'",
+      "rating_age": "",
+      "rating_stars": 3.0,
+      "movie_type": "Περιπέτεια",
+      "movie_country": "Αμερικανική",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/speed-1004848",
+      "imdb_link": null,
+      "total_cinema_count": 1,
+      "is_popular": false
     }
   ],
   [
@@ -1206,11 +1314,9 @@
       "movie_country": "Παλαιστινιακή",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/sti_skia_tis_portokalias-10089668",
       "imdb_link": "http://www.imdb.com/title/tt29344894/",
-      "slug": "all-that-s-left-of-you",
-      "flix_rating": 5,
-      "flix_url": "https://flix.gr/cinema/all-thats-left-of-you-review.html",
-      "lifo_rating": "4",
-      "lifo_url": "https://www.lifo.gr/guide/cinema/movies/sti-skia-tis-portokalias"
+      "total_cinema_count": 3,
+      "is_popular": false,
+      "slug": "all-that-s-left-of-you"
     }
   ],
   [
@@ -1226,9 +1332,9 @@
       "movie_country": "Σοβιετική",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/stis_skies_ton_ksexasmenon_progonon-1007354",
       "imdb_link": "http://www.imdb.com/title/tt0058642/",
-      "slug": "shadows-of-forgotten-ancestors",
-      "flix_rating": 8,
-      "flix_url": "https://flix.gr/cinema/tini-zabutykh-predkiv-review.html"
+      "total_cinema_count": 2,
+      "is_popular": false,
+      "slug": "shadows-of-forgotten-ancestors"
     }
   ],
   [
@@ -1244,31 +1350,9 @@
       "movie_country": "Aμερικανική",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/ston_kosmo_ton_zoon-10089353",
       "imdb_link": "http://www.imdb.com/title/tt26443616/",
-      "slug": "hoppers",
-      "flix_rating": 7,
-      "flix_url": "https://flix.gr/cinema/hoppers-review.html",
-      "lifo_rating": 0,
-      "lifo_url": "https://www.lifo.gr/guide/cinema/movies/ston-kosmo-ton-zoon"
-    }
-  ],
-  [
-    {
-      "greek_title": "Η Συμμορία των Μάγων 3",
-      "original_title": "Now You See Me: Now You Don't",
-      "year": "2025",
-      "color": "Έγχρ.",
-      "duration": "Διάρκεια: 112'",
-      "rating_age": "",
-      "rating_stars": 1.5,
-      "movie_type": "Περιπέτεια",
-      "movie_country": "Aμερικανική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/i_summoria_ton_magon_3-10088101",
-      "imdb_link": "http://www.imdb.com/title/tt4712810/",
-      "slug": "now-you-see-me-now-you-don-t",
-      "flix_rating": 6,
-      "flix_url": "https://flix.gr/cinema/now-you-see-me-now-you-dont-review.html",
-      "lifo_rating": "5",
-      "lifo_url": "https://www.lifo.gr/guide/cinema/movies/i-symmoria-ton-magon-3"
+      "total_cinema_count": 18,
+      "is_popular": false,
+      "slug": "hoppers"
     }
   ],
   [
@@ -1284,11 +1368,9 @@
       "movie_country": "Νορβηγο-γερμανική",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/sunaisthimatiki_aksia-10087020",
       "imdb_link": "http://www.imdb.com/title/tt27714581/",
-      "slug": "sentimental-value",
-      "flix_rating": 7,
-      "flix_url": "https://flix.gr/cinema/sentimental-value-review.html",
-      "lifo_rating": "7",
-      "lifo_url": "https://www.lifo.gr/guide/cinema/movies/synaisthimatiki-axia"
+      "total_cinema_count": 2,
+      "is_popular": false,
+      "slug": "sentimental-value"
     }
   ],
   [
@@ -1304,11 +1386,9 @@
       "movie_country": "Eλληνική",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/teleutaia_klisi-10089533",
       "imdb_link": "http://www.imdb.com/title/tt37202764/",
-      "slug": "last-call",
-      "flix_rating": 7,
-      "flix_url": "https://flix.gr/cinema/teleytaia-klisi-review.html",
-      "lifo_rating": "5",
-      "lifo_url": "https://www.lifo.gr/guide/cinema/movies/teleytaia-klisi"
+      "total_cinema_count": 23,
+      "is_popular": true,
+      "slug": "last-call"
     }
   ],
   [
@@ -1324,11 +1404,9 @@
       "movie_country": "Eλληνική",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/tomos_7-10089536",
       "imdb_link": "http://www.imdb.com/title/tt38794758/",
-      "slug": "tomos-7",
-      "flix_rating": 5,
-      "flix_url": "https://flix.gr/cinema/volume-7-review.html",
-      "lifo_rating": 0,
-      "lifo_url": "https://www.lifo.gr/guide/cinema/movies/tomos-7"
+      "total_cinema_count": 1,
+      "is_popular": false,
+      "slug": "tomos-7"
     }
   ],
   [
@@ -1344,27 +1422,27 @@
       "movie_country": "Ιρακινή",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/i_tourta_tou_proedrou-10089351",
       "imdb_link": "http://www.imdb.com/title/tt36580119/",
-      "slug": "the-president-s-cake",
-      "flix_rating": 5,
-      "flix_url": "https://flix.gr/cinema/the-presidents-cake-review.html",
-      "lifo_rating": "6",
-      "lifo_url": "https://www.lifo.gr/guide/cinema/movies/i-toyrta-toy-proedroy"
+      "total_cinema_count": 2,
+      "is_popular": false,
+      "slug": "the-president-s-cake"
     }
   ],
   [
     {
-      "greek_title": "Τσάρλι ο Σούπερ Σκύλος",
-      "original_title": "Charlie the Wonderdog",
+      "greek_title": "Τύχη Βουνό",
+      "original_title": "Good Fortune",
       "year": "2025",
       "color": "Έγχρ.",
-      "duration": "Διάρκεια: 95'",
-      "rating_age": "Κ",
-      "rating_stars": 2.5,
-      "movie_type": "Animation",
-      "movie_country": "Καναδέζικη",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/tsarli_o_souper_skulos-10089269",
-      "imdb_link": "http://www.imdb.com/title/tt29612071/",
-      "slug": "charlie-the-wonderdog"
+      "duration": "Διάρκεια: 98'",
+      "rating_age": "",
+      "rating_stars": 3.0,
+      "movie_type": "Φαντασίας",
+      "movie_country": "Aμερικανική",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/tuxi_bouno-10087459",
+      "imdb_link": "http://www.imdb.com/title/tt27543578/",
+      "total_cinema_count": 1,
+      "is_popular": false,
+      "slug": "good-fortune"
     }
   ],
   [
@@ -1380,29 +1458,9 @@
       "movie_country": "Aμερικανική",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/father_mother_sister_brother-10088539",
       "imdb_link": "http://www.imdb.com/title/tt31189315/",
-      "slug": "father-mother-sister-brother",
-      "flix_rating": 7,
-      "flix_url": "https://flix.gr/cinema/father-mother-sister-brother-review.html",
-      "lifo_rating": "8",
-      "lifo_url": "https://www.lifo.gr/guide/cinema/movies/father-mother-sister-brother"
-    }
-  ],
-  [
-    {
-      "greek_title": "Φθινοπωρινή Σονάτα",
-      "original_title": "Höstsonaten / Autumn Sonata",
-      "year": "1978",
-      "color": "Έγχρ.",
-      "duration": "Διάρκεια: 99'",
-      "rating_age": "",
-      "rating_stars": 4.0,
-      "movie_type": "Δραματική",
-      "movie_country": "Σουηδο-γερμανο-αγγλική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/fthinoporini_sonata-1002633",
-      "imdb_link": "http://www.imdb.com/title/tt0077711/",
-      "slug": "autumn-sonata",
-      "flix_rating": 8,
-      "flix_url": "https://flix.gr/cinema/autumn-sonata-review.html"
+      "total_cinema_count": 2,
+      "is_popular": false,
+      "slug": "father-mother-sister-brother"
     }
   ],
   [
@@ -1418,10 +1476,8 @@
       "movie_country": "Eλληνική",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/filoi_gia_panta-10089352",
       "imdb_link": "http://www.imdb.com/title/-vOhTuyH1iU/",
-      "flix_rating": 2,
-      "flix_url": "https://flix.gr/cinema/filoi-gia-panta-review.html",
-      "lifo_rating": "3",
-      "lifo_url": "https://www.lifo.gr/guide/cinema/movies/filoi-gia-panta"
+      "total_cinema_count": 4,
+      "is_popular": false
     }
   ],
   [
@@ -1437,11 +1493,9 @@
       "movie_country": "Τσεχοπολωνική",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/frants_kafka-10089543",
       "imdb_link": "http://www.imdb.com/title/tt17070412/",
-      "slug": "franz",
-      "flix_rating": 6,
-      "flix_url": "https://flix.gr/cinema/frants-review.html",
-      "lifo_rating": 0,
-      "lifo_url": "https://www.lifo.gr/guide/cinema/movies/frants-kafka"
+      "total_cinema_count": 2,
+      "is_popular": false,
+      "slug": "franz"
     }
   ],
   [
@@ -1457,25 +1511,43 @@
       "movie_country": "Γαλλοτυνησιακή",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/i_foni_tis_xint_ratzamp-10088249",
       "imdb_link": "http://www.imdb.com/title/tt36943034/",
-      "slug": "the-voice-of-hind-rajab",
-      "flix_rating": 5,
-      "flix_url": "https://flix.gr/cinema/voice-of-hind-rajab-review.html"
+      "total_cinema_count": 1,
+      "is_popular": false,
+      "slug": "the-voice-of-hind-rajab"
     }
   ],
   [
     {
-      "greek_title": "Τα Χιόνια του Κιλιμάντζαρο",
-      "original_title": "Les Neiges Du Kilimandjaro",
-      "year": "2011",
+      "greek_title": "ΧΑΙΛΑΝΤΕΡ Ο ΑΘΑΝΑΤΟΣ",
+      "original_title": "HIGHLANDER",
+      "year": "1986",
       "color": "Έγχρ.",
-      "duration": "Διάρκεια: 90'",
+      "duration": "",
       "rating_age": "",
-      "rating_stars": 3.5,
-      "movie_type": "Κοινωνική",
-      "movie_country": "Γαλλική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/ta_xionia_tou_kilimantzaro-10013912",
-      "imdb_link": "http://www.imdb.com/title/tt1852006/",
-      "slug": "the-snows-of-kilimanjaro"
+      "rating_stars": null,
+      "movie_type": "Φαντασίας",
+      "movie_country": "Αμερικάνικη",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/xailanter_o_athanatos-1000675",
+      "imdb_link": null,
+      "total_cinema_count": 1,
+      "is_popular": false
+    }
+  ],
+  [
+    {
+      "greek_title": "Χαμένη Λεωφόρος",
+      "original_title": "Lost Highway",
+      "year": "1996",
+      "color": "Έγχρ.",
+      "duration": "Διάρκεια: 135'",
+      "rating_age": "",
+      "rating_stars": 3.0,
+      "movie_type": "Σινεφίλ",
+      "movie_country": "Αμερικανική",
+      "athinorama_link": "https://www.athinorama.gr/cinema/movie/xameni_leoforos-1005390",
+      "imdb_link": null,
+      "total_cinema_count": 1,
+      "is_popular": false
     }
   ],
   [
@@ -1491,9 +1563,9 @@
       "movie_country": "Αγγλογαλλική",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/xoli_to_gennaio_skantzoxoiraki-10089542",
       "imdb_link": "http://www.imdb.com/title/tt6930962/",
-      "slug": "spiked-aka-tally-ho",
-      "flix_rating": 4,
-      "flix_url": "https://flix.gr/cinema/spiked-review.html"
+      "total_cinema_count": 4,
+      "is_popular": false,
+      "slug": "spiked-aka-tally-ho"
     }
   ],
   [
@@ -1509,27 +1581,9 @@
       "movie_country": "Σοβετική",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/to_xroma_tou_rodiou-1001949",
       "imdb_link": "http://www.imdb.com/title/tt0063555/",
-      "slug": "the-color-of-pomegranates",
-      "flix_rating": 10,
-      "flix_url": "https://flix.gr/cinema/the-color-of-pomegranates-review.html"
-    }
-  ],
-  [
-    {
-      "greek_title": "Χωρίς Πατέρα",
-      "original_title": "Árva / Orphan",
-      "year": "2025",
-      "color": "Έγχρ.",
-      "duration": "Διάρκεια: 132'",
-      "rating_age": "",
-      "rating_stars": 3.0,
-      "movie_type": "Δραματική",
-      "movie_country": "Ουγγρική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/xoris_patera-10089670",
-      "imdb_link": "http://www.imdb.com/title/tt31065630/",
-      "slug": "arva",
-      "flix_rating": 5,
-      "flix_url": "https://flix.gr/cinema/orphan-review.html"
+      "total_cinema_count": 1,
+      "is_popular": false,
+      "slug": "the-color-of-pomegranates"
     }
   ],
   [
@@ -1545,25 +1599,9 @@
       "movie_country": "Ιρανική",
       "athinorama_link": "https://www.athinorama.gr/cinema/movie/xoris_proigoumeno_rantebou-10089540",
       "imdb_link": "http://www.imdb.com/title/tt14443682/",
-      "slug": "no-prior-appointment",
-      "flix_rating": 4,
-      "flix_url": "https://flix.gr/cinema/no-prior-appointment-review.html"
-    }
-  ],
-  [
-    {
-      "greek_title": "Zabriskie Point",
-      "original_title": "",
-      "year": "1970",
-      "color": "Έγχρ.",
-      "duration": "Διάρκεια: 110'",
-      "rating_age": "",
-      "rating_stars": 3.5,
-      "movie_type": "Σινεφίλ",
-      "movie_country": "Aμερικανική",
-      "athinorama_link": "https://www.athinorama.gr/cinema/movie/zabriskie_point-1006530",
-      "imdb_link": "http://www.imdb.com/title/tt0066601/",
-      "slug": "zabriskie-point"
+      "total_cinema_count": 1,
+      "is_popular": false,
+      "slug": "no-prior-appointment"
     }
   ]
 ]
