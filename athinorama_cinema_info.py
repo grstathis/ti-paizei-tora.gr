@@ -1578,7 +1578,7 @@ def generate_sitemap():
   <url>
     <loc>{BASE_URL}/</loc>
     <lastmod>{now}</lastmod>
-    <changefreq>daily</changefreq>
+    <changefreq>hourly</changefreq>
     <priority>1.0</priority>
   </url>
 """
@@ -1590,24 +1590,16 @@ def generate_sitemap():
   <url>
     <loc>{BASE_URL}/contact.html</loc>
     <lastmod>{now}</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
 """
     )
 
-    # --- Static JSON resources ---
-    for resource in ["movies.json", "cinemas.json", "ti_paizei_tora_logo.svg"]:
-        urls.append(
-            f"""
-  <url>
-    <loc>{BASE_URL}/{resource}</loc>
-    <lastmod>{now}</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-"""
-        )
+    # --- Static JSON resources and SVG logo removed from sitemap ---
+    # These files should not be indexed by search engines
+    # JSON data is accessed by the app, not meant for direct indexing
+    # SVG logo is an asset, not a page
 
     # --- Movie folders ---
     for folder in sorted(os.listdir(MOVIE_DIR)):

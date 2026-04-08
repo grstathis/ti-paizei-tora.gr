@@ -8,10 +8,13 @@ Disallow: /admin/
 Disallow: /tmp/
 Disallow: /scripts/
 Disallow: /private/
+Disallow: /*.json$
+Disallow: /.git/
+Disallow: /*.py$
+Disallow: /*.ipynb$
 
-# Allow important JSON data files for indexing (movie listings)
-Allow: /movies.json
-Allow: /cinemas.json
+# Crawl delay to be respectful to search engines
+Crawl-delay: 1
 
 # Sitemap location
 Sitemap: https://ti-paizei-tora.gr/sitemap.xml

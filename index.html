@@ -5,10 +5,13 @@
   <meta charset="UTF-8">
   <title>Σινεμά Αθήνας – Ταινίες, Ωράρια, Τι παίζει σήμερα & στις επόμενες 3 ώρες</title>
   <meta name="description"
-    content="Δες τι παίζει σήμερα στα σινεμά της Αθήνας! Οδηγός για όλες τις ταινίες, ώρες προβολών και κινηματογράφους.">
+    content="Βρες ποιες ταινίες παίζουν ΤΩΡΑ στα σινεμά της Αθήνας! Φίλτρα ανά χρόνο (επόμενη ώρα, 3ω), υπολόγισε χρόνο μετακίνησης και δες τι προλαβαίνεις. Real-time ενημερώσεις.">
   <meta name="keywords"
-    content="σινεμά Αθήνα, ταινίες Αθήνα, οδηγός σινεμά, προβολές, τι παίζει σήμερα, κινηματογράφοι, ταινίες σήμερα, τι παίζει τώρα, athens cinema, athens movies, athens movie guide">
+    content="σινεμά Αθήνα, ταινίες σήμερα, τι παίζει τώρα, προβολές κοντά μου, τι προλαβαίνω σινεμά, επόμενη ώρα προβολές, χρόνος μετακίνησης σινεμά, ωράρια κινηματογράφων, ταινίες real-time Αθήνα">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://ti-paizei-tora.gr/">
 
   <!-- ✅ Preload JSON for faster load -->
   <link rel="preload" href="movies.json" as="fetch" crossorigin>
@@ -299,6 +302,73 @@
     "url": "https://ti-paizei-tora.gr",
     "logo": "https://ti-paizei-tora.gr/ti_paizei_tora_logo.svg",
     "image": "https://ti-paizei-tora.gr/ti_paizei_tora_draw.png"
+  }
+  </script>
+
+  <!-- ✅ WebApplication Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Σινεμά Αθήνας - Τι Παίζει Τώρα",
+    "applicationCategory": "EntertainmentApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "EUR"
+    },
+    "featureList": [
+      "Προβολές σε πραγματικό χρόνο",
+      "Φίλτρα χρόνου (30', 1ω, 3ω)",
+      "Τι προλαβαίνω; - Υπολογισμός χρόνου μετακίνησης",
+      "Αναζήτηση κοντά μου με ακτίνα",
+      "Φίλτρα ανά διεύθυνση",
+      "Μοιραστείτε ταινίες με φίλους"
+    ],
+    "url": "https://ti-paizei-tora.gr"
+  }
+  </script>
+
+  <!-- ✅ FAQPage Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Τι ταινίες παίζουν σήμερα στην Αθήνα;",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Στη σελίδα μας θα βρεις όλες τις ταινίες που παίζουν σήμερα σε όλα τα σινεμά της Αθήνας με ώρες προβολής και ζωντανή ενημέρωση."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Πώς μπορώ να δω τι παίζει τις επόμενες ώρες;",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Οι φίλτρα '30 λεπτά', '1 ώρα' και '3 ώρες' εμφανίζουν αμέσα ποιες προβολές ξεκινούν σύντομα."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Πώς βρίσκω προβολές σινεμά κοντά μου;",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Με τη λειτουργία 'Κοντά μου' μπορείς να δεις εύκολα τις πλησιέστερες προβολές σε ακτίνα 1-15 χιλιομέτρων."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Μπορώ να μοιραστώ μια ταινία με φίλους;",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ναι! Πάτα 'Μοιράσου' δίπλα σε κάθε ταινία και στείλε το link όπου θες — Viber, Messenger, WhatsApp ή Instagram."
+        }
+      }
+    ]
   }
   </script>
 
