@@ -5,560 +5,539 @@
 
   <url>
     <loc>https://ti-paizei-tora.gr/</loc>
-    <lastmod>2026-04-03</lastmod>
-    <changefreq>daily</changefreq>
+    <lastmod>2026-04-08</lastmod>
+    <changefreq>hourly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/contact.html</loc>
-    <lastmod>2026-04-03</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/movies.json</loc>
-    <lastmod>2026-04-03</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/cinemas.json</loc>
-    <lastmod>2026-04-03</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://ti-paizei-tora.gr/ti_paizei_tora_logo.svg</loc>
-    <lastmod>2026-04-03</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
+    <lastmod>2026-04-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/12-monkeys/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/a-magnificent-life/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/a-private-life/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/all-that-s-left-of-you/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/apeiri-gi/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/calle-malaga/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/david/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/dog-of-god-dieva-suns/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/eraserhead/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/father-mother-sister-brother/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/franz/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/geloioi-erotes/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/goat/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/good-fortune/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/gorgona/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/grace/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/hamnet/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/hoppers/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/i-am-cuba/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/i-hired-a-contract-killer/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/i-swear/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/inglourious-basterds/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/it-was-just-an-accident/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/kapodistrias/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/last-call/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/le-assaggiatrici/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/left-handed-girl/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/little-amelie-or-the-character-of-rain/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/los-domingos/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/marsupilami/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/marty-supreme/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/mauthausen/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/no-budget-story/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/no-prior-appointment/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/nuremberg/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/one-battle-after-another/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/orwell-2-2-5/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/patty-is-such-a-girly-name/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/pillion/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/primavera/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/project-hail-mary/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/ready-or-not-2-here-i-come/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/rebel-without-a-cause/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/rietland/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/scenes-from-a-marriage/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/sentimental-value/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/shadows-of-forgotten-ancestors/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/shame/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/sinners/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/sirat/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/sound-of-falling/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/spasmeni-fleva/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/spiked-aka-tally-ho/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/spring-summer-fall-winter-and-spring/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/the-bohemian-life/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/the-color-of-pomegranates/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/the-drama/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/the-housemaid/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/the-life-of-chuck/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/the-lord-of-the-rings-the-fellowship-of-the-ring/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/the-lord-of-the-rings-the-two-towers/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/the-man-without-a-past/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/the-match-factory-girl/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/the-president-s-cake/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/the-secret-agent/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/the-super-mario-galaxy-movie/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/the-undertone/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/the-voice-of-hind-rajab/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/they-come-out-of-margo/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/tomos-7/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/truants/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/two-prosecutors/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/vampyr/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/wuthering-heights/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://ti-paizei-tora.gr/movie/zootopia-2/</loc>
-    <lastmod>2026-04-03</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
