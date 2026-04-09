@@ -895,7 +895,7 @@ def parse_showtime(showtime_str: str):
     """Parse showtime string like 'Κυριακή 07 Δεκ. 16:00' to extract date and time"""
     # Extract date and time using regex
     match = re.search(
-        r"(\d{1, 2})\s+([Α-Ωα-ωάέίόήύώΆΈΉΊΌΎΏ\.]+)\s+(\d{2}):(\d{2})",
+        r"(\d{1,2})\s+([Α-Ωα-ωάέίόήύώΆΈΉΊΌΎΏ\.]+)\s+(\d{2}):(\d{2})",
         showtime_str,
     )
 
@@ -922,6 +922,11 @@ def parse_showtime(showtime_str: str):
         }
 
         month = greek_months.get(month_str, "01")
+
+        # DEBUG: Check if month parsing is working
+        if month == "01" and "Απρ" in showtime_str:
+            print(f"DEBUG MONTH FAIL: '{showtime_str}' -> month_str='{month_str}' -> month={month}")
+
         current_year = datetime.now(ZoneInfo("Europe/Athens")).year
 
         return {
@@ -942,6 +947,7 @@ def is_future_showtime(parsed_showtime):
     """
     Check if a showtime is in the future.
     Matches JS logic: filterPastTimesFromToday()
+    Adds 15-minute grace period - if a showtime starts within 15 minutes, keep it.
     """
     if not parsed_showtime:
         return False
@@ -964,8 +970,10 @@ def is_future_showtime(parsed_showtime):
     # If it's today, check if the time has passed
     if showtime_date == today_date:
         showtime_mins = parsed_showtime["hour"] * 60 + parsed_showtime["minute"]
-        # Only show future times for today
-        if showtime_mins < now_mins:
+        # Keep showtimes that haven't started yet, or started very recently (15 min grace period)
+        # This allows people to still see/share showtimes that are about to start
+        grace_period_mins = 15
+        if showtime_mins < (now_mins - grace_period_mins):
             return False
 
     # Keep future dates and future times for today
