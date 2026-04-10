@@ -469,6 +469,14 @@ async function activateCanIMakeIt() {
             console.log('✅ Travel times fetched:', Object.keys(travelTimesCache).length, 'cinemas');
             console.log('Sample:', Object.entries(travelTimesCache).slice(0, 3));
 
+            // Check if any cinemas were found within range
+            if (Object.keys(travelTimesCache).length === 0) {
+                btn.textContent = originalText;
+                btn.disabled = false;
+                alert(`⚠️ Δεν βρέθηκαν κινηματογράφοι σε ακτίνα ${MAX_DISTANCE_KM}km από την τοποθεσία σου.\n\nΗ λειτουργία "Τι προλαβαίνω;" λειτουργεί καλύτερα όταν βρίσκεσαι κοντά στην Αθήνα.`);
+                return;
+            }
+
             // Activate the filter
             canIMakeItActive = true;
             btn.textContent = '✅';
