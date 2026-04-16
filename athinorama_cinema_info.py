@@ -4,8 +4,8 @@ import re
 import shutil
 import unicodedata
 from datetime import datetime
-from zoneinfo import ZoneInfo
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 import requests
 from bs4 import BeautifulSoup
@@ -685,6 +685,17 @@ margin:auto; border-radius:10px;
   .title {{ font-size:22px; font-weight:bold; margin-bottom:6px; }}
   .year {{ color:#777; margin-bottom:12px; }}
   .plot {{ margin-bottom:16px; line-height:1.4; }}
+  .review-links {{ margin-top:12px; display:flex; gap:8px; flex-wrap:wrap; }}
+  .review-link {{ display:inline-block; padding:6px 12px; background:#f0f0f0; \
+color:#333; text-decoration:none; border-radius:6px; font-size:13px; \
+transition:background 0.2s; }}
+  .review-link:hover {{ background:#e0e0e0; }}
+  .home-link {{ margin-top:16px; text-align:center; }}
+  .home-button {{ display:inline-block; padding:12px 24px; background:#667eea; \
+color:white; text-decoration:none; border-radius:8px; font-size:16px; \
+font-weight:600; transition:all 0.3s; box-shadow:0 2px 8px rgba(102,126,234,0.3); }}
+  .home-button:hover {{ background:#5568d3; transform:translateY(-2px); \
+box-shadow:0 4px 12px rgba(102,126,234,0.4); }}
 </style>
 </head>
 <body>
@@ -696,10 +707,11 @@ margin:auto; border-radius:10px;
   <div class="plot">{plot}</div>
   <div><small>⭐ IMDb {rating}/10</small></div>
 
-  <div style="margin-top:12px;">
-    <a href="https://ti-paizei-tora.gr" target="_blank"
-       style="color:#0066cc; text-decoration:none; font-size:14px;">
-       🔗 ti-paizei-tora.gr
+  {review_links}
+
+  <div class="home-link">
+    <a href="https://ti-paizei-tora.gr" class="home-button">
+       🎬 Περισσότερες Προβολές
     </a>
   </div>
 
@@ -774,6 +786,27 @@ for entry in movies_data:
     # 💾 Save slug back to the movie entry
     movie["slug"] = movie_slug
 
+    # Build review links section
+    review_links_html = ""
+    review_links_list = []
+
+    if movie.get("flix_url") and movie.get("flix_rating", 0) > 0:
+        flix_rating = movie["flix_rating"]
+        review_links_list.append(
+            f'<a href="{movie["flix_url"]}" target="_blank" class="review-link">'
+            f'📺 Flix: {flix_rating}/10</a>'
+        )
+
+    if movie.get("lifo_url") and movie.get("lifo_rating", "0") not in ["0", ""]:
+        lifo_rating = movie["lifo_rating"]
+        review_links_list.append(
+            f'<a href="{movie["lifo_url"]}" target="_blank" class="review-link">'
+            f'📰 Lifo: {lifo_rating}/5</a>'
+        )
+
+    if review_links_list:
+        review_links_html = '<div class="review-links">' + "".join(review_links_list) + '</div>'
+
     # Build HTML with fallbacks
     html = HTML_TEMPLATE.format(
         title=data.get("Title", "Unknown"),
@@ -782,6 +815,7 @@ for entry in movies_data:
         runtime=data.get("Runtime", "—"),
         plot=data.get("Plot", "No plot available."),
         rating=data.get("imdbRating", "—"),
+        review_links=review_links_html,
     )
 
     # Output folder: movie/<movie-slug>/index.html
@@ -979,14 +1013,10 @@ def is_future_showtime(parsed_showtime):
         # Keep showtimes that haven't started yet, or started very recently (15 min grace period)
         # This allows people to still see/share showtimes that are about to start
         grace_period_mins = 15
-<<<<<<< Updated upstream
-        if showtime_mins < (now_mins - grace_period_mins):
-=======
         threshold = now_mins - grace_period_mins
         print(f"DEBUG:   It's today - checking time: showtime_mins={showtime_mins}, now_mins={now_mins}, threshold={threshold}")
         if showtime_mins < threshold:
             print(f"DEBUG:   ❌ FILTERED - Time passed: {showtime_mins} < {threshold}")
->>>>>>> Stashed changes
             return False
 
     # Keep future dates and future times for today
@@ -1038,6 +1068,18 @@ def create_showtime_html_fallback(movie, cinema, parsed_showtime):
         link_html = (
             f'<a href="{movie["imdb_link"]}" '
             f'target="_blank" class="external-link">IMDb</a>'
+        )
+        external_links.append(link_html)
+    if movie.get("flix_url") and movie.get("flix_rating", 0) > 0:
+        link_html = (
+            f'<a href="{movie["flix_url"]}" '
+            f'target="_blank" class="external-link">Flix ({movie["flix_rating"]}/10)</a>'
+        )
+        external_links.append(link_html)
+    if movie.get("lifo_url") and movie.get("lifo_rating", "0") not in ["0", ""]:
+        link_html = (
+            f'<a href="{movie["lifo_url"]}" '
+            f'target="_blank" class="external-link">Lifo ({movie["lifo_rating"]}/5)</a>'
         )
         external_links.append(link_html)
 
@@ -1265,6 +1307,15 @@ class="location-link">Δες στο Google Maps</a>
                     </div>
                     {rooms_info}
                 </div>
+            </div>
+
+            <div class="section" style="text-align:center;">
+                <a href="https://ti-paizei-tora.gr"
+                   style="display:inline-block; color:white; text-decoration:none; \
+font-size:16px; font-weight:600; padding:12px 32px; background:#667eea; \
+border-radius:8px; transition:all 0.3s; box-shadow:0 2px 8px rgba(102,126,234,0.3);">
+                   🎬 Περισσότερες Προβολές
+                </a>
             </div>
         </div>
     </div>
