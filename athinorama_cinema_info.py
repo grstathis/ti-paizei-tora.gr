@@ -950,6 +950,7 @@ def is_future_showtime(parsed_showtime):
     Adds 15-minute grace period - if a showtime starts within 15 minutes, keep it.
     """
     if not parsed_showtime:
+        print(f"DEBUG: is_future_showtime called with None/empty parsed_showtime")
         return False
 
     now = datetime.now(ZoneInfo("Europe/Athens"))
@@ -963,8 +964,13 @@ def is_future_showtime(parsed_showtime):
         parsed_showtime["day"],
     ).date()
 
+    print(f"DEBUG: Checking '{parsed_showtime['full']}'")
+    print(f"DEBUG:   Parsed as: {showtime_date} at {parsed_showtime['hour']:02d}:{parsed_showtime['minute']:02d}")
+    print(f"DEBUG:   Today: {today_date}, Now: {now.hour:02d}:{now.minute:02d}")
+
     # If date is before today, filter it out
     if showtime_date < today_date:
+        print(f"DEBUG:   ❌ FILTERED - Date in past: {showtime_date} < {today_date}")
         return False
 
     # If it's today, check if the time has passed
@@ -973,10 +979,18 @@ def is_future_showtime(parsed_showtime):
         # Keep showtimes that haven't started yet, or started very recently (15 min grace period)
         # This allows people to still see/share showtimes that are about to start
         grace_period_mins = 15
+<<<<<<< Updated upstream
         if showtime_mins < (now_mins - grace_period_mins):
+=======
+        threshold = now_mins - grace_period_mins
+        print(f"DEBUG:   It's today - checking time: showtime_mins={showtime_mins}, now_mins={now_mins}, threshold={threshold}")
+        if showtime_mins < threshold:
+            print(f"DEBUG:   ❌ FILTERED - Time passed: {showtime_mins} < {threshold}")
+>>>>>>> Stashed changes
             return False
 
     # Keep future dates and future times for today
+    print(f"DEBUG:   ✅ KEPT - Future showtime")
     return True
 
 
@@ -1375,6 +1389,14 @@ border-radius: 8px;">
 
 def create_cinema_structure():
     """Create folder structure: .region/{region}/cinema/{cinema}/movie/{movie}/date/showtime.html"""
+
+    # DEBUG: Show current time at start
+    now_debug = datetime.now(ZoneInfo("Europe/Athens"))
+    print("="*80)
+    print(f"DEBUG: Starting showtime filtering at {now_debug}")
+    print(f"DEBUG: Current date (Athens): {now_debug.date()}")
+    print(f"DEBUG: Current time (Athens): {now_debug.hour:02d}:{now_debug.minute:02d}")
+    print("="*80)
 
     # Load JSON files
     with open(os.path.join(BASE_DIR, "movies.json"), "r", encoding="utf-8") as f:
