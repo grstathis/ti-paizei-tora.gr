@@ -10,7 +10,7 @@ const MAX_DISTANCE_KM = 5; // Pre-filter cinemas within 5km before calling API
 let userLocation = null; // Store user's location { lat, lng }
 let travelTimesCache = {}; // Cache travel times: { cinemaName: { walking: 15, driving: 8, transit: 12 } }
 let canIMakeItActive = false; // Track if "Can I Make It" filter is active
-let distanceMatrixService = null; // Google Maps DistanceMatrixService instance
+let routesLibrary = null; // Google Maps Routes library instance
 
 // Load Google Maps API dynamically
 function loadGoogleMapsAPI() {
@@ -26,7 +26,7 @@ function loadGoogleMapsAPI() {
         }
 
         const script = document.createElement('script');
-        script.src = `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_MAPS_API_KEY}&libraries=places`;
+        script.src = `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_MAPS_API_KEY}&libraries=places,marker,routes`;
         script.async = true;
         script.defer = true;
         script.onload = () => resolve();
@@ -346,19 +346,22 @@ async function getTravelTimes(userLat, userLng, cinemas) {
         return {};
     }
 
-    // Initialize DistanceMatrixService
-    if (!distanceMatrixService) {
-        distanceMatrixService = new google.maps.DistanceMatrixService();
+    // Initialize Routes library
+    if (!routesLibrary) {
+        routesLibrary = await google.maps.importLibrary("routes");
     }
 
-    const origin = new google.maps.LatLng(userLat, userLng);
-    const destinations = nearbyCinemas.map(c => new google.maps.LatLng(c.lat, c.lon));
+    // Prepare origins and destinations for the new API
+    const origin = { location: { latLng: { latitude: userLat, longitude: userLng } } };
+    const destinations = nearbyCinemas.map(c => ({
+        location: { latLng: { latitude: c.lat, longitude: c.lon } }
+    }));
 
     // Fetch travel times for all 3 modes
     const modes = [
-        { key: 'walking', mode: google.maps.TravelMode.WALKING },
-        { key: 'driving', mode: google.maps.TravelMode.DRIVING },
-        { key: 'transit', mode: google.maps.TravelMode.TRANSIT }
+        { key: 'walking', mode: 'WALK' },
+        { key: 'driving', mode: 'DRIVE' },
+        { key: 'transit', mode: 'TRANSIT' }
     ];
 
     const results = {};
@@ -370,42 +373,33 @@ async function getTravelTimes(userLat, userLng, cinemas) {
                 origins: [origin],
                 destinations: destinations,
                 travelMode: mode,
-                unitSystem: google.maps.UnitSystem.METRIC
+                routingPreference: 'TRAFFIC_AWARE'
             };
 
-            // Add departure time for transit to get real-time schedules
-            if (mode === google.maps.TravelMode.TRANSIT || mode === google.maps.TravelMode.DRIVING) {
-                request.drivingOptions = {
-                    departureTime: new Date(),
-                    trafficModel: google.maps.TrafficModel.BEST_GUESS
-                };
-            }
+            try {
+                const response = await routesLibrary.RouteMatrixService.computeRouteMatrix(request);
 
-            // Wrap callback in Promise
-            const response = await new Promise((resolve, reject) => {
-                distanceMatrixService.getDistanceMatrix(request, (response, status) => {
-                    if (status === 'OK') {
-                        resolve(response);
-                    } else {
-                        console.warn(`Distance Matrix API error for mode ${key}:`, status);
-                        resolve(null);
-                    }
-                });
-            });
+                // Process response
+                if (response && response.length > 0) {
+                    nearbyCinemas.forEach((cinema, idx) => {
+                        if (!results[cinema.cinema]) {
+                            results[cinema.cinema] = {};
+                        }
 
-            if (response && response.rows && response.rows[0]) {
-                const elements = response.rows[0].elements;
-
-                nearbyCinemas.forEach((cinema, idx) => {
-                    if (!results[cinema.cinema]) {
-                        results[cinema.cinema] = {};
-                    }
-
-                    if (elements[idx] && elements[idx].status === 'OK') {
-                        const durationMinutes = Math.ceil(elements[idx].duration.value / 60);
-                        results[cinema.cinema][key] = durationMinutes;
-                    }
-                });
+                        // response is an array with one element per origin
+                        const originResults = response[0];
+                        if (originResults && originResults.destinationResults && originResults.destinationResults[idx]) {
+                            const result = originResults.destinationResults[idx];
+                            if (result.status === 'OK' && result.duration) {
+                                // duration is in seconds, convert to minutes
+                                const durationMinutes = Math.ceil(parseInt(result.duration) / 60);
+                                results[cinema.cinema][key] = durationMinutes;
+                            }
+                        }
+                    });
+                }
+            } catch (modeError) {
+                console.warn(`Route Matrix API error for mode ${key}:`, modeError);
             }
         }
 
@@ -418,7 +412,7 @@ async function getTravelTimes(userLat, userLng, cinemas) {
 
 // Activate "Can I Make It" filter
 async function activateCanIMakeIt() {
-    const btn = document.getElementById('canIMakeItFAB'); // Updated to FAB button
+    const btn = document.getElementById('cimiToggle'); // Updated to new toggle button
     const modal = document.getElementById('locationModal');
 
     // Check if API key is configured
@@ -434,9 +428,12 @@ async function activateCanIMakeIt() {
     }
 
     // Show loading state
-    const originalText = btn.textContent;
+    const iconSpan = btn.querySelector('.cimi-icon');
+    const labelSpan = btn.querySelector('.cimi-label');
+    const statusSpan = btn.querySelector('.cimi-status');
+    const originalIcon = iconSpan.textContent;
     btn.disabled = true;
-    btn.textContent = '⌛';
+    iconSpan.textContent = '⌛';
 
     // Request location
     navigator.geolocation.getCurrentPosition(
@@ -461,7 +458,7 @@ async function activateCanIMakeIt() {
             });
 
             // Show fetching state
-            btn.textContent = '🔍';
+            iconSpan.textContent = '🔍';
 
             // Fetch travel times
             travelTimesCache = await getTravelTimes(latitude, longitude, uniqueCinemas);
@@ -471,15 +468,15 @@ async function activateCanIMakeIt() {
 
             // Check if any cinemas were found within range
             if (Object.keys(travelTimesCache).length === 0) {
-                btn.textContent = originalText;
+                iconSpan.textContent = originalIcon;
                 btn.disabled = false;
-                alert(`⚠️ Δεν βρέθηκαν κινηματογράφοι σε ακτίνα ${MAX_DISTANCE_KM}km από την τοποθεσία σου.\n\nΗ λειτουργία "Τι προλαβαίνω;" λειτουργεί καλύτερα όταν βρίσκεσαι κοντά στην Αθήνα.`);
+                alert(`⚠️ Δεν βρέθηκαν κινηματογράφοι σε ακτίνα ${MAX_DISTANCE_KM}km από την τοποθεσία σου.\n\nΜπορείς να χρησιμοποιήσεις τα κανονικά φίλτρα για να βρεις προβολές σε άλλες περιοχές.`);
                 return;
             }
 
             // Activate the filter
             canIMakeItActive = true;
-            btn.textContent = '✅';
+            iconSpan.textContent = originalIcon;
             btn.classList.add('active');
             btn.disabled = false;
 
@@ -494,19 +491,11 @@ async function activateCanIMakeIt() {
             // Re-render results with travel times and time filter
             renderResults();
             updateFilterChips();
-
-            // Show success message in nearby summary area
-            const summary = document.getElementById('nearbySummary');
-            if (summary && nearby.length > 0) {
-                const top3 = nearby.slice(0, 3).map(n => `${n.name} (${n.distance.toFixed(1)}km)`).join(' • ');
-                summary.textContent = `✅ Βρέθηκαν ${nearby.length} σινεμά σε ακτίνα ${MAX_DISTANCE_KM}km. ${top3 ? 'Κοντινότερα: ' + top3 : ''}`;
-                setTimeout(() => showResultsCount('nearbyResultsInfo'), 100);
-            }
         },
         (error) => {
             // Location permission denied or error
             btn.disabled = false;
-            btn.textContent = originalText;
+            iconSpan.textContent = originalIcon;
 
             // Show modal explaining why we need location
             if (modal) {
@@ -537,9 +526,8 @@ function deactivateCanIMakeIt() {
     travelTimesCache = {};
     userLocation = null;
 
-    const btn = document.getElementById('canIMakeItFAB'); // Updated to FAB button
+    const btn = document.getElementById('cimiToggle'); // Updated to new toggle button
     if (btn) {
-        btn.textContent = '🚶';
         btn.classList.remove('active');
     }
 
@@ -596,7 +584,6 @@ function formatTravelTime(minutes) {
 // “Near me” main action
 // Also update the main filterNearMe function to include this logic
 async function filterNearMe() {
-    const btn = document.getElementById('nearMeBtn');
     const radiusInput = document.getElementById('radiusSelect');
     const summary = document.getElementById('nearbySummary');
     const radiusKm = parseFloat(radiusInput?.value) || 3;
@@ -614,10 +601,7 @@ async function filterNearMe() {
         return;
     }
 
-    const originalText = btn.textContent;
-    btn.disabled = true;
-    btn.textContent = '⌛ Εντοπισμός...';
-    summary.textContent = '';
+    summary.textContent = '⌛ Εντοπισμός...';
 
     navigator.geolocation.getCurrentPosition(
         (pos) => {
@@ -635,19 +619,13 @@ async function filterNearMe() {
             } else {
                 summary.textContent = `ℹ️ Δεν βρέθηκαν σινεμά σε ακτίνα ${radiusKm}km. ${withoutCoords ? `(Χωρίς συντεταγμένες: ${withoutCoords})` : ''}`;
             }
-
-
-            btn.textContent = originalText;
-            btn.disabled = false;
         },
         (err) => {
             let msg = '❌ Αποτυχία εντοπισμού.';
             if (err.code === err.PERMISSION_DENIED) msg = '❌ Δεν δόθηκε άδεια τοποθεσίας.';
             else if (err.code === err.POSITION_UNAVAILABLE) msg = '❌ Η τοποθεσία δεν είναι διαθέσιμη.';
             else if (err.code === err.TIMEOUT) msg = '❌ Λήξη προθεσμίας εντοπισμού.';
-            summary.textContent = `${msg} Μπορείς να επιλέξεις ακτίνα και να δοκιμάσεις ξανά.`;
-            btn.textContent = originalText;
-            btn.disabled = false;
+            summary.textContent = `${msg} Μπορείς να δοκιμάσεις με διαφορετική ακτίνα ή να χρησιμοποιήσεις διεύθυνση.`;
         },
         { enableHighAccuracy: true, timeout: 10000, maximumAge: 30000 }
     );
@@ -1017,7 +995,22 @@ function renderCanIMakeItResults() {
     if (showtimeOptions.length === 0) {
         const noResultsDiv = document.createElement('div');
         noResultsDiv.style.cssText = 'background: #fff3cd; border: 2px solid #ffc107; color: #856404; padding: 2em; border-radius: 10px; text-align: center; font-size: 1.1em; margin: 2em 0;';
-        noResultsDiv.innerHTML = `<strong>😔 Δεν υπάρχουν προβολές μέσα στα επόμενα ${timeWindowMinutes} λεπτά σε ακτίνα ${MAX_DISTANCE_KM}km.</strong><br><br>Δοκίμασε να αυξήσεις το χρονικό παράθυρο ή απενεργοποίησε το φίλτρο.`;
+
+        const numCinemas = Object.keys(travelTimesCache).length;
+        const timeLabel = timeWindowMinutes === 30 ? '30 λεπτά' :
+                          timeWindowMinutes === 60 ? '1 ώρα' :
+                          `${Math.floor(timeWindowMinutes / 60)} ${Math.floor(timeWindowMinutes / 60) === 1 ? 'ώρα' : 'ώρες'}`;
+
+        noResultsDiv.innerHTML = `
+            <strong>😔 Δεν υπάρχουν προβολές που προλαβαίνεις μέσα στα επόμενα ${timeLabel}</strong>
+            <br><br>
+            Βρέθηκαν ${numCinemas} ${numCinemas === 1 ? 'κινηματογράφος' : 'κινηματογράφοι'} σε ακτίνα ${MAX_DISTANCE_KM}km,
+            αλλά δεν υπάρχουν προβολές που να μπορείς να προλάβεις στο επιλεγμένο χρονικό παράθυρο.
+            <br><br>
+            <strong>Δοκίμασε:</strong><br>
+            • Να αυξήσεις το χρονικό παράθυρο (π.χ. επόμενη 1 ώρα ή 3 ώρες)<br>
+            • Να απενεργοποιήσεις το φίλτρο "Τι προλαβαίνω;" για να δεις όλες τις προβολές
+        `;
         results.appendChild(noResultsDiv);
         return;
     }
@@ -1638,13 +1631,28 @@ function applyNext3Filter(list) {
 }
 
 
+// Helper function to check if location filter is active
+function isLocationFilterActive() {
+    const nearbyControls = document.getElementById('nearbyControls');
+    const addressControls = document.getElementById('addressControls');
+    const nearbyBtn = document.querySelector('.location-option[data-location="nearby"]');
+    const addressBtn = document.querySelector('.location-option[data-location="address"]');
+
+    return (nearbyControls && nearbyControls.style.display !== 'none') ||
+           (addressControls && addressControls.style.display !== 'none') ||
+           nearbyBtn?.classList.contains('active') ||
+           addressBtn?.classList.contains('active');
+}
+
 // Update the time filter functions to track state
 function filterToday() {
     currentTimeFilter = 'today';
     renderResults();
     updateFilterChips();
     highlightButton('todayBtn');
-    setTimeout(() => showResultsCount('todayResultsInfo'), 100);
+    // Use nearbyResultsInfo if location filter is active, otherwise use todayResultsInfo
+    const infoId = isLocationFilterActive() ? 'nearbyResultsInfo' : 'todayResultsInfo';
+    setTimeout(() => showResultsCount(infoId), 100);
     updateMeta('Τι Παίζει Σήμερα στα Σινεμά της Αθήνας 🎬', 'Δες ποιες ταινίες παίζονται σήμερα στα σινεμά της Αθήνας με ώρες προβολών και αίθουσες.');
 }
 
@@ -1657,7 +1665,9 @@ function filterNext3() {
     renderResults();
     updateFilterChips();
     highlightButton('next3Btn');
-    setTimeout(() => showResultsCount('next3ResultsInfo'), 100);
+    // Use nearbyResultsInfo if location filter is active, otherwise use next3ResultsInfo
+    const infoId = isLocationFilterActive() ? 'nearbyResultsInfo' : 'next3ResultsInfo';
+    setTimeout(() => showResultsCount(infoId), 100);
 
     // Update meta based on time window
     const timeLabel = timeWindowMinutes === 30 ? '30 Λεπτά' :
@@ -2143,6 +2153,9 @@ function filterByTime(filter) {
         currentTimeFilter = 'next3';
         renderResults();
         updateFilterChips();
+        // Use nearbyResultsInfo if location filter is active
+        const infoId = isLocationFilterActive() ? 'nearbyResultsInfo' : 'next3ResultsInfo';
+        setTimeout(() => showResultsCount(infoId), 100);
         updateMeta(`Ταινίες στα Επόμενα ${filter === '30' ? '30 Λεπτά' : filter === '60' ? '1 Ώρα' : '3 Ώρες'} ⏰`,
                    `Ανακάλυψε ποιες ταινίες παίζονται σύντομα στα σινεμά της Αθήνας.`);
     }
@@ -2165,6 +2178,8 @@ function selectLocation(option) {
     if (option === 'nearby') {
         nearbyControls.style.display = 'block';
         addressControls.style.display = 'none';
+        // Immediately trigger location request
+        filterNearMe();
     } else if (option === 'address') {
         nearbyControls.style.display = 'none';
         addressControls.style.display = 'block';

@@ -19,6 +19,7 @@
   <link rel="icon" type="image/svg+xml" href="ti_paizei_tora_logo.svg">
 
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/map-view.css">
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-HJMKKTQ85R"></script>
@@ -63,6 +64,15 @@
           Ο πιο γρήγορος τρόπος να σχεδιάσεις την κινηματογραφική σου βραδιά!
         </p>
 
+        <!-- ✅ CAN I MAKE IT TOGGLE (Above Time Filters) -->
+        <div class="cimi-toggle-container">
+          <button id="cimiToggle" class="cimi-toggle" onclick="toggleCanIMakeIt()">
+            <span class="cimi-icon">🚶</span>
+            <span class="cimi-label">Τι προλαβαίνω;</span>
+            <span class="cimi-status" style="display:none;">⚡ Ενεργό</span>
+          </button>
+        </div>
+
         <!-- ✅ TIME FILTER TABS (Compact) -->
         <div class="time-filter-tabs">
           <button class="time-tab active" data-filter="all" onclick="filterByTime('all')">
@@ -98,7 +108,7 @@
           <div id="nearbyControls" class="location-controls" style="display:none;">
             <div class="radius-selector">
               <label for="radiusSelect">Ακτίνα:</label>
-              <select id="radiusSelect">
+              <select id="radiusSelect" onchange="filterNearMe()">
                 <option value="1">1 km</option>
                 <option value="2">2 km</option>
                 <option value="3" selected>3 km</option>
@@ -107,12 +117,6 @@
                 <option value="15">15 km</option>
               </select>
             </div>
-            <button id="nearMeBtn" class="action-button nearby" onclick="filterNearMe()">
-              📡 Βρες την Τοποθεσία μου
-            </button>
-            <button class="clear-location-btn" onclick="clearLocationFilter()" style="margin-left:0.5em;">
-              ✕ Καθαρισμός
-            </button>
             <div id="nearbySummary"></div>
             <div id="nearbyResultsInfo" class="results-info" style="display:none;"></div>
           </div>
@@ -123,9 +127,6 @@
             <button id="addressBtn" class="action-button" onclick="filterByAddress()">
               🧭 Αναζήτηση
             </button>
-            <button class="clear-location-btn" onclick="clearLocationFilter()" style="margin-left:0.5em;">
-              ✕ Καθαρισμός
-            </button>
           </div>
         </div>
 
@@ -135,9 +136,9 @@
 
     </section>
 
-    <!-- Sticky FAB Button for "Can I Make It" -->
-    <button id="canIMakeItFAB" class="fab-button" onclick="toggleCanIMakeIt()" title="Τι προλαβαίνω να δω σινεμά;">
-      <span class="fab-text">🚶</span>
+    <!-- Centered View Toggle Button -->
+    <button id="viewToggle" class="view-toggle-btn" onclick="toggleView()" title="Εναλλαγή προβολής" style="display:none;">
+      <span id="viewToggleText">🗺️ Χάρτης</span>
     </button>
 
     <!-- Location Permission Modal -->
@@ -166,6 +167,87 @@
         </div>
       </div>
     </div>
+
+    <!-- 🗺️ MAP VIEW CONTAINER -->
+    <div id="mapContainer" class="map-container" style="display:none;">
+      <!-- Map Summary Bar -->
+      <div id="mapSummary" class="map-summary"></div>
+
+      <!-- Map Element -->
+      <div id="map" class="map-element"></div>
+
+      <!-- Close Map Button -->
+      <button class="close-map-btn" onclick="hideMapView()" title="Κλείσιμο χάρτη">
+        ✕
+      </button>
+    </div>
+
+    <!-- Map Location Permission Modal -->
+    <div id="mapLocationModal" class="location-modal" style="display:none;">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>🗺️ Χάρτης Κινηματογράφων</h2>
+          <button class="modal-close" onclick="hideLocationModal()">✕</button>
+        </div>
+        <div class="modal-body">
+          <div class="modal-icon">📍</div>
+          <h3 class="modal-title">Χρειαζόμαστε την τοποθεσία σου</h3>
+          <p class="modal-description">
+            Για να δεις τους κινηματογράφους στον χάρτη και να μάθεις ποιες προβολές <strong>προλαβαίνεις</strong>,
+            χρειαζόμαστε την τοποθεσία σου.
+          </p>
+
+          <div class="modal-features">
+            <div class="modal-feature">
+              <span class="feature-icon">🎯</span>
+              <div class="feature-text">
+                <strong>Κοντινά Σινεμά</strong>
+                <p>Βλέπεις μόνο τα σινεμά σε ακτίνα 5km</p>
+              </div>
+            </div>
+
+            <div class="modal-feature">
+              <span class="feature-icon">⏱️</span>
+              <div class="feature-text">
+                <strong>Επόμενη Ώρα</strong>
+                <p>Φιλτράρει αυτόματα στις επόμενες 60 λεπτά</p>
+              </div>
+            </div>
+
+            <div class="modal-feature">
+              <span class="feature-icon">🚶</span>
+              <div class="feature-text">
+                <strong>"Τι Προλαβαίνω;"</strong>
+                <p>Υπολογίζει αν προλαβαίνεις κάθε προβολή</p>
+              </div>
+            </div>
+          </div>
+
+          <p class="privacy-note">
+            🔒 <strong>Ιδιωτικότητα:</strong> Η τοποθεσία σου δεν αποθηκεύεται και χρησιμοποιείται
+            μόνο σε αυτή τη συνεδρία για τον υπολογισμό αποστάσεων.
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button class="modal-btn primary large" onclick="hideLocationModal(); showMapView();">
+            ✅ Επιτρέπω & Άνοιξε Χάρτη
+          </button>
+          <button class="modal-btn secondary" onclick="hideLocationModal()">
+            Ακύρωση
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Map Loading Overlay -->
+    <div id="mapLoadingOverlay" class="map-loading-overlay" style="display:none;">
+      <div class="loading-spinner"></div>
+      <p class="loading-text">Φορτώνει χάρτης...</p>
+      <p class="loading-subtext">Υπολογίζονται χρόνοι μετακίνησης</p>
+    </div>
+
+    <!-- REGULAR VIEW (List) -->
+    <div id="regularView">
 
     <!-- ✅ RESET FILTERS BUTTON (NEW POSITION) -->
     <div class="quick-actions">
@@ -285,7 +367,10 @@
 
       <p>Σινεμά Αθήνας © 2025 — Οδηγός κινηματογράφων, προβολών και ταινιών στην Αθήνα.</p>
     </footer>
-  </div>
+
+    </div> <!-- End regularView -->
+
+  </div> <!-- End container -->
 
   <!-- Schema.org Structured Data -->
   <script type="application/ld+json">
@@ -373,6 +458,7 @@
   </script>
 
   <script src="js/app.js"></script>
+  <script src="js/map-view.js"></script>
 
 </body>
 
