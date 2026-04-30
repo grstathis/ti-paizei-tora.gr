@@ -10,6 +10,7 @@ const MAX_DISTANCE_KM = 5; // Pre-filter cinemas within 5km before calling API
 let userLocation = null; // Store user's location { lat, lng }
 let travelTimesCache = {}; // Cache travel times: { cinemaName: { walking: 15, driving: 8, transit: 12 } }
 let canIMakeItActive = false; // Track if "Can I Make It" filter is active
+let summerCinemasActive = false; // Track if "Summer Cinemas" filter is active
 let routesLibrary = null; // Google Maps Routes library instance
 
 // Load Google Maps API dynamically
@@ -151,6 +152,14 @@ function clearAllFilters() {
 
     // Reset time filter state
     currentTimeFilter = 'all';
+
+    // Reset summer cinemas filter
+    if (summerCinemasActive) {
+        summerCinemasActive = false;
+        const button = document.getElementById('summerCinemaToggle');
+        if (button) button.classList.remove('active');
+    }
+
     // Uncheck all checkboxes
     document.querySelectorAll('#movieCheckboxes input[type="checkbox"]').forEach(cb => cb.checked = false);
     document.querySelectorAll('#cinemaCheckboxes input[type="checkbox"]').forEach(cb => cb.checked = false);
@@ -470,7 +479,7 @@ async function activateCanIMakeIt() {
             if (Object.keys(travelTimesCache).length === 0) {
                 iconSpan.textContent = originalIcon;
                 btn.disabled = false;
-                alert(`⚠️ Δεν βρέθηκαν κινηματογράφοι σε ακτίνα ${MAX_DISTANCE_KM}km από την τοποθεσία σου.\n\nΜπορείς να χρησιμοποιήσεις τα κανονικά φίλτρα για να βρεις προβολές σε άλλες περιοχές.`);
+                alert(`⚠️ Δεν βρέθηκαν κινηματογράφοι με διαθέσιμες προβολές σε ακτίνα ${MAX_DISTANCE_KM}km.\n\nΜπορείς να χρησιμοποιήσεις τα κανονικά φίλτρα για να βρεις προβολές σε άλλες περιοχές.`);
                 return;
             }
 
@@ -561,6 +570,27 @@ function toggleCanIMakeIt() {
     } else {
         activateCanIMakeIt();
     }
+}
+
+// ============ SUMMER CINEMAS FILTER ============
+function toggleSummerCinemas() {
+    const button = document.getElementById('summerCinemaToggle');
+
+    if (summerCinemasActive) {
+        // Deactivate summer cinema filter
+        summerCinemasActive = false;
+        button.classList.remove('active');
+    } else {
+        // Activate summer cinema filter
+        summerCinemasActive = true;
+        button.classList.add('active');
+    }
+
+    // Re-render results with the new filter
+    renderResults();
+
+    // Add/remove filter chip
+    updateActiveFilters();
 }
 
 // Close location permission modal
@@ -812,6 +842,11 @@ function updateFilterChips() {
         const timeLabel = timeWindowMinutes === 30 ? "Επόμενα 30'" :
                           timeWindowMinutes === 60 ? "Επόμενη 1ω" : "Επόμενες 3ω";
         addChip(timeLabel, () => showAll());
+    }
+
+    // Summer cinemas filter
+    if (summerCinemasActive) {
+        addChip("☀️ Θερινοί", () => toggleSummerCinemas());
     }
 
     // Movies
@@ -1143,14 +1178,19 @@ function renderResults(filteredList, forceEmpty = false) {
             ? cinemasToShow.filter(c => selectedRegions.includes(c.region))
             : cinemasToShow;
 
-        if (regionFiltered.length === 0) return null;
+        // Apply summer cinema filter if active
+        const finalFiltered = summerCinemasActive
+            ? regionFiltered.filter(c => c.is_summer_cinema === true)
+            : regionFiltered;
+
+        if (finalFiltered.length === 0) return null;
 
         return {
             idx,
             movie,
             movieCinemas,
-            regionFiltered: regionFiltered,
-            cinemaCount: regionFiltered.length
+            regionFiltered: finalFiltered,
+            cinemaCount: finalFiltered.length
         };
     }).filter(item => item !== null);
 
@@ -1175,7 +1215,7 @@ function renderResults(filteredList, forceEmpty = false) {
 
         let message = '';
         if (nearbyCinemasCount === 0) {
-            message = '😔 Δεν βρέθηκαν κινηματογράφοι σε ακτίνα 10km.';
+            message = '😔 Δεν βρέθηκαν κινηματογράφοι με προβολές σε ακτίνα 5km.';
         } else {
             // Check if there are any showtimes at all for nearby cinemas (checking original data)
             const selectedCinemaNames = new Set();
@@ -1196,9 +1236,9 @@ function renderResults(filteredList, forceEmpty = false) {
                               timeWindowMinutes === 60 ? '1 ώρα' : '3 ώρες';
 
             if (hasAnyShowtimes) {
-                message = `😔 Δεν υπάρχουν προβολές μέσα στην επόμενη ${timeLabel}. Δοκίμασε να αυξήσεις το χρονικό παράθυρο.`;
+                message = `😔 Δεν υπάρχουν προβολές που προλαβαίνεις μέσα στις επόμενες ${timeLabel}. Δοκίμασε να αυξήσεις το χρονικό παράθυρο.`;
             } else {
-                message = `😔 Δεν υπάρχουν διαθέσιμες προβολές στους κινηματογράφους της περιοχής.`;
+                message = `😔 Δεν υπάρχουν διαθέσιμες προβολές στους κοντινούς κινηματογράφους σήμερα.`;
             }
         }
 

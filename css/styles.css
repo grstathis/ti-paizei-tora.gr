@@ -548,7 +548,9 @@ body {
 .cimi-toggle-container {
     margin: 1.5em 0 1em;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
 }
 
 .cimi-toggle {
@@ -610,6 +612,14 @@ body {
     display: inline-block !important;
 }
 
+.cimi-subtitle {
+    font-size: 0.85em;
+    color: #666;
+    margin: 0;
+    text-align: center;
+    white-space: nowrap;
+}
+
 @media (max-width: 768px) {
     .cimi-toggle {
         padding: 12px 24px;
@@ -619,6 +629,108 @@ body {
 
     .cimi-icon {
         font-size: 1.2em;
+    }
+
+    .cimi-subtitle {
+        font-size: 0.8em;
+    }
+}
+
+/* ==========================================================================
+   Summer Cinema Toggle
+   ========================================================================== */
+.summer-cinema-section {
+    margin: 1em 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+.summer-cinema-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #fff9e6 0%, #ffedd5 100%);
+    border: 2px solid #f59e0b;
+    border-radius: 24px;
+    font-size: 0.95em;
+    font-weight: 600;
+    color: #f59e0b;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 8px rgba(245, 158, 11, 0.15);
+    min-height: 44px;
+    position: relative;
+}
+
+.summer-cinema-toggle:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(245, 158, 11, 0.3);
+    background: linear-gradient(135deg, #fff4d9 0%, #ffe4c4 100%);
+}
+
+.summer-cinema-toggle:active {
+    transform: translateY(0);
+}
+
+.summer-cinema-toggle.active {
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+    border-color: #d97706;
+    color: white;
+    box-shadow: 0 4px 16px rgba(245, 158, 11, 0.4);
+}
+
+.summer-icon {
+    font-size: 1.2em;
+    line-height: 1;
+    animation: pulse-summer 2s ease-in-out infinite;
+}
+
+@keyframes pulse-summer {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.summer-label {
+    font-size: 1em;
+}
+
+.summer-status {
+    font-size: 0.85em;
+    font-weight: 600;
+    margin-left: 6px;
+}
+
+.summer-cinema-toggle.active .summer-label {
+    display: none;
+}
+
+.summer-cinema-toggle.active .summer-status {
+    display: inline-block !important;
+}
+
+.summer-subtitle {
+    font-size: 0.85em;
+    color: #666;
+    margin: 0;
+    font-style: italic;
+}
+
+@media (max-width: 768px) {
+    .summer-cinema-toggle {
+        padding: 9px 18px;
+        font-size: 0.9em;
+        min-height: 40px;
+    }
+
+    .summer-icon {
+        font-size: 1.1em;
+    }
+
+    .summer-subtitle {
+        font-size: 0.8em;
     }
 }
 

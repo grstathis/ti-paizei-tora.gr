@@ -363,11 +363,17 @@ def save_cinema_database(cinema_db, filename=None):
     print(f"✅ Cinema database saved to {filename}")
 
 
-def get_or_create_cinema_info(name, address, cinema_db):
+def get_or_create_cinema_info(name, address, cinema_db, is_summer_cinema=None):
     """
     Get cinema info from database or fetch from Google API if not exists.
     Now includes website information from Google Places API.
     Returns cinema info dict and updates the database.
+
+    Args:
+        name: Cinema name
+        address: Cinema address
+        cinema_db: Cinema database dictionary
+        is_summer_cinema: Boolean flag for summer cinema status (updates DB if provided)
     """
     # Create a unique key for the cinema
     norm_name = normalize_name(name)
@@ -377,6 +383,12 @@ def get_or_create_cinema_info(name, address, cinema_db):
     # Check if cinema already exists in database
     if cinema_key in cinema_db:
         existing_info = cinema_db[cinema_key]
+
+        # Update summer cinema flag if provided
+        if is_summer_cinema is not None and existing_info.get("is_summer_cinema") != is_summer_cinema:
+            print(f"🌞 Updating summer cinema status for: {name}")
+            existing_info["is_summer_cinema"] = is_summer_cinema
+            cinema_db[cinema_key] = existing_info
 
         # Check if we already have complete info (including website)
         if "website" in existing_info:
@@ -413,6 +425,10 @@ def get_or_create_cinema_info(name, address, cinema_db):
             "formatted_address": address,
             **website_dict,
         }
+
+    # Add summer cinema flag if provided
+    if is_summer_cinema is not None:
+        region_dict["is_summer_cinema"] = is_summer_cinema
 
     # Store in database (if value)
     if region_dict:
@@ -541,6 +557,19 @@ def get_movie_theater_times(url, cinema_db):
         details_tag = block.find("div", class_="details")
         name = name_tag.get_text(strip=True) if name_tag else None
 
+        # Check for summer cinema (Θερινός) indicator
+        is_summer_cinema = False
+        description_div = block.find("div", class_="item-description")
+        if description_div:
+            # Look for the tags div which contains cinema metadata
+            tags_div = description_div.find("div", class_="tags")
+            if tags_div:
+                # Check if any span contains "Θερινός" text
+                for span in tags_div.find_all("span"):
+                    if span.get_text(strip=True) == "Θερινός" or "Θερινός" in span.get_text():
+                        is_summer_cinema = True
+                        break
+
         # Rooms
         rooms = []
         for panel in block.find_all("div", class_="grid schedule-grid"):
@@ -561,7 +590,7 @@ def get_movie_theater_times(url, cinema_db):
 
         address = details_tag.get_text(" ", strip=True) if details_tag else None
         # --- Get cinema info from cache or API ---
-        region_dict = get_or_create_cinema_info(name, address, cinema_db)
+        region_dict = get_or_create_cinema_info(name, address, cinema_db, is_summer_cinema)
 
         # Get values with safe .get() method, leveraging the dict guarantee
         final_area = region_dict.get("area", "Unknown")
@@ -600,6 +629,7 @@ def get_movie_theater_times(url, cinema_db):
                 "website": region_dict["website"],
                 "rooms": rooms,
                 "timetable": room_timetable,
+                "is_summer_cinema": region_dict.get("is_summer_cinema", False),
             }
         )
 
