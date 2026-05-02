@@ -714,6 +714,11 @@ function findAndSelectNearbyCinemas(lat, lng, radiusKm) {
     let withoutCoords = 0;
 
     uniq.forEach((c, name) => {
+        // Apply summer cinema filter if active
+        if (summerCinemasActive && !c.is_summer_cinema) {
+            return; // Skip non-summer cinemas when filter is active
+        }
+
         if (typeof c.lat === 'number' && typeof c.lng === 'number') {
             const d = distanceKm(lat, lng, c.lat, c.lng);
             if (isFinite(d) && d <= radiusKm) nearby.push({ name, distance: d });
