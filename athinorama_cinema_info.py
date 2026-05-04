@@ -958,8 +958,9 @@ def slugify(text: str) -> str:
 def parse_showtime(showtime_str: str):
     """Parse showtime string like 'Κυριακή 07 Δεκ. 16:00' to extract date and time"""
     # Extract date and time using regex
+    # Include dialytika characters: ϊ (U+03CA), ΐ (U+0390), ϋ (U+03CB), ΰ (U+03B0)
     match = re.search(
-        r"(\d{1,2})\s+([Α-Ωα-ωάέίόήύώΆΈΉΊΌΎΏ\.]+)\s+(\d{2}):(\d{2})",
+        r"(\d{1,2})\s+([Α-Ωα-ωάέίόήύώΆΈΉΊΌΎΏϊΐϋΰ\.]+)\s+(\d{2}):(\d{2})",
         showtime_str,
     )
 
@@ -975,7 +976,8 @@ def parse_showtime(showtime_str: str):
             "Φεβ": "02",
             "Μαρ": "03",
             "Απρ": "04",
-            "Μαΐ": "05",
+            "Μαΐ": "05",  # May with tonos (ΐ)
+            "Μαϊ": "05",  # May without tonos (ϊ) - alternative spelling from Athinorama
             "Ιουν": "06",
             "Ιουλ": "07",
             "Αυγ": "08",
@@ -988,8 +990,9 @@ def parse_showtime(showtime_str: str):
         month = greek_months.get(month_str, "01")
 
         # DEBUG: Check if month parsing is working
-        if month == "01" and "Απρ" in showtime_str:
-            print(f"DEBUG MONTH FAIL: '{showtime_str}' -> month_str='{month_str}' -> month={month}")
+        if month == "01":
+            print(f"      🐛 DEBUG: month_str='{month_str}' (repr: {repr(month_str)}) not found in dictionary")
+            print(f"      🐛 Available keys: {list(greek_months.keys())}")
 
         current_year = datetime.now(ZoneInfo("Europe/Athens")).year
 
@@ -1132,6 +1135,53 @@ def create_showtime_html_fallback(movie, cinema, parsed_showtime):
             rooms_str = ", ".join(rooms_list)
             rooms_info = f"<p><strong>Αίθουσα:</strong> {rooms_str}</p>"
 
+    # Build ScreeningEvent Schema
+    screening_event_schema = None
+    try:
+        # Create ISO 8601 datetime for the event
+        start_datetime = f"{parsed_showtime['year']}-{parsed_showtime['month']:02d}-{parsed_showtime['day']:02d}T{parsed_showtime['hour']:02d}:{parsed_showtime['minute']:02d}:00+03:00"
+
+        # Build location object
+        location_obj = {
+            "@type": "MovieTheater",
+            "name": cinema.get("cinema", "")
+        }
+        if cinema.get("address"):
+            location_obj["address"] = {
+                "@type": "PostalAddress",
+                "streetAddress": cinema["address"],
+                "addressLocality": "Αθήνα",
+                "addressCountry": "GR"
+            }
+
+        # Build workPresented reference to Movie
+        work_presented = {
+            "@type": "Movie",
+            "name": movie.get("greek_title", "")
+        }
+        if movie.get("original_title") and movie["original_title"].strip() not in ["", "/"]:
+            work_presented["alternateName"] = movie["original_title"].rstrip('/ ').strip()
+
+        screening_event_schema = {
+            "@context": "https://schema.org",
+            "@type": "ScreeningEvent",
+            "name": f"{movie.get('greek_title', '')} στο {cinema.get('cinema', '')}",
+            "startDate": start_datetime,
+            "location": location_obj,
+            "workPresented": work_presented
+        }
+    except Exception as e:
+        print(f"⚠️ Could not generate ScreeningEvent schema: {e}")
+        screening_event_schema = None
+
+    # JSON-LD script tag for ScreeningEvent
+    screening_schema_tag = ""
+    if screening_event_schema:
+        screening_schema_tag = f"""
+    <script type="application/ld+json">
+    {json.dumps(screening_event_schema, ensure_ascii=False, indent=2)}
+    </script>"""
+
     html_content = f"""<!DOCTYPE html>
 <html lang="el">
 <head>
@@ -1140,7 +1190,7 @@ def create_showtime_html_fallback(movie, cinema, parsed_showtime):
     <title>{movie_title_display} - {cinema.get('cinema', '')} - \
 {showtime_formatted}</title>
     <meta name="description" content="Προβολή της ταινίας \
-{movie_title_display} στο {cinema.get('cinema', '')} στις {date_formatted}">
+{movie_title_display} στο {cinema.get('cinema', '')} στις {date_formatted}">{screening_schema_tag}
     <style>
         * {{
             margin: 0;
@@ -1366,6 +1416,45 @@ def inject_cinema_showtime_info(movie_html, cinema, parsed_showtime, movie):
     showtime_formatted = parsed_showtime["time"].replace("-", ":")
     date_formatted = parsed_showtime["full"]
 
+    # Build ScreeningEvent Schema
+    screening_event_schema = None
+    try:
+        # Create ISO 8601 datetime for the event
+        start_datetime = f"{parsed_showtime['year']}-{parsed_showtime['month']:02d}-{parsed_showtime['day']:02d}T{parsed_showtime['hour']:02d}:{parsed_showtime['minute']:02d}:00+03:00"
+
+        # Build location object
+        location_obj = {
+            "@type": "MovieTheater",
+            "name": cinema.get("cinema", "")
+        }
+        if cinema.get("address"):
+            location_obj["address"] = {
+                "@type": "PostalAddress",
+                "streetAddress": cinema["address"],
+                "addressLocality": "Αθήνα",
+                "addressCountry": "GR"
+            }
+
+        # Build workPresented reference to Movie
+        work_presented = {
+            "@type": "Movie",
+            "name": movie.get("greek_title", "")
+        }
+        if movie.get("original_title") and movie["original_title"].strip() not in ["", "/"]:
+            work_presented["alternateName"] = movie["original_title"].rstrip('/ ').strip()
+
+        screening_event_schema = {
+            "@context": "https://schema.org",
+            "@type": "ScreeningEvent",
+            "name": f"{movie.get('greek_title', '')} στο {cinema.get('cinema', '')}",
+            "startDate": start_datetime,
+            "location": location_obj,
+            "workPresented": work_presented
+        }
+    except Exception as e:
+        print(f"⚠️ Could not generate ScreeningEvent schema: {e}")
+        screening_event_schema = None
+
     # Build cinema location link
     cinema_name = cinema.get("cinema", "")
     cinema_addr = cinema.get("address", "")
@@ -1453,6 +1542,16 @@ border-radius: 8px;">
             f'<meta name="description" content="{new_description}">'
         )
         movie_html = movie_html.replace('<meta charset="UTF-8" />', meta_desc)
+
+    # Inject ScreeningEvent Schema in <head>
+    if screening_event_schema:
+        schema_tag = f"""
+    <script type="application/ld+json">
+    {json.dumps(screening_event_schema, ensure_ascii=False, indent=2)}
+    </script>"""
+        # Insert before closing </head>
+        if "</head>" in movie_html:
+            movie_html = movie_html.replace("</head>", f"{schema_tag}\n</head>", 1)
 
     # Inject cinema/showtime section after opening <body> or .card div
     if '<div class="card">' in movie_html:
@@ -1587,22 +1686,38 @@ def create_cinema_structure():
             valid_showtimes = []
             timetable = cinema.get("timetable", [])
 
+            print(f"\n🎬 Processing movie: {movie.get('greek_title', 'Unknown')}")
+            print(f"   Cinema: {cinema.get('cinema', 'Unknown')}")
+            print(f"   Timetable lists: {len(timetable)}")
+
             for showtime_list in timetable:
                 if not showtime_list:  # Skip empty lists
                     continue
+                print(f"   Showtime list has {len(showtime_list)} showtimes")
                 for showtime in showtime_list:
                     if not showtime or not showtime.strip():  # Skip empty strings
                         continue
 
+                    print(f"   → Parsing: '{showtime}'")
                     parsed = parse_showtime(showtime)
+
+                    # Skip if parsing failed
+                    if not parsed:
+                        print(f"      ❌ Parsing FAILED")
+                        continue
+
+                    print(f"      ✅ Parsed successfully: {parsed['date']} at {parsed['time']}")
 
                     # ✅ Skip past dates and times
                     if not is_future_showtime(parsed):
+                        print(f"      ⏰ Skipped - past time")
                         stats["skipped_past_times"] += 1
                         continue
 
-                    if parsed:
-                        valid_showtimes.append(parsed)
+                    print(f"      🎯 ADDED to valid_showtimes")
+                    valid_showtimes.append(parsed)
+
+            print(f"   Total valid showtimes: {len(valid_showtimes)}\n")
 
             # Only create folders if we have valid future showtimes
             if not valid_showtimes:

@@ -3,19 +3,34 @@
 
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+
+  <!-- Primary Meta Tags -->
   <title>Σινεμά Αθήνας – Ταινίες, Ωράρια, Τι παίζει σήμερα & στις επόμενες 3 ώρες</title>
   <meta name="description"
-    content="Βρες ποιες ταινίες παίζουν ΤΩΡΑ στα σινεμά της Αθήνας! Φίλτρα ανά χρόνο (επόμενη ώρα, 3ω), υπολόγισε χρόνο μετακίνησης και δες τι προλαβαίνεις. Real-time ενημερώσεις.">
+    content="🎬 Βρες ποιες ταινίες παίζουν ΤΩΡΑ στα σινεμά της Αθήνας! Φίλτρα ανά χρόνο (30', 1ω, 3ω), κοντά σου, θερινούς κινηματογράφους. Real-time ενημερώσεις!">
   <meta name="keywords"
-    content="σινεμά Αθήνα, ταινίες σήμερα, τι παίζει τώρα, προβολές κοντά μου, τι προλαβαίνω σινεμά, επόμενη ώρα προβολές, χρόνος μετακίνησης σινεμά, ωράρια κινηματογράφων, ταινίες real-time Αθήνα">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    content="σινεμά Αθήνα, ταινίες σήμερα, τι παίζει τώρα, προβολές κοντά μου, θερινά σινεμά Αθήνα, θερινοί κινηματογράφοι, open air cinema Athens, village cinemas, odeon Athens, ster cinemas, ideal cinema, σινεμά Κολωνάκι, κινηματογράφοι Γκάζι, σινεμά Εξάρχεια, ταινίες Πλάκα, Μοναστηράκι, Ψυρρή, ωράρια κινηματογράφων, cine Paris, danaos cinema">
+
+  <!-- Geo-Targeting Tags -->
+  <meta name="geo.region" content="GR-I">
+  <meta name="geo.placename" content="Athens, Attica">
+  <meta name="geo.position" content="37.9838;23.7275">
+  <meta name="ICBM" content="37.9838, 23.7275">
 
   <!-- Canonical URL -->
   <link rel="canonical" href="https://ti-paizei-tora.gr/">
 
-  <!-- ✅ Preload JSON for faster load -->
+  <!-- ⚡ Performance Tags - DNS Prefetch & Preconnect -->
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+  <link rel="dns-prefetch" href="https://maps.googleapis.com">
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <link rel="preconnect" href="https://maps.googleapis.com">
+
+  <!-- ✅ Preload Critical Resources -->
   <link rel="preload" href="movies.json" as="fetch" crossorigin>
   <link rel="preload" href="cinemas.json" as="fetch" crossorigin>
+  <link rel="preload" href="css/styles.css" as="style">
   <link rel="icon" type="image/svg+xml" href="ti_paizei_tora_logo.svg">
 
   <link rel="stylesheet" href="css/styles.css">
@@ -30,20 +45,41 @@
     gtag('config', 'G-HJMKKTQ85R');
   </script>
 
-  <!-- ✅ Open Graph -->
+  <!-- ✅ Enhanced Open Graph -->
   <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Σινεμά Αθήνας - Ti Paizei Tora">
   <meta property="og:title" content="Σινεμά Αθήνας – Ταινίες, Ώρες, Τι Παίζει Σήμερα">
   <meta property="og:description"
-    content="Δες όλες τις ταινίες που παίζουν σήμερα στα σινεμά της Αθήνας. Ώρες προβολών και αίθουσες.">
+    content="🎬 Δες όλες τις ταινίες που παίζουν σήμερα στα σινεμά της Αθήνας. Θερινά σινεμά, ώρες προβολών, φίλτρα ανά περιοχή.">
   <meta property="og:url" content="https://ti-paizei-tora.gr">
   <meta property="og:image" content="https://ti-paizei-tora.gr/ti_paizei_tora_draw.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Σινεμά Αθήνας - Οδηγός Προβολών">
+  <meta property="og:locale" content="el_GR">
 
-  <!-- ✅ Twitter Card -->
+  <!-- ✅ Enhanced Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Σινεμά Αθήνας – Οδηγός Ταινιών">
-  <meta name="twitter:description" content="Τι παίζει τώρα και σήμερα στα σινεμά της Αθήνας.">
+  <meta name="twitter:description" content="🎬 Τι παίζει τώρα και σήμερα στα σινεμά της Αθήνας. Θερινά σινεμά & προβολές κοντά σου!">
   <meta name="twitter:image" content="https://ti-paizei-tora.gr/ti_paizei_tora_draw.png">
+  <meta name="twitter:image:alt" content="Σινεμά Αθήνας Logo">
 
+  <!-- 📱 Mobile App Tags (iOS) -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Σινεμά Αθήνας">
+  <link rel="apple-touch-icon" href="ti_paizei_tora_draw.png">
+
+  <!-- 📱 Mobile App Tags (Android) -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#667eea">
+  <meta name="application-name" content="Σινεμά Αθήνας">
+
+  <!-- Author & SEO -->
+  <meta name="author" content="Σινεμά Αθήνας">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="googlebot" content="index, follow">
 
 </head>
 
