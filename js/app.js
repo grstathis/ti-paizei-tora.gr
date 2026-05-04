@@ -68,15 +68,18 @@ function slugify(text) {
 
 // Parse showtime string to extract date and time for URL generation
 function parseShowtimeForUrl(showtimeStr) {
-    // Greek month abbreviations
+    // Greek month abbreviations (include both Unicode variants for May)
     const greekMonths = {
         'Ιαν': '01', 'Φεβ': '02', 'Μαρ': '03', 'Απρ': '04',
-        'Μαΐ': '05', 'Ιουν': '06', 'Ιουλ': '07', 'Αυγ': '08',
+        'Μαΐ': '05', // May with tonos (ΐ)
+        'Μαϊ': '05', // May with dialytika (ϊ) - used by Athinorama
+        'Ιουν': '06', 'Ιουλ': '07', 'Αυγ': '08',
         'Σεπ': '09', 'Οκτ': '10', 'Νοε': '11', 'Δεκ': '12'
     };
 
     // Extract date and time: "Κυριακή 07 Δεκ. 16:00"
-    const match = showtimeStr.match(/(\d{1,2})\s+([Α-Ωα-ωάέίόήύώΆΈΉΊΌΎΏ\.]+)\s+(\d{2}):(\d{2})/);
+    // Include dialytika characters: ϊ (U+03CA), ΐ (U+0390), ϋ (U+03CB), ΰ (U+03B0)
+    const match = showtimeStr.match(/(\d{1,2})\s+([Α-Ωα-ωάέίόήύώΆΈΉΊΌΎΏϊΐϋΰ\.]+)\s+(\d{2}):(\d{2})/);
 
     if (!match) return null;
 

@@ -1154,21 +1154,17 @@ def create_showtime_html_fallback(movie, cinema, parsed_showtime):
                 "addressCountry": "GR"
             }
 
-        # Build workPresented reference to Movie
-        work_presented = {
-            "@type": "Movie",
-            "name": movie.get("greek_title", "")
-        }
-        if movie.get("original_title") and movie["original_title"].strip() not in ["", "/"]:
-            work_presented["alternateName"] = movie["original_title"].rstrip('/ ').strip()
+        # Use simple string reference for movie to avoid Movie schema validation requirements
+        movie_name = movie.get("greek_title", "")
 
         screening_event_schema = {
             "@context": "https://schema.org",
             "@type": "ScreeningEvent",
-            "name": f"{movie.get('greek_title', '')} στο {cinema.get('cinema', '')}",
+            "name": f"{movie_name} στο {cinema.get('cinema', '')}",
             "startDate": start_datetime,
             "location": location_obj,
-            "workPresented": work_presented
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "eventStatus": "https://schema.org/EventScheduled"
         }
     except Exception as e:
         print(f"⚠️ Could not generate ScreeningEvent schema: {e}")
@@ -1435,21 +1431,17 @@ def inject_cinema_showtime_info(movie_html, cinema, parsed_showtime, movie):
                 "addressCountry": "GR"
             }
 
-        # Build workPresented reference to Movie
-        work_presented = {
-            "@type": "Movie",
-            "name": movie.get("greek_title", "")
-        }
-        if movie.get("original_title") and movie["original_title"].strip() not in ["", "/"]:
-            work_presented["alternateName"] = movie["original_title"].rstrip('/ ').strip()
+        # Use simple string reference for movie to avoid Movie schema validation requirements
+        movie_name = movie.get("greek_title", "")
 
         screening_event_schema = {
             "@context": "https://schema.org",
             "@type": "ScreeningEvent",
-            "name": f"{movie.get('greek_title', '')} στο {cinema.get('cinema', '')}",
+            "name": f"{movie_name} στο {cinema.get('cinema', '')}",
             "startDate": start_datetime,
             "location": location_obj,
-            "workPresented": work_presented
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "eventStatus": "https://schema.org/EventScheduled"
         }
     except Exception as e:
         print(f"⚠️ Could not generate ScreeningEvent schema: {e}")
