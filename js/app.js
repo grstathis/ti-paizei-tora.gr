@@ -1453,18 +1453,13 @@ function renderResults(filteredList, forceEmpty = false) {
                 // Generate URL for this showtime
                 const showtimeUrl = generateShowtimeUrl(movie, cinema, t);
 
-                // Escape quotes for onclick attributes
-                const escapedTitle = movie.greek_title.replace(/'/g, "\\'");
-                const escapedShowtime = t.replace(/'/g, "\\'");
-
-                // If we have a valid URL, make it a clickable link with share popup
+                // If we have a valid URL, make it a direct clickable link
                 if (showtimeUrl) {
-                    return `<a href="${showtimeUrl}" 
-                        onclick="showShowtimeSharePopup(event, '${showtimeUrl}', '${escapedShowtime}', '${escapedTitle}'); return false;"
-                        style="display:inline-block;margin:3px 6px;padding:4px 8px;background:#f5f5f5;border-radius:8px;text-decoration:none;color:inherit;transition:background 0.2s;cursor:pointer;" 
-                        onmouseover="this.style.background='#e0e0e0'" 
-                        onmouseout="this.style.background='#f5f5f5'" 
-                        title="Κλικ για επιλογές">${t}</a>`;
+                    return `<a href="${showtimeUrl}"
+                        style="display:inline-block;margin:3px 6px;padding:4px 8px;background:#f5f5f5;border-radius:8px;text-decoration:none;color:inherit;transition:background 0.2s;cursor:pointer;"
+                        onmouseover="this.style.background='#e0e0e0'"
+                        onmouseout="this.style.background='#f5f5f5'"
+                        title="Δες λεπτομέρειες προβολής">${t}</a>`;
                 } else {
                     // Fallback to non-link version
                     return `<span style="display:inline-block;margin:3px 6px;padding:4px 8px;background:#f5f5f5;border-radius:8px;">${t}</span>`;
