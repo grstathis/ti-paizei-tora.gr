@@ -1786,99 +1786,170 @@ stats = create_cinema_structure()
 
 
 def generate_sitemap():
-    now = datetime.now(ZoneInfo("Europe/Athens")).strftime("%Y-%m-%d")
+    now = datetime.now(ZoneInfo("Europe/Athens"))
+    now_str = now.strftime("%Y-%m-%d")
+    today_date = now.date()
 
-    urls = []
+    # Separate URL lists
+    static_urls = []
+    movie_urls = []
+    today_showtimes = []
+    upcoming_showtimes = []
 
-    # --- Homepage ---
-    urls.append(
+    # --- Static Pages (Homepage, Contact) ---
+    static_urls.append(
         f"""
   <url>
     <loc>{BASE_URL}/</loc>
-    <lastmod>{now}</lastmod>
+    <lastmod>{now_str}</lastmod>
     <changefreq>hourly</changefreq>
     <priority>1.0</priority>
   </url>
 """
     )
 
-    # --- Contact page ---
-    urls.append(
+    static_urls.append(
         f"""
   <url>
     <loc>{BASE_URL}/contact.html</loc>
-    <lastmod>{now}</lastmod>
+    <lastmod>{now_str}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
 """
     )
 
-    # --- Static JSON resources and SVG logo removed from sitemap ---
-    # These files should not be indexed by search engines
-    # JSON data is accessed by the app, not meant for direct indexing
-    # SVG logo is an asset, not a page
-
-    # --- Movie folders ---
+    # --- Movie Pages ---
     for folder in sorted(os.listdir(MOVIE_DIR)):
         full_path = os.path.join(MOVIE_DIR, folder)
         index_file = os.path.join(full_path, "index.html")
 
-        # Only include folders that contain index.html
         if os.path.isdir(full_path) and os.path.isfile(index_file):
-            urls.append(
+            movie_urls.append(
                 f"""
   <url>
     <loc>{BASE_URL}/movie/{folder}/</loc>
-    <lastmod>{now}</lastmod>
+    <lastmod>{now_str}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 """
             )
 
-    # --- Region folder structure (showtime pages) ---
+    # --- Showtime Pages (Split by Date) ---
     if os.path.exists(REGION_DIR):
         for root, dirs, files in os.walk(REGION_DIR):
             for file in files:
                 if file.endswith(".html"):
-                    # Get full file path
                     full_file_path = os.path.join(root, file)
-
-                    # Create relative path from REGION_DIR
                     relative_path = os.path.relpath(full_file_path, REGION_DIR)
-
-                    # Convert to URL path (replace backslashes with forward slashes for Windows compatibility)
                     url_path = relative_path.replace("\\", "/")
-
-                    # Build the full URL
                     page_url = f"{BASE_URL}/region/{url_path}"
 
-                    urls.append(
-                        f"""
+                    # Extract date from path (format: .../YYYY-MM-DD/...)
+                    try:
+                        # Path contains date like: region/area/cinema/movie/2026-05-13/20-30.html
+                        path_parts = url_path.split("/")
+                        date_str = None
+                        for part in path_parts:
+                            if len(part) == 10 and part.count("-") == 2:
+                                date_str = part
+                                break
+
+                        if date_str:
+                            showtime_date = datetime.strptime(date_str, "%Y-%m-%d").date()
+
+                            # Categorize: today vs upcoming
+                            if showtime_date == today_date:
+                                today_showtimes.append(
+                                    f"""
   <url>
     <loc>{page_url}</loc>
-    <lastmod>{now}</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
+    <lastmod>{now_str}</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>0.9</priority>
   </url>
 """
-                    )
+                                )
+                            elif showtime_date > today_date:
+                                upcoming_showtimes.append(
+                                    f"""
+  <url>
+    <loc>{page_url}</loc>
+    <lastmod>{now_str}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+"""
+                                )
+                            # Skip past dates (< today_date)
+                    except (ValueError, IndexError):
+                        # If date parsing fails, add to upcoming as fallback
+                        upcoming_showtimes.append(
+                            f"""
+  <url>
+    <loc>{page_url}</loc>
+    <lastmod>{now_str}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+"""
+                        )
 
-    # --- Write final XML ---
-    sitemap = f"""<?xml version="1.0" encoding="UTF-8"?>
+    # Helper function to write sitemap file
+    def write_sitemap(filename, urls):
+        sitemap_content = f"""<?xml version="1.0" encoding="UTF-8"?>
 <urlset
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
 {''.join(urls)}
 </urlset>
 """
+        filepath = os.path.join(BASE_DIR, filename)
+        with open(filepath, "w", encoding="utf-8") as f:
+            f.write(sitemap_content)
+        print(f"  ✓ {filename}: {len(urls)} URLs")
+        return len(urls)
 
-    with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
-        f.write(sitemap)
+    # Write individual sitemaps
+    print("\nGenerating split sitemaps...")
+    total = 0
+    total += write_sitemap("sitemap-static.xml", static_urls)
+    total += write_sitemap("sitemap-movies.xml", movie_urls)
+    total += write_sitemap("sitemap-today.xml", today_showtimes)
+    total += write_sitemap("sitemap-upcoming.xml", upcoming_showtimes)
 
-    print(f"Sitemap generated: {OUTPUT_FILE}")
-    print(f"Total URLs: {len(urls)}")
+    # --- Generate Sitemap Index ---
+    sitemap_index = f"""<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <sitemap>
+    <loc>{BASE_URL}/sitemap-static.xml</loc>
+    <lastmod>{now_str}</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>{BASE_URL}/sitemap-movies.xml</loc>
+    <lastmod>{now_str}</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>{BASE_URL}/sitemap-today.xml</loc>
+    <lastmod>{now_str}</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>{BASE_URL}/sitemap-upcoming.xml</loc>
+    <lastmod>{now_str}</lastmod>
+  </sitemap>
+</sitemapindex>
+"""
+
+    with open(os.path.join(BASE_DIR, "sitemap.xml"), "w", encoding="utf-8") as f:
+        f.write(sitemap_index)
+
+    print(f"  ✓ sitemap.xml (index)\n")
+    print(f"✅ Total URLs: {total}")
+    print(f"   - Today's showtimes: {len(today_showtimes)} (priority 0.9)")
+    print(f"   - Upcoming showtimes: {len(upcoming_showtimes)} (priority 0.6)")
+    print(f"   - Movies: {len(movie_urls)}")
+    print(f"   - Static pages: {len(static_urls)}")
 
 
 generate_sitemap()
