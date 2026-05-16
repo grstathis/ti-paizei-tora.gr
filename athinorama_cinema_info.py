@@ -813,8 +813,20 @@ for entry in movies_data:
     title = data.get("Title", "unknown-movie")
     movie_slug = slugify(title)
 
-    # 💾 Save slug back to the movie entry
+    # 💾 Save slug and OMDB data back to the movie entry for later use
     movie["slug"] = movie_slug
+    movie["omdb_title"] = data.get("Title", "")
+    movie["omdb_poster"] = data.get("Poster", "")
+    movie["omdb_year"] = data.get("Year", "")
+    movie["omdb_runtime"] = data.get("Runtime", "")
+    movie["omdb_plot"] = data.get("Plot", "")
+    movie["omdb_rating"] = data.get("imdbRating", "")
+    movie["omdb_votes"] = data.get("imdbVotes", "")
+    movie["omdb_director"] = data.get("Director", "")
+    movie["omdb_actors"] = data.get("Actors", "")
+    movie["omdb_genre"] = data.get("Genre", "")
+    movie["omdb_language"] = data.get("Language", "")
+    movie["omdb_country"] = data.get("Country", "")
 
     # Build review links section
     review_links_html = ""
@@ -1135,13 +1147,19 @@ def create_showtime_html_fallback(movie, cinema, parsed_showtime):
             rooms_str = ", ".join(rooms_list)
             rooms_info = f"<p><strong>Αίθουσα:</strong> {rooms_str}</p>"
 
-    # Build ScreeningEvent Schema
+    # Build COMPLETE ScreeningEvent Schema with Movie workPresented
     screening_event_schema = None
     try:
         # Create ISO 8601 datetime for the event
         start_datetime = f"{parsed_showtime['year']}-{parsed_showtime['month']:02d}-{parsed_showtime['day']:02d}T{parsed_showtime['hour']:02d}:{parsed_showtime['minute']:02d}:00+03:00"
 
-        # Build location object
+        # Build URL for this specific showtime page
+        region_slug = slugify(cinema.get("region", ""))
+        cinema_slug = slugify(cinema.get("cinema", ""))
+        movie_slug = movie.get("slug", "")
+        showtime_url = f"{BASE_URL}/region/{region_slug}/cinema/{cinema_slug}/movie/{movie_slug}/{parsed_showtime['date']}/{parsed_showtime['time']}.html"
+
+        # Build location object with geo coordinates
         location_obj = {
             "@type": "MovieTheater",
             "name": cinema.get("cinema", "")
@@ -1153,16 +1171,85 @@ def create_showtime_html_fallback(movie, cinema, parsed_showtime):
                 "addressLocality": "Αθήνα",
                 "addressCountry": "GR"
             }
+        if cinema.get("lat") and cinema.get("lon"):
+            location_obj["geo"] = {
+                "@type": "GeoCoordinates",
+                "latitude": str(cinema["lat"]),
+                "longitude": str(cinema["lon"])
+            }
+        if cinema.get("website"):
+            location_obj["url"] = cinema["website"]
 
-        # Use simple string reference for movie to avoid Movie schema validation requirements
-        movie_name = movie.get("greek_title", "")
+        # Build Movie object (workPresented) with OMDB data
+        movie_name = movie.get("omdb_title") or movie.get("original_title") or movie.get("greek_title", "")
+        movie_obj = {
+            "@type": "Movie",
+            "name": movie_name,
+            "image": movie.get("omdb_poster", ""),
+            "description": movie.get("omdb_plot", "")
+        }
 
+        # Add IMDb URL as @id
+        if movie.get("imdb_link"):
+            movie_obj["@id"] = movie.get("imdb_link")
+
+        # Add alternate name (Greek title)
+        if movie.get("greek_title") and movie.get("greek_title") != movie_name:
+            movie_obj["alternateName"] = movie.get("greek_title")
+
+        # Add year
+        if movie.get("omdb_year"):
+            movie_obj["datePublished"] = movie.get("omdb_year")
+
+        # Convert runtime to ISO 8601 duration (e.g., "119 min" -> "PT119M")
+        if movie.get("omdb_runtime"):
+            runtime_str = movie.get("omdb_runtime")
+            minutes = re.search(r'(\d+)', runtime_str)
+            if minutes:
+                movie_obj["duration"] = f"PT{minutes.group(1)}M"
+
+        # Add genre as array
+        if movie.get("omdb_genre"):
+            genres = [g.strip() for g in movie.get("omdb_genre").split(",")]
+            movie_obj["genre"] = genres
+
+        # Add director
+        if movie.get("omdb_director") and movie.get("omdb_director") != "N/A":
+            directors = [d.strip() for d in movie.get("omdb_director").split(",")]
+            if len(directors) == 1:
+                movie_obj["director"] = {"@type": "Person", "name": directors[0]}
+            else:
+                movie_obj["director"] = [{"@type": "Person", "name": d} for d in directors]
+
+        # Add actors
+        if movie.get("omdb_actors") and movie.get("omdb_actors") != "N/A":
+            actors = [a.strip() for a in movie.get("omdb_actors").split(",")]
+            movie_obj["actor"] = [{"@type": "Person", "name": a} for a in actors[:5]]  # Limit to 5 actors
+
+        # Add aggregate rating
+        if movie.get("omdb_rating") and movie.get("omdb_rating") != "N/A":
+            rating_obj = {
+                "@type": "AggregateRating",
+                "ratingValue": movie.get("omdb_rating"),
+                "bestRating": "10"
+            }
+            if movie.get("omdb_votes"):
+                # Remove commas from vote count (e.g., "15,247" -> "15247")
+                votes = movie.get("omdb_votes").replace(",", "")
+                rating_obj["ratingCount"] = votes
+            movie_obj["aggregateRating"] = rating_obj
+
+        # Build complete ScreeningEvent schema
         screening_event_schema = {
             "@context": "https://schema.org",
             "@type": "ScreeningEvent",
-            "name": f"{movie_name} στο {cinema.get('cinema', '')}",
+            "@id": showtime_url,
+            "name": f"{movie.get('greek_title', '')} στο {cinema.get('cinema', '')}",
+            "url": showtime_url,
+            "image": movie.get("omdb_poster", ""),
             "startDate": start_datetime,
             "location": location_obj,
+            "workPresented": movie_obj,
             "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
             "eventStatus": "https://schema.org/EventScheduled"
         }
@@ -1412,13 +1499,19 @@ def inject_cinema_showtime_info(movie_html, cinema, parsed_showtime, movie):
     showtime_formatted = parsed_showtime["time"].replace("-", ":")
     date_formatted = parsed_showtime["full"]
 
-    # Build ScreeningEvent Schema
+    # Build COMPLETE ScreeningEvent Schema with Movie workPresented
     screening_event_schema = None
     try:
         # Create ISO 8601 datetime for the event
         start_datetime = f"{parsed_showtime['year']}-{parsed_showtime['month']:02d}-{parsed_showtime['day']:02d}T{parsed_showtime['hour']:02d}:{parsed_showtime['minute']:02d}:00+03:00"
 
-        # Build location object
+        # Build URL for this specific showtime page
+        region_slug = slugify(cinema.get("region", ""))
+        cinema_slug = slugify(cinema.get("cinema", ""))
+        movie_slug = movie.get("slug", "")
+        showtime_url = f"{BASE_URL}/region/{region_slug}/cinema/{cinema_slug}/movie/{movie_slug}/{parsed_showtime['date']}/{parsed_showtime['time']}.html"
+
+        # Build location object with geo coordinates
         location_obj = {
             "@type": "MovieTheater",
             "name": cinema.get("cinema", "")
@@ -1430,16 +1523,85 @@ def inject_cinema_showtime_info(movie_html, cinema, parsed_showtime, movie):
                 "addressLocality": "Αθήνα",
                 "addressCountry": "GR"
             }
+        if cinema.get("lat") and cinema.get("lon"):
+            location_obj["geo"] = {
+                "@type": "GeoCoordinates",
+                "latitude": str(cinema["lat"]),
+                "longitude": str(cinema["lon"])
+            }
+        if cinema.get("website"):
+            location_obj["url"] = cinema["website"]
 
-        # Use simple string reference for movie to avoid Movie schema validation requirements
-        movie_name = movie.get("greek_title", "")
+        # Build Movie object (workPresented) with OMDB data
+        movie_name = movie.get("omdb_title") or movie.get("original_title") or movie.get("greek_title", "")
+        movie_obj = {
+            "@type": "Movie",
+            "name": movie_name,
+            "image": movie.get("omdb_poster", ""),
+            "description": movie.get("omdb_plot", "")
+        }
 
+        # Add IMDb URL as @id
+        if movie.get("imdb_link"):
+            movie_obj["@id"] = movie.get("imdb_link")
+
+        # Add alternate name (Greek title)
+        if movie.get("greek_title") and movie.get("greek_title") != movie_name:
+            movie_obj["alternateName"] = movie.get("greek_title")
+
+        # Add year
+        if movie.get("omdb_year"):
+            movie_obj["datePublished"] = movie.get("omdb_year")
+
+        # Convert runtime to ISO 8601 duration (e.g., "119 min" -> "PT119M")
+        if movie.get("omdb_runtime"):
+            runtime_str = movie.get("omdb_runtime")
+            minutes = re.search(r'(\d+)', runtime_str)
+            if minutes:
+                movie_obj["duration"] = f"PT{minutes.group(1)}M"
+
+        # Add genre as array
+        if movie.get("omdb_genre"):
+            genres = [g.strip() for g in movie.get("omdb_genre").split(",")]
+            movie_obj["genre"] = genres
+
+        # Add director
+        if movie.get("omdb_director") and movie.get("omdb_director") != "N/A":
+            directors = [d.strip() for d in movie.get("omdb_director").split(",")]
+            if len(directors) == 1:
+                movie_obj["director"] = {"@type": "Person", "name": directors[0]}
+            else:
+                movie_obj["director"] = [{"@type": "Person", "name": d} for d in directors]
+
+        # Add actors
+        if movie.get("omdb_actors") and movie.get("omdb_actors") != "N/A":
+            actors = [a.strip() for a in movie.get("omdb_actors").split(",")]
+            movie_obj["actor"] = [{"@type": "Person", "name": a} for a in actors[:5]]  # Limit to 5 actors
+
+        # Add aggregate rating
+        if movie.get("omdb_rating") and movie.get("omdb_rating") != "N/A":
+            rating_obj = {
+                "@type": "AggregateRating",
+                "ratingValue": movie.get("omdb_rating"),
+                "bestRating": "10"
+            }
+            if movie.get("omdb_votes"):
+                # Remove commas from vote count (e.g., "15,247" -> "15247")
+                votes = movie.get("omdb_votes").replace(",", "")
+                rating_obj["ratingCount"] = votes
+            movie_obj["aggregateRating"] = rating_obj
+
+        # Build complete ScreeningEvent schema
         screening_event_schema = {
             "@context": "https://schema.org",
             "@type": "ScreeningEvent",
-            "name": f"{movie_name} στο {cinema.get('cinema', '')}",
+            "@id": showtime_url,
+            "name": f"{movie.get('greek_title', '')} στο {cinema.get('cinema', '')}",
+            "url": showtime_url,
+            "image": movie.get("omdb_poster", ""),
             "startDate": start_datetime,
             "location": location_obj,
+            "workPresented": movie_obj,
             "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
             "eventStatus": "https://schema.org/EventScheduled"
         }
