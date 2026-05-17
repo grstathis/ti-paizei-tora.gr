@@ -1721,13 +1721,611 @@ border-radius: 8px;">
     return movie_html
 
 
+def generate_consolidated_movie_page(movie, cinema_screenings):
+    """
+    Generate a consolidated movie page with ALL showtimes grouped by cinema.
+
+    Args:
+        movie: Movie data dict with OMDB fields
+        cinema_screenings: List of dicts with keys:
+            - "cinema": cinema data dict
+            - "showtimes": list of parsed showtime dicts
+
+    Returns:
+        Complete HTML string for the movie page
+    """
+
+    # Prepare movie title for display
+    movie_title_display = movie.get("greek_title", "")
+    movie_title_english = movie.get("omdb_title") or movie.get("original_title", "")
+    if movie.get("original_title") and movie.get("original_title").strip() not in ["", "/"]:
+        movie_title_display += f" ({movie.get('original_title').rstrip('/ ').strip()})"
+
+    # Get movie metadata
+    poster = movie.get("omdb_poster", "")
+    plot = movie.get("omdb_plot", "No plot available.")
+    year = movie.get("omdb_year", movie.get("year", ""))
+    runtime = movie.get("omdb_runtime", "")
+    rating = movie.get("omdb_rating", "")
+
+    # Build review links
+    review_links_html = ""
+    review_links_list = []
+
+    if movie.get("athinorama_link"):
+        review_links_list.append(
+            f'<a href="{movie["athinorama_link"]}" target="_blank" class="review-link">Athinorama</a>'
+        )
+    if movie.get("imdb_link"):
+        review_links_list.append(
+            f'<a href="{movie["imdb_link"]}" target="_blank" class="review-link">IMDb</a>'
+        )
+    if movie.get("flix_url") and movie.get("flix_rating", 0) > 0:
+        review_links_list.append(
+            f'<a href="{movie["flix_url"]}" target="_blank" class="review-link">📺 Flix: {movie["flix_rating"]}/10</a>'
+        )
+    if movie.get("lifo_url") and movie.get("lifo_rating", "0") not in ["0", ""]:
+        review_links_list.append(
+            f'<a href="{movie["lifo_url"]}" target="_blank" class="review-link">📰 Lifo: {movie["lifo_rating"]}/5</a>'
+        )
+
+    if review_links_list:
+        review_links_html = '<div class="review-links">' + " ".join(review_links_list) + '</div>'
+
+    # Build Movie schema with all ScreeningEvents as subEvents
+    screening_events = []
+
+    for cinema_group in cinema_screenings:
+        cinema = cinema_group["cinema"]
+        cinema_slug = slugify(cinema.get("cinema", ""))
+
+        for showtime in cinema_group["showtimes"]:
+            # Create unique ID for this screening
+            showtime_id = f"{cinema_slug}-{showtime['date']}-{showtime['time'].replace('-', '')}"
+
+            # Build ScreeningEvent
+            event = {
+                "@type": "ScreeningEvent",
+                "@id": showtime_id,
+                "name": f"{movie.get('greek_title', '')} στο {cinema.get('cinema', '')}",
+                "startDate": f"{showtime['year']}-{showtime['month']:02d}-{showtime['day']:02d}T{showtime['hour']:02d}:{showtime['minute']:02d}:00+03:00",
+                "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+                "eventStatus": "https://schema.org/EventScheduled"
+            }
+
+            # Add location
+            location_obj = {
+                "@type": "MovieTheater",
+                "name": cinema.get("cinema", "")
+            }
+            if cinema.get("address"):
+                location_obj["address"] = {
+                    "@type": "PostalAddress",
+                    "streetAddress": cinema["address"],
+                    "addressLocality": "Αθήνα",
+                    "addressCountry": "GR"
+                }
+            if cinema.get("lat") and cinema.get("lon"):
+                location_obj["geo"] = {
+                    "@type": "GeoCoordinates",
+                    "latitude": str(cinema["lat"]),
+                    "longitude": str(cinema["lon"])
+                }
+            if cinema.get("website"):
+                location_obj["url"] = cinema["website"]
+
+            event["location"] = location_obj
+            screening_events.append(event)
+
+    # Build Movie schema
+    movie_schema = {
+        "@context": "https://schema.org",
+        "@type": "Movie",
+        "name": movie_title_english,
+        "image": poster,
+        "description": plot
+    }
+
+    if movie.get("imdb_link"):
+        movie_schema["@id"] = movie.get("imdb_link")
+
+    if movie.get("greek_title") and movie.get("greek_title") != movie_title_english:
+        movie_schema["alternateName"] = movie.get("greek_title")
+
+    if year:
+        movie_schema["datePublished"] = year
+
+    if runtime:
+        minutes = re.search(r'(\d+)', runtime)
+        if minutes:
+            movie_schema["duration"] = f"PT{minutes.group(1)}M"
+
+    if movie.get("omdb_genre"):
+        genres = [g.strip() for g in movie.get("omdb_genre").split(",")]
+        movie_schema["genre"] = genres
+
+    if movie.get("omdb_director") and movie.get("omdb_director") != "N/A":
+        directors = [d.strip() for d in movie.get("omdb_director").split(",")]
+        if len(directors) == 1:
+            movie_schema["director"] = {"@type": "Person", "name": directors[0]}
+        else:
+            movie_schema["director"] = [{"@type": "Person", "name": d} for d in directors]
+
+    if movie.get("omdb_actors") and movie.get("omdb_actors") != "N/A":
+        actors = [a.strip() for a in movie.get("omdb_actors").split(",")]
+        movie_schema["actor"] = [{"@type": "Person", "name": a} for a in actors[:5]]
+
+    if movie.get("omdb_rating") and movie.get("omdb_rating") != "N/A":
+        rating_obj = {
+            "@type": "AggregateRating",
+            "ratingValue": movie.get("omdb_rating"),
+            "bestRating": "10"
+        }
+        if movie.get("omdb_votes"):
+            votes = movie.get("omdb_votes").replace(",", "")
+            rating_obj["ratingCount"] = votes
+        movie_schema["aggregateRating"] = rating_obj
+
+    # Add all ScreeningEvents as subEvents
+    if screening_events:
+        movie_schema["subEvent"] = screening_events
+
+    # Build cinema sections HTML
+    cinema_sections_html = ""
+
+    for cinema_group in cinema_screenings:
+        cinema = cinema_group["cinema"]
+        cinema_slug = slugify(cinema.get("cinema", ""))
+        showtimes = cinema_group["showtimes"]
+
+        cinema_name = cinema.get("cinema", "Μη διαθέσιμο")
+        cinema_region = cinema.get("region", "")
+        cinema_addr = cinema.get("address", "")
+        cinema_website = cinema.get("website", "")
+
+        # Build cinema header
+        website_link = ""
+        if cinema_website:
+            website_link = f' - <a href="{cinema_website}" target="_blank" style="color: #667eea; text-decoration: underline;">Ιστοσελίδα</a>'
+
+        cinema_sections_html += f'''
+  <div class="cinema-section" data-cinema="{cinema_slug}">
+    <h2 style="color: #667eea; margin: 24px 0 16px 0; padding-bottom: 12px; border-bottom: 2px solid #f0f0f0;">
+      {cinema_name} - {cinema_region}{website_link}
+    </h2>
+'''
+
+        # Build showtime cards
+        for showtime in showtimes:
+            showtime_id = f"{cinema_slug}-{showtime['date']}-{showtime['time'].replace('-', '')}"
+            time_formatted = showtime["time"].replace("-", ":")
+            date_formatted = showtime["full"]
+
+            # Get rooms info
+            rooms_html = ""
+            if cinema.get("rooms"):
+                rooms_list = [room.get("room", "") for room in cinema["rooms"] if room.get("room")]
+                if rooms_list:
+                    rooms_str = ", ".join(rooms_list)
+                    rooms_html = f'<div style="color: #666; font-size: 14px;">Αίθουσα: {rooms_str}</div>'
+
+            cinema_sections_html += f'''
+    <div class="showtime-card"
+         id="{showtime_id}"
+         data-cinema="{cinema_name}"
+         data-date="{showtime['date']}"
+         data-time="{time_formatted}">
+      <div class="time" style="font-size: 18px; font-weight: bold; color: #333; margin-bottom: 4px;">
+        🕒 {date_formatted}
+      </div>
+      <div style="color: #666; font-size: 14px; margin-bottom: 8px;">
+        {cinema_addr}
+      </div>
+      {rooms_html}
+      <div style="margin-top: 12px;">
+        <button class="share-btn" data-showtime-id="{showtime_id}"
+                style="padding: 8px 16px; background: #667eea; color: white; border: none;
+                       border-radius: 6px; cursor: pointer; font-size: 14px; font-weight: 500;">
+          🔗 Κοινοποίηση
+        </button>
+      </div>
+    </div>
+'''
+
+        cinema_sections_html += "  </div>\n"
+
+    # Complete HTML document
+    html_content = f'''<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{movie_title_display} - Προβολές στην Αθήνα</title>
+  <meta name="description" content="Όλες οι προβολές της ταινίας {movie_title_display} στα σινεμά της Αθήνας. Βρες ωράρια, κινηματογράφους και κλείσε εισιτήρια.">
+
+  <script type="application/ld+json">
+  {json.dumps(movie_schema, ensure_ascii=False, indent=2)}
+  </script>
+
+  <style>
+    * {{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }}
+    body {{
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: #f5f5f5;
+      padding: 20px;
+    }}
+    .container {{
+      max-width: 900px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }}
+    .movie-header {{
+      padding: 30px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      text-align: center;
+    }}
+    .movie-header h1 {{
+      font-size: 2em;
+      margin-bottom: 10px;
+    }}
+    .movie-header .subtitle {{
+      font-size: 1.1em;
+      opacity: 0.9;
+    }}
+    .movie-details {{
+      padding: 30px;
+      display: flex;
+      gap: 20px;
+    }}
+    .movie-poster {{
+      flex-shrink: 0;
+    }}
+    .movie-poster img {{
+      width: 200px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }}
+    .movie-info {{
+      flex: 1;
+    }}
+    .movie-info .meta {{
+      color: #777;
+      margin-bottom: 12px;
+    }}
+    .movie-info .plot {{
+      margin-bottom: 16px;
+      line-height: 1.6;
+    }}
+    .movie-info .rating {{
+      color: #f39c12;
+      font-weight: bold;
+    }}
+    .review-links {{
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }}
+    .review-link {{
+      display: inline-block;
+      padding: 6px 12px;
+      background: #f0f0f0;
+      color: #333;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 13px;
+      transition: background 0.2s;
+    }}
+    .review-link:hover {{
+      background: #e0e0e0;
+    }}
+    .showtimes-container {{
+      padding: 30px;
+    }}
+    .cinema-section {{
+      margin-bottom: 32px;
+    }}
+    .showtime-card {{
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+      padding: 16px;
+      margin: 12px 0;
+      border-radius: 8px;
+      background: #f9f9f9;
+    }}
+    .showtime-card.featured {{
+      border-color: #667eea;
+      background: linear-gradient(to right, #f0f4ff, #ffffff);
+      box-shadow: 0 4px 20px rgba(102, 126, 234, 0.25);
+      transform: scale(1.02);
+    }}
+    .share-btn:hover {{
+      background: #5568d3;
+    }}
+    .show-all-btn {{
+      width: 100%;
+      padding: 16px;
+      background: #f0f4ff;
+      border: 2px dashed #667eea;
+      border-radius: 8px;
+      color: #667eea;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: all 0.3s;
+    }}
+    .show-all-btn:hover {{
+      background: #667eea;
+      color: white;
+      border-style: solid;
+    }}
+    .toast {{
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: #28a745;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      opacity: 0;
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }}
+    .toast.show {{
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }}
+    .home-link {{
+      text-align: center;
+      padding: 20px 30px 30px 30px;
+    }}
+    .home-button {{
+      display: inline-block;
+      padding: 12px 32px;
+      background: #667eea;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      transition: all 0.3s;
+      box-shadow: 0 2px 8px rgba(102,126,234,0.3);
+    }}
+    .home-button:hover {{
+      background: #5568d3;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(102,126,234,0.4);
+    }}
+    .top-nav {{
+      text-align: center;
+      padding: 15px 20px;
+      background: #f8f9fa;
+      border-bottom: 1px solid #e0e0e0;
+      margin-bottom: 0;
+    }}
+    .top-nav a {{
+      color: #667eea;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: color 0.2s;
+    }}
+    .top-nav a:hover {{
+      color: #5568d3;
+      text-decoration: underline;
+    }}
+    @media (max-width: 768px) {{
+      .movie-details {{
+        flex-direction: column;
+      }}
+      .movie-poster img {{
+        width: 100%;
+        max-width: 300px;
+      }}
+    }}
+  </style>
+</head>
+<body>
+  <div class="top-nav">
+    <a href="https://ti-paizei-tora.gr">← Επιστροφή στην Αρχική</a>
+  </div>
+  <div class="container">
+    <div class="movie-header">
+      <h1>{movie_title_display}</h1>
+      <div class="subtitle">Προβολές στην Αθήνα</div>
+    </div>
+
+    <div class="movie-details">
+      <div class="movie-poster">
+        <img src="{poster}" alt="{movie_title_display}">
+      </div>
+      <div class="movie-info">
+        <div class="meta">{year} • {runtime}</div>
+        <div class="plot">{plot}</div>
+        <div class="rating">⭐ IMDb {rating}/10</div>
+        {review_links_html}
+      </div>
+    </div>
+
+    <div class="showtimes-container">
+      <h2 style="color: #333; margin-bottom: 20px; font-size: 1.5em;">Πού παίζει;</h2>
+{cinema_sections_html}
+    </div>
+
+    <div class="home-link">
+      <a href="https://ti-paizei-tora.gr" class="home-button">
+        🎬 Περισσότερες Ταινίες
+      </a>
+    </div>
+  </div>
+
+  <script>
+    // Deep linking & default collapsed state
+    window.addEventListener('DOMContentLoaded', () => {{
+      const urlParams = new URLSearchParams(window.location.search);
+      const showtimeId = urlParams.get('showtime');
+
+      if (showtimeId) {{
+        // CASE 1: Specific showtime requested - show only that one
+        const targetCard = document.getElementById(showtimeId);
+
+        if (targetCard) {{
+          // Hide all showtime cards except the target
+          document.querySelectorAll('.showtime-card').forEach(card => {{
+            if (card.id !== showtimeId) {{
+              card.style.display = 'none';
+            }}
+          }});
+
+          // Hide cinema sections that don't contain this showtime
+          document.querySelectorAll('.cinema-section').forEach(section => {{
+            if (!section.contains(targetCard)) {{
+              section.style.display = 'none';
+            }}
+          }});
+
+          // Highlight the target card
+          targetCard.classList.add('featured');
+
+          // Update page title
+          const cinema = targetCard.dataset.cinema;
+          const time = targetCard.dataset.time;
+          document.title = `{movie_title_display} - ${{cinema}} - ${{time}}`;
+
+          // Add "Show all showtimes" button
+          const showAllBtn = document.createElement('button');
+          showAllBtn.className = 'show-all-btn';
+          showAllBtn.textContent = '📅 Δες όλες τις προβολές';
+          showAllBtn.onclick = () => {{
+            window.location.href = window.location.pathname;
+          }};
+          targetCard.parentElement.insertBefore(showAllBtn, targetCard.nextSibling);
+
+          // Scroll to top
+          window.scrollTo({{ top: 0, behavior: 'smooth' }});
+        }}
+      }} else {{
+        // CASE 2: Base movie URL - hide all cinema sections by default
+        const showtimesContainer = document.querySelector('.showtimes-container');
+
+        // Hide all cinema sections
+        document.querySelectorAll('.cinema-section').forEach(section => {{
+          section.style.display = 'none';
+        }});
+
+        // Create and add "Show All Showtimes" button
+        const expandBtn = document.createElement('button');
+        expandBtn.className = 'show-all-btn';
+        expandBtn.style.cssText = `
+          display: block;
+          margin: 20px auto;
+          padding: 16px 32px;
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          color: white;
+          border: none;
+          border-radius: 10px;
+          font-size: 18px;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.3s;
+          box-shadow: 0 4px 12px rgba(102,126,234,0.3);
+        `;
+        expandBtn.textContent = '📍 Δες Όλες τις Προβολές & Κινηματογράφους';
+
+        expandBtn.addEventListener('mouseover', () => {{
+          expandBtn.style.transform = 'translateY(-2px)';
+          expandBtn.style.boxShadow = '0 6px 16px rgba(102,126,234,0.4)';
+        }});
+        expandBtn.addEventListener('mouseout', () => {{
+          expandBtn.style.transform = 'translateY(0)';
+          expandBtn.style.boxShadow = '0 4px 12px rgba(102,126,234,0.3)';
+        }});
+
+        expandBtn.onclick = () => {{
+          // Show all cinema sections
+          document.querySelectorAll('.cinema-section').forEach(section => {{
+            section.style.display = 'block';
+          }});
+          // Hide the button
+          expandBtn.style.display = 'none';
+        }};
+
+        // Insert button after the "Πού παίζει;" heading
+        const heading = showtimesContainer.querySelector('h2');
+        heading.after(expandBtn);
+      }}
+    }});
+
+    // Share button functionality
+    document.querySelectorAll('.share-btn').forEach(btn => {{
+      btn.addEventListener('click', async (e) => {{
+        const showtimeId = e.target.dataset.showtimeId;
+        const shareUrl = `${{window.location.origin}}${{window.location.pathname}}?showtime=${{showtimeId}}`;
+
+        const card = document.getElementById(showtimeId);
+        const cinema = card.dataset.cinema;
+        const time = card.querySelector('.time').textContent;
+        const shareTitle = `{movie_title_display} - ${{cinema}}`;
+        const shareText = `Θες να πάμε; ${{time}}`;
+
+        try {{
+          if (navigator.share) {{
+            await navigator.share({{
+              title: shareTitle,
+              text: shareText,
+              url: shareUrl
+            }});
+          }} else {{
+            await navigator.clipboard.writeText(shareUrl);
+            showToast('✅ Ο σύνδεσμος αντιγράφηκε!');
+          }}
+        }} catch (err) {{
+          // User cancelled or error
+        }}
+      }});
+    }});
+
+    function showToast(message) {{
+      const toast = document.createElement('div');
+      toast.className = 'toast';
+      toast.textContent = message;
+      document.body.appendChild(toast);
+
+      setTimeout(() => toast.classList.add('show'), 100);
+      setTimeout(() => {{
+        toast.classList.remove('show');
+        setTimeout(() => toast.remove(), 300);
+      }}, 2000);
+    }}
+  </script>
+</body>
+</html>'''
+
+    return html_content
+
+
 def create_cinema_structure():
-    """Create folder structure: .region/{region}/cinema/{cinema}/movie/{movie}/date/showtime.html"""
+    """
+    Generate consolidated movie pages with ALL showtimes grouped by cinema.
+    Creates ONE HTML file per movie at: /movie/{slug}/index.html
+    """
 
     # DEBUG: Show current time at start
     now_debug = datetime.now(ZoneInfo("Europe/Athens"))
     print("="*80)
-    print(f"DEBUG: Starting showtime filtering at {now_debug}")
+    print(f"DEBUG: Starting consolidated page generation at {now_debug}")
     print(f"DEBUG: Current date (Athens): {now_debug.date()}")
     print(f"DEBUG: Current time (Athens): {now_debug.hour:02d}:{now_debug.minute:02d}")
     print("="*80)
@@ -1739,15 +2337,15 @@ def create_cinema_structure():
     with open(os.path.join(BASE_DIR, "cinemas.json"), "r", encoding="utf-8") as f:
         cinemas_data = json.load(f)
 
-    base_path = Path(REGION_DIR)
+    movie_dir_path = Path(MOVIE_DIR)
 
-    # 🗑️ DELETE OLD STRUCTURE BEFORE REBUILDING
-    if base_path.exists():
-        print(f"🗑️  Deleting existing folder structure: {base_path}")
-        shutil.rmtree(base_path)
-        print("✅ Old structure removed")
+    # 🗑️ DELETE OLD MOVIE FOLDER BEFORE REBUILDING
+    if movie_dir_path.exists():
+        print(f"🗑️  Deleting existing movie folder: {movie_dir_path}")
+        shutil.rmtree(movie_dir_path)
+        print("✅ Old movie folder removed")
 
-    base_path.mkdir(exist_ok=True)
+    movie_dir_path.mkdir(exist_ok=True)
 
     stats = {
         "total_movies": 0,
@@ -1756,8 +2354,7 @@ def create_cinema_structure():
         "skipped_no_timetable": 0,
         "skipped_empty_timetable": 0,
         "skipped_past_times": 0,
-        "used_movie_html": 0,
-        "used_fallback_html": 0,
+        "movies_with_showtimes": 0,
         "movies_processed": [],
     }
 
@@ -1769,16 +2366,8 @@ def create_cinema_structure():
         movie = movie_list[0]
         stats["total_movies"] += 1
 
-        # Determine which title to use for folder structure
-        movie_title = movie.get("original_title", "").strip()
-        if not movie_title or movie_title == "/":
-            movie_title = movie.get("greek_title", "").strip()
-
-        # Clean up trailing slashes and extra spaces
-        movie_title = movie_title.rstrip("/ ").strip()
+        # Get movie slug
         movie_slug = movie.get("slug", "").strip()
-
-        # Fallback: if no slug exists, generate one
         if not movie_slug:
             movie_title = movie.get("original_title", "").strip()
             if not movie_title or movie_title == "/":
@@ -1786,37 +2375,17 @@ def create_cinema_structure():
             movie_title = movie_title.rstrip("/ ").strip()
             movie_slug = slugify(movie_title)
 
-        # ✅ Try to load the existing movie HTML (OPTIONAL)
-        movie_html_path = Path("movie") / movie_slug / "index.html"
-        base_movie_html = None
-        use_fallback = False
-
-        if movie_html_path.exists():
-            try:
-                with open(movie_html_path, "r", encoding="utf-8") as f:
-                    base_movie_html = f.read()
-            except Exception as e:
-                print(f"⚠️  Could not read movie HTML for {movie_title}: {e}")
-                use_fallback = True
-        else:
-            use_fallback = True
-
-        # ✅ SAME AS JS: Filter valid cinemas first
+        # ✅ Filter valid cinemas
         valid_cinemas = []
         for cinema in cinema_list:
-            # Check if cinema has required fields
             if not cinema.get("region") or not cinema.get("cinema"):
                 continue
 
-            # ✅ MATCH JS LOGIC: c.timetable && c.timetable.flat().length > 0
             timetable = cinema.get("timetable")
-
-            # Skip if no timetable property
             if not timetable:
                 stats["skipped_no_timetable"] += 1
                 continue
 
-            # Flatten and check if it has content
             flattened = flatten_timetable(timetable)
             if len(flattened) == 0:
                 stats["skipped_empty_timetable"] += 1
@@ -1824,118 +2393,83 @@ def create_cinema_structure():
 
             valid_cinemas.append(cinema)
 
-        # ✅ SAME AS JS: if (regionFiltered.length === 0) return;
         if len(valid_cinemas) == 0:
             continue
 
-        cinemas_for_movie = 0
-        showtimes_for_movie = 0
+        # ✅ Aggregate showtimes by cinema
+        cinema_screenings = []  # List of {cinema: cinema_data, showtimes: [parsed_showtimes]}
 
-        # Loop through valid cinemas only
+        print(f"\n🎬 Processing movie: {movie.get('greek_title', 'Unknown')}")
+
         for cinema in valid_cinemas:
-            region_slug = slugify(cinema["region"])
-            cinema_slug = slugify(cinema["cinema"])
-
-            # Collect all valid parsed showtimes
+            # Collect all valid parsed showtimes for this cinema
             valid_showtimes = []
             timetable = cinema.get("timetable", [])
 
-            print(f"\n🎬 Processing movie: {movie.get('greek_title', 'Unknown')}")
             print(f"   Cinema: {cinema.get('cinema', 'Unknown')}")
-            print(f"   Timetable lists: {len(timetable)}")
 
             for showtime_list in timetable:
-                if not showtime_list:  # Skip empty lists
+                if not showtime_list:
                     continue
-                print(f"   Showtime list has {len(showtime_list)} showtimes")
+
                 for showtime in showtime_list:
-                    if not showtime or not showtime.strip():  # Skip empty strings
+                    if not showtime or not showtime.strip():
                         continue
 
-                    print(f"   → Parsing: '{showtime}'")
                     parsed = parse_showtime(showtime)
-
-                    # Skip if parsing failed
                     if not parsed:
-                        print(f"      ❌ Parsing FAILED")
                         continue
 
-                    print(f"      ✅ Parsed successfully: {parsed['date']} at {parsed['time']}")
-
-                    # ✅ Skip past dates and times
+                    # Skip past dates and times
                     if not is_future_showtime(parsed):
-                        print(f"      ⏰ Skipped - past time")
                         stats["skipped_past_times"] += 1
                         continue
 
-                    print(f"      🎯 ADDED to valid_showtimes")
                     valid_showtimes.append(parsed)
 
-            print(f"   Total valid showtimes: {len(valid_showtimes)}\n")
+            if valid_showtimes:
+                # Sort showtimes by date and time
+                valid_showtimes.sort(key=lambda x: (x["date"], x["time"]))
 
-            # Only create folders if we have valid future showtimes
-            if not valid_showtimes:
-                continue
+                cinema_screenings.append({
+                    "cinema": cinema,
+                    "showtimes": valid_showtimes
+                })
 
-            cinemas_for_movie += 1
+                stats["total_cinemas"] += 1
+                stats["total_showtimes"] += len(valid_showtimes)
 
-            # Create region/cinema/movie folder structure
-            movie_path = (
-                base_path / region_slug / "cinema" / cinema_slug / "movie" / movie_slug
-            )
-            movie_path.mkdir(parents=True, exist_ok=True)
+                print(f"      ✅ {len(valid_showtimes)} valid showtimes")
 
-            # Write all the valid showtimes as HTML files
-            for parsed in valid_showtimes:
-                showtimes_for_movie += 1
+        # ✅ Generate consolidated movie page if we have showtimes
+        if cinema_screenings:
+            # Generate HTML
+            movie_html = generate_consolidated_movie_page(movie, cinema_screenings)
 
-                # Create date folder
-                date_path = movie_path / parsed["date"]
-                date_path.mkdir(parents=True, exist_ok=True)
+            # Write to /movie/{slug}/index.html
+            movie_page_dir = movie_dir_path / movie_slug
+            movie_page_dir.mkdir(parents=True, exist_ok=True)
+            movie_page_file = movie_page_dir / "index.html"
 
-                # Create showtime HTML file
-                showtime_file = date_path / f"{parsed['time']}.html"
+            with open(movie_page_file, "w", encoding="utf-8") as f:
+                f.write(movie_html)
 
-                # ✅ Use movie HTML if available, otherwise use fallback
-                if base_movie_html and not use_fallback:
-                    # Inject cinema and showtime info into existing movie HTML
-                    showtime_html = inject_cinema_showtime_info(
-                        base_movie_html, cinema, parsed, movie
-                    )
-                    stats["used_movie_html"] += 1
-                else:
-                    # Generate complete HTML from scratch
-                    showtime_html = create_showtime_html_fallback(movie, cinema, parsed)
-                    stats["used_fallback_html"] += 1
+            stats["movies_with_showtimes"] += 1
+            stats["movies_processed"].append({
+                "title": movie.get("greek_title", "Unknown"),
+                "slug": movie_slug,
+                "cinemas": len(cinema_screenings),
+                "showtimes": sum(len(cs["showtimes"]) for cs in cinema_screenings),
+            })
 
-                if showtime_html:
-                    # Write HTML file
-                    with open(showtime_file, "w", encoding="utf-8") as f:
-                        f.write(showtime_html)
-
-        stats["total_cinemas"] += cinemas_for_movie
-        stats["total_showtimes"] += showtimes_for_movie
-
-        # Only log movies that have actual showtimes
-        if cinemas_for_movie > 0:
-            stats["movies_processed"].append(
-                {
-                    "title": movie_title,
-                    "slug": movie_slug,
-                    "cinemas": cinemas_for_movie,
-                    "showtimes": showtimes_for_movie,
-                }
-            )
-            print(
-                f"✅ {movie_title}: {cinemas_for_movie} cinemas, {showtimes_for_movie} showtimes"
-            )
+            print(f"   ✅ Generated consolidated page: {movie_page_file}")
+            print(f"      {len(cinema_screenings)} cinemas, {sum(len(cs['showtimes']) for cs in cinema_screenings)} showtimes\n")
 
     print("\n📊 Summary:")
-    print(f"   Movies processed: {stats['total_movies']}")
+    print(f"   Total movies: {stats['total_movies']}")
+    print(f"   Movies with showtimes: {stats['movies_with_showtimes']}")
     print(f"   Total cinema entries: {stats['total_cinemas']}")
-    print(f"   Total HTML pages created: {stats['total_showtimes']}")
-    print(f"   Used existing movie HTML: {stats['used_movie_html']}")
-    print(f"   Used fallback HTML: {stats['used_fallback_html']}")
+    print(f"   Total showtimes: {stats['total_showtimes']}")
     print(f"   Skipped (no timetable): {stats['skipped_no_timetable']}")
     print(f"   Skipped (empty timetable): {stats['skipped_empty_timetable']}")
     print(f"   Skipped (past times): {stats['skipped_past_times']}")
@@ -1950,13 +2484,10 @@ stats = create_cinema_structure()
 def generate_sitemap():
     now = datetime.now(ZoneInfo("Europe/Athens"))
     now_str = now.strftime("%Y-%m-%d")
-    today_date = now.date()
 
     # Separate URL lists
     static_urls = []
     movie_urls = []
-    today_showtimes = []
-    upcoming_showtimes = []
 
     # --- Static Pages (Homepage, Contact) ---
     static_urls.append(
@@ -1992,71 +2523,11 @@ def generate_sitemap():
   <url>
     <loc>{BASE_URL}/movie/{folder}/</loc>
     <lastmod>{now_str}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
   </url>
 """
             )
-
-    # --- Showtime Pages (Split by Date) ---
-    if os.path.exists(REGION_DIR):
-        for root, dirs, files in os.walk(REGION_DIR):
-            for file in files:
-                if file.endswith(".html"):
-                    full_file_path = os.path.join(root, file)
-                    relative_path = os.path.relpath(full_file_path, REGION_DIR)
-                    url_path = relative_path.replace("\\", "/")
-                    page_url = f"{BASE_URL}/region/{url_path}"
-
-                    # Extract date from path (format: .../YYYY-MM-DD/...)
-                    try:
-                        # Path contains date like: region/area/cinema/movie/2026-05-13/20-30.html
-                        path_parts = url_path.split("/")
-                        date_str = None
-                        for part in path_parts:
-                            if len(part) == 10 and part.count("-") == 2:
-                                date_str = part
-                                break
-
-                        if date_str:
-                            showtime_date = datetime.strptime(date_str, "%Y-%m-%d").date()
-
-                            # Categorize: today vs upcoming
-                            if showtime_date == today_date:
-                                today_showtimes.append(
-                                    f"""
-  <url>
-    <loc>{page_url}</loc>
-    <lastmod>{now_str}</lastmod>
-    <changefreq>hourly</changefreq>
-    <priority>0.9</priority>
-  </url>
-"""
-                                )
-                            elif showtime_date > today_date:
-                                upcoming_showtimes.append(
-                                    f"""
-  <url>
-    <loc>{page_url}</loc>
-    <lastmod>{now_str}</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-"""
-                                )
-                            # Skip past dates (< today_date)
-                    except (ValueError, IndexError):
-                        # If date parsing fails, add to upcoming as fallback
-                        upcoming_showtimes.append(
-                            f"""
-  <url>
-    <loc>{page_url}</loc>
-    <lastmod>{now_str}</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-"""
-                        )
 
     # Helper function to write sitemap file
     def write_sitemap(filename, urls):
@@ -2074,12 +2545,10 @@ def generate_sitemap():
         return len(urls)
 
     # Write individual sitemaps
-    print("\nGenerating split sitemaps...")
+    print("\nGenerating sitemaps...")
     total = 0
     total += write_sitemap("sitemap-static.xml", static_urls)
     total += write_sitemap("sitemap-movies.xml", movie_urls)
-    total += write_sitemap("sitemap-today.xml", today_showtimes)
-    total += write_sitemap("sitemap-upcoming.xml", upcoming_showtimes)
 
     # --- Generate Sitemap Index ---
     sitemap_index = f"""<?xml version="1.0" encoding="UTF-8"?>
@@ -2092,14 +2561,6 @@ def generate_sitemap():
     <loc>{BASE_URL}/sitemap-movies.xml</loc>
     <lastmod>{now_str}</lastmod>
   </sitemap>
-  <sitemap>
-    <loc>{BASE_URL}/sitemap-today.xml</loc>
-    <lastmod>{now_str}</lastmod>
-  </sitemap>
-  <sitemap>
-    <loc>{BASE_URL}/sitemap-upcoming.xml</loc>
-    <lastmod>{now_str}</lastmod>
-  </sitemap>
 </sitemapindex>
 """
 
@@ -2108,9 +2569,7 @@ def generate_sitemap():
 
     print(f"  ✓ sitemap.xml (index)\n")
     print(f"✅ Total URLs: {total}")
-    print(f"   - Today's showtimes: {len(today_showtimes)} (priority 0.9)")
-    print(f"   - Upcoming showtimes: {len(upcoming_showtimes)} (priority 0.6)")
-    print(f"   - Movies: {len(movie_urls)}")
+    print(f"   - Movies: {len(movie_urls)} (priority 0.8)")
     print(f"   - Static pages: {len(static_urls)}")
 
 

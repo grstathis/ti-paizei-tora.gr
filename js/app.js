@@ -110,7 +110,7 @@ function parseShowtimeForUrl(showtimeStr) {
     };
 }
 
-// Generate URL for a specific showtime
+// Generate URL for a specific showtime (now points to consolidated movie page with query parameter)
 function generateShowtimeUrl(movie, cinema, showtimeStr) {
     // Parse the showtime
     const parsed = parseShowtimeForUrl(showtimeStr);
@@ -120,14 +120,13 @@ function generateShowtimeUrl(movie, cinema, showtimeStr) {
     const movieSlug = movie.slug;
     if (!movieSlug) return null;
 
-    // Create slugs for region and cinema
-    const regionSlug = slugify(cinema.region);
+    // Create cinema slug
     const cinemaSlug = slugify(cinema.cinema);
+    if (!cinemaSlug) return null;
 
-    if (!regionSlug || !cinemaSlug) return null;
-
-    // Build URL: region/{region}/cinema/{cinema}/movie/{movie}/date/time.html
-    const url = `region/${regionSlug}/cinema/${cinemaSlug}/movie/${movieSlug}/${parsed.date}/${parsed.time}.html`;
+    // Build URL: movie/{movie}/?showtime={cinema-slug}-{date}-{time}
+    const showtimeId = `${cinemaSlug}-${parsed.date}-${parsed.time}`;
+    const url = `movie/${movieSlug}/?showtime=${showtimeId}`;
 
     return url;
 }
@@ -1750,7 +1749,7 @@ async function shareMovie(movieIndex) {
     // Construct share URL
     let shareUrl;
     if (movie.slug && movie.slug.trim() !== '') {
-        shareUrl = `${window.location.origin}/movie/${movie.slug}/index.html`;
+        shareUrl = `${window.location.origin}/movie/${movie.slug}/`;
     } else if (movie.athinorama_link && movie.athinorama_link.trim() !== '') {
         shareUrl = movie.athinorama_link;
     } else {
