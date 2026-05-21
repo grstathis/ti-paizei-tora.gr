@@ -782,6 +782,35 @@ if os.path.exists(movie_base_path):
     print("✅ Old movie folder removed")
 
 
+def fetch_athinorama_poster(athinorama_url):
+    """
+    Fetch movie poster from Athinorama page as fallback when OMDB doesn't have it.
+    Returns the poster URL or None if not found.
+    """
+    if not athinorama_url:
+        return None
+
+    try:
+        response = requests.get(athinorama_url, timeout=10)
+        response.raise_for_status()
+
+        # Look for the main poster image (250x300 size)
+        # Pattern: <img src="https://www.athinorama.gr/Content/ImagesDatabase/p/250x300/...jpg" alt="Movie Title"
+        import re
+        match = re.search(r'<img[^>]+src="(https://www\.athinorama\.gr/Content/ImagesDatabase/p/250x300/[^"]+\.jpg[^"]*)"', response.text)
+
+        if match:
+            poster_url = match.group(1)
+            # Clean up the URL (remove HTML entities)
+            poster_url = poster_url.replace('&amp;', '&')
+            return poster_url
+
+        return None
+    except Exception as e:
+        print(f"Error fetching Athinorama poster: {e}")
+        return None
+
+
 # --- Main processing loop ---
 for entry in movies_data:
     if not entry or not isinstance(entry, list):
@@ -796,7 +825,24 @@ for entry in movies_data:
         print(f"Error extracting IMDb ID: {e}")
         continue
     if not imdb_id:
-        print("Skipped movie (no IMDb ID):", movie)
+        print("Skipped movie (no IMDb ID):", movie.get("greek_title", "Unknown"))
+
+        # Even without IMDB, try to get poster from Athinorama
+        athinorama_link = movie.get("athinorama_link")
+        if athinorama_link:
+            print(f"  → Attempting to fetch poster from Athinorama...")
+            athinorama_poster = fetch_athinorama_poster(athinorama_link)
+            if athinorama_poster:
+                movie["omdb_poster"] = athinorama_poster
+                print(f"  ✓ Got poster from Athinorama: {athinorama_poster[:60]}...")
+
+                # Generate slug from title
+                movie_title = movie.get("original_title") or movie.get("greek_title", "")
+                if movie_title and movie_title != "/":
+                    movie_slug = slugify(movie_title.rstrip("/").strip())
+                    movie["slug"] = movie_slug
+                    print(f"  ✓ Generated slug: {movie_slug}")
+
         continue
 
     # Fetch from OMDb
@@ -827,6 +873,17 @@ for entry in movies_data:
     movie["omdb_genre"] = data.get("Genre", "")
     movie["omdb_language"] = data.get("Language", "")
     movie["omdb_country"] = data.get("Country", "")
+
+    # 🖼️ Fallback: If OMDB poster is missing or "N/A", try Athinorama
+    omdb_poster = movie["omdb_poster"]
+    if not omdb_poster or omdb_poster == "N/A" or omdb_poster.strip() == "":
+        athinorama_link = movie.get("athinorama_link")
+        if athinorama_link:
+            print(f"  → OMDB poster missing, fetching from Athinorama...")
+            athinorama_poster = fetch_athinorama_poster(athinorama_link)
+            if athinorama_poster:
+                movie["omdb_poster"] = athinorama_poster
+                print(f"  ✓ Got poster from Athinorama: {athinorama_poster[:60]}...")
 
     # Build review links section
     review_links_html = ""
@@ -2495,7 +2552,7 @@ def generate_sitemap():
   <url>
     <loc>{BASE_URL}/</loc>
     <lastmod>{now_str}</lastmod>
-    <changefreq>hourly</changefreq>
+    <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 """
