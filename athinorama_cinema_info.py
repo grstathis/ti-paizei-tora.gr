@@ -24,6 +24,8 @@ with open(os.path.join(BASE_DIR, "google_api"), "r") as file:
     GOOGLE_API_KEY = file.read().strip()
 with open(os.path.join(BASE_DIR, "omdb_api"), "r") as file:
     OMDB_API_KEY = file.read().strip()
+with open(os.path.join(BASE_DIR, "tmdb_api"), "r") as file:
+    TMDB_API_KEY = file.read().strip()
 
 
 def extract_movie_links():
@@ -811,6 +813,70 @@ def fetch_athinorama_poster(athinorama_url):
         return None
 
 
+def fetch_tmdb_by_title(title, year=None):
+    """Search TMDB by title+year with fallback strategies."""
+    search_url = "https://api.themoviedb.org/3/search/movie"
+
+    # Strategy 1: title + year
+    # Strategy 2: title without year (year can be off by 1 or wrong)
+    # Strategy 3: title with language hint for Greek films
+    search_attempts = []
+    if year:
+        search_attempts.append({"api_key": TMDB_API_KEY, "query": title, "year": year})
+    search_attempts.append({"api_key": TMDB_API_KEY, "query": title})
+    search_attempts.append({"api_key": TMDB_API_KEY, "query": title, "language": "el-GR"})
+
+    movie_id = None
+    try:
+        for params in search_attempts:
+            strategy = f"query='{params['query']}'"
+            if "year" in params:
+                strategy += f", year={params['year']}"
+            if "language" in params:
+                strategy += f", lang={params['language']}"
+
+            r = requests.get(search_url, params=params)
+            results = r.json().get("results", [])
+            if results:
+                movie_id = results[0]["id"]
+                print(f"  TMDB: matched with [{strategy}] → id={movie_id}, '{results[0].get('title')}' ({results[0].get('release_date', '?')[:4]})")
+                break
+            else:
+                print(f"  TMDB: no results for [{strategy}]")
+
+        if not movie_id:
+            return None
+
+        details_url = f"https://api.themoviedb.org/3/movie/{movie_id}"
+        details = requests.get(details_url, params={"api_key": TMDB_API_KEY}).json()
+
+        credits_url = f"https://api.themoviedb.org/3/movie/{movie_id}/credits"
+        credits = requests.get(credits_url, params={"api_key": TMDB_API_KEY}).json()
+
+        directors = [c["name"] for c in credits.get("crew", []) if c.get("job") == "Director"]
+        actors = [c["name"] for c in credits.get("cast", [])[:5]]
+
+        poster_path = details.get("poster_path")
+        poster_url = f"https://image.tmdb.org/t/p/w500{poster_path}" if poster_path else None
+
+        return {
+            "title": details.get("title", ""),
+            "poster": poster_url,
+            "year": details.get("release_date", "")[:4],
+            "runtime": f"{details.get('runtime', '')} min" if details.get("runtime") else "",
+            "plot": details.get("overview", ""),
+            "rating": str(details.get("vote_average", "")),
+            "director": ", ".join(directors),
+            "actors": ", ".join(actors),
+            "genre": ", ".join(g["name"] for g in details.get("genres", [])),
+            "language": details.get("original_language", ""),
+            "imdb_id": details.get("imdb_id", ""),
+        }
+    except Exception as e:
+        print(f"  TMDB error: {e}")
+        return None
+
+
 # --- Main processing loop ---
 for entry in movies_data:
     if not entry or not isinstance(entry, list):
@@ -820,28 +886,51 @@ for entry in movies_data:
 
     try:
         imdb_link = movie.get("imdb_link")
-        imdb_id = extract_imdb_id(imdb_link)
+        imdb_id = extract_imdb_id(imdb_link) if imdb_link else None
     except Exception as e:
         print(f"Error extracting IMDb ID: {e}")
-        continue
+        imdb_id = None
     if not imdb_id:
-        print("Skipped movie (no IMDb ID):", movie.get("greek_title", "Unknown"))
+        print("No IMDb ID:", movie.get("greek_title", "Unknown"), "→ trying TMDB search")
 
-        # Even without IMDB, try to get poster from Athinorama
-        athinorama_link = movie.get("athinorama_link")
-        if athinorama_link:
-            print(f"  → Attempting to fetch poster from Athinorama...")
-            athinorama_poster = fetch_athinorama_poster(athinorama_link)
-            if athinorama_poster:
-                movie["omdb_poster"] = athinorama_poster
-                print(f"  ✓ Got poster from Athinorama: {athinorama_poster[:60]}...")
+        # Try TMDB search by original title + year, then Greek title
+        original_title = movie.get("original_title", "").strip().rstrip("/").strip()
+        greek_title = movie.get("greek_title", "").strip()
+        movie_year = movie.get("year")
 
-                # Generate slug from title
-                movie_title = movie.get("original_title") or movie.get("greek_title", "")
-                if movie_title and movie_title != "/":
-                    movie_slug = slugify(movie_title.rstrip("/").strip())
-                    movie["slug"] = movie_slug
-                    print(f"  ✓ Generated slug: {movie_slug}")
+        tmdb_data = None
+        if original_title and original_title != "/":
+            tmdb_data = fetch_tmdb_by_title(original_title, movie_year)
+        if not tmdb_data and greek_title:
+            tmdb_data = fetch_tmdb_by_title(greek_title, movie_year)
+
+        if tmdb_data:
+            movie_slug = slugify(tmdb_data["title"]) if tmdb_data["title"] else slugify(original_title or greek_title)
+            movie["slug"] = movie_slug
+            movie["omdb_poster"] = tmdb_data["poster"] or ""
+            movie["omdb_title"] = tmdb_data["title"]
+            movie["omdb_year"] = tmdb_data["year"]
+            movie["omdb_runtime"] = tmdb_data["runtime"]
+            movie["omdb_plot"] = tmdb_data["plot"]
+            movie["omdb_rating"] = tmdb_data["rating"]
+            movie["omdb_director"] = tmdb_data["director"]
+            movie["omdb_actors"] = tmdb_data["actors"]
+            movie["omdb_genre"] = tmdb_data["genre"]
+            movie["omdb_language"] = tmdb_data["language"]
+            if tmdb_data["imdb_id"]:
+                movie["imdb_link"] = f"https://www.imdb.com/title/{tmdb_data['imdb_id']}/"
+            print(f"  ✓ TMDB match: {tmdb_data['title']} ({tmdb_data['year']})")
+        else:
+            # Final fallback: Athinorama poster only
+            athinorama_link = movie.get("athinorama_link")
+            if athinorama_link:
+                athinorama_poster = fetch_athinorama_poster(athinorama_link)
+                if athinorama_poster:
+                    movie["omdb_poster"] = athinorama_poster
+                    movie_title = movie.get("original_title") or movie.get("greek_title", "")
+                    if movie_title and movie_title != "/":
+                        movie["slug"] = slugify(movie_title.rstrip("/").strip())
+            print("  ✗ TMDB no results, fell back to Athinorama poster")
 
         continue
 
@@ -931,6 +1020,38 @@ for entry in movies_data:
 # 💾 Save updated movies.json with slugs
 with open(os.path.join(BASE_DIR, "movies.json"), "w", encoding="utf-8") as f:
     json.dump(movies_data, f, ensure_ascii=False, indent=2)
+
+# 📋 Report movies missing information
+missing_info = []
+for entry in movies_data:
+    if not entry or not isinstance(entry, list):
+        continue
+    movie = entry[0]
+    title = movie.get("greek_title") or movie.get("original_title") or "Unknown"
+    gaps = []
+    if not movie.get("imdb_link"):
+        gaps.append("imdb_id")
+    if not movie.get("omdb_poster") or movie.get("omdb_poster") == "N/A":
+        gaps.append("poster")
+    if not movie.get("omdb_director"):
+        gaps.append("director")
+    if not movie.get("omdb_actors"):
+        gaps.append("actors")
+    if not movie.get("omdb_plot"):
+        gaps.append("plot")
+    if not movie.get("omdb_rating") or movie.get("omdb_rating") == "N/A":
+        gaps.append("rating")
+    if not movie.get("slug"):
+        gaps.append("slug")
+    if gaps:
+        missing_info.append({"title": title, "missing": gaps})
+
+if missing_info:
+    print(f"\n⚠️  Movies missing information: {len(missing_info)}/{len([e for e in movies_data if e and isinstance(e, list)])}")
+    for m in missing_info:
+        print(f"   • {m['title']} — missing: {', '.join(m['missing'])}")
+else:
+    print("\n✅ All movies have complete information.")
 
 print("\nDone! All movie cards and folders generated.")
 
@@ -1086,7 +1207,6 @@ def is_future_showtime(parsed_showtime):
     Adds 15-minute grace period - if a showtime starts within 15 minutes, keep it.
     """
     if not parsed_showtime:
-        print(f"DEBUG: is_future_showtime called with None/empty parsed_showtime")
         return False
 
     now = datetime.now(ZoneInfo("Europe/Athens"))
@@ -1100,13 +1220,8 @@ def is_future_showtime(parsed_showtime):
         parsed_showtime["day"],
     ).date()
 
-    print(f"DEBUG: Checking '{parsed_showtime['full']}'")
-    print(f"DEBUG:   Parsed as: {showtime_date} at {parsed_showtime['hour']:02d}:{parsed_showtime['minute']:02d}")
-    print(f"DEBUG:   Today: {today_date}, Now: {now.hour:02d}:{now.minute:02d}")
-
     # If date is before today, filter it out
     if showtime_date < today_date:
-        print(f"DEBUG:   ❌ FILTERED - Date in past: {showtime_date} < {today_date}")
         return False
 
     # If it's today, check if the time has passed
@@ -1116,13 +1231,10 @@ def is_future_showtime(parsed_showtime):
         # This allows people to still see/share showtimes that are about to start
         grace_period_mins = 15
         threshold = now_mins - grace_period_mins
-        print(f"DEBUG:   It's today - checking time: showtime_mins={showtime_mins}, now_mins={now_mins}, threshold={threshold}")
         if showtime_mins < threshold:
-            print(f"DEBUG:   ❌ FILTERED - Time passed: {showtime_mins} < {threshold}")
             return False
 
     # Keep future dates and future times for today
-    print(f"DEBUG:   ✅ KEPT - Future showtime")
     return True
 
 
@@ -2379,13 +2491,8 @@ def create_cinema_structure():
     Creates ONE HTML file per movie at: /movie/{slug}/index.html
     """
 
-    # DEBUG: Show current time at start
     now_debug = datetime.now(ZoneInfo("Europe/Athens"))
-    print("="*80)
-    print(f"DEBUG: Starting consolidated page generation at {now_debug}")
-    print(f"DEBUG: Current date (Athens): {now_debug.date()}")
-    print(f"DEBUG: Current time (Athens): {now_debug.hour:02d}:{now_debug.minute:02d}")
-    print("="*80)
+    print(f"Starting consolidated page generation — {now_debug.date()} {now_debug.hour:02d}:{now_debug.minute:02d} (Athens)")
 
     # Load JSON files
     with open(os.path.join(BASE_DIR, "movies.json"), "r", encoding="utf-8") as f:
@@ -2459,11 +2566,8 @@ def create_cinema_structure():
         print(f"\n🎬 Processing movie: {movie.get('greek_title', 'Unknown')}")
 
         for cinema in valid_cinemas:
-            # Collect all valid parsed showtimes for this cinema
             valid_showtimes = []
             timetable = cinema.get("timetable", [])
-
-            print(f"   Cinema: {cinema.get('cinema', 'Unknown')}")
 
             for showtime_list in timetable:
                 if not showtime_list:
@@ -2496,8 +2600,6 @@ def create_cinema_structure():
                 stats["total_cinemas"] += 1
                 stats["total_showtimes"] += len(valid_showtimes)
 
-                print(f"      ✅ {len(valid_showtimes)} valid showtimes")
-
         # ✅ Generate consolidated movie page if we have showtimes
         if cinema_screenings:
             # Generate HTML
@@ -2519,8 +2621,7 @@ def create_cinema_structure():
                 "showtimes": sum(len(cs["showtimes"]) for cs in cinema_screenings),
             })
 
-            print(f"   ✅ Generated consolidated page: {movie_page_file}")
-            print(f"      {len(cinema_screenings)} cinemas, {sum(len(cs['showtimes']) for cs in cinema_screenings)} showtimes\n")
+            print(f"   ✅ {len(cinema_screenings)} cinemas, {sum(len(cs['showtimes']) for cs in cinema_screenings)} showtimes")
 
     print("\n📊 Summary:")
     print(f"   Total movies: {stats['total_movies']}")
