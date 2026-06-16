@@ -1420,12 +1420,12 @@ function renderResults(filteredList, forceEmpty = false) {
         <div class="movie-title-section">
           <h2 class="movie-summary-title">${displayTitle}</h2>
           ${metadataLine}
-          ${ratingsLine}
         </div>
         <div class="external-links">
           ${externalLinks}
         </div>
       </div>
+      ${ratingsLine}
       <div class="movie-summary-info">
         <div class="movie-stats">
           ${cinemaCountHTML}

@@ -1587,7 +1587,9 @@ footer {
 
     .movie-poster-thumb {
         width: 45px;
-        height: 64px;
+        height: auto;
+        max-height: 64px;
+        align-self: flex-start;
     }
 
     .movie-title-section {
@@ -1652,6 +1654,7 @@ footer {
     display: flex;
     gap: 0.75em;
     margin-top: 0.8em;
+    margin-bottom: 0.8em;
     padding: 0.8em;
     background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
     border-radius: 10px;
@@ -1790,7 +1793,6 @@ footer {
 
     .movie-ratings {
         margin-top: 0.6em;
-        margin-left: -0.6em;
         padding: 0.6em;
         gap: 0.5em;
     }
