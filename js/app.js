@@ -1404,12 +1404,19 @@ function renderResults(filteredList, forceEmpty = false) {
                  <span class="expand-hint">➕ Δες όλους</span>
                </span>`;
 
+        // Build poster thumbnail
+        const posterUrl = movie.omdb_poster;
+        const posterHTML = posterUrl && posterUrl !== 'N/A' && posterUrl.trim() !== ''
+            ? `<img class="movie-poster-thumb" src="${posterUrl}" alt="" loading="lazy" onerror="this.style.display='none'">`
+            : '';
+
         // Create collapsible movie structure
         movieDiv.innerHTML = `
     <div class="movie-summary" onclick="toggleMovie('${uniqueMovieId}')">
       ${isTopResult ? '<div class="popular-badge">🔥 Δημοφιλής</div>' : ''}
       ${hasDisparity ? '<div class="controversial-badge">⚡ Οι Απόψεις Διίστανται</div>' : ''}
       <div class="movie-summary-header">
+        ${posterHTML}
         <div class="movie-title-section">
           <h2 class="movie-summary-title">${displayTitle}</h2>
           ${metadataLine}

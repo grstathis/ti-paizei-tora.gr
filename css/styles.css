@@ -1031,6 +1031,15 @@ body {
     justify-content: space-between;
 }
 
+.movie-poster-thumb {
+    width: 60px;
+    height: 85px;
+    object-fit: cover;
+    border-radius: 6px;
+    flex-shrink: 0;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
 .movie-title-section {
     flex: 1;
     min-width: 200px;
@@ -1569,10 +1578,25 @@ footer {
     }
 
     .movie-summary-header {
-        flex-direction: column;
+        flex-direction: row;
+        flex-wrap: wrap;
         align-items: flex-start;
         gap: 0.8em;
         margin-bottom: 0.8em;
+    }
+
+    .movie-poster-thumb {
+        width: 45px;
+        height: 64px;
+    }
+
+    .movie-title-section {
+        min-width: 0;
+        flex: 1;
+    }
+
+    .movie-summary-header .external-links {
+        width: 100%;
     }
 
     .movie-summary-info {
@@ -1766,6 +1790,7 @@ footer {
 
     .movie-ratings {
         margin-top: 0.6em;
+        margin-left: -0.6em;
         padding: 0.6em;
         gap: 0.5em;
     }
