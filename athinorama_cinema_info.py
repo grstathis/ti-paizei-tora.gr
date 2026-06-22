@@ -607,7 +607,7 @@ def get_movie_theater_times(url, cinema_db):
             # the main area
             if suburb and normalize_name(suburb) != normalize_name(final_area):
                 final_area = suburb
-            elif not suburb and normalize_name(neighbourhood) != normalize_name(
+            elif neighbourhood and normalize_name(neighbourhood) != normalize_name(
                 final_area
             ):
                 final_area = neighbourhood
@@ -634,6 +634,17 @@ def get_movie_theater_times(url, cinema_db):
                 "is_summer_cinema": region_dict.get("is_summer_cinema", False),
             }
         )
+
+    # Deduplicate cinemas by name - Athinorama sometimes lists the same cinema twice
+    seen_cinemas = set()
+    unique_cinemas = []
+    for cinema in cinemas_data:
+        cinema_key = normalize_name(cinema.get("cinema", ""))
+        if cinema_key in seen_cinemas:
+            continue
+        seen_cinemas.add(cinema_key)
+        unique_cinemas.append(cinema)
+    cinemas_data = unique_cinemas
 
     return movies_data, cinemas_data
 
@@ -668,9 +679,11 @@ save_cinema_database(cinema_database)
 print("Calculating popular movies based on cinema count...")
 movie_cinema_counts = {}
 for movie_idx, cinema_list in enumerate(cinemas_l):
-    # Count cinemas that have valid timetables
+    # Count cinemas that have valid timetables with actual showtime strings
     valid_cinema_count = len(
-        [c for c in cinema_list if c.get("timetable") and any(c["timetable"])]
+        [c for c in cinema_list if c.get("timetable") and any(
+            s for sublist in c["timetable"] for s in sublist if s and s.strip()
+        )]
     )
     movie_cinema_counts[movie_idx] = valid_cinema_count
 

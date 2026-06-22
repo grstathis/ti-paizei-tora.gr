@@ -125,7 +125,7 @@ function generateShowtimeUrl(movie, cinema, showtimeStr) {
     if (!cinemaSlug) return null;
 
     // Build URL: movie/{movie}/?showtime={cinema-slug}-{date}-{time}
-    const showtimeId = `${cinemaSlug}-${parsed.date}-${parsed.time}`;
+    const showtimeId = `${cinemaSlug}-${parsed.date}-${parsed.time.replace('-', '')}`;
     const url = `movie/${movieSlug}/?showtime=${showtimeId}`;
 
     return url;
