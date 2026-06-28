@@ -1408,18 +1408,22 @@ def create_showtime_html_fallback(movie, cinema, parsed_showtime):
             actors = [a.strip() for a in movie.get("omdb_actors").split(",")]
             movie_obj["actor"] = [{"@type": "Person", "name": a} for a in actors[:5]]  # Limit to 5 actors
 
-        # Add aggregate rating
-        if movie.get("omdb_rating") and movie.get("omdb_rating") != "N/A":
-            rating_obj = {
-                "@type": "AggregateRating",
-                "ratingValue": movie.get("omdb_rating"),
-                "bestRating": "10"
-            }
-            if movie.get("omdb_votes"):
-                # Remove commas from vote count (e.g., "15,247" -> "15247")
+        # Add aggregate rating (only if ratingCount available and rating in valid 1-10 range)
+        if movie.get("omdb_rating") and movie.get("omdb_rating") != "N/A" and movie.get("omdb_votes"):
+            try:
+                rating_val = float(movie.get("omdb_rating"))
+            except (ValueError, TypeError):
+                rating_val = 0
+            if 1 <= rating_val <= 10:
                 votes = movie.get("omdb_votes").replace(",", "")
-                rating_obj["ratingCount"] = votes
-            movie_obj["aggregateRating"] = rating_obj
+                rating_obj = {
+                    "@type": "AggregateRating",
+                    "ratingValue": movie.get("omdb_rating"),
+                    "bestRating": "10",
+                    "worstRating": "1",
+                    "ratingCount": votes
+                }
+                movie_obj["aggregateRating"] = rating_obj
 
         # Build complete ScreeningEvent schema
         screening_event_schema = {
@@ -1760,18 +1764,22 @@ def inject_cinema_showtime_info(movie_html, cinema, parsed_showtime, movie):
             actors = [a.strip() for a in movie.get("omdb_actors").split(",")]
             movie_obj["actor"] = [{"@type": "Person", "name": a} for a in actors[:5]]  # Limit to 5 actors
 
-        # Add aggregate rating
-        if movie.get("omdb_rating") and movie.get("omdb_rating") != "N/A":
-            rating_obj = {
-                "@type": "AggregateRating",
-                "ratingValue": movie.get("omdb_rating"),
-                "bestRating": "10"
-            }
-            if movie.get("omdb_votes"):
-                # Remove commas from vote count (e.g., "15,247" -> "15247")
+        # Add aggregate rating (only if ratingCount available and rating in valid 1-10 range)
+        if movie.get("omdb_rating") and movie.get("omdb_rating") != "N/A" and movie.get("omdb_votes"):
+            try:
+                rating_val = float(movie.get("omdb_rating"))
+            except (ValueError, TypeError):
+                rating_val = 0
+            if 1 <= rating_val <= 10:
                 votes = movie.get("omdb_votes").replace(",", "")
-                rating_obj["ratingCount"] = votes
-            movie_obj["aggregateRating"] = rating_obj
+                rating_obj = {
+                    "@type": "AggregateRating",
+                    "ratingValue": movie.get("omdb_rating"),
+                    "bestRating": "10",
+                    "worstRating": "1",
+                    "ratingCount": votes
+                }
+                movie_obj["aggregateRating"] = rating_obj
 
         # Build complete ScreeningEvent schema
         screening_event_schema = {
@@ -2037,16 +2045,21 @@ def generate_consolidated_movie_page(movie, cinema_screenings):
         actors = [a.strip() for a in movie.get("omdb_actors").split(",")]
         movie_schema["actor"] = [{"@type": "Person", "name": a} for a in actors[:5]]
 
-    if movie.get("omdb_rating") and movie.get("omdb_rating") != "N/A":
-        rating_obj = {
-            "@type": "AggregateRating",
-            "ratingValue": movie.get("omdb_rating"),
-            "bestRating": "10"
-        }
-        if movie.get("omdb_votes"):
+    if movie.get("omdb_rating") and movie.get("omdb_rating") != "N/A" and movie.get("omdb_votes"):
+        try:
+            rating_val = float(movie.get("omdb_rating"))
+        except (ValueError, TypeError):
+            rating_val = 0
+        if 1 <= rating_val <= 10:
             votes = movie.get("omdb_votes").replace(",", "")
-            rating_obj["ratingCount"] = votes
-        movie_schema["aggregateRating"] = rating_obj
+            rating_obj = {
+                "@type": "AggregateRating",
+                "ratingValue": movie.get("omdb_rating"),
+                "bestRating": "10",
+                "worstRating": "1",
+                "ratingCount": votes
+            }
+            movie_schema["aggregateRating"] = rating_obj
 
     # Add all ScreeningEvents as subEvents
     if screening_events:
