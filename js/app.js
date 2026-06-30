@@ -873,6 +873,7 @@ function updateFilterChips() {
         const label = cb.parentElement.textContent.trim();
         addChip(label, () => { cb.checked = false; renderResults(); updateFilterChips(); });
     });
+
 }
 
 function addChip(label, removeFn) {

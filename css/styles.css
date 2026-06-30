@@ -103,6 +103,7 @@ body {
     color: #000;
 }
 
+
 /* ==========================================================================
    Main Action Cards
    ========================================================================== */
@@ -414,6 +415,7 @@ body {
     color: white;
     border-color: #667eea;
 }
+
 
 /* ==========================================================================
    Location Filter Section (New Compact UI)
@@ -1479,7 +1481,7 @@ body {
    Footer
    ========================================================================== */
 footer {
-    text-align: center;
+    text-align: left;
     margin: 3em 0 2em;
     color: #666;
     font-size: 0.9em;
@@ -1487,6 +1489,15 @@ footer {
     padding: 2em;
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+footer h2,
+footer h3 {
+    text-align: left;
+}
+
+footer .contact-section {
+    text-align: center;
 }
 
 /* ==========================================================================
