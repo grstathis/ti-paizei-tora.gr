@@ -1911,6 +1911,681 @@ border-radius: 8px;">
     return movie_html
 
 
+def format_athinorama_display(rating_stars):
+    """Format rating_stars float for HTML display: 2.5 -> '2,5/5'"""
+    if rating_stars is None:
+        return None
+    if rating_stars == int(rating_stars):
+        return f"{int(rating_stars)}/5"
+    return f"{str(rating_stars).replace('.', ',')}/5"
+
+
+def _build_rich_screening_schema(cinema_screenings, movie_data):
+    """Build Movie + ScreeningEvent JSON-LD schema for rich pages."""
+    if not cinema_screenings or not movie_data:
+        return ""
+
+    movie = movie_data.get("movie", {})
+    omdb = movie_data.get("omdb", {})
+
+    title_gr = movie.get("title_gr", "")
+    poster = omdb.get("poster", "")
+    plot = omdb.get("plot", "")
+    year = movie.get("year", "")
+    runtime = omdb.get("runtime", "")
+    imdb_link = omdb.get("imdb_link", "")
+
+    screening_events = []
+    for cinema_group in cinema_screenings:
+        cinema = cinema_group["cinema"]
+        cinema_slug = slugify(cinema.get("cinema", ""))
+
+        for showtime in cinema_group["showtimes"]:
+            showtime_id = f"{cinema_slug}-{showtime['date']}-{showtime['time'].replace('-', '')}"
+            event = {
+                "@type": "ScreeningEvent",
+                "@id": showtime_id,
+                "name": f"{title_gr} στο {cinema.get('cinema', '')}",
+                "startDate": f"{showtime['year']}-{showtime['month']:02d}-{showtime['day']:02d}T{showtime['hour']:02d}:{showtime['minute']:02d}:00+03:00",
+                "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+                "eventStatus": "https://schema.org/EventScheduled",
+            }
+
+            location_obj = {"@type": "MovieTheater", "name": cinema.get("cinema", "")}
+            if cinema.get("address"):
+                location_obj["address"] = {
+                    "@type": "PostalAddress",
+                    "streetAddress": cinema["address"],
+                    "addressLocality": "Αθήνα",
+                    "addressCountry": "GR",
+                }
+            if cinema.get("lat") and cinema.get("lon"):
+                location_obj["geo"] = {
+                    "@type": "GeoCoordinates",
+                    "latitude": str(cinema["lat"]),
+                    "longitude": str(cinema["lon"]),
+                }
+            if cinema.get("website"):
+                location_obj["url"] = cinema["website"]
+
+            event["location"] = location_obj
+            screening_events.append(event)
+
+    movie_schema = {
+        "@context": "https://schema.org",
+        "@type": "Movie",
+        "name": movie.get("title_en") or title_gr,
+        "image": poster,
+        "description": plot,
+    }
+
+    if imdb_link:
+        movie_schema["@id"] = imdb_link
+    if title_gr and title_gr != movie_schema["name"]:
+        movie_schema["alternateName"] = title_gr
+    if year:
+        movie_schema["datePublished"] = str(year)
+    if runtime:
+        minutes = re.search(r"(\d+)", runtime)
+        if minutes:
+            movie_schema["duration"] = f"PT{minutes.group(1)}M"
+    if omdb.get("genre"):
+        movie_schema["genre"] = [g.strip() for g in omdb["genre"].split(",")]
+    if omdb.get("director") and omdb["director"] != "N/A":
+        directors = [d.strip() for d in omdb["director"].split(",")]
+        if len(directors) == 1:
+            movie_schema["director"] = {"@type": "Person", "name": directors[0]}
+        else:
+            movie_schema["director"] = [{"@type": "Person", "name": d} for d in directors]
+    if omdb.get("actors") and omdb["actors"] != "N/A":
+        actors = [a.strip() for a in omdb["actors"].split(",")]
+        movie_schema["actor"] = [{"@type": "Person", "name": a} for a in actors[:5]]
+
+    if omdb.get("imdb_rating") and omdb["imdb_rating"] != "N/A":
+        try:
+            rating_val = float(omdb["imdb_rating"])
+        except (ValueError, TypeError):
+            rating_val = 0
+        votes = omdb.get("imdb_votes", "").replace(",", "") if omdb.get("imdb_votes") else ""
+        if votes and 1 <= rating_val <= 10:
+            movie_schema["aggregateRating"] = {
+                "@type": "AggregateRating",
+                "ratingValue": omdb["imdb_rating"],
+                "bestRating": "10",
+                "worstRating": "1",
+                "ratingCount": votes,
+            }
+
+    if screening_events:
+        movie_schema["subEvent"] = screening_events
+
+    return f"""
+  <script type="application/ld+json">
+  {json.dumps(movie_schema, ensure_ascii=False, indent=2)}
+  </script>"""
+
+
+def build_showtimes_html(cinema_screenings, movie_title_display, movie_data=None):
+    """Build the showtimes section HTML, CSS, JS, and ScreeningEvent schema."""
+    if not cinema_screenings:
+        return "", "", "", ""
+
+    cinema_sections_html = ""
+    for cinema_group in cinema_screenings:
+        cinema = cinema_group["cinema"]
+        cinema_slug = slugify(cinema.get("cinema", ""))
+        showtimes = cinema_group["showtimes"]
+
+        cinema_name = cinema.get("cinema", "")
+        cinema_region = cinema.get("region", "")
+        cinema_addr = cinema.get("address", "")
+        cinema_website = cinema.get("website", "")
+
+        website_link = ""
+        if cinema_website:
+            website_link = f' - <a href="{cinema_website}" target="_blank" style="color: #667eea; text-decoration: underline;">Ιστοσελίδα</a>'
+
+        cinema_sections_html += f'''
+      <div class="cinema-section" data-cinema="{cinema_slug}">
+        <h3 style="color: #667eea; margin: 20px 0 12px 0; padding-bottom: 10px; border-bottom: 2px solid #f0f0f0;">
+          {cinema_name} - {cinema_region}{website_link}
+        </h3>
+'''
+        for showtime in showtimes:
+            showtime_id = f"{cinema_slug}-{showtime['date']}-{showtime['time'].replace('-', '')}"
+            time_formatted = showtime["time"].replace("-", ":")
+            date_formatted = showtime["full"]
+
+            rooms_html = ""
+            if cinema.get("rooms"):
+                rooms_list = [r.get("room", "") for r in cinema["rooms"] if r.get("room")]
+                if rooms_list:
+                    rooms_html = f'<div style="color: #666; font-size: 14px;">Αίθουσα: {", ".join(rooms_list)}</div>'
+
+            cinema_sections_html += f'''        <div class="showtime-card" id="{showtime_id}" data-cinema="{cinema_name}" data-date="{showtime['date']}" data-time="{time_formatted}">
+          <div class="time" style="font-size: 16px; font-weight: bold; color: #333; margin-bottom: 4px;">{date_formatted}</div>
+          <div style="color: #666; font-size: 14px; margin-bottom: 4px;">{cinema_addr}</div>
+          {rooms_html}
+          <div style="margin-top: 10px;">
+            <button class="share-btn" data-showtime-id="{showtime_id}" style="padding: 6px 14px; background: #667eea; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 13px; font-weight: 500;">Κοινοποίηση</button>
+          </div>
+        </div>
+'''
+        cinema_sections_html += "      </div>\n"
+
+    section_html = f"""    <div class="content-card showtimes-container">
+      <h2>Πού παίζει;</h2>
+{cinema_sections_html}    </div>"""
+
+    section_css = """
+    .showtime-card {
+      padding: 14px;
+      margin: 10px 0;
+      border-radius: 8px;
+      background: #f9f9f9;
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+    }
+    .showtime-card.featured {
+      border-color: #667eea;
+      background: linear-gradient(to right, #f0f4ff, #ffffff);
+      box-shadow: 0 4px 20px rgba(102, 126, 234, 0.25);
+    }
+    .show-all-btn {
+      width: 100%;
+      padding: 14px;
+      background: #f0f4ff;
+      border: 2px dashed #667eea;
+      border-radius: 8px;
+      color: #667eea;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 16px;
+      transition: all 0.3s;
+    }
+    .show-all-btn:hover { background: #667eea; color: white; border-style: solid; }
+    .toast {
+      position: fixed; bottom: 20px; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: #28a745; color: white; padding: 12px 24px;
+      border-radius: 8px; opacity: 0; transition: all 0.3s ease; z-index: 1000;
+    }
+    .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }"""
+
+    js_title = movie_title_display.replace("'", "\\'").replace('"', '\\"')
+    section_js = f"""
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {{
+      const urlParams = new URLSearchParams(window.location.search);
+      const showtimeId = urlParams.get('showtime');
+      if (showtimeId) {{
+        const targetCard = document.getElementById(showtimeId);
+        if (targetCard) {{
+          document.querySelectorAll('.showtime-card').forEach(card => {{
+            if (card.id !== showtimeId) card.style.display = 'none';
+          }});
+          document.querySelectorAll('.cinema-section').forEach(section => {{
+            if (!section.contains(targetCard)) section.style.display = 'none';
+          }});
+          targetCard.classList.add('featured');
+          const showAllBtn = document.createElement('button');
+          showAllBtn.className = 'show-all-btn';
+          showAllBtn.textContent = 'Δες όλες τις προβολές';
+          showAllBtn.onclick = () => {{ window.location.href = window.location.pathname; }};
+          targetCard.parentElement.insertBefore(showAllBtn, targetCard.nextSibling);
+        }}
+      }} else {{
+        document.querySelectorAll('.cinema-section').forEach(s => s.style.display = 'none');
+        const expandBtn = document.createElement('button');
+        expandBtn.className = 'show-all-btn';
+        expandBtn.style.cssText = 'display:block;margin:16px auto;padding:14px 28px;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:white;border:none;border-radius:10px;font-size:16px;font-weight:600;cursor:pointer;box-shadow:0 4px 12px rgba(102,126,234,0.3);';
+        expandBtn.textContent = 'Δες Όλες τις Προβολές';
+        expandBtn.onclick = () => {{
+          document.querySelectorAll('.cinema-section').forEach(s => s.style.display = 'block');
+          expandBtn.style.display = 'none';
+        }};
+        const heading = document.querySelector('.showtimes-container h2');
+        if (heading) heading.after(expandBtn);
+      }}
+    }});
+    document.querySelectorAll('.share-btn').forEach(btn => {{
+      btn.addEventListener('click', async (e) => {{
+        const id = e.target.dataset.showtimeId;
+        const url = `${{window.location.origin}}${{window.location.pathname}}?showtime=${{id}}`;
+        const card = document.getElementById(id);
+        const cinema = card.dataset.cinema;
+        const time = card.querySelector('.time').textContent;
+        try {{
+          if (navigator.share) {{
+            await navigator.share({{ title: '{js_title} - ' + cinema, text: 'Θες να πάμε; ' + time, url }});
+          }} else {{
+            await navigator.clipboard.writeText(url);
+            showToast('Ο σύνδεσμος αντιγράφηκε!');
+          }}
+        }} catch (err) {{}}
+      }});
+    }});
+    function showToast(msg) {{
+      const t = document.createElement('div'); t.className = 'toast'; t.textContent = msg;
+      document.body.appendChild(t);
+      setTimeout(() => t.classList.add('show'), 100);
+      setTimeout(() => {{ t.classList.remove('show'); setTimeout(() => t.remove(), 300); }}, 2000);
+    }}
+  </script>"""
+
+    schema_tag = _build_rich_screening_schema(cinema_screenings, movie_data)
+
+    return section_html, section_css, section_js, schema_tag
+
+
+def generate_rich_movie_page(cached_data, cinema_screenings):
+    """Generate a rich HTML movie page using cached AI content + fresh showtimes."""
+    movie = cached_data.get("movie", {})
+    ratings = cached_data.get("ratings", {})
+    omdb = cached_data.get("omdb", {})
+    sources = cached_data.get("sources", {})
+    content = cached_data.get("generated_content", {}) or {}
+
+    title_gr = movie.get("title_gr", "")
+    title_en = movie.get("title_en", "")
+    year = movie.get("year", "")
+    genre = movie.get("genre", "")
+    director = omdb.get("director") or movie.get("director", "")
+    runtime = omdb.get("runtime", "").replace(" min", "'") if omdb.get("runtime") else ""
+    poster = omdb.get("poster", "")
+    plot_en = omdb.get("plot", "")
+    language = omdb.get("language", "")
+    imdb_link = omdb.get("imdb_link", "")
+    actors_str = omdb.get("actors", "")
+    actors = [a.strip() for a in actors_str.split(",")] if actors_str else movie.get("actors", [])
+
+    one_liner = content.get("one_liner", "")
+    synopsis = content.get("synopsis", "")
+    review_summary = content.get("review_summary", "")
+    highlights = content.get("highlights", [])
+    mood_tags = content.get("mood_tags", [])
+    who_will_enjoy = content.get("who_will_enjoy", "")
+
+    page_title = title_gr
+    if title_en:
+        page_title += f" ({title_en})"
+
+    omdb_genres = [g.strip() for g in omdb.get("genre", "").split(",")] if omdb.get("genre") else []
+
+    rating_pills_html = ""
+    if ratings.get("athinorama") and sources.get("athinorama_url"):
+        rating_pills_html += f'        <a href="{sources["athinorama_url"]}" target="_blank" rel="noopener" class="rating-pill athinorama">Athinorama {ratings["athinorama"]}</a>\n'
+    if ratings.get("flix") and sources.get("flix_url"):
+        rating_pills_html += f'        <a href="{sources["flix_url"]}" target="_blank" rel="noopener" class="rating-pill flix">Flix {ratings["flix"]}</a>\n'
+    if ratings.get("lifo") and sources.get("lifo_url"):
+        rating_pills_html += f'        <a href="{sources["lifo_url"]}" target="_blank" rel="noopener" class="rating-pill lifo">Lifo {ratings["lifo"]}</a>\n'
+    if ratings.get("imdb") and imdb_link:
+        rating_pills_html += f'        <a href="{imdb_link}" target="_blank" rel="noopener" class="rating-pill imdb">IMDb {ratings["imdb"]}</a>\n'
+
+    highlights_html = "\n".join(f"          <li>{h}</li>" for h in highlights)
+    mood_html = "\n".join(f'        <span class="mood-tag">{t}</span>' for t in mood_tags)
+    genre_tags_html = "\n".join(f'            <span class="genre-tag">{g}</span>' for g in omdb_genres)
+
+    cast_html = ""
+    if director:
+        cast_html += f'        <span class="cast-chip director">Σκηνοθεσία: {director}</span>\n'
+    for actor in actors[:5]:
+        if actor:
+            cast_html += f'        <span class="cast-chip">{actor}</span>\n'
+
+    sources_html = ""
+    if sources.get("athinorama_url"):
+        sources_html += f'        <li><span class="source-label">Athinorama</span> <a href="{sources["athinorama_url"]}" target="_blank" rel="noopener">Σελίδα ταινίας</a>'
+        if sources.get("athinorama_review_url"):
+            sources_html += f' · <a href="{sources["athinorama_review_url"]}" target="_blank" rel="noopener">Κριτική</a>'
+        sources_html += "</li>\n"
+    if sources.get("flix_url"):
+        sources_html += f'        <li><span class="source-label">Flix</span> <a href="{sources["flix_url"]}" target="_blank" rel="noopener">Κριτική</a></li>\n'
+    if sources.get("lifo_url"):
+        sources_html += f'        <li><span class="source-label">Lifo</span> <a href="{sources["lifo_url"]}" target="_blank" rel="noopener">Κριτική</a></li>\n'
+    if imdb_link:
+        sources_html += f'        <li><span class="source-label">IMDb</span> <a href="{imdb_link}" target="_blank" rel="noopener">{imdb_link}</a></li>\n'
+
+    meta_spans = ""
+    if genre:
+        meta_spans += f"            <span>{genre}</span>\n"
+    if runtime:
+        meta_spans += f"            <span>{runtime}</span>\n"
+    if director:
+        meta_spans += f"            <span>{director}</span>\n"
+    if language:
+        meta_spans += f"            <span>{language.upper()}</span>\n"
+
+    poster_html = ""
+    if poster and poster != "N/A":
+        poster_html = f'        <img class="hero-poster" src="{poster}" alt="{title_gr} poster">'
+
+    tagline_html = ""
+    if plot_en:
+        tagline_html = f"""      <div class="tagline-en">
+        <q>{plot_en}</q>
+      </div>"""
+
+    ratings_section = ""
+    if rating_pills_html:
+        ratings_section = f"""    <div class="content-card">
+      <h2>Βαθμολογίες Κριτικών</h2>
+      <div class="ratings-row">
+{rating_pills_html}      </div>
+      {"<p>" + review_summary + "</p>" if review_summary else ""}
+    </div>"""
+
+    synopsis_section = ""
+    if synopsis:
+        synopsis_section = f"""      <div class="content-card">
+        <h2>Υπόθεση</h2>
+        <p>{synopsis}</p>
+      </div>"""
+
+    highlights_section = ""
+    if highlights:
+        highlights_section = f"""      <div class="content-card">
+        <h2>Γιατί αξίζει να τη δεις</h2>
+        <ul class="highlights-list">
+{highlights_html}
+        </ul>
+      </div>"""
+
+    mood_section = ""
+    if mood_tags:
+        mood_section = f"""    <div class="content-card">
+      <h2>Διάθεση</h2>
+      <div class="mood-tags">
+{mood_html}
+      </div>
+    </div>"""
+
+    audience_section = ""
+    if who_will_enjoy:
+        audience_section = f"""    <div class="content-card">
+      <h2>Ποιοι θα την απολαύσουν</h2>
+      <div class="audience-box">
+        {who_will_enjoy}
+      </div>
+    </div>"""
+
+    cast_section = ""
+    if cast_html:
+        cast_section = f"""    <div class="content-card">
+      <h2>Συντελεστές</h2>
+      <div class="cast-grid">
+{cast_html}      </div>
+    </div>"""
+
+    sources_section = ""
+    if sources_html:
+        sources_section = f"""    <div class="content-card" style="margin-top: 20px;">
+      <h2>Πηγές</h2>
+      <ul class="sources-list">
+{sources_html}      </ul>
+    </div>"""
+
+    showtimes_section = ""
+    showtimes_css = ""
+    showtimes_js = ""
+    showtimes_schema = ""
+    if cinema_screenings:
+        showtimes_section, showtimes_css, showtimes_js, showtimes_schema = build_showtimes_html(
+            cinema_screenings, page_title, cached_data
+        )
+
+    html = f"""<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Language" content="el">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{page_title} - Σινεμά Αθήνας | ti-paizei-tora.gr</title>
+  <meta name="description" content="{one_liner or f'Δες πού παίζει {title_gr} στα σινεμά της Αθήνας.'}">{showtimes_schema}
+  <link rel="icon" type="image/svg+xml" href="/ti_paizei_tora_logo.svg">
+  <style>
+    * {{ margin: 0; padding: 0; box-sizing: border-box; }}
+    body {{
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      min-height: 100vh;
+      padding: 20px;
+    }}
+    .container {{ max-width: 900px; margin: 0 auto; }}
+    .back-link {{
+      display: inline-block;
+      margin-bottom: 16px;
+      color: #667eea;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95em;
+    }}
+    .back-link:hover {{ text-decoration: underline; }}
+    .movie-hero {{
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }}
+    .hero-gradient {{
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 32px;
+      color: white;
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+    }}
+    .hero-poster {{
+      width: 140px;
+      height: 200px;
+      border-radius: 10px;
+      object-fit: cover;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      flex-shrink: 0;
+    }}
+    .hero-info {{ flex: 1; }}
+    .hero-info h1 {{ font-size: 1.8em; margin-bottom: 4px; line-height: 1.2; }}
+    .hero-info .subtitle {{ font-size: 1.1em; opacity: 0.85; margin-bottom: 12px; }}
+    .hero-meta {{ display: flex; gap: 12px; flex-wrap: wrap; font-size: 0.9em; opacity: 0.9; }}
+    .hero-meta span {{ background: rgba(255,255,255,0.15); padding: 4px 10px; border-radius: 6px; }}
+    .genre-tags {{ display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }}
+    .genre-tag {{ background: rgba(255,255,255,0.2); padding: 4px 12px; border-radius: 14px; font-size: 0.82em; font-weight: 500; }}
+    .one-liner {{
+      padding: 20px 32px;
+      font-size: 1.15em;
+      font-style: italic;
+      color: #555;
+      border-bottom: 1px solid #f0f0f0;
+      text-align: center;
+    }}
+    .tagline-en {{ padding: 12px 32px 16px; font-size: 0.95em; color: #888; text-align: center; }}
+    .tagline-en q {{ font-style: italic; }}
+    .content-grid {{ display: grid; gap: 20px; margin-bottom: 20px; }}
+    .content-card {{
+      background: white;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+      margin-bottom: 20px;
+    }}
+    .content-card h2 {{
+      font-size: 1.1em;
+      color: #667eea;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #f0f0f0;
+    }}
+    .content-card p {{ color: #444; line-height: 1.7; }}
+    .highlights-list {{ list-style: none; padding: 0; }}
+    .highlights-list li {{
+      padding: 10px 0 10px 28px;
+      position: relative;
+      color: #444;
+      border-bottom: 1px solid #f8f8f8;
+    }}
+    .highlights-list li:last-child {{ border-bottom: none; }}
+    .highlights-list li::before {{
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 16px;
+      width: 10px;
+      height: 10px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 50%;
+    }}
+    .mood-tags {{ display: flex; gap: 10px; flex-wrap: wrap; }}
+    .mood-tag {{
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      border: 1px solid #e0e0e0;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.9em;
+      font-weight: 500;
+      color: #555;
+    }}
+    .ratings-row {{ display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }}
+    .rating-pill {{
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.9em;
+      color: white;
+      text-decoration: none;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }}
+    .rating-pill:hover {{ transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.2); }}
+    .rating-pill.athinorama {{ background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }}
+    .rating-pill.flix {{ background: linear-gradient(135deg, #00BCD4 0%, #0097A7 100%); }}
+    .rating-pill.lifo {{ background: linear-gradient(135deg, #E91E63 0%, #C2185B 100%); }}
+    .rating-pill.imdb {{ background: linear-gradient(135deg, #F5C518 0%, #DDB00E 100%); color: #000; }}
+    .audience-box {{
+      background: linear-gradient(135deg, #f0f9f4 0%, #e8f5e9 100%);
+      border-left: 4px solid #28a745;
+      padding: 16px 20px;
+      border-radius: 0 10px 10px 0;
+      font-size: 1em;
+      color: #2e7d32;
+    }}
+    .cast-grid {{ display: flex; gap: 10px; flex-wrap: wrap; }}
+    .cast-chip {{
+      background: #f8f9fa;
+      border: 1px solid #e9ecef;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.88em;
+      color: #555;
+    }}
+    .cast-chip.director {{
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+    }}
+    .sources-list {{ list-style: none; padding: 0; }}
+    .sources-list li {{ padding: 8px 0; border-bottom: 1px solid #f0f0f0; }}
+    .sources-list li:last-child {{ border-bottom: none; }}
+    .sources-list a {{ color: #667eea; text-decoration: none; font-weight: 500; font-size: 0.92em; }}
+    .sources-list a:hover {{ text-decoration: underline; }}
+    .sources-list .source-label {{ display: inline-block; min-width: 100px; color: #888; font-size: 0.85em; font-weight: 400; }}
+    .cta-section {{
+      text-align: center;
+      padding: 24px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    }}
+    .cta-btn {{
+      display: inline-block;
+      padding: 14px 32px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 1.05em;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }}
+    .cta-btn:hover {{
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+    }}
+    @media (max-width: 768px) {{
+      body {{ padding: 12px; }}
+      .hero-gradient {{
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 24px;
+      }}
+      .hero-poster {{ width: 120px; height: 170px; }}
+      .hero-info h1 {{ font-size: 1.5em; }}
+      .hero-meta {{ justify-content: center; }}
+      .content-card {{ padding: 20px; }}
+    }}{showtimes_css}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="/" class="back-link">&larr; Πίσω στο πρόγραμμα</a>
+
+    <div class="movie-hero">
+      <div class="hero-gradient">
+{poster_html}
+        <div class="hero-info">
+          <h1>{title_gr}</h1>
+          <div class="subtitle">{title_en} ({year})</div>
+          <div class="hero-meta">
+{meta_spans}          </div>
+          <div class="genre-tags">
+{genre_tags_html}
+          </div>
+        </div>
+      </div>
+      <div class="one-liner">
+        {one_liner}
+      </div>
+{tagline_html}
+    </div>
+
+{ratings_section}
+
+{showtimes_section}
+
+    <div class="content-grid">
+{synopsis_section}
+
+{highlights_section}
+    </div>
+
+{mood_section}
+
+{audience_section}
+
+{cast_section}
+
+    <div class="cta-section">
+      <p style="margin-bottom: 14px; color: #666;">Δες πού παίζει τώρα στην Αθήνα</p>
+      <a href="/" class="cta-btn">Βρες Προβολές</a>
+    </div>
+
+{sources_section}
+  </div>
+{showtimes_js}
+</body>
+</html>"""
+
+    return html
+
+
 def generate_consolidated_movie_page(movie, cinema_screenings):
     """
     Generate a consolidated movie page with ALL showtimes grouped by cinema.
@@ -2628,8 +3303,21 @@ def create_cinema_structure():
 
         # ✅ Generate consolidated movie page if we have showtimes
         if cinema_screenings:
-            # Generate HTML
-            movie_html = generate_consolidated_movie_page(movie, cinema_screenings)
+            # Check for cached AI-generated content
+            cache_path = os.path.join(BASE_DIR, "generated_content", f"{movie_slug}.json")
+            cached_data = None
+            if os.path.exists(cache_path):
+                try:
+                    with open(cache_path, "r", encoding="utf-8") as cf:
+                        cached_data = json.load(cf)
+                except (json.JSONDecodeError, OSError):
+                    cached_data = None
+
+            if cached_data and cached_data.get("generated_content"):
+                movie_html = generate_rich_movie_page(cached_data, cinema_screenings)
+                print(f"   🌟 Rich page (AI content)")
+            else:
+                movie_html = generate_consolidated_movie_page(movie, cinema_screenings)
 
             # Write to /movie/{slug}/index.html
             movie_page_dir = movie_dir_path / movie_slug

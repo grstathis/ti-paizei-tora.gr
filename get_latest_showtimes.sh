@@ -19,6 +19,7 @@ fi
 PYTHON="/home/grstathis/bin/python3"
 SCRIPT="/home/grstathis/ti-paizei-tora.gr/athinorama_cinema_info.py"
 SCRIPT2="/home/grstathis/ti-paizei-tora.gr/fetch_and_add_ratings.py"
+SCRIPT3="/home/grstathis/ti-paizei-tora.gr/generate_movie_content.py"
 LOCAL_DIR="/home/grstathis/ti-paizei-tora.gr"
 REMOTE_DIR="/httpdocs"
 FTP_HOST="ftp.ti-paizei-tora.gr"
@@ -53,6 +54,13 @@ log "Python script finished."
 log "Fetching ratings from LIFO and Flix..."
 "$PYTHON" "$SCRIPT2"
 log "Ratings added successfully."
+
+# ---------------------------
+# GENERATE AI MOVIE CONTENT
+# ---------------------------
+log "Generating AI movie content (skips unchanged)..."
+"$PYTHON" "$SCRIPT3" || log "WARNING: AI content generation had errors (non-fatal)"
+log "AI content generation finished."
 
 # ---------------------------
 # FTP UPLOAD
