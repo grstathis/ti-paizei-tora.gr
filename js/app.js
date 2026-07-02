@@ -1289,8 +1289,9 @@ function renderResults(filteredList, forceEmpty = false) {
         const movieSummary = createMovieSummary(regionFiltered);
         const uniqueMovieId = `movie-${Math.random().toString(36).substr(2, 9)}`;
 
-        const displayTitle = movie.athinorama_link
-            ? `<a href="${movie.athinorama_link}" target="_blank" style="text-decoration: none;">
+        const moviePageUrl = movie.slug ? `/movie/${movie.slug}/` : null;
+        const displayTitle = moviePageUrl
+            ? `<a href="${moviePageUrl}" style="text-decoration: none;">
        ${movie.greek_title}${movie.original_title && movie.original_title.trim() !== ""
                 ? ` <span style="font-size:0.9em;color:#777;">(${movie.original_title})</span>`
                 : ''}

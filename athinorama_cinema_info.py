@@ -1912,12 +1912,13 @@ border-radius: 8px;">
 
 
 def format_athinorama_display(rating_stars):
-    """Format rating_stars float for HTML display: 2.5 -> '2,5/5'"""
+    """Format rating_stars float for HTML display: 3.5 -> '7/10' (scaled from /5 to /10)"""
     if rating_stars is None:
         return None
-    if rating_stars == int(rating_stars):
-        return f"{int(rating_stars)}/5"
-    return f"{str(rating_stars).replace('.', ',')}/5"
+    scaled = rating_stars * 2
+    if scaled == int(scaled):
+        return f"{int(scaled)}/10"
+    return f"{str(scaled).replace('.', ',')}/10"
 
 
 def _build_rich_screening_schema(cinema_screenings, movie_data):
@@ -2573,7 +2574,7 @@ def generate_rich_movie_page(cached_data, cinema_screenings):
 {cast_section}
 
     <div class="cta-section">
-      <p style="margin-bottom: 14px; color: #666;">Δες πού παίζει τώρα στην Αθήνα</p>
+      <p style="margin-bottom: 14px; color: #666;">Δες όλες τις ταινίες</p>
       <a href="/" class="cta-btn">Βρες Προβολές</a>
     </div>
 
