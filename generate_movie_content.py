@@ -18,7 +18,7 @@ import requests
 from bs4 import BeautifulSoup
 
 # --- Configuration ---
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+BASE_DIR = "/home/grstathis/ti-paizei-tora.gr"
 OUTPUT_DIR = os.path.join(BASE_DIR, "generated_content")
 
 os.makedirs(OUTPUT_DIR, exist_ok=True)
