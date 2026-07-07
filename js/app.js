@@ -1431,12 +1431,15 @@ function renderResults(filteredList, forceEmpty = false) {
       <div class="movie-summary-info">
         <div class="movie-stats">
           ${cinemaCountHTML}
-          ${movieSummary.nextShowtime ? `
-            <span class="next-showing-prominent">
-              <strong>Επόμενη:</strong> ${movieSummary.nextShowtime} - ${movieSummary.cinemaNames}
-              ${travelTimeHTML}
-            </span>
-          ` : ''}
+          ${movieSummary.nextShowtime ? (() => {
+            const nextShowtimeUrl = movieSummary.rawShowtime && movieSummary.firstCinema
+              ? generateShowtimeUrl(movie, movieSummary.firstCinema, movieSummary.rawShowtime)
+              : (movie.slug ? `/movie/${movie.slug}/` : null);
+            const linkContent = `<strong>Επόμενη:</strong> ${movieSummary.nextShowtime} - ${movieSummary.cinemaNames} ${travelTimeHTML}`;
+            return nextShowtimeUrl
+              ? `<a href="${nextShowtimeUrl}" class="next-showing-prominent" onclick="event.stopPropagation()" title="Δες λεπτομέρειες προβολής">${linkContent}</a>`
+              : `<span class="next-showing-prominent">${linkContent}</span>`;
+          })() : ''}
         </div>
         <span class="movie-toggle">▼</span>
       </div>
@@ -1500,10 +1503,15 @@ function renderResults(filteredList, forceEmpty = false) {
             }
 
             // Create base cinema info
+            const isBookable = cinema.website && ['more.com', 'villagecinemas.gr', 'options-cinemas.gr', 'cinemax.gr'].some(d => cinema.website.includes(d));
+            const ticketBtnHTML = isBookable
+                ? `<a href="${cinema.website}" target="_blank" rel="noopener" class="cinema-ticket-btn" title="Εισιτήρια ↗">🎟️ ↗</a>`
+                : '';
+
             let cinemaHTML = `
   <h3>${cinema.website && cinema.website !== null
                     ? `<a href="${cinema.website}" target="_blank" rel="noopener noreferrer" class="cinema-link" title="Επίσκεψη στον ιστότοπο">${cinema.cinema}</a>`
-                    : cinema.cinema}</h3>
+                    : cinema.cinema} ${ticketBtnHTML}</h3>
   <p>
     <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(cinema.cinema + ' ' + cinema.address)}"
        target="_blank"
@@ -1527,13 +1535,20 @@ function renderResults(filteredList, forceEmpty = false) {
                 // Multiple showtimes - make collapsible
                 const uniqueId = `showtimes-${Math.random().toString(36).substr(2, 9)}`;
                 const nextShowtime = getNextShowtime(sortedTimes[0]);
+                const nextShowtimeUrl = generateShowtimeUrl(movie, cinema, sortedTimes[0]);
+
+                const nextShowtimeHTML = nextShowtime
+                    ? (nextShowtimeUrl
+                        ? `<a href="${nextShowtimeUrl}" class="next-showtime" onclick="event.stopPropagation()" title="Δες λεπτομέρειες προβολής">Επόμενη: ${nextShowtime}</a>`
+                        : `<span class="next-showtime">Επόμενη: ${nextShowtime}</span>`)
+                    : '';
 
                 cinemaHTML += `
         <div class="cinema-showtimes">
           <div class="showtimes-summary" onclick="toggleShowtimes('${uniqueId}')">
             <div class="showtimes-summary-info">
               <span class="showtimes-count">${sortedTimes.length} προβολές</span>
-              ${nextShowtime ? `<span class="next-showtime">Επόμενη: ${nextShowtime}</span>` : ''}
+              ${nextShowtimeHTML}
             </div>
             <span class="toggle-icon">▼</span>
           </div>
@@ -1932,6 +1947,8 @@ function createMovieSummary(cinemas) {
 
     let earliestTime = null;
     let earliestTimestamp = Infinity;
+    let earliestRawShowtime = null;
+    let earliestCinema = null;
     const cinemasWithEarliestTime = [];
 
     cinemas.forEach(cinema => {
@@ -2002,6 +2019,8 @@ function createMovieSummary(cinemas) {
         if (firstShowtimeParsed.sortValue < earliestTimestamp) {
             earliestTime = formatNextShowtime(firstShowtimeString);
             earliestTimestamp = firstShowtimeParsed.sortValue;
+            earliestRawShowtime = firstShowtimeString;
+            earliestCinema = cinema;
             cinemasWithEarliestTime.length = 0; // Clear array
             cinemasWithEarliestTime.push(cinema.cinema);
         } else if (firstShowtimeParsed.sortValue === earliestTimestamp) {
@@ -2011,6 +2030,8 @@ function createMovieSummary(cinemas) {
 
     return {
         nextShowtime: earliestTime,
+        rawShowtime: earliestRawShowtime,
+        firstCinema: earliestCinema,
         cinemaNames: cinemasWithEarliestTime.length > 0
             ? cinemasWithEarliestTime.join(', ')
             : null

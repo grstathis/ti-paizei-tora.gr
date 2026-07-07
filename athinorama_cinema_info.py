@@ -13,6 +13,32 @@ from unidecode import unidecode
 
 BASE_URL = "https://ti-paizei-tora.gr"
 
+BOOKABLE_DOMAINS = ["more.com", "villagecinemas.gr", "options-cinemas.gr", "cinemax.gr"]
+
+
+def is_bookable_cinema(website_url):
+    """Check if a cinema website is a known ticket booking platform."""
+    if not website_url:
+        return False
+    return any(domain in website_url for domain in BOOKABLE_DOMAINS)
+
+
+def build_cinema_ticket_link(cinema_website, cinema_name):
+    """Build the appropriate ticket/website link HTML for a cinema header."""
+    if not cinema_website:
+        return ""
+    if is_bookable_cinema(cinema_website):
+        return (
+            f' <a href="{cinema_website}" target="_blank" rel="noopener" '
+            f'style="display:inline-block;margin-left:8px;padding:4px 10px;background:#28a745;color:white;'
+            f'border-radius:6px;font-size:13px;font-weight:600;text-decoration:none;">'
+            f'🎟️ Εισιτήρια ↗</a>'
+        )
+    return (
+        f' - <a href="{cinema_website}" target="_blank" rel="noopener" '
+        f'style="color: #667eea; text-decoration: underline;">Ιστοσελίδα ↗</a>'
+    )
+
 BASE_DIR = "/home/grstathis/ti-paizei-tora.gr"
 MOVIE_DIR = os.path.join(BASE_DIR, "movie")
 REGION_DIR = os.path.join(BASE_DIR, "region")
@@ -2042,14 +2068,12 @@ def build_showtimes_html(cinema_screenings, movie_title_display, movie_data=None
         cinema_addr = cinema.get("address", "")
         cinema_website = cinema.get("website", "")
 
-        website_link = ""
-        if cinema_website:
-            website_link = f' - <a href="{cinema_website}" target="_blank" style="color: #667eea; text-decoration: underline;">Ιστοσελίδα</a>'
+        ticket_link = build_cinema_ticket_link(cinema_website, cinema_name)
 
         cinema_sections_html += f'''
       <div class="cinema-section" data-cinema="{cinema_slug}">
         <h3 style="color: #667eea; margin: 20px 0 12px 0; padding-bottom: 10px; border-bottom: 2px solid #f0f0f0;">
-          {cinema_name} - {cinema_region}{website_link}
+          {cinema_name} - {cinema_region}{ticket_link}
         </h3>
 '''
         for showtime in showtimes:
@@ -2754,15 +2778,13 @@ def generate_consolidated_movie_page(movie, cinema_screenings):
         cinema_addr = cinema.get("address", "")
         cinema_website = cinema.get("website", "")
 
-        # Build cinema header
-        website_link = ""
-        if cinema_website:
-            website_link = f' - <a href="{cinema_website}" target="_blank" style="color: #667eea; text-decoration: underline;">Ιστοσελίδα</a>'
+        # Build cinema header with ticket/website link
+        ticket_link = build_cinema_ticket_link(cinema_website, cinema_name)
 
         cinema_sections_html += f'''
   <div class="cinema-section" data-cinema="{cinema_slug}">
     <h2 style="color: #667eea; margin: 24px 0 16px 0; padding-bottom: 12px; border-bottom: 2px solid #f0f0f0;">
-      {cinema_name} - {cinema_region}{website_link}
+      {cinema_name} - {cinema_region}{ticket_link}
     </h2>
 '''
 

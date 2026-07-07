@@ -1130,6 +1130,17 @@ body {
     display: block;
     margin-top: 0.5em;
     width: 100%;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+a.next-showing-prominent {
+    color: white;
+}
+
+a.next-showing-prominent:hover {
+    background: #218838;
+    color: white;
 }
 
 .next-showing-prominent strong {
@@ -1333,6 +1344,34 @@ body {
     border-radius: 8px;
     font-size: 0.9em;
     font-weight: bold;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+a.next-showtime {
+    color: white;
+}
+
+a.next-showtime:hover {
+    background: #218838;
+    color: white;
+}
+
+.cinema-ticket-btn {
+    display: inline-block;
+    margin-left: 6px;
+    padding: 2px 8px;
+    background: #28a745;
+    color: white;
+    border-radius: 5px;
+    font-size: 12px;
+    text-decoration: none;
+    vertical-align: middle;
+}
+
+.cinema-ticket-btn:hover {
+    background: #218838;
+    color: white;
 }
 
 .toggle-icon {
