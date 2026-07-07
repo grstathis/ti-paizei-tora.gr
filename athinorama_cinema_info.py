@@ -256,24 +256,29 @@ def get_cinema_info_from_google(name: str, address: str = None):
     # (e.g., "Συγγρού & Φραντζή" → "Συγγρού")
     first_part = re.split(r"\s*&\s*|\s*και\s*|\s*-\s*", first_part)[0].strip()
 
-    # --- Geocoding ---
-    url = "https://nominatim.openstreetmap.org/search"
-    params = {
-        "q": f"{first_part}",
-        "format": "json",
-        "addressdetails": 1,
-        "limit": 1,
-    }
+    # --- Geocoding (Nominatim - optional enrichment, non-fatal) ---
+    import time
+    time.sleep(1.1)  # Nominatim rate limit: 1 req/sec
+    open_info_suburb = ""
+    open_info_neighbourhood = ""
+    try:
+        url = "https://nominatim.openstreetmap.org/search"
+        params = {
+            "q": f"{first_part}",
+            "format": "json",
+            "addressdetails": 1,
+            "limit": 1,
+        }
 
-    r = requests.get(url, params=params, headers={"User-Agent": "cinema-app"})
-    r.raise_for_status()
-    data = r.json()
-    if data:
-        details = data[0].get("address", {})
-        open_info_suburb = details.get("suburb")
-        open_info_neighbourhood = details.get("neighbourhood")
-    else:
-        open_info_suburb = open_info_neighbourhood = ""
+        r = requests.get(url, params=params, headers={"User-Agent": "cinema-app"}, timeout=10)
+        r.raise_for_status()
+        data = r.json()
+        if data:
+            details = data[0].get("address", {})
+            open_info_suburb = details.get("suburb")
+            open_info_neighbourhood = details.get("neighbourhood")
+    except Exception as e:
+        print(f"⚠️ Nominatim lookup failed (non-fatal): {e}")
 
     return {
         "lat": geometry["lat"],
@@ -328,6 +333,8 @@ def geocode_area(address):
     #     print(f"Geocoding query: {params['q']}")
 
     try:
+        import time
+        time.sleep(1.1)  # Nominatim rate limit: 1 req/sec
         r = requests.get(url, params=params, headers={"User-Agent": "cinema-app"})
         r.raise_for_status()
         data = r.json()
