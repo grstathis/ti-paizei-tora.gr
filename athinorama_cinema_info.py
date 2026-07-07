@@ -415,7 +415,15 @@ def get_or_create_cinema_info(name, address, cinema_db, is_summer_cinema=None):
     norm_address = normalize_name(address) if address else ""
     cinema_key = f"{norm_name}_{norm_address}"
 
-    # Check if cinema already exists in database
+    # Check if cinema already exists in database (exact key match first)
+    # Fallback: match by name prefix if exact key misses (addresses change on Athinorama)
+    if cinema_key not in cinema_db:
+        for existing_key in cinema_db:
+            if existing_key.startswith(f"{norm_name}_"):
+                print(f"🔄 Matched '{name}' by name (address changed on source)")
+                cinema_key = existing_key
+                break
+
     if cinema_key in cinema_db:
         existing_info = cinema_db[cinema_key]
 
