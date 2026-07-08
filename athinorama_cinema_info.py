@@ -15,6 +15,34 @@ BASE_URL = "https://ti-paizei-tora.gr"
 
 BOOKABLE_DOMAINS = ["more.com", "villagecinemas.gr", "options-cinemas.gr", "cinemax.gr"]
 
+# Region normalization: maps bad/English/granular area names to correct Greek regions
+REGION_NORMALIZE = {
+    # English → Greek
+    "Ampelokipi": "Αμπελόκηποι",
+    "Koukaki": "Κουκάκι",
+    "Galatsi": "Γαλάτσι",
+    "Evmenou": "Γέρακας",
+    "Saronida": "Σαρωνίδα",
+    "Selinia": "Σαλαμίνα",
+    "Vouliagmeni": "Βουλιαγμένη",
+    # Too-granular neighbourhoods → parent area
+    "Γαργαρέττα": "Πλάκα",
+    "Πευκάκια": "Νέα Ιωνία",
+    "Λυκαβηττός": "Κολωνάκι",
+    "Νεάπολη": "Εξάρχεια",
+    "Ακαδημία": "Αθήνα (Κέντρο)",
+    "Αστεροσκοπείο": "Θησείο",
+    "Συνοικία Παγκρατίου": "Παγκράτι",
+    "Πλατεία Αμερικής": "Κυψέλη",
+    "Αλεπότρυπα": "Κυψέλη",
+    "Άγιος Παντελεήμονας": "Κυψέλη",
+    "Άγιος Λουκάς": "Πατήσια",
+    "Ερυθρός Σταυρός": "Αμπελόκηποι",
+    # Geocoding failures
+    "Unknown": "Άλλη Περιοχή",
+    "Μαϊάμι": "Μάτι",
+}
+
 
 def is_bookable_cinema(website_url):
     """Check if a cinema website is a known ticket booking platform."""
@@ -643,9 +671,6 @@ def get_movie_theater_times(url, cinema_db):
         # 1. When area is "Αθηνα", list subarea if available,
         # otherwise use "Αθηνα (Κεντρο)"
         if final_area == "Αθήνα":
-            print(region_dict)
-            # Check if suburb is not empty/None AND not the same as
-            # the main area
             if suburb and normalize_name(suburb) != normalize_name(final_area):
                 final_area = suburb
             elif neighbourhood and normalize_name(neighbourhood) != normalize_name(
@@ -653,12 +678,11 @@ def get_movie_theater_times(url, cinema_db):
             ):
                 final_area = neighbourhood
             else:
-                # This will act as the filter for all Athens cinemas
                 final_area = "Αθήνα (Κέντρο)"
 
-        # 2. Replace 'ampelokipi' with 'Αμπελοκηποι'
-        if final_area == "Ampelokipi":
-            final_area = "Αμπελόκηποι"
+        # 2. Normalize region names (English→Greek, granular→parent, failures→fallback)
+        if final_area in REGION_NORMALIZE:
+            final_area = REGION_NORMALIZE[final_area]
 
         cinemas_data.append(
             {

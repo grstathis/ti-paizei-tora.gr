@@ -592,7 +592,7 @@ function toggleSummerCinemas() {
     renderResults();
 
     // Add/remove filter chip
-    updateActiveFilters();
+    updateFilterChips();
 }
 
 // Close location permission modal
